@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>about - a-chacon</title>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="module">
+    import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+    window.Stimulus = Application.start()
+
+    Stimulus.register("enter", class extends Controller {
+      static targets = [ "body", "buttom", "next" ]
+      connect() {
+        console.log("Enter controller")
+        setTimeout( () => { this.visible() } , 3000);
+      }
+
+      visible(){
+        this.bodyTarget.classList.add('fadeIn')
+        this.bodyTarget.classList.remove('invisible')
+        this.buttomTarget.classList.add('invisible')
+        this.nextTarget.focus()
+      }
+    })
+  </script>
+</head>
+
+<body class="bg-cover bg-center" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible">
+  <div class="flex justify-center items-center h-screen">
+    <div class="rounded-md w-100 lg:w-6/12 drop-shadow-2xl shadow-2xl">
+      <div class="flex justify-between h-8 bg-zinc-700 p-1 rounded-t-md">
+  <div class="h-full invert">
+    <img src="/assets/images/command-line.png" alt="" class="h-full">
+  </div>
+  <div class="text-white">Konsole</div>
+  <div class="flex justify-end space-x-4 h-full p-1">
+      <div class="h-full invert"><img src="/assets/images/minimize-sign.png" alt="" class="h-full"></div>
+      <div class="h-full invert"><img src="/assets/images/maximize.png" alt="" class="h-full"></div>
+      <div class="h-full invert"><img src="/assets/images/cancel.png" alt="" class="h-full"></div>
+  </div>
+</div>
+
+      <div class="bg-black/70">
+        <div class="grid grid-cols-1 space-y-4 pl-2 pt-6 pb-6">
+          <div class="flex justify-between text-white text-xl">
+            <div class="">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p> cat me.txt<input type="text" name="" value="" autofocus style="all: unset;">
+            </div>
+            <div class="pr-5" data-enter-target="buttom">
+              <img src="/assets/images/enter.png" alt="" class="h-8 w-30 animate-bounce">
+            </div>
+          </div>
+          <div data-enter-target="body" class="invisible">
+            <p class="text-white text-xl indent-8 p-2">
+Hello, I am Andres from the planet earth. I like to learn new things related to technologies. I have multiple interests, some of these are programming with Ruby and Python, APIs, cybersecurity, systems GNU/Linux.
+</p>
+<p class="text-white text-xl indent-8 p-2">
+I enter to the computer world when I was 15 years olds and I install my first ubuntu distro on my personal laptop. Then, a few year later I estudie computer programming and working on this since that. Currently I am working on personals projects only and thinking about the future, my future. I am developer now, who knows what I am going to be tomorrow.
+</p>
+<p class="text-white text-xl indent-8 p-2">
+And I am not only 1s and 0s, I like to ride road bikes, take pictures and travel too.
+</p>
+
+            <div class="text-white text-xl">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p><input data-enter-target="next" type="text" name="" value="" style="all: unset;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h-8 text-center text-white bg-zinc-700 rounded-b-md">
+  <ul class="flex flex-wrap ml-2 h-full">
+    
+      
+        <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+          <a href="/" class="m-2">home</a>
+        </li>
+      
+    
+      
+        <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
+          <a href="/about" class="m-2">about</a>
+        </li>
+      
+    
+      
+        <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+          <a href="/projects" class="m-2">projects</a>
+        </li>
+      
+    
+</div>
+
+    </div>
+  </div>
+</body>
+
+</html>
