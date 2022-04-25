@@ -1,0 +1,27 @@
+- title: Paso
+  date: 10-01-2022
+  lang: RUBY
+  description: Rails app for short urls. Using the RailsUrlShortener engine.
+  repository: https://github.com/a-chacon/paso-app
+  link: https://paso-app.herokuapp.com
+
+- title: RailsUrlShortener
+  date: 10-01-2022
+  lang: RUBY
+  description: Rails engine for providing url shortener functionalities.
+  repository: https://github.com/a-chacon/rails-url-shortener
+  link: https://rubygems.org/gems/rails_url_shortener
+
+- title: simple-fastapi-example
+  date: 10-01-2022
+  lang: PYTHON
+  description: Simple API REST project created with FASTAPI
+  repository: https://github.com/a-chacon/simple-fastapi-example
+  link: https://simple-fastapi-example.herokuapp.com/docs
+
+- title: sshdb
+  date: 10-01-2022
+  lang: PYTHON
+  description: CLI tool for managing ssh connection's data. (host, user ...)
+  repository: https://github.com/a-chacon/sshdb
+  link: https://pypi.org/project/sshdb/

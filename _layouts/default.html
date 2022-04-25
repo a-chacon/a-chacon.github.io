@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  <script type="module">
+    import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+    window.Stimulus = Application.start()
+
+    Stimulus.register("enter", class extends Controller {
+      static targets = [ "body", "buttom", "next" ]
+      connect() {
+        console.log("Enter controller")
+        setTimeout( () => { this.visible() } , 3000);
+      }
+
+      visible(){
+        this.bodyTarget.classList.add('fadeIn')
+        this.bodyTarget.classList.remove('invisible')
+        this.buttomTarget.classList.add('invisible')
+        this.nextTarget.focus()
+      }
+    })
+  </script>
+</head>
+
+<body class="bg-cover bg-center" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible">
+  <div class="flex justify-center items-center h-screen">
+    <div class="rounded-md w-100 lg:w-6/12 drop-shadow-2xl shadow-2xl">
+      {% include top_bar.html %}
+      <div class="bg-black/70">
+        <div class="grid grid-cols-1 space-y-4 pl-2 pt-6 pb-6">
+          <div class="flex justify-between text-white text-xl">
+            <div class="">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p> {{ page.command }}<input type="text" name="" value="" autofocus style="all: unset;">
+            </div>
+            <div class="pr-5" data-enter-target="buttom">
+              <img src="/assets/images/enter.png" alt="" class="h-8 w-30 animate-bounce">
+            </div>
+          </div>
+          <div data-enter-target="body" class="invisible">
+            {{ content }}
+            <div class="text-white text-xl">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p><input data-enter-target="next" type="text" name="" value="" style="all: unset;">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% include buttom_bar.html %}
+    </div>
+  </div>
+</body>
+
+</html>

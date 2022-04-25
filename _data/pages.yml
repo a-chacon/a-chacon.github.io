@@ -1,0 +1,11 @@
+- name: home
+  path: /
+  command: screenfetch
+
+- name: about
+  path: /about
+  command: cat me.txt
+
+- name: projects
+  path: /projects
+  command: tail projects.log
