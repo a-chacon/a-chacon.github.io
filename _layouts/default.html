@@ -11,7 +11,7 @@
     window.Stimulus = Application.start()
 
     Stimulus.register("enter", class extends Controller {
-      static targets = [ "body", "buttom", "next" ]
+      static targets = [ "body", "buttom" ]
       connect() {
         console.log("Enter controller")
         setTimeout( () => { this.visible() } , 3000);
@@ -21,7 +21,6 @@
         this.bodyTarget.classList.add('fadeIn')
         this.bodyTarget.classList.remove('invisible')
         this.buttomTarget.classList.add('invisible')
-        this.nextTarget.focus()
       }
     })
   </script>
@@ -44,7 +43,7 @@
           <div data-enter-target="body" class="invisible">
             {{ content }}
             <div class="text-white text-xl">
-              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p><input data-enter-target="next" type="text" name="" value="" style="all: unset;">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p>
             </div>
           </div>
         </div>
