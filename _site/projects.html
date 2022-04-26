@@ -27,9 +27,9 @@
   </script>
 </head>
 
-<body class="bg-cover bg-center" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible">
+<body class="bg-cover bg-center" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
   <div class="flex justify-center items-center h-screen">
-    <div class="rounded-md w-100 lg:w-6/12 drop-shadow-2xl shadow-2xl">
+    <div class="rounded-md w-100 lg:w-8/12 xl:lg:w-6/12 max-h-screen drop-shadow-2xl shadow-2xl">
       <div class="flex justify-between h-8 bg-zinc-700 p-1 rounded-t-md">
   <div class="h-full invert">
     <img src="/assets/images/command-line.png" alt="" class="h-full">
@@ -42,11 +42,11 @@
   </div>
 </div>
 
-      <div class="bg-black/70">
-        <div class="grid grid-cols-1 space-y-4 pl-2 pt-6 pb-6">
+      <div class="bg-black/70 max-h-[92vh] overflow-auto">
+        <div class="space-y-4 px-2 py-6">
           <div class="flex justify-between text-white text-xl">
             <div class="">
-              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p> tail projects.log<input type="text" name="" value="" autofocus style="all: unset;">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p> tail projects.log
             </div>
             <div class="pr-5" data-enter-target="buttom">
               <img src="/assets/images/enter.png" alt="" class="h-8 w-30 animate-bounce">
@@ -60,10 +60,10 @@
   
     <li class="m-1 mb-4">
       <div class="flex">
-        <div class="flex-initial text-red-200">
+        <div class="flex-initial text-red-600 hidden lg:inline">
           [ RUBY ]
         </div>
-        <div class="flex-initial ml-2">
+        <div class="flex-initial lg:ml-2">
           <span class="font-semibold text-green-500">Paso</span> - Rails app for short urls. Using the RailsUrlShortener engine.
         </div>
       </div>
@@ -75,10 +75,10 @@
   
     <li class="m-1 mb-4">
       <div class="flex">
-        <div class="flex-initial text-red-200">
+        <div class="flex-initial text-red-600 hidden lg:inline">
           [ RUBY ]
         </div>
-        <div class="flex-initial ml-2">
+        <div class="flex-initial lg:ml-2">
           <span class="font-semibold text-green-500">RailsUrlShortener</span> - Rails engine for providing url shortener functionalities.
         </div>
       </div>
@@ -90,10 +90,10 @@
   
     <li class="m-1 mb-4">
       <div class="flex">
-        <div class="flex-initial text-red-200">
+        <div class="flex-initial text-red-600 hidden lg:inline">
           [ PYTHON ]
         </div>
-        <div class="flex-initial ml-2">
+        <div class="flex-initial lg:ml-2">
           <span class="font-semibold text-green-500">simple-fastapi-example</span> - Simple API REST project created with FASTAPI
         </div>
       </div>
@@ -105,10 +105,10 @@
   
     <li class="m-1 mb-4">
       <div class="flex">
-        <div class="flex-initial text-red-200">
+        <div class="flex-initial text-red-600 hidden lg:inline">
           [ PYTHON ]
         </div>
-        <div class="flex-initial ml-2">
+        <div class="flex-initial lg:ml-2">
           <span class="font-semibold text-green-500">sshdb</span> - CLI tool for managing ssh connection's data. (host, user ...)
         </div>
       </div>

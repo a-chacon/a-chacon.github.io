@@ -27,9 +27,9 @@
   </script>
 </head>
 
-<body class="bg-cover bg-center" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible">
+<body class="bg-cover bg-center" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
   <div class="flex justify-center items-center h-screen">
-    <div class="rounded-md w-100 lg:w-6/12 drop-shadow-2xl shadow-2xl">
+    <div class="rounded-md w-100 lg:w-8/12 xl:lg:w-6/12 max-h-screen drop-shadow-2xl shadow-2xl">
       <div class="flex justify-between h-8 bg-zinc-700 p-1 rounded-t-md">
   <div class="h-full invert">
     <img src="/assets/images/command-line.png" alt="" class="h-full">
@@ -42,29 +42,29 @@
   </div>
 </div>
 
-      <div class="bg-black/70">
-        <div class="grid grid-cols-1 space-y-4 pl-2 pt-6 pb-6">
+      <div class="bg-black/70 max-h-[92vh] overflow-auto">
+        <div class="space-y-4 px-2 py-6">
           <div class="flex justify-between text-white text-xl">
             <div class="">
-              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p> screenfetch<input type="text" name="" value="" autofocus style="all: unset;">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p> screenfetch
             </div>
             <div class="pr-5" data-enter-target="buttom">
               <img src="/assets/images/enter.png" alt="" class="h-8 w-30 animate-bounce">
             </div>
           </div>
           <div data-enter-target="body" class="invisible">
-            <div class="grid grid-cols-2 w-max">
-  <pre class="text-white pl-10 hidden md:inline transition duration-150 ease-in-out">
-    ,           ,
-   /             \
-  ((__-^^-,-^^-__))
-   `-_---' `---_-'
-    `--|o` 'o|--'
-       \  `  /
-        ): :(
-        :o_o:
-         "-"
-    </pre>
+            <div class="flex">
+  <pre class="text-white px-10 hidden lg:inline transition duration-150 ease-in-out">
+  ,           ,
+ /             \
+((__-^^-,-^^-__))
+ `-_---' `---_-'
+  `--|o` 'o|--'
+     \  `  /
+      ): :(
+      :o_o:
+       "-"
+  </pre>
   <ul>
     <li class="text-white text-xl">
       <span class="text-green-500 font-semibold">Name:</span>

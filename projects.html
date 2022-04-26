@@ -10,10 +10,10 @@ command: tail projects.log
   {% for project in site.data.projects %}
     <li class="m-1 mb-4">
       <div class="flex">
-        <div class="flex-initial text-red-200">
+        <div class="flex-initial text-red-600 hidden lg:inline">
           [ {{ project.lang }} ]
         </div>
-        <div class="flex-initial ml-2">
+        <div class="flex-initial lg:ml-2">
           <span class="font-semibold text-green-500">{{ project.title }}</span> - {{ project.description }}
         </div>
       </div>
