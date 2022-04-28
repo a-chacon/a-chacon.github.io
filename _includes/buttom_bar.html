@@ -1,14 +1,23 @@
 <div class="h-8 text-center text-white bg-zinc-700 rounded-b-md">
-  <ul class="flex flex-wrap ml-2 h-full">
-    {% for page_obj in site.data.pages %}
-      {% if page.title == page_obj.name %}
-        <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
-          <a href="{{ page_obj.path }}" class="m-2">{{ page_obj.name }}</a>
-        </li>
-      {% else %}
-        <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-          <a href="{{ page_obj.path }}" class="m-2">{{ page_obj.name }}</a>
-        </li>
-      {% endif %}
-    {% endfor %}
+  <div class="flex justify-between">
+    <ul class="flex flex-wrap ml-2 h-full items-center">
+      {% for page_obj in site.data.pages %}
+        {% if page.title == page_obj.name %}
+          <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
+            <a href="{{ page_obj.path }}" class="m-2">{{ page_obj.name }}</a>
+          </li>
+        {% else %}
+          <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+            <a href="{{ page_obj.path }}" class="m-2">{{ page_obj.name }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    <div class="m-2">
+      <a href="https://www.gnu.org/licenses/copyleft.en.html" target="_blank">
+        <img src="/assets/images/Copyleft.svg" alt="copylefth" class="h-4 invert">
+      </a>
+    </div>
+  </div>
+
 </div>

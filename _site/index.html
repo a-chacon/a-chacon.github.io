@@ -11,7 +11,7 @@
     window.Stimulus = Application.start()
 
     Stimulus.register("enter", class extends Controller {
-      static targets = [ "body", "buttom", "next" ]
+      static targets = [ "body", "buttom" ]
       connect() {
         console.log("Enter controller")
         setTimeout( () => { this.visible() } , 3000);
@@ -21,7 +21,6 @@
         this.bodyTarget.classList.add('fadeIn')
         this.bodyTarget.classList.remove('invisible')
         this.buttomTarget.classList.add('invisible')
-        this.nextTarget.focus()
       }
     })
   </script>
@@ -108,32 +107,41 @@
 </div>
 
             <div class="text-white text-xl">
-              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p><input data-enter-target="next" type="text" name="" value="" style="all: unset;">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p>
             </div>
           </div>
         </div>
       </div>
       <div class="h-8 text-center text-white bg-zinc-700 rounded-b-md">
-  <ul class="flex flex-wrap ml-2 h-full">
-    
+  <div class="flex justify-between">
+    <ul class="flex flex-wrap ml-2 h-full items-center">
       
-        <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
-          <a href="/" class="m-2">home</a>
-        </li>
+        
+          <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
+            <a href="/" class="m-2">home</a>
+          </li>
+        
       
-    
+        
+          <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+            <a href="/about" class="m-2">about</a>
+          </li>
+        
       
-        <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-          <a href="/about" class="m-2">about</a>
-        </li>
+        
+          <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+            <a href="/projects" class="m-2">projects</a>
+          </li>
+        
       
-    
-      
-        <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-          <a href="/projects" class="m-2">projects</a>
-        </li>
-      
-    
+    </ul>
+    <div class="m-2">
+      <a href="https://www.gnu.org/licenses/copyleft.en.html" target="_blank">
+        <img src="/assets/images/Copyleft.svg" alt="copylefth" class="h-4 invert">
+      </a>
+    </div>
+  </div>
+
 </div>
 
     </div>

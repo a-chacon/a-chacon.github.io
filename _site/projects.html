@@ -11,7 +11,7 @@
     window.Stimulus = Application.start()
 
     Stimulus.register("enter", class extends Controller {
-      static targets = [ "body", "buttom", "next" ]
+      static targets = [ "body", "buttom" ]
       connect() {
         console.log("Enter controller")
         setTimeout( () => { this.visible() } , 3000);
@@ -21,7 +21,6 @@
         this.bodyTarget.classList.add('fadeIn')
         this.bodyTarget.classList.remove('invisible')
         this.buttomTarget.classList.add('invisible')
-        this.nextTarget.focus()
       }
     })
   </script>
@@ -118,35 +117,59 @@
       </div>
     </li>
   
+    <li class="m-1 mb-4">
+      <div class="flex">
+        <div class="flex-initial text-red-600 hidden lg:inline">
+          [ HTML ]
+        </div>
+        <div class="flex-initial lg:ml-2">
+          <span class="font-semibold text-green-500">Mypage</span> - This personal site made with jekyll.
+        </div>
+      </div>
+      <div class="">
+        ~> <a href="https://a-chacon.com" class="text-sky-500 underline" target="_blank">Preview</a>
+        <a href="https://github.com/a-chacon/a-chacon.github.io" class="text-sky-500 underline" target="_blank">Repository</a>
+      </div>
+    </li>
+  
 </ul>
 
             <div class="text-white text-xl">
-              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p><input data-enter-target="next" type="text" name="" value="" style="all: unset;">
+              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p>
             </div>
           </div>
         </div>
       </div>
       <div class="h-8 text-center text-white bg-zinc-700 rounded-b-md">
-  <ul class="flex flex-wrap ml-2 h-full">
-    
+  <div class="flex justify-between">
+    <ul class="flex flex-wrap ml-2 h-full items-center">
       
-        <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-          <a href="/" class="m-2">home</a>
-        </li>
+        
+          <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+            <a href="/" class="m-2">home</a>
+          </li>
+        
       
-    
+        
+          <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+            <a href="/about" class="m-2">about</a>
+          </li>
+        
       
-        <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-          <a href="/about" class="m-2">about</a>
-        </li>
+        
+          <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
+            <a href="/projects" class="m-2">projects</a>
+          </li>
+        
       
-    
-      
-        <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
-          <a href="/projects" class="m-2">projects</a>
-        </li>
-      
-    
+    </ul>
+    <div class="m-2">
+      <a href="https://www.gnu.org/licenses/copyleft.en.html" target="_blank">
+        <img src="/assets/images/Copyleft.svg" alt="copylefth" class="h-4 invert">
+      </a>
+    </div>
+  </div>
+
 </div>
 
     </div>
