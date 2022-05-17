@@ -1,3 +1,9 @@
+- title: Mytotp
+  lang: RUBY
+  description: Mytotp is a cli app for generate totp codes.
+  repository: https://github.com/a-chacon/mytotp
+  link: https://rubygems.org/gems/mytotp
+
 - title: Paso
   lang: RUBY
   description: Rails app for short urls. Using the RailsUrlShortener engine.
