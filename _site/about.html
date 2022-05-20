@@ -2,15 +2,20 @@
 <html lang="en-US">
 
 <head>
+  <!-- General tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>about - a-chacon</title>
-  <link rel="stylesheet" href="/assets/css/application.css">
+  <meta name="description" content="This is the andre's boring personal website. Back-end developer interested in create and learn.">
+  <!-- Opengraph tags -->
   <meta property="og:title" content="about - a-chacon" />
   <meta property="og:url" content="https://a-chacon.com/about" />
   <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="Andre's personal website." />
+  <meta property="og:description" content="This is the andre's boring personal website. Back-end developer interested in create and learn." />
+  <!-- Style tags -->
+  <link rel="stylesheet" href="/assets/css/application.css">
+  <!-- Script tags -->
   <script type="module">
     import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
     window.Stimulus = Application.start()
@@ -36,13 +41,13 @@
     <div class="rounded-md w-100 lg:w-8/12 xl:lg:w-6/12 max-h-screen drop-shadow-2xl shadow-2xl">
       <div class="flex justify-between h-8 bg-zinc-700 p-1 rounded-t-md">
   <div class="h-full invert">
-    <img src="/assets/images/command-line.png" alt="" class="h-full">
+    <img src="/assets/images/command-line.png" alt="cmd icon" class="h-full">
   </div>
   <div class="text-white">about - Konsole</div>
   <div class="flex justify-end space-x-4 h-full p-1">
-      <div class="h-full invert"><img src="/assets/images/minimize-sign.png" alt="" class="h-full"></div>
-      <div class="h-full invert"><img src="/assets/images/maximize.png" alt="" class="h-full"></div>
-      <div class="h-full invert"><img src="/assets/images/cancel.png" alt="" class="h-full"></div>
+      <div class="h-full invert"><img src="/assets/images/minimize-sign.png" alt="minimize icon" class="h-full"></div>
+      <div class="h-full invert"><img src="/assets/images/maximize.png" alt="maximize icon" class="h-full"></div>
+      <div class="h-full invert"><img src="/assets/images/cancel.png" alt="close icon" class="h-full"></div>
   </div>
 </div>
 
@@ -53,7 +58,7 @@
               <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p> cat me.txt
             </div>
             <div class="pr-5" data-enter-target="buttom">
-              <img src="/assets/images/enter.png" alt="" class="h-8 w-30 animate-bounce">
+              <img src="/assets/images/enter.png" alt="enter buttom" class="h-8 w-30 animate-bounce">
             </div>
           </div>
           <div data-enter-target="body" class="invisible">
