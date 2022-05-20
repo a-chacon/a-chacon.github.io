@@ -6,6 +6,11 @@
   <meta charset="utf-8">
   <title>{{ page.title }} - {{ site.title }}</title>
   <link rel="stylesheet" href="{{ "/assets/css/application.css" | relative_url }}">
+  <meta property="og:title" content="{{ page.title }} - {{ site.title }}" />
+  <meta property="og:url" content="https://a-chacon.com/{{ page.title }}" />
+  <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Andre's personal website." />
   <script type="module">
     import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
     window.Stimulus = Application.start()
