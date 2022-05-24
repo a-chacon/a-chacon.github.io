@@ -1,15 +1,23 @@
 <div class="h-8 text-center text-white bg-zinc-700 rounded-b-md">
-  <div class="flex justify-between">
-    <ul class="flex flex-wrap ml-2 h-full items-center">
+  <div class="flex justify-between h-full">
+    <ul class="flex flex-wrap h-full items-center h-full">
       {% for page_obj in site.data.pages %}
         {% if page.title == page_obj.name %}
-          <li class=" border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
-            <a href="{{ page_obj.path }}" class="m-2">{{ page_obj.name }}</a>
-          </li>
+          <a href="{{ page_obj.path }}" class="h-full">
+            <li class="h-full border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
+              <span class="px-2">
+                {{ page_obj.name }}
+              </span>
+            </li>
+          </a>
         {% else %}
-          <li class=" border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-            <a href="{{ page_obj.path }}" class="m-2">{{ page_obj.name }}</a>
-          </li>
+          <a href="{{ page_obj.path }}" class="h-full">
+            <li class="h-full border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+              <span class="px-2">
+                {{ page_obj.name }}
+              </span>
+            </li>
+          </a>
         {% endif %}
       {% endfor %}
     </ul>
