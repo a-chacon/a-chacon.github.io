@@ -23,24 +23,25 @@
     window.Stimulus = Application.start()
 
     Stimulus.register("enter", class extends Controller {
-      static targets = [ "body", "buttom" ]
+      static targets = [ "body", "buttom", "cursor" ]
       connect() {
-        console.log("Enter controller")
+        console.log("Enter controller conected.");
         setTimeout( () => { this.visible() } , 3000);
       }
 
       visible(){
-        this.bodyTarget.classList.add('fadeIn')
-        this.bodyTarget.classList.remove('invisible')
-        this.buttomTarget.classList.add('invisible')
+        this.bodyTarget.classList.add('fadeIn');
+        this.bodyTarget.classList.remove('invisible');
+        this.buttomTarget.classList.add('invisible');
+        this.cursorTarget.classList.add('hidden');
       }
     })
   </script>
 </head>
 
-<body class="bg-cover bg-center" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
+<body class="bg-cover bg-no-repeat" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
   <div class="flex justify-center items-center h-screen">
-    <div class="rounded-md w-100 lg:w-8/12 xl:lg:w-6/12 max-h-screen drop-shadow-2xl shadow-2xl">
+    <div class="rounded-md w-11/12 lg:w-8/12 xl:lg:w-6/12 shadow-2xl">
       <div class="flex justify-between h-8 bg-zinc-700 p-1 rounded-t-md">
   <div class="h-full invert">
     <img src="/assets/images/command-line.png" alt="cmd icon" class="h-full">
@@ -53,11 +54,11 @@
   </div>
 </div>
 
-      <div class="bg-black/70 max-h-[92vh] overflow-auto">
+      <div class="bg-black/70 h-3/5 overflow-y-auto h-[80vh] md:h-[50vh]">
         <div class="space-y-4 px-2 py-6">
           <div class="flex justify-between text-white text-xl">
-            <div class="">
-              <h2 class="text-green-500 font-semibold inline-block pr-2">root@host:~$</h2> tail projects.log
+            <div>
+              <h2 class="text-green-500 font-semibold inline-block pr-2">root@host:~$</h2> tail projects.log<span class="pr-2 pt-2 text-white blink" data-enter-target="cursor">|</span>
             </div>
             <div class="pr-5" data-enter-target="buttom">
               <img src="/assets/images/enter.png" alt="enter buttom" class="h-8 w-30 animate-bounce">
@@ -161,8 +162,8 @@
   
 </ul>
 
-            <div class="text-white text-xl">
-              <p class="text-green-500 font-semibold inline-block pr-2">root@host:~$</p>
+            <div class="text-white text-xl inline">
+              <p class="text-green-500 font-semibold pr-2 pt-2">root@host:~$ <span class="pr-2 pt-2 text-white blink">|</span></p>
             </div>
           </div>
         </div>
