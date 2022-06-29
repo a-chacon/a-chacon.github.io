@@ -1,6 +1,6 @@
 # Mysite
 
-This is my personal site and you can visit it at [a-chacon.com](https://a-chacon.com).
+This is my personal site, you can visit it at [a-chacon.com](https://a-chacon.com).
 
 ## How I build it?
 Using:

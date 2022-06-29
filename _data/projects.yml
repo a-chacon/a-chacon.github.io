@@ -1,3 +1,9 @@
+- title: Minitest-cc
+  lang: RUBY
+  description: Minitest plugin for give a minimal report of code coverage.
+  repository: https://github.com/a-chacon/minitest-cc
+  link: https://rubygems.org/gems/minitest-cc
+
 - title: Mytotp
   lang: RUBY
   description: Mytotp is a cli app for generate totp codes.
