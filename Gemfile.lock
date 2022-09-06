@@ -65,6 +65,7 @@ GEM
     webrick (1.7.0)
 
 PLATFORMS
+  armv6l-linux-eabihf
   x86_64-linux
 
 DEPENDENCIES
