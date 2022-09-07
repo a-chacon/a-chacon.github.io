@@ -2,6 +2,12 @@
 
 #here should update somthing
 
+kelvin=$(curl "http://api.openweathermap.org/data/2.5/weather?q=Rancagua,cl&APPID=4bf9816391aa609ab0c9d0f86500eec5" | jq '.main.temp_max')
+
+celcius=$(echo "($kelvin-274.15)"| bc -l)
+
+echo "{'celcius': $celcius}" >> ./_data/temp.json
+
 bundle exec jekyll build
 
 git add .
