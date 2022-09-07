@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 #here should update somthing
+cd /home/pi/Projects/a-chacon.github.io
 
 kelvin=$(curl "http://api.openweathermap.org/data/2.5/weather?q=Rancagua,cl&APPID=4bf9816391aa609ab0c9d0f86500eec5" | jq '.main.temp_max')
 
