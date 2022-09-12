@@ -8,7 +8,7 @@ kelvin=$(curl "http://api.openweathermap.org/data/2.5/weather?q=Rancagua,cl&APPI
 
 celcius=$(echo "($kelvin-274.15)"| bc -l)
 
-echo "{'celcius': $celcius}" >> ./_data/temp.json
+echo "{'celcius': $celcius}" > ./_data/temp.json
 
 bundle exec jekyll build
 
