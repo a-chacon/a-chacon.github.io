@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+git pull origin main
 
 #here should update somthing
 cd /home/pi/Projects/a-chacon.github.io
