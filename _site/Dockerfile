@@ -16,5 +16,8 @@ RUN bundle install
 # Expose port 4000
 EXPOSE 4000
 
+# Set production environment
+ENV JEKYLL_ENV production
+
 # Start the Jekyll server
 CMD ["jekyll", "serve", "--host", "0.0.0.0"]

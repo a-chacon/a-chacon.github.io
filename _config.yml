@@ -6,6 +6,12 @@ email: andres.ch@protonmail.com
 description: >-
   This is the andre's personal web site.
 
+defaults:
+  -
+    scope:
+      path: "assets/**/*.pdf"
+    values:
+      sitemap: false
 
 plugins:
   - jekyll-feed
