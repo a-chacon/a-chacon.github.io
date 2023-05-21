@@ -22,9 +22,15 @@
       {% endfor %}
     </ul>
     <div class="pr-2">
-      <a href="https://www.gnu.org/licenses/copyleft.en.html" target="_blank" class="font-bold text-xl">
-        &#x1f12f;
-      </a>
+      {% if page.lang == "en" %}
+      <a href="{{ site.url }}/es" class="font-bold text-xl">
+            ES
+        </a>
+      {% else %}
+      <a href="{{ site.url }}" class="font-bold text-xl">
+            EN
+        </a>
+      {% endif %}
     </div>
   </div>
 

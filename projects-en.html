@@ -1,0 +1,28 @@
+---
+layout: default
+title: projects
+command: tail projects.log
+permalink: /projects
+lang: en
+---
+<ul class="text-white text-xl">
+  <li class="pb-3">
+    Here are some of my projects:
+  </li>
+  {% for project in site.data.projects %}
+    <li class="m-1 mb-4">
+      <div class="flex">
+        <div class="flex-initial hidden lg:inline">
+          [ {{ project.lang }} ]
+        </div>
+        <div class="flex-initial lg:ml-2">
+          <span class="font-semibold text-green-500">{{ project.title }}</span> - {{ project.description }}
+        </div>
+      </div>
+      <div class="">
+        ~> <a href="{{ project.link }}" class="text-sky-500 underline" target="_blank">Preview</a>
+        <a href="{{ project.repository }}" class="text-sky-500 underline" target="_blank">Repository</a>
+      </div>
+    </li>
+  {% endfor %}
+</ul>

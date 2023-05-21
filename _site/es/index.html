@@ -5,18 +5,21 @@
   <!-- General tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>about - a-chacon</title>
+  <title>home - a-chacon</title>
   <meta name="description" content="This is the andre's boring personal website. Back-end developer interested in create and learn.">
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="assets/images/command-line.ico">
   <!-- Opengraph tags -->
-  <meta property="og:title" content="about - a-chacon" />
-  <meta property="og:url" content="https://a-chacon.com/about" />
+  <meta property="og:title" content="home - a-chacon" />
+  <meta property="twitter:title" content="home - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/home" />
   <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
+  <meta property="twitter:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="og:type" content="website" />
   <meta property="og:description" content="This is the andre's boring personal website. Back-end developer interested in create and learn." />
+  <meta property="twitter:description" content="This is the andre's boring personal website. Back-end developer interested in create and learn." />
   <!-- Style tags -->
-  <link rel="stylesheet" href="/assets/css/application.css">
+  <link rel="stylesheet" href="/es/assets/css/application.css">
   <!-- Script tags -->
   <script type="module">
     import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
@@ -41,14 +44,14 @@
 
 </head>
 
-<body class="bg-cover bg-no-repeat" style="background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
+<body class="bg-cover bg-no-repeat" style="background-color: #04081A;background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
   <div class="flex justify-center items-center h-screen">
     <div class="rounded-md w-11/12 lg:w-8/12 xl:lg:w-6/12 shadow-2xl">
       <div class="flex justify-between h-8 bg-zinc-700 p-1 rounded-t-md">
   <div class="h-full invert">
     <img src="/assets/images/command-line.png" alt="cmd icon" class="h-full">
   </div>
-  <h1 class="text-white">about - Konsole</h1>
+  <h1 class="text-white">home - Konsole</h1>
   <div class="flex justify-end space-x-4 h-full p-1">
       <div class="h-full invert"><img src="/assets/images/minimize-sign.png" alt="minimize icon" class="h-full"></div>
       <div class="h-full invert"><img src="/assets/images/maximize.png" alt="maximize icon" class="h-full"></div>
@@ -60,22 +63,67 @@
         <div class="space-y-4 px-2 py-6">
           <div class="flex justify-between text-white text-xl">
             <div>
-              <h2 class="text-green-500 font-semibold inline-block pr-2">root@host:~$</h2> cat me.txt<span class="pr-2 pt-2 text-white blink" data-enter-target="cursor">|</span>
+              <h2 class="text-green-500 font-semibold inline-block pr-2">root@host:~$</h2> screenfetch<span class="pr-2 pt-2 text-white blink" data-enter-target="cursor">|</span>
             </div>
             <div class="pr-5" data-enter-target="buttom">
               <img src="/assets/images/enter.png" alt="enter buttom" class="h-8 w-30 animate-bounce">
             </div>
           </div>
           <div data-enter-target="body" class="invisible">
-            <p class="text-white text-xl indent-8 p-2">
-Hello, I am Andres from the planet earth. I like to learn new things related to technologies all the time. I have multiple interests, some of these are programming with Ruby, Python and now Rust, APIs, cybersecurity, systems GNU/Linux.
-</p>
-<p class="text-white text-xl indent-8 p-2">
-I entered to the computer world when I was 15 years old and I installed my first Ubuntu distro on my personal laptop. Then, a few years later, I studied a Bachelor’s Degree in computer programming. Currently, I am working like back-end developer.
-</p>
-<p class="text-white text-xl indent-8 p-2">
-And I am not only 1s and 0s, I like to ride road bikes 🚴, take pictures 📷, watch movies 🎥, eat pizza 🍕, travel 🏕️ and to be in the nature 🌳.
-</p>
+            <div class="flex">
+  <pre class="text-white px-10 hidden lg:inline transition duration-150 ease-in-out">
+  ,           ,
+ /             \
+((__-^^-,-^^-__))
+ `-_---' `---_-'
+  `--|o` 'o|--'
+     \  `  /
+      ): :(
+      :o_o:
+       "-"
+  </pre>
+  <ul>
+    <li class="text-white text-xl">
+      <span class="text-green-500 font-semibold">Nombre:</span>
+      Andrés Chacón
+    </li>
+    <li class="text-white text-xl">
+      <span class="text-green-500 font-semibold">Profesion:</span>
+      Sofware developer 👨‍💻
+    </li>
+    <li class="text-white text-xl">
+      <span class="text-green-500 font-semibold">Correo electronico:</span>
+      <a href="mailto:andres.ch@protonmail.com" target="_blank" class="hover:underline">
+        andres.ch@proton.me
+        <img src="/assets/images/link.png" alt="Link icon" class="invert h-3 md:h-4 inline">
+      </a>
+    </li>
+    <li class="text-white text-xl inline">
+      <span class="text-green-500 font-semibold">GitHub:</span>
+      <a href="https://github.com/a-chacon" target="_blank" class="hover:underline">
+        a-chacon
+        <img src="/assets/images/link.png" alt="Link icon" class="invert h-3 md:h-4 inline">
+      </a>
+
+    </li>
+    <li class="text-white text-xl">
+      <span class="text-green-500 font-semibold">StackOverflow:</span>
+      <a href="https://stackoverflow.com/users/16847024/andr%c3%a9s" target="_blank" class="hover:underline">
+        Andrés
+        <img src="/assets/images/link.png" alt="Link icon" class="invert h-3 md:h-4 inline">
+      </a>
+    </li>
+    <li class="text-white text-xl">
+      <span class="text-green-500 font-semibold">Lenguages que manejo:</span>
+      Ruby 💎, Python 🐍, Aprendiendo Rust 🦀.
+    </li>
+    <li class="text-white text-xl">
+      <span class="text-green-500 font-semibold">Donde:</span>
+      CL
+    </li>
+  
+  </ul>
+</div>
 
             <div class="text-white text-xl inline">
               <p class="text-green-500 font-semibold pr-2 pt-2">root@host:~$ <span class="pr-2 pt-2 text-white blink">|</span></p>
@@ -88,8 +136,8 @@ And I am not only 1s and 0s, I like to ride road bikes 🚴, take pictures 📷,
     <ul class="flex flex-wrap h-full items-center h-full">
       
         
-          <a href="/" class="h-full">
-            <li class="h-full border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
+          <a href="/es/" class="h-full">
+            <li class="h-full border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
               <span class="px-2">
                 home
               </span>
@@ -98,8 +146,8 @@ And I am not only 1s and 0s, I like to ride road bikes 🚴, take pictures 📷,
         
       
         
-          <a href="/about" class="h-full">
-            <li class="h-full border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
+          <a href="/es/about" class="h-full">
+            <li class="h-full border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
               <span class="px-2">
                 about
               </span>
@@ -108,7 +156,7 @@ And I am not only 1s and 0s, I like to ride road bikes 🚴, take pictures 📷,
         
       
         
-          <a href="/projects" class="h-full">
+          <a href="/es/projects" class="h-full">
             <li class="h-full border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
               <span class="px-2">
                 projects
@@ -119,9 +167,11 @@ And I am not only 1s and 0s, I like to ride road bikes 🚴, take pictures 📷,
       
     </ul>
     <div class="pr-2">
-      <a href="https://www.gnu.org/licenses/copyleft.en.html" target="_blank" class="font-bold text-xl">
-        &#x1f12f;
-      </a>
+      
+      <a href="http://localhost:4000" class="font-bold text-xl">
+            EN
+        </a>
+      
     </div>
   </div>
 
