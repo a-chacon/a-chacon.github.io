@@ -20,4 +20,4 @@ EXPOSE 4000
 ENV JEKYLL_ENV production
 
 # Start the Jekyll server
-CMD ["jekyll", "serve", "--host", "0.0.0.0"]
+CMD ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0"]
