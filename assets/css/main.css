@@ -11,6 +11,7 @@
 @font-face {
   font-family: "Raleway";
   src: url("fonts/Raleway/static/Raleway-Regular.ttf");
+  font-display: swap;
 }
 
 .fadeIn {
