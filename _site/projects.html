@@ -1,241 +1,249 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="es">
 
 <head>
   <!-- General tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>projects - a-chacon</title>
-  <meta name="description" content="This is the andre's boring personal website. Back-end developer interested in create and learn.">
+  <title>Proyectos - a-chacon</title>
+  <meta name="description" content="">
+  <meta name=”robots” content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="es">
+<link rel="alternate" hreflang="es" href="http://localhost:4000/projects"/>
+<link rel="alternate" hreflang="en" href="http://localhost:4000/en/projects"/>
+
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="assets/images/command-line.ico">
   <!-- Opengraph tags -->
-  <meta property="og:title" content="projects - a-chacon" />
-  <meta property="twitter:title" content="projects - a-chacon" />
-  <meta property="og:url" content="https://a-chacon.com/projects" />
+  <meta property="og:title" content="Proyectos - a-chacon" />
+  <meta property="twitter:title" content="Proyectos - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/Proyectos" />
   <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="twitter:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="This is the andre's boring personal website. Back-end developer interested in create and learn." />
-  <meta property="twitter:description" content="This is the andre's boring personal website. Back-end developer interested in create and learn." />
+  <meta property="og:description" content="" />
+  <meta property="twitter:description" content="" />
   <!-- Style tags -->
   <link rel="stylesheet" href="/assets/css/application.css">
-  <!-- Script tags -->
-  <script type="module">
-    import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
-    window.Stimulus = Application.start()
-
-    Stimulus.register("enter", class extends Controller {
-      static targets = [ "body", "buttom", "cursor" ]
-      connect() {
-        console.log("Enter controller conected.");
-        setTimeout( () => { this.visible() } , 3000);
-      }
-
-      visible(){
-        this.bodyTarget.classList.add('fadeIn');
-        this.bodyTarget.classList.remove('invisible');
-        this.buttomTarget.classList.add('invisible');
-        this.cursorTarget.classList.add('hidden');
-      }
-    })
-  </script>
+  <!-- Plausible  -->
   <script defer data-domain="a-chacon.com" src="https://plausible.a-chacon.com/js/script.js"></script>
-
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+  <script type="module" src="assets/js/typewriter.js"></script>
 </head>
 
-<body class="bg-cover bg-no-repeat" style="background-color: #04081A;background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
-  <div class="flex justify-center items-center h-screen">
-    <div class="rounded-md w-11/12 lg:w-8/12 xl:lg:w-6/12 shadow-2xl">
-      <div class="flex justify-between h-8 bg-zinc-700 p-1 rounded-t-md">
-  <div class="h-full invert">
-    <img src="/assets/images/command-line.png" alt="cmd icon" class="h-full">
-  </div>
-  <h1 class="text-white">projects - Konsole</h1>
-  <div class="flex justify-end space-x-4 h-full p-1">
-      <div class="h-full invert"><img src="/assets/images/minimize-sign.png" alt="minimize icon" class="h-full"></div>
-      <div class="h-full invert"><img src="/assets/images/maximize.png" alt="maximize icon" class="h-full"></div>
-      <div class="h-full invert"><img src="/assets/images/cancel.png" alt="close icon" class="h-full"></div>
-  </div>
-</div>
+<body class="bg-neutral-50">
+  
+    <nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4 text-neutral-500 lg:py-6">
+  <div class="flex w-full flex-wrap items-center justify-between px-5">
 
-      <div class="bg-black/70 h-3/5 overflow-y-auto h-[80vh] md:h-[50vh]">
-        <div class="space-y-4 px-2 py-6">
-          <div class="flex justify-between text-white text-xl">
-            <div>
-              <h2 class="text-green-500 font-semibold inline-block pr-2">root@host:~$</h2> tail projects.log<span class="pr-2 pt-2 text-white blink" data-enter-target="cursor">|</span>
-            </div>
-            <div class="pr-5" data-enter-target="buttom">
-              <img src="/assets/images/enter.png" alt="enter buttom" class="h-8 w-30 animate-bounce">
-            </div>
+    <a class="flex" href="/">
+      <img src="assets/images/keyboard-key-a.png" alt="" class="block h-8 w-auto">
+      <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Desarrollador</span></p>
+    </a>
+
+    <div class="flex divide-x">
+      <div><a class="px-4 hover:text-neutral-900" href="/projects">Proyectos</a></div>
+      <div><a class="px-4 hover:text-neutral-900" href="http://localhost:4000/en/projects">en</a></div>
+    </div>
+  </div>
+</nav>
+
+  
+  <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+  <div class="container mx-auto">
+    <div class="mx-4 flex flex-wrap">
+      
+        <div class="w-full px-4 md:w-1/2 xl:w-1/3 text-neutral-500 hover:scale-105 duration-300 hover:-translate-y-1 transition ease-in-out">
+        <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200">
+          <img src="assets/images/comocambio.jpg" alt="image" class="object-cover w-full max-h-48" />
+          <div class="px-6 pt-4 flex justify-center">
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Rails</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#AWS</span>
+            
           </div>
-          <div data-enter-target="body" class="invisible">
-            <ul class="text-white text-xl">
-  <li class="pb-3">
-    Here are some of my projects:
-  </li>
-  
-    <li class="m-1 mb-4">
-      <div class="flex">
-        <div class="flex-initial hidden lg:inline">
-          [ 💎 ]
-        </div>
-        <div class="flex-initial lg:ml-2">
-          <span class="font-semibold text-green-500">Minitest-cc</span> - Minitest plugin for give a minimal report of code coverage.
-        </div>
-      </div>
-      <div class="">
-        ~> <a href="https://rubygems.org/gems/minitest-cc" class="text-sky-500 underline" target="_blank">Preview</a>
-        <a href="https://github.com/a-chacon/minitest-cc" class="text-sky-500 underline" target="_blank">Repository</a>
-      </div>
-    </li>
-  
-    <li class="m-1 mb-4">
-      <div class="flex">
-        <div class="flex-initial hidden lg:inline">
-          [ 💎 ]
-        </div>
-        <div class="flex-initial lg:ml-2">
-          <span class="font-semibold text-green-500">Mytotp</span> - Mytotp is a cli app for generate totp codes.
-        </div>
-      </div>
-      <div class="">
-        ~> <a href="https://rubygems.org/gems/mytotp" class="text-sky-500 underline" target="_blank">Preview</a>
-        <a href="https://github.com/a-chacon/mytotp" class="text-sky-500 underline" target="_blank">Repository</a>
-      </div>
-    </li>
-  
-    <li class="m-1 mb-4">
-      <div class="flex">
-        <div class="flex-initial hidden lg:inline">
-          [ 💎 ]
-        </div>
-        <div class="flex-initial lg:ml-2">
-          <span class="font-semibold text-green-500">Paso</span> - Rails app for short urls. Using the RailsUrlShortener engine.
-        </div>
-      </div>
-      <div class="">
-        ~> <a href="https://s.a-chacon.com" class="text-sky-500 underline" target="_blank">Preview</a>
-        <a href="https://github.com/a-chacon/paso-app" class="text-sky-500 underline" target="_blank">Repository</a>
-      </div>
-    </li>
-  
-    <li class="m-1 mb-4">
-      <div class="flex">
-        <div class="flex-initial hidden lg:inline">
-          [ 💎 ]
-        </div>
-        <div class="flex-initial lg:ml-2">
-          <span class="font-semibold text-green-500">RailsUrlShortener</span> - Rails engine for providing url shortener functionalities.
-        </div>
-      </div>
-      <div class="">
-        ~> <a href="https://rubygems.org/gems/rails_url_shortener" class="text-sky-500 underline" target="_blank">Preview</a>
-        <a href="https://github.com/a-chacon/rails-url-shortener" class="text-sky-500 underline" target="_blank">Repository</a>
-      </div>
-    </li>
-  
-    <li class="m-1 mb-4">
-      <div class="flex">
-        <div class="flex-initial hidden lg:inline">
-          [ 🐍 ]
-        </div>
-        <div class="flex-initial lg:ml-2">
-          <span class="font-semibold text-green-500">simple-fastapi-example</span> - Simple API REST project created with FASTAPI
-        </div>
-      </div>
-      <div class="">
-        ~> <a href="https://simple-fastapi-example.herokuapp.com/docs" class="text-sky-500 underline" target="_blank">Preview</a>
-        <a href="https://github.com/a-chacon/simple-fastapi-example" class="text-sky-500 underline" target="_blank">Repository</a>
-      </div>
-    </li>
-  
-    <li class="m-1 mb-4">
-      <div class="flex">
-        <div class="flex-initial hidden lg:inline">
-          [ 🐍 ]
-        </div>
-        <div class="flex-initial lg:ml-2">
-          <span class="font-semibold text-green-500">sshdb</span> - CLI tool for managing ssh connection's data. (host, user ...)
-        </div>
-      </div>
-      <div class="">
-        ~> <a href="https://pypi.org/project/sshdb/" class="text-sky-500 underline" target="_blank">Preview</a>
-        <a href="https://github.com/a-chacon/sshdb" class="text-sky-500 underline" target="_blank">Repository</a>
-      </div>
-    </li>
-  
-    <li class="m-1 mb-4">
-      <div class="flex">
-        <div class="flex-initial hidden lg:inline">
-          [ HTML ]
-        </div>
-        <div class="flex-initial lg:ml-2">
-          <span class="font-semibold text-green-500">Mypage</span> - This personal site made with jekyll.
-        </div>
-      </div>
-      <div class="">
-        ~> <a href="https://a-chacon.com" class="text-sky-500 underline" target="_blank">Preview</a>
-        <a href="https://github.com/a-chacon/a-chacon.github.io" class="text-sky-500 underline" target="_blank">Repository</a>
-      </div>
-    </li>
-  
-</ul>
-
-            <div class="text-white text-xl inline">
-              <p class="text-green-500 font-semibold pr-2 pt-2">root@host:~$ <span class="pr-2 pt-2 text-white blink">|</span></p>
-            </div>
+          <div class="text-center mx-8 mb-8">
+            <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
+              ComoCambio
+            </h3>
+            <p class="text-body-color mb-7 text-base leading-relaxed">
+              ComoCambio es una plataforma parte de un programa de Cencosud para promover una cultura saludable. Comencé el proyecto hace dos años y participo activamente como desarrollador back-end y DevOps freelance para la empresa Zeeers.
+            </p>
+            
+            
+            <a target="_blank" href="https://comocambio.com" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              Visitar
+            </a>
+            
           </div>
         </div>
       </div>
-      <div class="h-8 text-center text-white bg-zinc-700 rounded-b-md">
-  <div class="flex justify-between h-full">
-    <ul class="flex flex-wrap h-full items-center h-full">
+
       
-        
-          <a href="/" class="h-full">
-            <li class="h-full border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-              <span class="px-2">
-                home
-              </span>
-            </li>
-          </a>
-        
+        <div class="w-full px-4 md:w-1/2 xl:w-1/3 text-neutral-500 hover:scale-105 duration-300 hover:-translate-y-1 transition ease-in-out">
+        <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200">
+          <img src="assets/images/pasoapp.jpg" alt="image" class="object-cover w-full max-h-48" />
+          <div class="px-6 pt-4 flex justify-center">
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Rails</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Tailwindcss</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Docker</span>
+            
+          </div>
+          <div class="text-center mx-8 mb-8">
+            <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
+              Paso App
+            </h3>
+            <p class="text-body-color mb-7 text-base leading-relaxed">
+              Un cortador de URL que además puede recolectar información sobre los visitantes. Este proyecto está hecho utilizando mi otro proyecto open-source RailsUrlShortener y solo tiene el propósito de mostrar su implementación.
+            </p>
+            
+            <a target="_blank" href="https://github.com/a-chacon/paso-app" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              GitHub
+            </a>
+            
+            
+            <a target="_blank" href="https://s.a-chacon.com" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              Visitar
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
       
-        
-          <a href="/about" class="h-full">
-            <li class="h-full border-t border-zinc-700 hover:bg-zinc-800 hover:border-zinc-800 rounded-b">
-              <span class="px-2">
-                about
-              </span>
-            </li>
-          </a>
-        
+        <div class="w-full px-4 md:w-1/2 xl:w-1/3 text-neutral-500 hover:scale-105 duration-300 hover:-translate-y-1 transition ease-in-out">
+        <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200">
+          <img src="assets/images/iamindexed.jpg" alt="image" class="object-cover w-full max-h-48" />
+          <div class="px-6 pt-4 flex justify-center">
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Rails</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Tailwindcss</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Docker</span>
+            
+          </div>
+          <div class="text-center mx-8 mb-8">
+            <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
+              Iamindexed
+            </h3>
+            <p class="text-body-color mb-7 text-base leading-relaxed">
+              Una pequeña app que te ayuda haciendo Scraping en diferentes motores de búsqueda para saber si tu sitio está indexado o no. La idea nace de la necesidad de buscar de forma rápida si mis sitios estaban indexados o no.
+            </p>
+            
+            <a target="_blank" href="https://github.com/a-chacon/iamindexed" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              GitHub
+            </a>
+            
+            
+            <a target="_blank" href="https://iamindexed.com" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              Visitar
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
       
-        
-          <a href="/projects" class="h-full">
-            <li class="h-full border-t border-green-300 text-green-300 hover:bg-zinc-800 rounded-b">
-              <span class="px-2">
-                projects
-              </span>
-            </li>
-          </a>
-        
+        <div class="w-full px-4 md:w-1/2 xl:w-1/3 text-neutral-500 hover:scale-105 duration-300 hover:-translate-y-1 transition ease-in-out">
+        <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200">
+          <img src="assets/images/acogeres.png" alt="image" class="object-cover w-full max-h-48" />
+          <div class="px-6 pt-4 flex justify-center">
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Rails</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Bootstrap</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#AWS</span>
+            
+          </div>
+          <div class="text-center mx-8 mb-8">
+            <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
+              AcogerEs
+            </h3>
+            <p class="text-body-color mb-7 text-base leading-relaxed">
+              Un panel de administración para manejar datos sobre familias de acogidas para la Fundación AcogerEs. El proyecto contemplaba la depuración y carga de datos de más de dos mil familias junto a una campana de publicidad mediante correo.
+            </p>
+            
+            
+          </div>
+        </div>
+      </div>
+
       
-    </ul>
-    <div class="pr-2">
+        <div class="w-full px-4 md:w-1/2 xl:w-1/3 text-neutral-500 hover:scale-105 duration-300 hover:-translate-y-1 transition ease-in-out">
+        <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200">
+          <img src="assets/images/minitestscc.png" alt="image" class="object-cover w-full max-h-48" />
+          <div class="px-6 pt-4 flex justify-center">
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Ruby</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Minitest</span>
+            
+          </div>
+          <div class="text-center mx-8 mb-8">
+            <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
+              Minitest-cc
+            </h3>
+            <p class="text-body-color mb-7 text-base leading-relaxed">
+              Plug-in para el Framework de tests unitarios Minitest. Muestra información respecto a la cobertura que tienen los tests sobre el código del paquete o aplicación. Una opción mucho más simple a SimpleCov.
+            </p>
+            
+            <a target="_blank" href="https://github.com/a-chacon/minitest-cc" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              GitHub
+            </a>
+            
+            
+            <a target="_blank" href="https://rubygems.org/gems/minitest-cc" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              Visitar
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
       
-      <a href="http://localhost:4000/es" class="font-bold text-xl">
-            ES
-        </a>
+        <div class="w-full px-4 md:w-1/2 xl:w-1/3 text-neutral-500 hover:scale-105 duration-300 hover:-translate-y-1 transition ease-in-out">
+        <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200">
+          <img src="assets/images/ruby.webp" alt="image" class="object-cover w-full max-h-48" />
+          <div class="px-6 pt-4 flex justify-center">
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Ruby</span>
+            
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Rails</span>
+            
+          </div>
+          <div class="text-center mx-8 mb-8">
+            <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
+              RailsUrlShortener
+            </h3>
+            <p class="text-body-color mb-7 text-base leading-relaxed">
+              Motor para Rails que añade la funcionalidad completa para cortar URLs. Simplemente con instalar esta gema en alguna aplicación hecha con Rails puedes comenzar a cortar URLs y obtener información útil sobre su uso (ip, geolocalización, dispositivo, etc.).
+            </p>
+            
+            <a target="_blank" href="https://github.com/a-chacon/rails-url-shortener" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              GitHub
+            </a>
+            
+            
+            <a target="_blank" href="https://rubygems.org/gems/rails_url_shortener" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              Visitar
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
       
     </div>
   </div>
+</section>
 
-</div>
-
-    </div>
-  </div>
 </body>
 
 </html>

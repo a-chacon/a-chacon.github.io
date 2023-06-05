@@ -3,8 +3,6 @@ url: https://a-chacon.com
 
 title: a-chacon
 email: andres.ch@protonmail.com
-description: >-
-  Personal website of Andrés. Ruby developer. Backend. Based in Chile.
 
 defaults:
   -
@@ -20,6 +18,8 @@ plugins:
   - jekyll-polyglot
 
 languages: ["en", "es"]
-default_lang: "en"
+default_lang: "es"
 exclude_from_localization: ["javascript", "images", "css", "public"]
 parallel_localization: true
+
+words: ["Rails", "Ruby", "Python", "AWS"]

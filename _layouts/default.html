@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html lang="{{ page.lang | default: "en-US" }}">
 
 <head>
   <!-- General tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>{{ page.title }} - {{ site.title }}</title>
-  <meta name="description" content="This is the andre's boring personal website. Back-end developer interested in create and learn.">
+  <meta name="description" content="{{page.description}}">
+  <meta name=”robots” content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% I18n_Headers %}
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="assets/images/command-line.ico">
   <!-- Opengraph tags -->
@@ -16,59 +19,23 @@
   <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="twitter:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="This is the andre's boring personal website. Back-end developer interested in create and learn." />
-  <meta property="twitter:description" content="This is the andre's boring personal website. Back-end developer interested in create and learn." />
+  <meta property="og:description" content="{{ page.description }}" />
+  <meta property="twitter:description" content="{{ page.description }}" />
   <!-- Style tags -->
   <link rel="stylesheet" href="{{ "/assets/css/application.css" | relative_url }}">
-  <!-- Script tags -->
-  <script type="module">
-    import { Application, Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
-    window.Stimulus = Application.start()
-
-    Stimulus.register("enter", class extends Controller {
-      static targets = [ "body", "buttom", "cursor" ]
-      connect() {
-        console.log("Enter controller conected.");
-        setTimeout( () => { this.visible() } , 3000);
-      }
-
-      visible(){
-        this.bodyTarget.classList.add('fadeIn');
-        this.bodyTarget.classList.remove('invisible');
-        this.buttomTarget.classList.add('invisible');
-        this.cursorTarget.classList.add('hidden');
-      }
-    })
-  </script>
+  <!-- Plausible  -->
   <script defer data-domain="a-chacon.com" src="https://plausible.a-chacon.com/js/script.js"></script>
-
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+  <script type="module" src="assets/js/typewriter.js"></script>
 </head>
 
-<body class="bg-cover bg-no-repeat" style="background-color: #04081A;background-image: url('/assets/images/bg.png')" data-controller="enter" data-action="keydown@window->enter#visible touchstart@window->enter#visible" >
-  <div class="flex justify-center items-center h-screen">
-    <div class="rounded-md w-11/12 lg:w-8/12 xl:lg:w-6/12 shadow-2xl">
-      {% include top_bar.html %}
-      <div class="bg-black/70 h-3/5 overflow-y-auto h-[80vh] md:h-[50vh]">
-        <div class="space-y-4 px-2 py-6">
-          <div class="flex justify-between text-white text-xl">
-            <div>
-              <h2 class="text-green-500 font-semibold inline-block pr-2">root@host:~$</h2> {{ page.command }}<span class="pr-2 pt-2 text-white blink" data-enter-target="cursor">|</span>
-            </div>
-            <div class="pr-5" data-enter-target="buttom">
-              <img src="/assets/images/enter.png" alt="enter buttom" class="h-8 w-30 animate-bounce">
-            </div>
-          </div>
-          <div data-enter-target="body" class="invisible">
-            {{ content }}
-            <div class="text-white text-xl inline">
-              <p class="text-green-500 font-semibold pr-2 pt-2">root@host:~$ <span class="pr-2 pt-2 text-white blink">|</span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% include buttom_bar.html %}
-    </div>
-  </div>
+<body class="bg-neutral-50">
+  {% if page.lang == "es" %}
+    {% include navbar_es.html %}
+  {% else %}
+    {% include navbar_en.html%}
+  {% endif %}
+  {{ content }}
 </body>
 
 </html>

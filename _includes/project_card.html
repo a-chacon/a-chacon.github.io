@@ -1,0 +1,28 @@
+<div class="w-full px-4 md:w-1/2 xl:w-1/3 text-neutral-500 hover:scale-105 duration-300 hover:-translate-y-1 transition ease-in-out">
+        <div class="mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200">
+          <img src="{{project.image}}" alt="image" class="object-cover w-full max-h-48" />
+          <div class="px-6 pt-4 flex justify-center">
+            {% for tag in include.project.tags %}
+            <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#{{ tag }}</span>
+            {% endfor %}
+          </div>
+          <div class="text-center mx-8 mb-8">
+            <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
+              {{ include.project[page.lang].title}}
+            </h3>
+            <p class="text-body-color mb-7 text-base leading-relaxed">
+              {{ include.project[page.lang].description }}
+            </p>
+            {% if include.project.github %}
+            <a target="_blank" href="{{ project.github }}" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              GitHub
+            </a>
+            {% endif %}
+            {% if include.project.web %}
+            <a target="_blank" href="{{ project.web }}" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
+              Visitar
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>

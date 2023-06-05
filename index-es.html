@@ -1,63 +1,29 @@
 ---
 layout: default
-title: home
-command: screenfetch
+title: Inicio
+description: Desarrollador/Programador web freelance. Especializado en desarrollo de API RESTs con el framework Ruby on Rails, computacion en la nube y mas.
 permalink: /
 lang: es
 ---
 
-
-<div class="flex">
-  <pre class="text-white px-10 hidden lg:inline transition duration-150 ease-in-out">
-  ,           ,
- /             \
-((__-^^-,-^^-__))
- `-_---' `---_-'
-  `--|o` 'o|--'
-     \  `  /
-      ): :(
-      :o_o:
-       "-"
-  </pre>
-  <ul>
-    <li class="text-white text-xl">
-      <span class="text-green-500 font-semibold">Nombre:</span>
-      Andrés Chacón
-    </li>
-    <li class="text-white text-xl">
-      <span class="text-green-500 font-semibold">Profesion:</span>
-      Sofware developer 👨‍💻
-    </li>
-    <li class="text-white text-xl">
-      <span class="text-green-500 font-semibold">Correo electronico:</span>
-      <a href="mailto:andres.ch@protonmail.com" target="_blank" class="hover:underline">
-        andres.ch@proton.me
-        <img src="/assets/images/link.png" alt="Link icon" class="invert h-3 md:h-4 inline">
-      </a>
-    </li>
-    <li class="text-white text-xl inline">
-      <span class="text-green-500 font-semibold">GitHub:</span>
-      <a href="https://github.com/a-chacon" target="_blank" class="hover:underline">
-        a-chacon
-        <img src="/assets/images/link.png" alt="Link icon" class="invert h-3 md:h-4 inline">
-      </a>
-
-    </li>
-    <li class="text-white text-xl">
-      <span class="text-green-500 font-semibold">StackOverflow:</span>
-      <a href="https://stackoverflow.com/users/16847024/andr%c3%a9s" target="_blank" class="hover:underline">
-        Andrés
-        <img src="/assets/images/link.png" alt="Link icon" class="invert h-3 md:h-4 inline">
-      </a>
-    </li>
-    <li class="text-white text-xl">
-      <span class="text-green-500 font-semibold">Lenguages que manejo:</span>
-      Ruby 💎, Python 🐍, Aprendiendo Rust 🦀.
-    </li>
-    <li class="text-white text-xl">
-      <span class="text-green-500 font-semibold">Donde:</span>
-      CL
-    </li>
-  
-  </ul>
+<div class="flex flex-col md:flex-row items-center justify-center h-screen">
+  <div class="md:mx-2">
+    <img class="object-cover w-full h-full sm:w-80 sm:h-80 sm:rounded-full" src="/assets/images/profile.jpg" alt="profile image" />
+  </div>
+  <div class="fadeIn mx-4 w-4/5 md:w-2/5 text-center md:text-left text-neutral-500 ">
+    <h1 class="hidden">Hello World</h1>
+    <div id="app" class="pt-4 text-3xl md:text-6xl text-black" ></div>
+    <p class="md:text-xl text-base pt-4">Soy Andres, desarrollador web.</p>
+    <p class="text-base pt-4">
+      Especializado en el desarrollo de API RESTs con Ruby on Rails. He realizado diferentes proyectos, tanto back-end como full-stack.
+      Me he encargado desde el desarrollo de aplicaciones hasta su despliege en la nube (AWS). Me gusta enfrentarme a nuevos desafios, aprender y resolver problemas de la mejor forma posible.  
+    </p>
+    <div class="pr-6 pt-2 flex">
+      {% for tag in site.words %}
+      <span class="inline-block pr-2 text-sm mr-2 mb-2">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <p class="pt-4 hidden md:block">Me puedes contactar por cualquiera de estos canales:</p>
+    {% include channels.html %}    
+  </div>
 </div>

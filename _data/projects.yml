@@ -1,41 +1,75 @@
-- title: Minitest-cc
-  lang: 💎
-  description: Minitest plugin for give a minimal report of code coverage.
-  repository: https://github.com/a-chacon/minitest-cc
-  link: https://rubygems.org/gems/minitest-cc
+- es:
+    title: ComoCambio
+    description: ComoCambio es una plataforma parte de un programa de Cencosud para promover una cultura saludable. Comencé el proyecto hace dos años y participo activamente como desarrollador back-end y DevOps freelance para la empresa Zeeers. 
+  en:
+    title: ComoCambio
+    description: ComoCambio is a platform part of a Cencosud's program for promote a healthy culture. I started this project two years ago and I actively participate as a back-end developer and DevOps engineer for Zeeers.
+  image: assets/images/comocambio.jpg
+  web: https://comocambio.com
+  tags:
+    - Rails
+    - AWS
+#
+- es:
+    title: Paso App
+    description: Un cortador de URL que además puede recolectar información sobre los visitantes. Este proyecto está hecho utilizando mi otro proyecto open-source RailsUrlShortener y solo tiene el propósito de mostrar su implementación.
+  en:
+    title: Paso App
+    description: A URL shortener that can also collect information about visitors. This project is made using my other open-source project RailsUrlShortener and is only intended to show its implementation..
+  image: assets/images/pasoapp.jpg
+  github: https://github.com/a-chacon/paso-app
+  web: https://s.a-chacon.com
+  tags:
+    - Rails
+    - Tailwindcss
+    - Docker
+- es:
+    title: Iamindexed
+    description: Una pequeña app que te ayuda haciendo Scraping en diferentes motores de búsqueda para saber si tu sitio está indexado o no. La idea nace de la necesidad de buscar de forma rápida si mis sitios estaban indexados o no. 
+  en:
+    title: Iamindexed
+    description: A small app that helps you Scraping in different search engines to know if your site is indexed or not. The idea comes from the need to quickly find out if my sites were indexed or not.
+  image: assets/images/iamindexed.jpg
+  github: https://github.com/a-chacon/iamindexed
+  web: https://iamindexed.com
+  tags:
+    - Rails
+    - Tailwindcss
+    - Docker
 
-- title: Mytotp
-  lang: 💎
-  description: Mytotp is a cli app for generate totp codes.
-  repository: https://github.com/a-chacon/mytotp
-  link: https://rubygems.org/gems/mytotp
+- es:
+    title: AcogerEs
+    description: Un panel de administración para manejar datos sobre familias de acogidas para la Fundación AcogerEs. El proyecto contemplaba la depuración y carga de datos de más de dos mil familias junto a una campana de publicidad mediante correo.
+  en:
+    title: AcogerEs
+    description: An administration panel to manage data on foster families for Fundación AcogerEs. The project included data cleansing and uploading of more than two thousand families and a mailing campaign.
+  image: assets/images/acogeres.png
+  tags:
+    - Rails
+    - Bootstrap
+    - AWS
+- es:
+    title: Minitest-cc
+    description: Plug-in para el Framework de tests unitarios Minitest. Muestra información respecto a la cobertura que tienen los tests sobre el código del paquete o aplicación. Una opción mucho más simple a SimpleCov.
+  en:
+    title: Minitest-cc
+    description: Plug-in for the Minitest unit test framework. Displays information about the coverage of the tests on the package or application code. A much simpler option to SimpleCov.
+  image: assets/images/minitestscc.png
+  github: https://github.com/a-chacon/minitest-cc
+  web: https://rubygems.org/gems/minitest-cc
+  tags:
+    - Ruby
+    - Minitest
+- es:
+    title: RailsUrlShortener
+    description: Motor para Rails que añade la funcionalidad completa para cortar URLs. Simplemente con instalar esta gema en alguna aplicación hecha con Rails puedes comenzar a cortar URLs y obtener información útil sobre su uso (ip, geolocalización, dispositivo, etc.). 
+  en:
+    title: RailsUrlShortener
+    description: Engine for Rails that adds full URL-slicing functionality. By simply installing this gem in any Rails application you can start URL slicing and get useful information about its usage (ip, geolocation, device, etc.).
+  image: assets/images/ruby.webp
+  github: https://github.com/a-chacon/rails-url-shortener
+  web: https://rubygems.org/gems/rails_url_shortener
+  tags:
+    - Ruby
+    - Rails
 
-- title: Paso
-  lang: 💎
-  description: Rails app for short urls. Using the RailsUrlShortener engine.
-  repository: https://github.com/a-chacon/paso-app
-  link: https://s.a-chacon.com
-
-- title: RailsUrlShortener
-  lang: 💎
-  description: Rails engine for providing url shortener functionalities.
-  repository: https://github.com/a-chacon/rails-url-shortener
-  link: https://rubygems.org/gems/rails_url_shortener
-
-- title: simple-fastapi-example
-  lang: 🐍
-  description: Simple API REST project created with FASTAPI
-  repository: https://github.com/a-chacon/simple-fastapi-example
-  link: https://simple-fastapi-example.herokuapp.com/docs
-
-- title: sshdb
-  lang: 🐍
-  description: CLI tool for managing ssh connection's data. (host, user ...)
-  repository: https://github.com/a-chacon/sshdb
-  link: https://pypi.org/project/sshdb/
-
-- title: Mypage
-  lang: HTML
-  description: This personal site made with jekyll.
-  repository: https://github.com/a-chacon/a-chacon.github.io
-  link: https://a-chacon.com

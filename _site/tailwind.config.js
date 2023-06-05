@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'poppins': ['Monaco', 'sans-serif']
+        'poppins': ['Raleway', 'sans-serif']
       },
     },
   },
