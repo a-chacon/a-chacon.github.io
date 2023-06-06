@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <!-- General tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Not found - a-chacon</title>
+  <meta name="description" content="">
+  <meta name=”robots” content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="es">
+<link rel="alternate" hreflang="es" href="https://a-chacon.com/404.html"/>
+<link rel="alternate" hreflang="en" href="https://a-chacon.com/en/404.html"/>
+
+  <!-- Favicon tags -->
+  <link rel="icon" type="image/x-icon" href="assets/images/command-line.ico">
+  <!-- Opengraph tags -->
+  <meta property="og:title" content="Not found - a-chacon" />
+  <meta property="twitter:title" content="Not found - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/Not found" />
+  <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
+  <meta property="twitter:image" content="https://a-chacon.com/assets/images/mysite.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="" />
+  <meta property="twitter:description" content="" />
+  <!-- Style tags -->
+  <link rel="stylesheet" href="/assets/css/application.css">
+  <!-- Plausible  -->
+  <script defer data-domain="a-chacon.com" src="https://plausible.a-chacon.com/js/script.js"></script>
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+</head>
+
+<body class="bg-neutral-50">
+  
+    <nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4 text-neutral-500 lg:py-6">
+  <div class="flex w-full flex-wrap items-center justify-between px-5">
+
+    <a class="flex" href="/" aria-label="Home page">
+      <img src="assets/images/keyboard-key-a.png" alt="keyboard key a" class="block h-8 w-auto">
+      <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Developer</span></p>
+    </a>
+
+    <div class="flex divide-x">
+      <div><a class="px-4 hover:text-neutral-900" href="/projects">Projects</a></div>
+      <div><a class="px-4 hover:text-neutral-900" href="https://a-chacon.com/404.html">es</a></div>
+    </div>
+  </div>
+</nav>
+
+  
+  <script type="module">
+var app = document.getElementById('notfound');
+
+var typewriter = new Typewriter(app, {
+  loop: true,
+  delay: 95,
+});
+
+typewriter
+  .pauseFor(1000)
+  .typeString('<strong>404</strong> Not Found.')
+  .pauseFor(1500)
+  .deleteChars(10)
+  .pauseFor(1000)
+  .typeString('Página no encontrada.')
+  .pauseFor(4500)
+  .start();
+</script>
+<div class="flex items-center justify-center h-screen text-center">
+  <div id="notfound" class="text-3xl md:text-6xl text-black"></div>
+</div>
+
+</body>
+
+</html>

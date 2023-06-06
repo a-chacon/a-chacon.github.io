@@ -1,5 +1,5 @@
 var app = document.getElementById('app');
-console.log("APP: ", app)
+
 var typewriter = new Typewriter(app, {
   loop: false,
   delay: 75,
@@ -43,3 +43,4 @@ typewriter
   .changeDelay(75)
   .typeString('Hello, <strong>World!</strong>')
   .start();
+
