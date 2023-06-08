@@ -11,19 +11,19 @@ lang: en
   <div class="md:mx-2">
     <img class="object-cover w-full h-full sm:w-80 sm:h-80 sm:rounded-full" src="/assets/images/profile.webp" alt="profile image" />
   </div>
-  <div class="fadeIn mx-4 w-4/5 md:w-2/5 text-center md:text-left text-neutral-500 ">
+  <div class="fadeIn mx-4 w-4/5 md:w-2/5 text-center md:text-left text-neutral-500 text-base">
     <h1 class="hidden">Hello World</h1>
     <div id="app" class="pt-4 text-3xl md:text-6xl text-black"></div>
-    <p class="md:text-xl text-base pt-4">I am Andres, web developer.</p>
-    <p class="text-base pt-4">
-      Specialized in the development of RESTs APIs with Ruby on Rails. I have done different projects, both back-end and full-stack. I have been in charge from application development to its deployment in the cloud (AWS). I like to face new challenges, learn and solve problems in the best possible way.
+    <p class="md:text-lg pt-4">I am Andres, web developer.</p>
+    <p class="md:text-lg pt-4">
+      Specialized in the development of RESTs APIs with Ruby on Rails. I have done different projects, both back-end and full-stack. I have been in charge from application development to its deployment in the cloud. I like to face new challenges, learn and solve problems in the best possible way.
     </p>
-    <div class="pr-6 pt-2 flex justify-center ">
+    <div class="pr-6 pt-2 flex">
       {% for tag in site.words %}
-      <span class="inline-block pr-2 text-sm mr-2 mb-2">#{{ tag }}</span>
+      <span class="inline-block pr-2 mr-2 mb-2">#{{ tag }}</span>
       {% endfor %}
     </div>
-    <p class="pt-4 hidden md:block">You can contact me through any of these channels:</p>
+    <p class="md:text-lg pt-4 hidden md:block">You can contact me through any of these channels:</p>
     {% include channels.html %}
   </div>
 </div>

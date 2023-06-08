@@ -10,19 +10,21 @@
             <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
               {{ include.project[page.lang].title}}
             </h3>
-            <p class="text-body-color mb-7 text-base leading-relaxed">
+            <p class="text-body-color mb-7 text-base md:text-lg leading-relaxed">
               {{ include.project[page.lang].description }}
             </p>
+            <div class="flex justify-center">
             {% if include.project.github %}
-            <a target="_blank" href="{{ project.github }}" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              GitHub
+            <a class="pr-3 transition hover:scale-110 duration-300" href="{{ include.project.github }}" target="_blank">
+              <img class="h-6" src="/assets/images/github-mark.svg" alt="Github Icon" />
             </a>
             {% endif %}
             {% if include.project.web %}
-            <a target="_blank" href="{{ project.web }}" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              Visitar
+            <a class="pr-3 transition hover:scale-110 duration-300" href="{{ include.project.web }}" target="_blank">
+              <img src="/assets/images/link.png" alt="" class="h-6">
             </a>
             {% endif %}
+            </div>
           </div>
         </div>
       </div>

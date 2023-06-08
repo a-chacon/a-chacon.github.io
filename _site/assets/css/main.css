@@ -8,6 +8,7 @@
     font-family: Raleway, system-ui, sans-serif;
   }
 }
+
 @font-face {
   font-family: "Raleway";
   src: url("fonts/Raleway/static/Raleway-Regular.ttf");
@@ -41,3 +42,4 @@
     visibility: hidden;
   }
 }
+

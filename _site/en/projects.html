@@ -10,11 +10,11 @@
   <meta name=”robots” content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Language" content="en">
-<link rel="alternate" hreflang="es" href="https://a-chacon.com/projects"/>
-<link rel="alternate" hreflang="en" href="https://a-chacon.com/en/projects"/>
+<link rel="alternate" hreflang="es" href="http://localhost:4000/projects"/>
+<link rel="alternate" hreflang="en" href="http://localhost:4000/en/projects"/>
 
   <!-- Favicon tags -->
-  <link rel="icon" type="image/x-icon" href="assets/images/command-line.ico">
+  <link rel="icon" type="image/x-icon" href="/en/assets/images/favicon.ico">
   <!-- Opengraph tags -->
   <meta property="og:title" content="Projects - a-chacon" />
   <meta property="twitter:title" content="Projects - a-chacon" />
@@ -37,13 +37,14 @@
   <div class="flex w-full flex-wrap items-center justify-between px-5">
 
     <a class="flex" href="/en/" aria-label="Home page">
-      <img src="assets/images/keyboard-key-a.png" alt="keyboard key a" class="block h-8 w-auto">
+      <img src="/assets/images/keyboard-key-a.png" alt="keyboard key a" class="block h-8 w-auto">
       <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Developer</span></p>
     </a>
 
-    <div class="flex divide-x">
-      <div><a class="px-4 hover:text-neutral-900" href="/en/projects">Projects</a></div>
-      <div><a class="px-4 hover:text-neutral-900" href="https://a-chacon.com/projects">es</a></div>
+    <div class="flex divide-x text-black">
+      <div><a class="px-4 hover:text-neutral-500" href="/en/projects">Projects</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="/en/blog">Blog</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="http://localhost:4000/projects">es</a></div>
     </div>
   </div>
 </nav>
@@ -67,15 +68,17 @@
             <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
               ComoCambio
             </h3>
-            <p class="text-body-color mb-7 text-base leading-relaxed">
+            <p class="text-body-color mb-7 text-base md:text-lg leading-relaxed">
               ComoCambio is a platform part of a Cencosud's program for promote a healthy culture. I started this project two years ago and I actively participate as a back-end developer and DevOps engineer for Zeeers.
             </p>
+            <div class="flex justify-center">
             
             
-            <a target="_blank" href="https://comocambio.com" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              Visitar
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://comocambio.com" target="_blank">
+              <img src="/assets/images/link.png" alt="" class="h-6">
             </a>
             
+            </div>
           </div>
         </div>
       </div>
@@ -97,19 +100,21 @@
             <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
               Paso App
             </h3>
-            <p class="text-body-color mb-7 text-base leading-relaxed">
+            <p class="text-body-color mb-7 text-base md:text-lg leading-relaxed">
               A URL shortener that can also collect information about visitors. This project is made using my other open-source project RailsUrlShortener and is only intended to show its implementation..
             </p>
+            <div class="flex justify-center">
             
-            <a target="_blank" href="https://github.com/a-chacon/paso-app" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              GitHub
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://github.com/a-chacon/paso-app" target="_blank">
+              <img class="h-6" src="/assets/images/github-mark.svg" alt="Github Icon" />
             </a>
             
             
-            <a target="_blank" href="https://s.a-chacon.com" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              Visitar
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://s.a-chacon.com" target="_blank">
+              <img src="/assets/images/link.png" alt="" class="h-6">
             </a>
             
+            </div>
           </div>
         </div>
       </div>
@@ -131,19 +136,21 @@
             <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
               Iamindexed
             </h3>
-            <p class="text-body-color mb-7 text-base leading-relaxed">
+            <p class="text-body-color mb-7 text-base md:text-lg leading-relaxed">
               A small app that helps you Scraping in different search engines to know if your site is indexed or not. The idea comes from the need to quickly find out if my sites were indexed or not.
             </p>
+            <div class="flex justify-center">
             
-            <a target="_blank" href="https://github.com/a-chacon/iamindexed" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              GitHub
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://github.com/a-chacon/iamindexed" target="_blank">
+              <img class="h-6" src="/assets/images/github-mark.svg" alt="Github Icon" />
             </a>
             
             
-            <a target="_blank" href="https://iamindexed.com" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              Visitar
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://iamindexed.com" target="_blank">
+              <img src="/assets/images/link.png" alt="" class="h-6">
             </a>
             
+            </div>
           </div>
         </div>
       </div>
@@ -165,11 +172,13 @@
             <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
               AcogerEs
             </h3>
-            <p class="text-body-color mb-7 text-base leading-relaxed">
+            <p class="text-body-color mb-7 text-base md:text-lg leading-relaxed">
               An administration panel to manage data on foster families for Fundación AcogerEs. The project included data cleansing and uploading of more than two thousand families and a mailing campaign.
             </p>
+            <div class="flex justify-center">
             
             
+            </div>
           </div>
         </div>
       </div>
@@ -189,19 +198,21 @@
             <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
               Minitest-cc
             </h3>
-            <p class="text-body-color mb-7 text-base leading-relaxed">
+            <p class="text-body-color mb-7 text-base md:text-lg leading-relaxed">
               Plug-in for the Minitest unit test framework. Displays information about the coverage of the tests on the package or application code. A much simpler option to SimpleCov.
             </p>
+            <div class="flex justify-center">
             
-            <a target="_blank" href="https://github.com/a-chacon/minitest-cc" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              GitHub
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://github.com/a-chacon/minitest-cc" target="_blank">
+              <img class="h-6" src="/assets/images/github-mark.svg" alt="Github Icon" />
             </a>
             
             
-            <a target="_blank" href="https://rubygems.org/gems/minitest-cc" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              Visitar
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://rubygems.org/gems/minitest-cc" target="_blank">
+              <img src="/assets/images/link.png" alt="" class="h-6">
             </a>
             
+            </div>
           </div>
         </div>
       </div>
@@ -221,19 +232,21 @@
             <h3 class="text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]">
               RailsUrlShortener
             </h3>
-            <p class="text-body-color mb-7 text-base leading-relaxed">
+            <p class="text-body-color mb-7 text-base md:text-lg leading-relaxed">
               Engine for Rails that adds full URL-slicing functionality. By simply installing this gem in any Rails application you can start URL slicing and get useful information about its usage (ip, geolocation, device, etc.).
             </p>
+            <div class="flex justify-center">
             
-            <a target="_blank" href="https://github.com/a-chacon/rails-url-shortener" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              GitHub
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://github.com/a-chacon/rails-url-shortener" target="_blank">
+              <img class="h-6" src="/assets/images/github-mark.svg" alt="Github Icon" />
             </a>
             
             
-            <a target="_blank" href="https://rubygems.org/gems/rails_url_shortener" class="text-neutral-800 hover:bg-gray-100 inline-block rounded-full border border-[#E5E7EB] py-2 px-7 text-base font-medium transition">
-              Visitar
+            <a class="pr-3 transition hover:scale-110 duration-300" href="https://rubygems.org/gems/rails_url_shortener" target="_blank">
+              <img src="/assets/images/link.png" alt="" class="h-6">
             </a>
             
+            </div>
           </div>
         </div>
       </div>

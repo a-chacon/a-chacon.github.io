@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<div class="flex justify-center m-4 mt-16 md:mt-24 mb-16 text-neutral-500">
+  <div id="post" class="prose prose-neutral flex flex-col max-w-xl">
+    <h1 class="text-center text-3xl md:text-5xl text-black">{{page.title}}</h1>
+    <div class="flex justify-center">
+      <p class="px-2">{{ page.author }}</p>
+      <p>•</p>
+      <p class="px-2">{{ page.date | date: "%-d %B %Y" }}</p>
+    </div>
+    <div class="flex justify-center">
+      {% for tag in page.categories %}
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {{content}}
+  </div>
+</div>

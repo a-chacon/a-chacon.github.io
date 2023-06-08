@@ -2,13 +2,14 @@
   <div class="flex w-full flex-wrap items-center justify-between px-5">
 
     <a class="flex" href="/" aria-label="Home page">
-      <img src="assets/images/keyboard-key-a.png" alt="Letra a de un teclado" class="block h-8 w-auto">
+      <img src="/assets/images/keyboard-key-a.png" alt="Letra a de un teclado" class="block h-8 w-auto">
       <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Desarrollador</span></p>
     </a>
 
-    <div class="flex divide-x">
-      <div><a class="px-4 hover:text-neutral-900" href="/projects">Proyectos</a></div>
-      <div><a class="px-4 hover:text-neutral-900" {% static_href %}href="{{site.url}}/en{{page.permalink}}"{% endstatic_href %}>en</a></div>
+    <div class="flex divide-x text-black">
+      <div><a class="px-4 hover:text-neutral-500" href="/projects">Proyectos</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="/blog">Blog</a></div>
+      <div><a class="px-4 hover:text-neutral-500" {% static_href %}href="{{site.url}}/en{{page.permalink}}"{% endstatic_href %}>en</a></div>
     </div>
   </div>
 </nav>

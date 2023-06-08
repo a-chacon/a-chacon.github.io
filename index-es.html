@@ -11,20 +11,20 @@ lang: es
   <div class="md:mx-2">
     <img class="object-cover w-full h-full sm:w-80 sm:h-80 sm:rounded-full" src="/assets/images/profile.webp" alt="profile image" />
   </div>
-  <div class="fadeIn mx-4 w-4/5 md:w-2/5 text-center md:text-left text-neutral-500 ">
+  <div class="fadeIn mx-4 w-4/5 md:w-2/5 text-center md:text-left text-neutral-500 text-base">
     <h1 class="hidden">Hello World</h1>
     <div id="app" class="pt-4 text-3xl md:text-6xl text-black"></div>
-    <p class="md:text-xl text-base pt-4">Soy Andres, desarrollador web.</p>
-    <p class="text-base pt-4">
+    <p class="md:text-lg pt-4">Soy Andres, desarrollador web.</p>
+    <p class="md:text-lg pt-4">
       Especializado en el desarrollo de API RESTs con Ruby on Rails. He realizado diferentes proyectos, tanto back-end como full-stack.
-      Me he encargado desde el desarrollo de aplicaciones hasta su despliege en la nube (AWS). Me gusta enfrentarme a nuevos desafios, aprender y resolver problemas de la mejor forma posible.
+      Me he encargado desde el desarrollo de aplicaciones hasta su despliege en la nube. Me gusta enfrentarme a nuevos desafios, aprender y resolver problemas de la mejor forma posible.
     </p>
     <div class="pr-6 pt-2 flex">
       {% for tag in site.words %}
-      <span class="inline-block pr-2 text-sm mr-2 mb-2">#{{ tag }}</span>
+      <span class="inline-block pr-2 mr-2 mb-2">#{{ tag }}</span>
       {% endfor %}
     </div>
-    <p class="pt-4 hidden md:block">Me puedes contactar por cualquiera de estos canales:</p>
+    <p class="md:text-lg pt-4 hidden md:block">Me puedes contactar por cualquiera de estos canales:</p>
     {% include channels.html %}
   </div>
 </div>

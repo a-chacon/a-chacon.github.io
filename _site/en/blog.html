@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 
 <head>
   <!-- General tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>Not found - a-chacon</title>
-  <meta name="description" content="">
+  <title>Blog - a-chacon</title>
+  <meta name="description" content="Andres's blog. Despues agregare mas informacion.">
   <meta name=”robots” content="index, follow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Language" content="en">
-<link rel="alternate" hreflang="es" href="http://localhost:4000/404.html"/>
-<link rel="alternate" hreflang="en" href="http://localhost:4000/en/404.html"/>
+<link rel="alternate" hreflang="es" href="http://localhost:4000/blog"/>
+<link rel="alternate" hreflang="en" href="http://localhost:4000/en/blog"/>
 
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="/en/assets/images/favicon.ico">
   <!-- Opengraph tags -->
-  <meta property="og:title" content="Not found - a-chacon" />
-  <meta property="twitter:title" content="Not found - a-chacon" />
-  <meta property="og:url" content="https://a-chacon.com/Not found" />
+  <meta property="og:title" content="Blog - a-chacon" />
+  <meta property="twitter:title" content="Blog - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/Blog" />
   <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="twitter:image" content="https://a-chacon.com/assets/images/mysite.png" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="" />
-  <meta property="twitter:description" content="" />
+  <meta property="og:description" content="Andres's blog. Despues agregare mas informacion." />
+  <meta property="twitter:description" content="Andres's blog. Despues agregare mas informacion." />
   <!-- Style tags -->
   <link rel="stylesheet" href="/en/assets/css/application.css">
   <!-- Plausible  -->
@@ -44,32 +44,37 @@
     <div class="flex divide-x text-black">
       <div><a class="px-4 hover:text-neutral-500" href="/en/projects">Projects</a></div>
       <div><a class="px-4 hover:text-neutral-500" href="/en/blog">Blog</a></div>
-      <div><a class="px-4 hover:text-neutral-500" href="http://localhost:4000/404.html">es</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="http://localhost:4000/blog">es</a></div>
     </div>
   </div>
 </nav>
 
   
   <script type="module">
-var app = document.getElementById('notfound');
+var app = document.getElementById('title');
 
 var typewriter = new Typewriter(app, {
-  loop: true,
+  loop: false,
   delay: 95,
 });
 
 typewriter
   .pauseFor(1000)
-  .typeString('<strong>404</strong> Not Found.')
-  .pauseFor(1500)
-  .deleteChars(10)
-  .pauseFor(1000)
-  .typeString('Página no encontrada.')
-  .pauseFor(4500)
+  .typeString('Publications.')
+  .pauseFor(5000)
+  .deleteChars(1)
+  .typeString(' and more.')
   .start();
 </script>
-<div class="flex items-center justify-center h-screen text-center">
-  <div id="notfound" class="text-3xl md:text-6xl text-black"></div>
+
+<div class="flex justify-center m-4 my-16 text-neutral-500">
+  <div class="flex flex-col max-w-xl">
+    <div id="title" class="mt-8 text-3xl md:text-5xl text-black"></div>
+    <p class="pt-4 pb-2 border-b-2 text-lg md:text-xl">Here I write whatever I want. Technology, life, and more.</p>
+    <ul>
+      
+    </ul>
+  </div>
 </div>
 
 </body>

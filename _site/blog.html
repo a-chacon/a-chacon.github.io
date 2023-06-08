@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- General tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Blog - a-chacon</title>
+  <meta name="description" content="Blog de andres. Despues agregare mas informacion.">
+  <meta name=”robots” content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="es">
+<link rel="alternate" hreflang="es" href="http://localhost:4000/blog"/>
+<link rel="alternate" hreflang="en" href="http://localhost:4000/en/blog"/>
+
+  <!-- Favicon tags -->
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+  <!-- Opengraph tags -->
+  <meta property="og:title" content="Blog - a-chacon" />
+  <meta property="twitter:title" content="Blog - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/Blog" />
+  <meta property="og:image" content="https://a-chacon.com/assets/images/mysite.png" />
+  <meta property="twitter:image" content="https://a-chacon.com/assets/images/mysite.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Blog de andres. Despues agregare mas informacion." />
+  <meta property="twitter:description" content="Blog de andres. Despues agregare mas informacion." />
+  <!-- Style tags -->
+  <link rel="stylesheet" href="/assets/css/application.css">
+  <!-- Plausible  -->
+  <script defer data-domain="a-chacon.com" src="https://plausible.a-chacon.com/js/script.js"></script>
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+</head>
+
+<body class="bg-neutral-50">
+  
+    <nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4 text-neutral-500 lg:py-6">
+  <div class="flex w-full flex-wrap items-center justify-between px-5">
+
+    <a class="flex" href="/" aria-label="Home page">
+      <img src="/assets/images/keyboard-key-a.png" alt="Letra a de un teclado" class="block h-8 w-auto">
+      <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Desarrollador</span></p>
+    </a>
+
+    <div class="flex divide-x text-black">
+      <div><a class="px-4 hover:text-neutral-500" href="/projects">Proyectos</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="/blog">Blog</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="http://localhost:4000/en/blog">en</a></div>
+    </div>
+  </div>
+</nav>
+
+  
+  <script type="module">
+var app = document.getElementById('title');
+
+var typewriter = new Typewriter(app, {
+  loop: false,
+  delay: 95,
+});
+
+typewriter
+  .pauseFor(1000)
+  .typeString('Publicaciones.')
+  .pauseFor(5000)
+  .deleteChars(1)
+  .typeString(' y más.')
+  .start();
+</script>
+
+<div class="flex justify-center m-4 mt-16 md:mt-24 mb-16 text-neutral-500">
+  <div class="flex flex-col max-w-xl">
+    <div id="title" class="text-3xl md:text-5xl text-black"></div>
+    <p class="pt-4 pb-2 border-b-2 text-lg md:text-xl">Aqui escribo lo que se me da la gana. Tecnologia, vida, y mas.</p>
+    <ul>
+      
+    </ul>
+  </div>
+</div>
+
+</body>
+
+</html>
