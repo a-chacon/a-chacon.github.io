@@ -1,1 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/en/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/en/" rel="alternate" type="text/html" /><updated>2023-06-08T19:51:52-04:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/en/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/en/" rel="alternate" type="text/html" /><updated>2023-06-09T17:13:44-04:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="en"><title type="html">Minitest-cc: A minimalistic way to know what is the code coverage of your tests.</title><link href="https://a-chacon.com/en/rails/ruby/minitest/2023/06/08/minitest-cc.html" rel="alternate" type="text/html" title="Minitest-cc: A minimalistic way to know what is the code coverage of your tests." /><published>2023-06-08T00:00:00-04:00</published><updated>2023-06-08T00:00:00-04:00</updated><id>https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc</id><content type="html" xml:base="https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc.html"><![CDATA[<p><img src="/assets/images/ruby.webp" alt="" /></p>
+
+<p>When it comes to Code Coverage in Ruby everyone thinks of SimpleCov. The gem that delivers a complete coverage report and you can see the details in HTML files that it creates in your project. But when it comes to just having a reference about your coverage and not including more files and settings to your project, that’s where this gem/plug-in for Minitest comes to work.</p>
+
+<p>The idea is to make a report as simple as possible, without persistence, to serve as a reference when you are developing. In each execution of your test suite, either in general or by specific file, you can see what the coverage is after the execution ends.</p>
+
+<p>To install the gem is as easy as adding it to your Gemfile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'minitest-cc'</span>
+</code></pre></div></div>
+
+<p>Add the following lines to the beginning of your file <code class="language-plaintext highlighter-rouge">test_helper.rb</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'minitest/cc'</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">start</span>
+</code></pre></div></div>
+
+<p>After running your tests you should see an output like the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running 8 tests <span class="k">in </span>a single process <span class="o">(</span>parallelization threshold is 50<span class="o">)</span>   
+Run options: <span class="nt">--seed</span> 26716   
+
+<span class="c"># Running:   </span>
+
+........   
+
+<span class="c"># Coverage:   </span>
+
+Lines: 100.0%   Branches: 50.0% Methods: 100.0%   
+
+Average: 83.33%   
+
+
+Finished <span class="k">in </span>0.823512s, 9.7145 runs/s, 10.9288 assertions/s.   
+8 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+</code></pre></div></div>
+
+<p>And that’s it. There are two important things you can configure:</p>
+
+<ul>
+  <li>The output in summary form or detailed by files (If your project is very large I don’t recommend it).</li>
+  <li>Path of files to check if they are executed</li>
+</ul>
+
+<p>Here is an example of how these settings could be applied:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">start</span><span class="p">(</span><span class="ss">:lines</span><span class="p">,</span> <span class="ss">:branches</span><span class="p">,</span> <span class="ss">:methods</span><span class="p">)</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">tracked_files</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s1">'./app/\*\*/\*.rb'</span><span class="p">,</span>  
+  <span class="s1">'./lib/\*\*/\*.rb'</span>  
+<span class="p">]</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">cc_mode</span> <span class="o">=</span> <span class="ss">:per_file</span>
+</code></pre></div></div>
+
+<p>In conclusion, Minitest-cc is a simple and easy-to-use option to get a general reference on the coverage of your tests.</p>]]></content><author><name>Andrés</name></author><category term="Rails" /><category term="Ruby" /><category term="Minitest" /><summary type="html"><![CDATA[Ministest-cc is a lightweight and simple plug-in for the Minitest framework that provides an output about the code coverage of your tests. Here we will see how to install it and how it works.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/ruby.webp" /><media:content medium="image" url="https://a-chacon.com/assets/images/ruby.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

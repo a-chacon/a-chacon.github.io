@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- General tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests. - a-chacon</title>
+  <meta name="description" content="">
+  <meta name=”robots” content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Language" content="es">
+<link rel="alternate" hreflang="es" href="https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc.html"/>
+<link rel="alternate" hreflang="en" href="https://a-chacon.com/en/rails/ruby/minitest/2023/06/08/minitest-cc.html"/>
+
+  <!-- Favicon tags -->
+  <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+  <!-- Opengraph tags -->
+  <meta property="og:title" content="Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests. - a-chacon" />
+  <meta property="twitter:title" content="Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests. - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests." />
+  <meta property="og:image" content="https://a-chacon.com/assets/images/ruby.webp" />
+  <meta property="twitter:image" content="https://a-chacon.com/assets/images/ruby.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Ministest-cc es un plug-in liviano y simple para el framework Minitest que aporta una salida sobre la cobertura de código que tienen tus pruebas. Aquí veremos como instalarlo y como funciona." />
+  <meta property="twitter:description" content="Ministest-cc es un plug-in liviano y simple para el framework Minitest que aporta una salida sobre la cobertura de código que tienen tus pruebas. Aquí veremos como instalarlo y como funciona." />
+  <!-- Style tags -->
+  <link rel="stylesheet" href="/assets/css/application.css">
+  <!-- Plausible  -->
+  <script defer data-domain="a-chacon.com" src="https://plausible.a-chacon.com/js/script.js"></script>
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+</head>
+
+<body class="bg-neutral-50">
+  
+    <nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4 text-neutral-500 lg:py-6">
+  <div class="flex w-full flex-wrap items-center justify-between px-5">
+
+    <a class="flex" href="/" aria-label="Home page">
+      <img src="/assets/images/keyboard-key-a.png" alt="Letra a de un teclado" class="block h-8 w-auto">
+      <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Desarrollador</span></p>
+    </a>
+
+    <div class="flex divide-x text-black">
+      <div><a class="px-4 hover:text-neutral-500" href="/projects">Proyectos</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="/blog">Blog</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="https://a-chacon.com/en/rails/ruby/minitest/2023/06/08/minitest-cc.html">en</a></div>
+    </div>
+  </div>
+</nav>
+
+  
+  <link rel="stylesheet" href="/assets/css/monokai.css">
+<div class="flex justify-center m-4 mt-16 md:mt-24 mb-16 text-neutral-500">
+  <div id="post" class="prose prose-neutral flex flex-col max-w-xl">
+    <h1 class="text-center text-3xl md:text-5xl text-black">Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests.</h1>
+    <div class="flex justify-center">
+      <p class="px-2">Andrés</p>
+      <p>•</p>
+      <p class="px-2">8 June 2023</p>
+    </div>
+    <div class="flex justify-center">
+      
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Rails</span>
+      
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Ruby</span>
+      
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Minitest</span>
+      
+    </div>
+    <strong>Ministest-cc es un plug-in liviano y simple para el framework Minitest que aporta una salida sobre la cobertura de código que tienen tus pruebas. Aquí veremos como instalarlo y como funciona.</strong>
+    <p><img src="/assets/images/ruby.webp" alt="" /></p>
+
+<p>Cuando se trata de Code Coverage en Ruby todos piensan en SimpleCov. La gema que entrega un reporte completo sobre la cobertura y puedes ver los detalles en archivos HTML que crea en tu proyecto. Pero cuando se trata de solo tener una referencia sobre tu cobertura y no incluir más archivos y configuraciones a tu proyecto, es donde viene a trabajar esta gema/plug-in para Minitest.</p>
+
+<p>La idea es hacer un reporte lo más simple posible, sin persistencia, que sirva como referencia al momento de estar desarrollando. En cada ejecución de tu suit de tests, ya sea en general o por archivo específico, puedes ver cuál es la cobertura luego de que la ejecución termine.</p>
+
+<p>Para instalar la gema es tan fácil como agregarla a tu Gemfile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'minitest-cc'</span>
+</code></pre></div></div>
+
+<p>Agregar las siguientes líneas al principio de tu archivo <code class="language-plaintext highlighter-rouge">test_helper.rb</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'minitest/cc'</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">start</span>
+</code></pre></div></div>
+
+<p>Después de ejecutar tus tests deberías ver una salida como la siguiente:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running 8 tests <span class="k">in </span>a single process <span class="o">(</span>parallelization threshold is 50<span class="o">)</span>   
+Run options: <span class="nt">--seed</span> 26716   
+
+<span class="c"># Running:   </span>
+
+........   
+
+<span class="c"># Coverage:   </span>
+
+Lines: 100.0%   Branches: 50.0% Methods: 100.0%   
+
+Average: 83.33%   
+
+
+Finished <span class="k">in </span>0.823512s, 9.7145 runs/s, 10.9288 assertions/s.   
+8 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+</code></pre></div></div>
+
+<p>Y eso es todo. Hay dos cosas importantes que puedes configurar:</p>
+<ul>
+  <li>La salida en forma de resumen o detallada por archivos (Si tu proyecto es muy grande no lo recomiendo)</li>
+  <li>Ruta de archivos que comprobar si son ejecutados</li>
+</ul>
+
+<p>Aquí hay un ejemplo de como se podrían aplicar estas configuraciones:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">start</span><span class="p">(</span><span class="ss">:lines</span><span class="p">,</span> <span class="ss">:branches</span><span class="p">,</span> <span class="ss">:methods</span><span class="p">)</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">tracked_files</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s1">'./app/\*\*/\*.rb'</span><span class="p">,</span>  
+  <span class="s1">'./lib/\*\*/\*.rb'</span>  
+<span class="p">]</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">cc_mode</span> <span class="o">=</span> <span class="ss">:per_file</span>
+</code></pre></div></div>
+
+<p>En conclusión, Minitest-cc es una opción simple y fácil de usar para obtener una referencia general sobre la cobertura que tienen tus tests.</p>
+
+  </div>
+</div>
+
+</body>
+
+</html>
