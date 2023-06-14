@@ -8,7 +8,6 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.excerpt | default: page.description }}">
   <meta name=”robots” content="index, follow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% I18n_Headers %}
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
@@ -35,6 +34,7 @@
     {% include navbar_en.html%}
   {% endif %}
   {{ content }}
+   {% include social_media_share.html %}
 </body>
 
 </html>
