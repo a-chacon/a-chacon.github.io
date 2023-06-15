@@ -9,6 +9,7 @@
   <meta name="description" content="{{ page.excerpt | default: page.description }}">
   <meta name=”robots” content="index, follow">
   {% I18n_Headers %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   <!-- Opengraph tags -->
