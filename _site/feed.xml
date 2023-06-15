@@ -1,4 +1,117 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-14T11:14:34-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="es"><title type="html">Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests.</title><link href="http://localhost:4000/rails/ruby/minitest/2023/06/08/minitest-cc.html" rel="alternate" type="text/html" title="Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests." /><published>2023-06-08T00:00:00-04:00</published><updated>2023-06-08T00:00:00-04:00</updated><id>http://localhost:4000/rails/ruby/minitest/2023/06/08/minitest-cc</id><content type="html" xml:base="http://localhost:4000/rails/ruby/minitest/2023/06/08/minitest-cc.html"><![CDATA[<p><img src="/assets/images/ruby.webp" alt="" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/" rel="alternate" type="text/html" /><updated>2023-06-15T12:29:09-04:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="es"><title type="html">SpaceVim: Mi nuevo editor de código y como lo configure para programar con Ruby.</title><link href="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html" rel="alternate" type="text/html" title="SpaceVim: Mi nuevo editor de código y como lo configure para programar con Ruby." /><published>2023-06-15T00:00:00-04:00</published><updated>2023-06-15T00:00:00-04:00</updated><id>https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor</id><content type="html" xml:base="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html"><![CDATA[<p><img src="/assets/images/spacevim.png" alt="" /></p>
+
+<p><a href="https://spacevim.org/">SpaceVim</a> se define como una distribución de Vim/NeoVim. Hace un tiempo me dieron ganas por aprender a usar Vim y cuando 
+encontré este proyecto fue que me convencí de usarlo como mi editor de código principal y dejar atrás Atom. Hasta el momento me ha parecido excelente,
+aumentas la productividad a medida que vas dependiendo cada vez menos del mouse. Aún no soy un experto en Vim, pero puedo moverme cada vez mejor dentro
+del código.</p>
+
+<p>Y las facilidades que incluye SpaceVim para usuarios que están recién empezando en el mundo de Vim son muy buenas. Por ejemplo, para instalar un nuevo plugin, solo basta
+con presionar <code class="language-plaintext highlighter-rouge">SPC f v d</code> (abrir archivo de configuraciones de SpaceVim) y luego escribir lo siguiente:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[custom_plugins]]
+repo = 'ryanoasis/vim-devicons'
+merged = false
+</code></pre></div></div>
+<p>Y eso es todo, la siguiente vez que inicies el editor, el plugin se instalara por sí solo.</p>
+
+<p>Entonces, luego de un par de meses usando SpaceVim comentaré cuáles han sido mis configuraciones para usarlo como editor de código de Ruby (Lenguage principal en el que programo)
+y aunque en la documentación oficial existe una <a href="https://spacevim.org/use-vim-as-a-ruby-ide/">página</a> donde explican como configurarlo para programar con Ruby,
+me parece que hay un par de detalles más que mencionar para que todo funcione correctamente.</p>
+
+<p><strong>Este post no pretende explicar como instalar SpaceVim ni menos Vim. Eso lo puedes encontrar <a href="https://spacevim.org/quick-start-guide/">aquí</a>.</strong></p>
+
+<h3 id="syntax-linting">Syntax linting</h3>
+
+<p>En la sección de <code class="language-plaintext highlighter-rouge">Syntax linting</code> sugieren instalar rubocop para que <a href="https://github.com/neomake/neomake">Neomake</a> pueda entregarte errores sobre tu código de forma asíncrona,
+esto no me funciono y es porque la salida de Rubocop no es compatible con Neomake, entonces lo que hice fue probar <code class="language-plaintext highlighter-rouge">ruby-lint</code> que si funciona, 
+pero el proyecto me parece un poco abandonado, incluso el repositorio está archivado. Así que luego de probar recomiendo que para syntax linting 
+uses <a href="https://github.com/troessner/reek">reek</a> y lo configures de la siguiente manera en tu vimrc:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let g:neomake_ruby_enabled_makers = ['reek']
+</code></pre></div></div>
+
+<p><img src="/assets/images/spacevim-linting.gif" alt="" /></p>
+
+<h3 id="code-formatting">Code formatting</h3>
+
+<p>Para formatear el código mencionan <code class="language-plaintext highlighter-rouge">rufo</code>. Personalmente, prefiero <code class="language-plaintext highlighter-rouge">rubocop</code>, solo basta con tener rubocop y no <code class="language-plaintext highlighter-rouge">rufo</code>. Y si te parece bien puedes configurar para darle formato
+al código al momento de guardar con la siguiente opción:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [[layers]]
+name = "lang#ruby"
+format_on_save = true
+</code></pre></div></div>
+
+<p><img src="/assets/images/spacevim-format-code.gif" alt="" /></p>
+
+<h3 id="autocompletado">Autocompletado</h3>
+
+<p>Para mi este es un tema importante, el autocompletado del código ayuda bastante al momento de estar desarrollando. Y es por eso que si o si tenía que mejorar el autocompletado por defecto
+que entrega SpaceVim y para esto lo hice integrando <a href="https://solargraph.org/">Solargraph</a>.</p>
+
+<p>Lo primero que tienes que hacer es cambiar el engine de autocompletado por defecto a <a href="https://github.com/neoclide/coc.nvim">coc</a>. Esto lo haces con la siguiente opción:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[options]
+autocomplete_method = "coc"
+</code></pre></div></div>
+
+<p>Despues de esto SpaceVim se encargará de instalar coc.</p>
+
+<p>Si no tienes la gema de Solargraph instalada es el momento para hacerlo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install solargraph
+</code></pre></div></div>
+
+<p>Luego para que <code class="language-plaintext highlighter-rouge">coc</code> nos funcione con Solargraph debemos instalar un plugin a <code class="language-plaintext highlighter-rouge">coc</code> corriendo el siguiente comando en Vim/NeoVim:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>:CocInstall coc-solargraph
+</code></pre></div></div>
+
+<p>Y podemos empezar a disfrutar de un buen autocompletado, incluyendo documentación.</p>
+
+<p><img src="/assets/images/spacevim-autocompletion.gif" alt="" /></p>
+
+<hr />
+
+<p>Y para que tu Spacevim sea un espacio más agradable te sugiero algunas configuraciones:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Habilitar la capa git
+[[layers]]
+name = "git"
+
+# Iconos para tu NERDTree
+[[custom_plugins]]
+repo = 'ryanoasis/vim-devicons'
+merged = false
+
+# Colores segun tipo de archivo en NERDTree
+[[custom_plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
+merged = false
+
+# Agrega automaticamente end al final de ciertas estructuras en Ruby
+[[custom_plugins]]
+repo = "tpope/vim-endwise"
+merged = false
+
+# higlighter 
+[[custom_plugins]]
+repo = "ap/vim-css-color"
+merged = false
+</code></pre></div></div>
+
+<p>Por último, <strong>si quieres lograr la transparencia en el fondo</strong> de tu SpaceVim lo que me resulto a mí fue usar el mismo color 
+tanto en SpaceVim como en mi terminal (Esta ultima con transparencia).</p>
+
+<hr />
+
+<p>Entonces, teniendo la capa de Ruby activada, code linting, el formateo del código y el autocompletado funcionando podemos empezar a desarrollar sin problemas.
+SpaceVim viene con muchas más funcionalidades integradas que te pueden ayudar (metodos para buscar, terminal, todo manager, etc.) solo hay que buscar en su documentación o preguntar por los canales que mantiene la comunidad.</p>
+
+<p>Si estás recién empezando con Vim te sugiero el siguiente video:</p>
+<ul>
+  <li>https://youtu.be/RZ4p-saaQkc</li>
+</ul>]]></content><author><name>Andrés</name></author><category term="Vim" /><category term="Code" /><category term="Ruby" /><category term="IDE" /><summary type="html"><![CDATA[Luego de que Atom fuera dado de baja, comencé a buscarme un nuevo editor de código que cumpliera con el importante requerimiento de ser código abierto y con una buena comunidad que lo respaldara. Y así fue que encontré a SpaceVim, una distribución de Vim/NeoVim, inspirada en SpaceMacs.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/spacevim.png" /><media:content medium="image" url="https://a-chacon.com/assets/images/spacevim.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests.</title><link href="https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc.html" rel="alternate" type="text/html" title="Minitest-cc: Una forma minimalista de saber cuál es la cobertura de código de tus tests." /><published>2023-06-08T00:00:00-04:00</published><updated>2023-06-08T00:00:00-04:00</updated><id>https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc</id><content type="html" xml:base="https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc.html"><![CDATA[<p><img src="/assets/images/ruby.webp" alt="" /></p>
 
 <p>Cuando se trata de Code Coverage en Ruby todos piensan en SimpleCov. La gema que entrega un reporte completo sobre la cobertura y puedes ver los detalles en archivos HTML que crea en tu proyecto. Pero cuando se trata de solo tener una referencia sobre tu cobertura y no incluir más archivos y configuraciones a tu proyecto, es donde viene a trabajar esta gema/plug-in para Minitest.</p>
 
@@ -51,4 +164,4 @@ Finished <span class="k">in </span>0.823512s, 9.7145 runs/s, 10.9288 assertions/
 <span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">cc_mode</span> <span class="o">=</span> <span class="ss">:per_file</span>
 </code></pre></div></div>
 
-<p>En conclusión, Minitest-cc es una opción simple y fácil de usar para obtener una referencia general sobre la cobertura que tienen tus tests.</p>]]></content><author><name>Andrés</name></author><category term="Rails" /><category term="Ruby" /><category term="Minitest" /><summary type="html"><![CDATA[Ministest-cc es un plug-in liviano y simple para el framework Minitest que aporta una salida sobre la cobertura de código que tienen tus pruebas. Aquí veremos como instalarlo y como funciona.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/ruby.webp" /><media:content medium="image" url="http://localhost:4000/assets/images/ruby.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p>En conclusión, Minitest-cc es una opción simple y fácil de usar para obtener una referencia general sobre la cobertura que tienen tus tests.</p>]]></content><author><name>Andrés</name></author><category term="Rails" /><category term="Ruby" /><category term="Minitest" /><summary type="html"><![CDATA[Ministest-cc es un plug-in liviano y simple para el framework Minitest que aporta una salida sobre la cobertura de código que tienen tus pruebas. Aquí veremos como instalarlo y como funciona.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/ruby.webp" /><media:content medium="image" url="https://a-chacon.com/assets/images/ruby.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

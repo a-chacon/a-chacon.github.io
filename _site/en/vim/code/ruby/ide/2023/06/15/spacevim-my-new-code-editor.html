@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- General tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>SpaceVim: My new code editor and how I set it up for Ruby programming.</title>
+  <meta name="description" content="After Atom was decommissioned, I started looking for a new code editor that met the important requirement of being open source and with a good community behind it. And so I found SpaceVim, a Vim/NeoVim distribution, inspired by SpaceMacs.">
+  <meta name=”robots” content="index, follow">
+  <meta http-equiv="Content-Language" content="en">
+<link rel="alternate" hreflang="es" href="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html"/>
+<link rel="alternate" hreflang="en" href="https://a-chacon.com/en/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html"/>
+
+  <!-- Favicon tags -->
+  <link rel="icon" type="image/x-icon" href="/en/assets/images/favicon.ico">
+  <!-- Opengraph tags -->
+  <meta property="og:title" content="SpaceVim: My new code editor and how I set it up for Ruby programming. - a-chacon" />
+  <meta property="twitter:title" content="SpaceVim: My new code editor and how I set it up for Ruby programming. - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/SpaceVim: My new code editor and how I set it up for Ruby programming." />
+  <meta property="og:image" content="https://a-chacon.com/assets/images/spacevim.png" />
+  <meta property="twitter:image" content="https://a-chacon.com/assets/images/spacevim.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="After Atom was decommissioned, I started looking for a new code editor that met the important requirement of being open source and with a good community behind it. And so I found SpaceVim, a Vim/NeoVim distribution, inspired by SpaceMacs." />
+  <meta property="twitter:description" content="After Atom was decommissioned, I started looking for a new code editor that met the important requirement of being open source and with a good community behind it. And so I found SpaceVim, a Vim/NeoVim distribution, inspired by SpaceMacs." />
+  <!-- Style tags -->
+  <link rel="stylesheet" href="/en/assets/css/application.css">
+  <!-- Plausible  -->
+  <script defer data-domain="a-chacon.com" src="https://plausible.a-chacon.com/js/script.js"></script>
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+</head>
+
+<body class="bg-neutral-50">
+  
+    <nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4 text-neutral-500 lg:py-6">
+  <div class="flex w-full flex-wrap items-center justify-between px-5">
+
+    <a class="flex" href="/en/" aria-label="Home page">
+      <img src="/assets/images/keyboard-key-a.png" alt="keyboard key a" class="block h-8 w-auto">
+      <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Developer</span></p>
+    </a>
+
+    <div class="flex divide-x text-black">
+      <div><a class="px-4 hover:text-neutral-500" href="/en/projects">Projects</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="/en/blog">Blog</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html">es</a></div>
+    </div>
+  </div>
+</nav>
+
+  
+  <link rel="stylesheet" href="/en/assets/css/monokai.css">
+<div class="flex justify-center mt-16 md:mt-24 mb-16 text-neutral-500">
+  <div id="post" class="prose prose-neutral flex flex-col w-11/12 md:max-w-xl">
+    <h1 class="text-center text-3xl md:text-5xl text-black">SpaceVim: My new code editor and how I set it up for Ruby programming.</h1>
+    <div class="flex justify-center">
+      <p class="px-2">Andrés</p>
+      <p>•</p>
+      <p class="px-2">15 June 2023</p>
+    </div>
+    <div class="flex justify-center">
+      
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Vim</span>
+      
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Code</span>
+      
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#Ruby</span>
+      
+        <span class="inline-block px-2 py-1 text-sm mr-2 mb-2">#IDE</span>
+      
+    </div>
+    <strong>After Atom was decommissioned, I started looking for a new code editor that met the important requirement of being open source and with a good community behind it. And so I found SpaceVim, a Vim/NeoVim distribution, inspired by SpaceMacs.</strong>
+    <p><img src="/assets/images/spacevim.png" alt="&quot;SpaceVim first look&quot;" /></p>
+
+<p><a href="https://spacevim.org/">SpaceVim</a> is defined as a Vim/NeoVim distribution. Some time ago I felt like learning how to use Vim and when I found this project 
+and when I found this project I was convinced to use it as my main code editor and leave Atom behind. So far I have found it excellent,
+you increase productivity as you depend less and less on the mouse. I’m still not an expert in Vim, but I can move better and better in the code.
+code.</p>
+
+<p>And the facilities that SpaceVim includes for users who are just starting in the world of Vim are very good. For example, to install a new plugin, all you need to do is to press
+press <code class="language-plaintext highlighter-rouge">SPC f v d</code> (open SpaceVim configuration file) and then type the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[custom_plugins]]
+repo = 'ryanoasis/vim-devicons'
+merged = false
+</code></pre></div></div>
+<p>And that’s it, the next time you start the editor, the plugin will install itself.</p>
+
+<p>So, after a couple of months using SpaceVim I will comment what have been my configurations to use it as a code editor for Ruby (main language in which I program)
+and although in the official documentation there is a <a href="https://spacevim.org/use-vim-as-a-ruby-ide/">page</a> where they explain how to configure it to program with Ruby,
+it seems to me that there are a couple of more details to mention for everything to work correctly.</p>
+
+<p><strong>This post is not intended to explain how to install SpaceVim or even less Vim. That can be found <a href="https://spacevim.org/quick-start-guide/">here</a>.</strong> **## Syntax linting</p>
+
+<h3 id="syntax-linting">Syntax linting</h3>
+
+<p>In the <code class="language-plaintext highlighter-rouge">Syntax linting</code> section they suggest installing rubocop so that <a href="https://github.com/neomake/neomake">Neomake</a> can deliver errors on your code asynchronously,
+this didn’t work for me and that’s because rubocop’s output is not compatible with Neomake, so what I did was to try <code class="language-plaintext highlighter-rouge">ruby-lint</code> which does work, 
+but the project seems to me a bit abandoned, even the repository is archived. So after testing I recommend that for syntax linting 
+use <a href="https://github.com/troessner/reek">reek</a> and configure it as follows in your vimrc:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let g:neomake_ruby_enabled_makers = ['reek']]
+</code></pre></div></div>
+
+<p><img src="/assets/images/spacevim-linting.gif" alt="&quot;Spacevim linting working&quot;" /></p>
+
+<h3 id="code-formatting">Code formatting</h3>
+
+<p>Para formatear el código mencionan <code class="language-plaintext highlighter-rouge">rufo</code>. Personalmente, prefiero <code class="language-plaintext highlighter-rouge">rubocop</code>, solo basta con tener rubocop y no <code class="language-plaintext highlighter-rouge">rufo</code>. Y si te parece bien puedes configurar para darle formato
+al código al momento de guardar con la siguiente opción:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [[layers]]
+name = "lang#ruby"
+format_on_save = true
+</code></pre></div></div>
+
+<p><img src="/assets/images/spacevim-format-code.gif" alt="" /></p>
+
+<h3 id="autocompletion">Autocompletion</h3>
+
+<p>For me this is an important topic, the autocompletion of the code helps a lot when developing. And that’s why I had to improve the default autocompletion
+that SpaceVim delivers and for this I did it integrating <a href="https://solargraph.org/">Solargraph</a>.</p>
+
+<p>The first thing you have to do is to change the default autocomplete engine to <a href="https://github.com/neoclide/coc.nvim">coc</a>. You do this with the following option:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[options]
+autocomplete_method = "coc"
+</code></pre></div></div>
+
+<p>After this SpaceVim will take care of installing coc.</p>
+
+<p>If you don’t have the Solargraph gem installed now is the time to do it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install solargraph
+</code></pre></div></div>
+
+<p>Then for <code class="language-plaintext highlighter-rouge">coc</code> to work with Solargraph we must install a plugin to <code class="language-plaintext highlighter-rouge">coc</code> by running the following command in Vim/NeoVim:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CocInstall coc-solargraph
+</code></pre></div></div>
+
+<p>And we can start enjoying good autocompletion, including documentation.</p>
+
+<p><img src="/assets/images/spacevim-autocompletion.gif" alt="&quot;SpaceVim autocompletion working&quot;" /></p>
+
+<hr />
+
+<p>And to make your Spacevim a nicer space I suggest some settings:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Enable the git layer
+[[layers]]
+name = "git"
+
+# Icons for your NERDTree
+[[custom_plugins]]
+repo = 'ryanoasis/vim-devicons'
+merged = false
+
+# Colors according to file type in NERDTree
+[[custom_plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
+merged = false
+
+# Automatically add end to the end of certain Ruby structures
+[[custom_plugins]]
+repo = "tpope/vim-endwise"
+merged = false
+
+# higlighter 
+[[custom_plugins]]
+repo = "ap/vim-css-color"
+merged = false
+</code></pre></div></div>
+
+<p>Finally, <strong>if you want to achieve transparency in the background</strong> of your SpaceVim what worked for me was to use the same color 
+in both SpaceVim and my terminal (the latter with transparency).</p>
+
+<hr />
+
+<p>So, with the Ruby layer enabled, code linting, code formatting and auto-completion working we can start developing without any problems.
+SpaceVim comes with many more built-in features that can help you (search methods, terminal, todo manager, etc.) just look in its documentation or ask through the channels maintained by the community.</p>
+
+<p>If you are just starting with Vim I suggest the following video:</p>
+<ul>
+  <li>https://youtu.be/RZ4p-saaQkc https://youtu.be/RZ4p-saaQkc</li>
+</ul>
+
+<p>Translated from Spanish version with: https://www.deepl.com</p>
+
+  </div>
+</div>
+
+   <div class="hidden md:block">
+	<div class="text-black flex justify-center gap-x-5 mt-6 mb-8">   
+
+		<!-- FACEBOOK --!>
+		<a class="text-xl" href="https://www.facebook.com/sharer/sharer.php?u=https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html" onclick="window.open(this.href, 'mywin',
+		'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+      <div class="pr-3 transition hover:scale-110 duration-300">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+      </div>
+    </a>
+
+		<!-- Twitter --!>
+		<a class="text-xl" href="https://twitter.com/intent/tweet?text=SpaceVim: My new code editor and how I set it up for Ruby programming.&url=https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter">
+	  	<div class="pr-3 transition hover:scale-110 duration-300">
+	  		<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+			</div>
+    </a>
+
+		<!-- LINKEDIN --!>
+		<a class="text-xl" href="https://www.linkedin.com/shareArticle?mini=true&url=https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html&title=&summary=&source=webjeda" onclick="window.open(this.href, 'mywin',
+		'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+			<div class="pr-3 transition hover:scale-110 duration-300">
+				<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+			</div>
+    </a>
+
+	</div>
+</div>
+
+</body>
+
+</html>
