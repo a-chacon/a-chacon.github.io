@@ -9,6 +9,8 @@ time: 10 min
 author: Andrés
 ---
 
+Translated from Spanish version with: https://www.deepl.com
+
 !["SpaceVim first look"](/assets/images/spacevim.png)
 
 [SpaceVim](https://spacevim.org/) is defined as a Vim/NeoVim distribution. Some time ago I felt like learning how to use Vim and when I found this project 
@@ -132,4 +134,3 @@ SpaceVim comes with many more built-in features that can help you (search method
 If you are just starting with Vim I suggest the following video:
 - https://youtu.be/RZ4p-saaQkc https://youtu.be/RZ4p-saaQkc
 
-Translated from Spanish version with: https://www.deepl.com
