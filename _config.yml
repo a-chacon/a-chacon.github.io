@@ -21,4 +21,4 @@ default_lang: "es"
 exclude_from_localization: ["javascript", "images", "css", "public"]
 parallel_localization: true
 
-words: ["Rails", "Ruby", "Python", "AWS"]
+words: ["Rails", "Ruby", "Python","HTML", "Css", "Js", "Docker", "AWS"]
