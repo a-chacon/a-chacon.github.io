@@ -28,16 +28,16 @@ lang: es
   </div>
 </div>
 
-<!-- Section About me  -->
-<div class="flex justify-center mt-16 md:mt-24 mb-16 text-neutral-500">
+<!-- Section About me -->
+<div class="flex justify-center mt-16 md:mt-24 mb-16 text-neutral-500 style-a">
   <div class="w-11/12 md:max-w-xl text-center md:text-left divide-y "> 
     <div class="py-5">
       <h3 class="text-2xl text-black">Más sobre mi</h3>
       <p class="md:text-lg pt-4">
-      Vivo en Chile. Desde los 14 años que estoy frente a un computador armando y desarmando cosas. Me gusta la idea de poder crear, compartir y aprender en un mundo sin fronteras. Y para esto creo que es importante que el conocimiento en internet sea para todos, que se respeten nuestros derechos, privacidad y libertades, y que exista software libre.
+      Vivo en Chile. Desde los 14 años que estoy frente a un computador armando y desarmando cosas. Me gusta la idea de poder crear, compartir y aprender en un mundo sin fronteras. Y para esto creo que es importante que el conocimiento en internet sea para todos, que se respeten nuestros derechos, privacidad y libertades, y que exista <a target="_blank" href="https://www.fsf.org/" >software libre</a>.
       </p>
       <p class="md:text-lg pt-4">
-      Desde el año 2018 que trabajo como desarrollador web, más que nada para startups. Comencé con el framework Laravel y luego pase a Ruby on Rails. He realizado diferentes proyectos, la mayoría en formato API REST siempre utilizando las mejores prácticas, preocupado del rendimiento, de la escalabilidad y calidad del código. Me he hecho cargo del despliegue de aplicaciones en servidores con distribuciones GNU/Linux sobre la plataforma Amazon Web Services y he configurado uno que otro despliegue continuo con Github y Gitlab de aplicaciones pequeñas.
+      Desde el año 2018 que trabajo como desarrollador web, más que nada para startups. Comencé con el framework <a target="_blank" href="https://laravel.com/" >Laravel</a> y luego pase a <a target="_blank" href="https://rubyonrails.org/">Ruby on Rails</a>. He realizado diferentes proyectos, la mayoría en formato API REST siempre utilizando las mejores prácticas, preocupado del rendimiento, de la escalabilidad y calidad del código. Me he hecho cargo del despliegue de aplicaciones en servidores con distribuciones <a target="_blank" href="https://es.wikipedia.org/wiki/GNU/Linux">GNU/Linux</a> sobre <a target="_blank" href="https://aws.amazon.com">Amazon Web Services</a> y he configurado uno que otro despliegue continuo con <a target="_blank" href="https://github.com">Github</a> y <a target="_blank" href="https://gitlab.com">Gitlab</a> de aplicaciones pequeñas.
       </p>
       <p class="md:text-lg pt-4">
       Y no soy solo 0 y 1. También me gustan otras cosas como la fotografía callejera, andar en bicicleta de ruta y pasar tiempo conectado con la naturaleza.
@@ -50,7 +50,7 @@ lang: es
 <div class="flex justify-center mt-16 md:mt-24 mb-16 text-neutral-500">
   <div class="w-11/12 md:max-w-xl text-center md:text-left divide-y "> 
     <div class="py-5">
-      <h3 class="text-2xl text-black">Sobre mi Stack</h3>
+      <h3 class="text-2xl text-black">Sobre mi stack</h3>
       <p class="md:text-lg pt-4">
       Ruby on Rails ofrece numerosas ventajas para el desarrollo web. Este framework de código abierto, basada en el lenguaje de programación Ruby, se ha ganado una gran popularidad debido a su enfoque en la simplicidad y la productividad. Especial para desarrollar proyectos de forma rápida, escalables y seguros.
       </p>
@@ -63,6 +63,19 @@ lang: es
       <p class="md:text-lg pt-4">
       Estas dos herramientas forman parte importante de mi stack pero no son las unicas. Constantemente desarrollo scripts con Python, investigo sobre distribuciones GNU/Linux y aprendo nuevas tecnologías. Mantenerme actualizado y estar al tanto de las últimas tendencias es esencial para llegar a soluciones innovadoras y eficientes. 
       </p>
+    </div>
+  </div>
+</div>
+
+<div class="flex justify-center mt-16 md:mt-24 mb-16 text-neutral-500">
+  <div class="w-11/12 md:max-w-xl text-left divide-y"> 
+    <div class="py-5">
+      <h3 class="text-2xl text-black">Entradas recientes en el blog.</h3>
+      <ul class="list-disc list-inside">
+        {% for post in site.posts limit:3 %}
+          <li class="md:text-lg pt-4 "><a class="underline decoration-indigo-500/60" href="{{post.url}}">{{post.title}}</a></li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 </div>

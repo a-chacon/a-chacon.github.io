@@ -7,6 +7,11 @@
     font-family: Raleway, system-ui, sans-serif;
   }
 }
+@layer utilities {
+  .style-a a{
+    @apply underline font-semibold decoration-sky-500/60;
+  }
+}
 
 @font-face {
   font-family: "Raleway";
