@@ -45,6 +45,10 @@
     
         
             <url>
+                <loc>https://a-chacon.com/en/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
+            </url>
+        
+            <url>
                 <loc>https://a-chacon.com/en/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
             </url>
         
@@ -97,6 +101,10 @@
     
 
     
+        
+            <url>
+                <loc>https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
+            </url>
         
             <url>
                 <loc>https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>

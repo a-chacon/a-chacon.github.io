@@ -1,4 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/" rel="alternate" type="text/html" /><updated>2023-07-05T17:44:10-04:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="es"><title type="html">SpaceVim: Mi nuevo editor de código y como lo configure para programar con Ruby.</title><link href="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html" rel="alternate" type="text/html" title="SpaceVim: Mi nuevo editor de código y como lo configure para programar con Ruby." /><published>2023-06-15T00:00:00-04:00</published><updated>2023-06-15T00:00:00-04:00</updated><id>https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor</id><content type="html" xml:base="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html"><![CDATA[<p><img src="/assets/images/spacevim.png" alt="" /></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/" rel="alternate" type="text/html" /><updated>2023-07-07T18:29:51-04:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="es"><title type="html">Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.</title><link href="https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html" rel="alternate" type="text/html" title="Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin." /><published>2023-07-07T00:00:00-04:00</published><updated>2023-07-07T00:00:00-04:00</updated><id>https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin</id><content type="html" xml:base="https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html"><![CDATA[<p><a href="&quot;https://mariadb.org/es/&quot;">MariaDB</a> es uno de los sistemas de gestión de bases de datos relacionales de código abierto más populares en el mundo y, por otro lado, <a href="https://www.phpmyadmin.net/">PhpMyadmin</a> es otra gran herramienta estable y también software libre escrita en PHP que sirve para administrar tanto bases de datos en un servidor MySQL como MariaDB.</p>
+
+<p>Y <a href="https://www.docker.com&quot;">docker</a> será la herramienta que nos ayudará a correr estos dos servicios de forma fácil y rápida, con persistencia de datos. Así tendremos un ambiente listo en unos pocos minutos para seguir trabajando.</p>
+
+<h2 id="docker-compose-up-mariadb-y-phpmyadmin">Docker compose up: MariaDB y PhpMyAdmin</h2>
+
+<p><strong>Requiere docker instalado</strong></p>
+
+<p>Crea una carpeta en tu directorio de proyectos y dentro de esta un archivo <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> con el siguiente contenido:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.8"</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">mariadb:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">3306:3306</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">MYSQL_ROOT_PASSWORD</span><span class="pi">:</span> <span class="s">rootpass</span>
+      <span class="na">MYSQL_USER</span><span class="pi">:</span> <span class="s">abc</span>
+      <span class="na">MYSQL_PASSWORD</span><span class="pi">:</span> <span class="s">abc123</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">mysql:/var/lib/mysql</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+
+  <span class="na">phpmyadmin</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">phpmyadmin:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">8080:80</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">PMA_HOST</span><span class="pi">:</span> <span class="s">mysql</span>
+      <span class="na">PMA_USER</span><span class="pi">:</span> <span class="s">auser</span>
+      <span class="na">PMA_PASSWORD</span><span class="pi">:</span> <span class="s">pass12345</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+
+</code></pre></div></div>
+<ul>
+  <li><a href="https://hub.docker.com/_/mariadb">Link</a> a la documentación completa de la imagen usada para MariaDB.</li>
+  <li><a href="https://hub.docker.com/_/phpmyadmin/">Link</a> a la documentación completa de la imagen usada para PhpMyadmin.</li>
+</ul>
+
+<p>Guarda los cambios y luego levanta los contenedores con el siguiente comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up
+</code></pre></div></div>
+
+<p>Si quieres dejar corriendo los contenedores en background no olvides la flag <code class="language-plaintext highlighter-rouge">-d</code>. Podrás ingresar a PhpMyadmin en tu navegador en la dirección <code class="language-plaintext highlighter-rouge">http://localhost:8080</code></p>
+
+<p>Y eso es todo. <strong>Importante</strong>: Puedes usar las credenciales que quieras siempre que sea un ambiente de desarrollo local y no pretender usar esta definición de docker compose en un ambiente productivo.</p>]]></content><author><name>Andrés</name></author><category term="Docker" /><category term="MariaDB" /><category term="PhpMyAdmin" /><category term="MySQL" /><summary type="html"><![CDATA[Es común desarrollar un proyecto que utilice MySQL como base de datos relacional y que necesites un administrador gráfico para gestionar tus BBDD. Aquí te mostraré como levanto MariaDB y phpMyAdmin de una vez con un docker compose file con persistencia.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/docker.jpg" /><media:content medium="image" url="https://a-chacon.com/assets/images/docker.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">SpaceVim: Mi nuevo editor de código y como lo configure para programar con Ruby.</title><link href="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html" rel="alternate" type="text/html" title="SpaceVim: Mi nuevo editor de código y como lo configure para programar con Ruby." /><published>2023-06-15T00:00:00-04:00</published><updated>2023-06-15T00:00:00-04:00</updated><id>https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor</id><content type="html" xml:base="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html"><![CDATA[<p><img src="/assets/images/spacevim.png" alt="" /></p>
 
 <p><a href="https://spacevim.org/">SpaceVim</a> se define como una distribución de Vim/NeoVim. Hace un tiempo me dieron ganas por aprender a usar Vim y cuando 
 encontré este proyecto fue que me convencí de usarlo como mi editor de código principal y dejar atrás Atom. Hasta el momento me ha parecido excelente,
