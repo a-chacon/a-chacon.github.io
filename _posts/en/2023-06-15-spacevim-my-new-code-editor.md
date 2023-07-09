@@ -11,8 +11,6 @@ author: Andrés
 
 Translated from Spanish version with: https://www.deepl.com
 
-!["SpaceVim first look"](/assets/images/spacevim.png)
-
 [SpaceVim](https://spacevim.org/) is defined as a Vim/NeoVim distribution. Some time ago I felt like learning how to use Vim and when I found this project 
 and when I found this project I was convinced to use it as my main code editor and leave Atom behind. So far I have found it excellent,
 you increase productivity as you depend less and less on the mouse. I'm still not an expert in Vim, but I can move better and better in the code.

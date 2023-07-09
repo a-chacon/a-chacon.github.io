@@ -9,8 +9,6 @@ time: 2 min
 author: Andrés
 ---
 
-![](/assets/images/ruby.webp)
-
 Cuando se trata de Code Coverage en Ruby todos piensan en SimpleCov. La gema que entrega un reporte completo sobre la cobertura y puedes ver los detalles en archivos HTML que crea en tu proyecto. Pero cuando se trata de solo tener una referencia sobre tu cobertura y no incluir más archivos y configuraciones a tu proyecto, es donde viene a trabajar esta gema/plug-in para Minitest.
 
 La idea es hacer un reporte lo más simple posible, sin persistencia, que sirva como referencia al momento de estar desarrollando. En cada ejecución de tu suit de tests, ya sea en general o por archivo específico, puedes ver cuál es la cobertura luego de que la ejecución termine.

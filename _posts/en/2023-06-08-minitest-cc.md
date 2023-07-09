@@ -9,8 +9,6 @@ time: 2 min
 author: Andrés
 ---
 
-![](/assets/images/ruby.webp)
-
 When it comes to Code Coverage in Ruby everyone thinks of SimpleCov. The gem that delivers a complete coverage report and you can see the details in HTML files that it creates in your project. But when it comes to just having a reference about your coverage and not including more files and settings to your project, that's where this gem/plug-in for Minitest comes to work.
 
 The idea is to make a report as simple as possible, without persistence, to serve as a reference when you are developing. In each execution of your test suite, either in general or by specific file, you can see what the coverage is after the execution ends.

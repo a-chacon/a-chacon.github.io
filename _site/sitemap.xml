@@ -45,6 +45,10 @@
     
         
             <url>
+                <loc>https://a-chacon.com/en/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
+            </url>
+        
+            <url>
                 <loc>https://a-chacon.com/en/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
             </url>
         
@@ -101,6 +105,10 @@
     
 
     
+        
+            <url>
+                <loc>https://a-chacon.com/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
+            </url>
         
             <url>
                 <loc>https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>

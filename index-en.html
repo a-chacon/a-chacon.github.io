@@ -66,3 +66,16 @@ lang: en
     </div>
   </div>
 </div>
+
+<div class="flex justify-center mt-16 md:mt-24 mb-16 text-neutral-500">
+  <div class="w-11/12 md:max-w-xl text-left divide-y"> 
+    <div class="py-5">
+      <h3 class="text-2xl text-black">Recent blog entries.</h3>
+      <ul class="list-disc list-inside">
+        {% for post in site.posts limit:3 %}
+          <li class="md:text-lg pt-4 "><a class="underline decoration-indigo-500/60" href="{{post.url}}">{{post.title}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
