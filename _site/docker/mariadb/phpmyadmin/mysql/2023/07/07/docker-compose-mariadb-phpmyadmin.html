@@ -5,7 +5,7 @@
   <!-- General tags -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
-  <title>Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.</title>
+  <title>docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.</title>
   <meta name="description" content="Es común desarrollar un proyecto que utilice MySQL como base de datos relacional y que necesites un administrador gráfico para gestionar tus BBDD. Aquí te mostraré como levanto MariaDB y phpMyAdmin de una vez con un docker compose file con persistencia.">
   <meta name=”robots” content="index, follow">
   <meta http-equiv="Content-Language" content="es">
@@ -16,9 +16,9 @@
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   <!-- Opengraph tags -->
-  <meta property="og:title" content="Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin. - a-chacon" />
-  <meta property="twitter:title" content="Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin. - a-chacon" />
-  <meta property="og:url" content="https://a-chacon.com/Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin." />
+  <meta property="og:title" content="docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin. - a-chacon" />
+  <meta property="twitter:title" content="docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin. - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin." />
   <meta property="og:image" content="https://a-chacon.com/assets/images/mariadb.jpg" />
   <meta property="twitter:image" content="https://a-chacon.com/assets/images/mariadb.jpg" />
   <meta property="og:type" content="website" />
@@ -53,7 +53,7 @@
   <link rel="stylesheet" href="/assets/css/monokai.css">
 <div class="flex justify-center pt-16 md:pt-24 pb-16 text-neutral-500">
   <div id="post" class="prose prose-neutral flex flex-col w-11/12 md:max-w-xl">
-    <h1 class="text-center text-3xl md:text-5xl text-black">Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.</h1>
+    <h1 class="text-center text-3xl md:text-5xl text-black">docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.</h1>
     <div class="flex justify-center">
       <p class="px-2">Andrés</p>
       <p>•</p>
@@ -70,7 +70,7 @@
         <span class="text-sm px-2">#MySQL</span>
       
     </div>
-    <img src="/assets/images/mariadb.jpg" alt="Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.">
+    <img src="/assets/images/mariadb.jpg" alt="docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.">
     <strong>Es común desarrollar un proyecto que utilice MySQL como base de datos relacional y que necesites un administrador gráfico para gestionar tus BBDD. Aquí te mostraré como levanto MariaDB y phpMyAdmin de una vez con un docker compose file con persistencia.</strong>
     <p><a href="&quot;https://mariadb.org/es/&quot;">MariaDB</a> es uno de los sistemas de gestión de bases de datos relacionales de código abierto más populares en el mundo y, por otro lado, <a href="https://www.phpmyadmin.net/">PhpMyadmin</a> es otra gran herramienta estable y también software libre escrita en PHP que sirve para administrar tanto bases de datos en un servidor MySQL como MariaDB.</p>
 
@@ -131,7 +131,7 @@
         <a class="pr-2" href="/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html">&laquo; SpaceVim: Mi nuevo editor de código y como lo configure para programar con Ruby.</a>
       
       
-        <a class="pl-2" href="/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html">Mi docker-compose.yml para levantar PostgreSQL y pgAdmin. &raquo;</a>
+        <a class="pl-2" href="/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html">docker-compose.yml para levantar PostgreSQL y pgAdmin. &raquo;</a>
       
     </div>
   </div>
@@ -149,7 +149,7 @@
     </a>
 
 		<!-- Twitter --!>
-		<a class="text-xl" href="https://twitter.com/intent/tweet?text=Mi docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.&url=https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter">
+		<a class="text-xl" href="https://twitter.com/intent/tweet?text=docker-compose.yml para levantar MariaDB (MySQL) y phpMyAdmin.&url=https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter">
 	  	<div class="pr-3 transition hover:scale-110 duration-300">
 	  		<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
 			</div>
