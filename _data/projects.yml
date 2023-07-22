@@ -1,6 +1,19 @@
 - es:
+    title: CalendarioChileno
+    description: "Proyecto web único que emplea datos extraídos vía web scraping y conectado a la poderosa API de ChatGPT. Desarrollado con Rails, Tailwindcss y respaldado por MariaDB. Implementado de forma continua en AWS mediante ECR, ECS y EC2."
+  en:
+    title: CalendarioChileno
+    description: Platform created with data obtained by web scraping and ChatGPT API.
+  image: assets/images/calendariochileno.png
+  web: https://calendariochileno.cl
+  tags:
+    - Rails
+    - AWS
+    - Tailwindcss
+    - Docker
+- es:
     title: ComoCambio
-    description: ComoCambio es una plataforma parte de un programa de Cencosud para promover una cultura saludable. Comencé el proyecto hace dos años y participo activamente como desarrollador back-end y DevOps freelance para la empresa Zeeers. 
+    description: "ComoCambio: Impulsando una cultura saludable como parte del programa de Cencosud. Proyecto en desarrollo desde hace dos años, donde contribuyo como desarrollador back-end y DevOps freelance para Zeeers."
   en:
     title: ComoCambio
     description: ComoCambio is a platform part of a Cencosud's program for promote a healthy culture. I started this project two years ago and I actively participate as a back-end developer and DevOps engineer for Zeeers.
@@ -12,7 +25,7 @@
 #
 - es:
     title: Paso App
-    description: Un cortador de URL que además puede recolectar información sobre los visitantes. Este proyecto está hecho utilizando mi otro proyecto open-source RailsUrlShortener y solo tiene el propósito de mostrar su implementación.
+    description: Descubre un cortador de URL único con funciones de recolección de datos de visitantes. Basado en mi proyecto open-source RailsUrlShortener, esta implementación destaca su potencial.
   en:
     title: Paso App
     description: A URL shortener that can also collect information about visitors. This project is made using my other open-source project RailsUrlShortener and is only intended to show its implementation..
@@ -25,7 +38,7 @@
     - Docker
 - es:
     title: Iamindexed
-    description: Una pequeña app que te ayuda haciendo Scraping en diferentes motores de búsqueda para saber si tu sitio está indexado o no. La idea nace de la necesidad de buscar de forma rápida si mis sitios estaban indexados o no. 
+    description: Una práctica app que agiliza el Scraping en diversos motores de búsqueda para verificar la indexación de tu sitio. Surgida de mi necesidad personal por comprobar rápidamente la indexación de mis sitios.
   en:
     title: Iamindexed
     description: A small app that helps you Scraping in different search engines to know if your site is indexed or not. The idea comes from the need to quickly find out if my sites were indexed or not.
@@ -39,7 +52,7 @@
 
 - es:
     title: AcogerEs
-    description: Un panel de administración para manejar datos sobre familias de acogidas para la Fundación AcogerEs. El proyecto contemplaba la depuración y carga de datos de más de dos mil familias junto a una campana de publicidad mediante correo.
+    description: Un completo panel de administración diseñado para gestionar información sobre familias de acogidas en la Fundación AcogerEs. Este proyecto involucró la depuración y carga de datos de más de dos mil familias, así como una campaña publicitaria por correo.
   en:
     title: AcogerEs
     description: An administration panel to manage data on foster families for Fundación AcogerEs. The project included data cleansing and uploading of more than two thousand families and a mailing campaign.
@@ -48,9 +61,10 @@
     - Rails
     - Bootstrap
     - AWS
+
 - es:
     title: Minitest-cc
-    description: Plug-in para el Framework de tests unitarios Minitest. Muestra información respecto a la cobertura que tienen los tests sobre el código del paquete o aplicación. Una opción mucho más simple a SimpleCov.
+    description: Potente plug-in para el Framework de tests unitarios Minitest. Brinda información detallada sobre la cobertura de los tests en el código del paquete o aplicación. Una alternativa sencilla pero eficiente a SimpleCov.
   en:
     title: Minitest-cc
     description: Plug-in for the Minitest unit test framework. Displays information about the coverage of the tests on the package or application code. A much simpler option to SimpleCov.
@@ -60,9 +74,10 @@
   tags:
     - Ruby
     - Minitest
+
 - es:
     title: RailsUrlShortener
-    description: Motor para Rails que añade la funcionalidad completa para cortar URLs. Simplemente con instalar esta gema en alguna aplicación hecha con Rails puedes comenzar a cortar URLs y obtener información útil sobre su uso (ip, geolocalización, dispositivo, etc.). 
+    description: Agrega funcionalidad de acortamiento de URLs a tu aplicación Rails con este motor especializado. La gema facilita el proceso de acortar URLs y proporciona información esencial sobre su uso, como la dirección IP, geolocalización y el dispositivo utilizado.
   en:
     title: RailsUrlShortener
     description: Engine for Rails that adds full URL-slicing functionality. By simply installing this gem in any Rails application you can start URL slicing and get useful information about its usage (ip, geolocation, device, etc.).
