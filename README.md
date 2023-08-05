@@ -12,6 +12,6 @@ Using:
 
 And that is all. If you like you can use it like a template forking this repo or cloning.
 
-## License
+## License.
 
 This project is available as open source under the terms of the [GPL-3.0 License](https://www.github.com/a-chacon/rails-url-shortener/blob/main/LICENSE).
