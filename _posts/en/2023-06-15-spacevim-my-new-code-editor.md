@@ -7,6 +7,7 @@ image: /assets/images/spacevim.png
 lang: en
 time: 10 min
 author: Andrés
+comments: true
 ---
 
 Translated from Spanish version with: https://www.deepl.com

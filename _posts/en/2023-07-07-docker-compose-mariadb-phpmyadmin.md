@@ -7,6 +7,7 @@ image: /assets/images/mariadb.jpg
 lang: en
 time: 5 min
 author: Andrés
+comments: true
 ---
 
 [MariaDB]("https://mariadb.org/es/") is one of the most popular open source relational database management systems in the world, and on the other hand, [PhpMyadmin](https://www.phpmyadmin.net/) is another great stable and also free software tool written in PHP that serves to manage both databases on a MySQL server and MariaDB.

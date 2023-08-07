@@ -7,6 +7,7 @@ image: /assets/images/ruby.webp
 lang: es
 time: 2 min
 author: Andrés
+comments: true
 ---
 
 ```

@@ -7,6 +7,7 @@ image: /assets/images/spacevim.png
 lang: es
 time: 10 min
 author: Andrés
+comments: true
 ---
 
 [SpaceVim](https://spacevim.org/) se define como una distribución de Vim/NeoVim. Hace un tiempo me dieron ganas por aprender a usar Vim y cuando 

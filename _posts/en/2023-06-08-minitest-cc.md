@@ -7,6 +7,7 @@ image: /assets/images/ruby.webp
 lang: en
 time: 2 min
 author: Andrés
+comments: true
 ---
 
 When it comes to Code Coverage in Ruby everyone thinks of SimpleCov. The gem that delivers a complete coverage report and you can see the details in HTML files that it creates in your project. But when it comes to just having a reference about your coverage and not including more files and settings to your project, that's where this gem/plug-in for Minitest comes to work.

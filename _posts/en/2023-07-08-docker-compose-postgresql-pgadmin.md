@@ -7,6 +7,7 @@ image: /assets/images/postgresql.jpg
 lang: en
 time: 5 min
 author: Andrés
+comments: true
 ---
 
 Translated with www.DeepL.com/Translator

@@ -7,6 +7,7 @@ image: /assets/images/mariadb.jpg
 lang: es
 time: 5 min
 author: Andrés
+comments: true
 ---
 
 [MariaDB]("https://mariadb.org/es/") es uno de los sistemas de gestión de bases de datos relacionales de código abierto más populares en el mundo y, por otro lado, [PhpMyadmin](https://www.phpmyadmin.net/) es otra gran herramienta estable y también software libre escrita en PHP que sirve para administrar tanto bases de datos en un servidor MySQL como MariaDB.
