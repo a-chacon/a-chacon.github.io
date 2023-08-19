@@ -1,0 +1,52 @@
+<p><a href="&quot;https://mariadb.org/es/&quot;">MariaDB</a> is one of the most popular open source relational database management systems in the world, and on the other hand, <a href="https://www.phpmyadmin.net/">PhpMyadmin</a> is another great stable and also free software tool written in PHP that serves to manage both databases on a MySQL server and MariaDB.</p>
+
+<p>And <a href="https://www.docker.com&quot;">docker</a> will be the tool that will help us to run these two services in an easy and fast way, with data persistence. So we will have an environment ready in a few minutes to continue working.</p>
+
+<h2 id="docker-compose-up-mariadb-and-phpmyadmin">Docker compose up: MariaDB and PhpMyAdmin</h2>
+
+<p><strong>Requires docker installed</strong></p>
+
+<p>Create a folder in your project directory and inside it a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file with the following content:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.8"</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">mariadb:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">3306:3306</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">MYSQL_ROOT_PASSWORD</span><span class="pi">:</span> <span class="s">rootpass</span>
+      <span class="na">MYSQL_USER</span><span class="pi">:</span> <span class="s">abc</span>
+      <span class="na">MYSQL_PASSWORD</span><span class="pi">:</span> <span class="s">abc123</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">mysql:/var/lib/mysql</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+
+  <span class="na">phpmyadmin</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">phpmyadmin:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">8080:80</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">PMA_HOST</span><span class="pi">:</span> <span class="s">mysql</span>
+      <span class="na">PMA_USER</span><span class="pi">:</span> <span class="s">auser</span>
+      <span class="na">PMA_PASSWORD</span><span class="pi">:</span> <span class="s">pass12345</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+
+</code></pre></div></div>
+<ul>
+  <li><a href="https://hub.docker.com/_/mariadb">Link</a> to the complete documentation of the image used for MariaDB.</li>
+  <li><a href="https://hub.docker.com/_/phpmyadmin/">Link</a>to the full documentation of the image used for PhpMyadmin.</li>
+</ul>
+
+<p>Save the changes and then raise the containers with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up
+</code></pre></div></div>
+
+<p>If you want to leave the containers running in background don’t forget the <code class="language-plaintext highlighter-rouge">-d</code> flag. You will be able to access PhpMyadmin in your browser at <code class="language-plaintext highlighter-rouge">http://localhost:8080</code>.</p>
+
+<p>And that’s it. <strong>Important</strong>: You can use whatever credentials you want as long as it is a local development environment and do not pretend to use this docker compose definition in a productive environment.</p>

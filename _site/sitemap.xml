@@ -45,6 +45,10 @@
     
         
             <url>
+                <loc>https://a-chacon.com/en/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html</loc>
+            </url>
+        
+            <url>
                 <loc>https://a-chacon.com/en/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
             </url>
         
@@ -105,6 +109,10 @@
     
 
     
+        
+            <url>
+                <loc>https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html</loc>
+            </url>
         
             <url>
                 <loc>https://a-chacon.com/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
