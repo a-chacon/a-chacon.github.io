@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/en/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/en/" rel="alternate" type="text/html" /><updated>2023-09-02T20:55:18+02:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="en"><title type="html">Web scraping with Ruby: Using Nokogiri.</title><link href="https://a-chacon.com/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html" rel="alternate" type="text/html" title="Web scraping with Ruby: Using Nokogiri." /><published>2023-09-01T00:00:00+02:00</published><updated>2023-09-01T00:00:00+02:00</updated><id>https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri</id><content type="html" xml:base="https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html"><![CDATA[<p>Nokogiri es una de las gemas más famosas dentro del ecosistema de Ruby. Incluso tiene más descargas registradas en <a href="https://rubygems.org">rubygems.org</a> que Rails (693.378.140 hasta el momento de escribir esto. Rails solo tiene 460.230.689). Sirve para trabajar con documentos tanto XML como HTML, provee una API simple para leer, escribir y consultar sobre documentos.</p>
+
+<p>Veremos como utilizarla para realizar un simple web scraping. Si conocemos los ids, las clases o los tipos de elementos HTML donde están guardados los datos que necesitamos, entonces podremos extraerlos. El primer paso será consultar la página web que contiene los datos que necesitamos, luego buscar nuestra información y por último escribirlos en un archivo CSV.</p>
+
+<h2 id="obtener-la-pagina-web">Obtener la pagina web.</h2>
+
+<p><img src="/assets/images/scraping_projects.png" alt="" /></p>
+
+<p>Vamos a suponer que haremos un web scraping de mi propia página web con el fin de obtener un listado de proyectos. Para esto, la forma más sencilla de consultar nuestra página será de la siguiente forma:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'open-uri'</span>
+<span class="nb">require</span> <span class="s1">'csv'</span>
+
+<span class="n">html_doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"https://a-chacon.com/projects"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Con esto ya tendremos nuestro documento HTML listo para consultar a través del objeto <code class="language-plaintext highlighter-rouge">html_doc</code>.</p>
+
+<h2 id="realizando-consultas-con-nokogiri">Realizando consultas con Nokogiri</h2>
+
+<p>Para consultar el documento utilizaremos el selector <code class="language-plaintext highlighter-rouge">css</code> que siempre retorna un <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">NodeSet</a>, algo muy parecido a un Array. Este NodeSet contiene una lista de objetos <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">Node</a>. Los métodos de cada una de estas clases los iremos viendo más adelante.</p>
+
+<h3 id="definir-que-queremos-extraer">Definir que queremos extraer</h3>
+
+<p>Para saber lo que estamos buscando haremos uso de una estructura:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Project</span> <span class="o">=</span> <span class="no">Struct</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:image</span><span class="p">,</span> <span class="ss">:tags</span><span class="p">)</span>
+
+<span class="n">projects</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></div>
+
+<p>Ahora que sabemos lo que buscamos, vamos por ello.</p>
+
+<h3 id="obtener-todas-las-cards-mediante-atributo-html-y-clase-css">Obtener todas las cards mediante atributo HTML y clase CSS</h3>
+
+<p><img src="/assets/images/scraping_div.png" alt="" /></p>
+
+<p>Para obtener las cards lo haremos mediante la selección de atributo y clase. Esto se vería de la siguiente forma:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.shadow-indigo-200"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Esto nos retornará un NodeSet de todas las coincidencias que se den para un <code class="language-plaintext highlighter-rouge">div</code> que contenga la clase css <code class="language-plaintext highlighter-rouge">shadow-indigo-200</code>.</p>
+
+<p>En este caso, el NodeSet debería contener elementos HTML con la siguiente estructura:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"assets/images/comocambio.jpg"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">class=</span><span class="s">"object-cover w-full max-h-48"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"px-6 pt-4 flex justify-center"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"inline-block px-2 py-1 text-sm mr-2 mb-2"</span><span class="nt">&gt;</span>#Rails<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"inline-block px-2 py-1 text-sm mr-2 mb-2"</span><span class="nt">&gt;</span>#AWS<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-center mx-8 mb-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]"</span><span class="nt">&gt;</span>
+            ComoCambio
+        <span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-body-color mb-7 text-base md:text-lg leading-relaxed"</span><span class="nt">&gt;</span>
+            ComoCambio: Impulsando una cultura saludable como parte del programa de Cencosud. Proyecto en desarrollo desde hace dos años, donde contribuyo como desarrollador back-end y DevOps freelance para Zeeers.
+        <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex justify-center"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"pr-3 transition hover:scale-110 duration-300"</span> <span class="na">href=</span><span class="s">"https://comocambio.com"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/link.png"</span> <span class="na">alt</span> <span class="na">class=</span><span class="s">"h-6"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+...
+</code></pre></div></div>
+
+<h3 id="iteramos-sobre-las-cards-para-extraer-lo-que-necesitamos">Iteramos sobre las cards para extraer lo que necesitamos</h3>
+
+<p>Ahora que tenemos lista de nodos podemos iterarlo de la misma forma que un Array.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"h3"</span><span class="p">).</span><span class="nf">content</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"p"</span><span class="p">).</span><span class="nf">content</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"img.object-cover"</span><span class="p">)[</span><span class="s2">"src"</span><span class="p">]</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"span"</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span><span class="p">.</span><span class="nf">content</span><span class="p">}</span>
+
+    <span class="n">projects</span> <span class="o">&lt;&lt;</span> <span class="no">Project</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">at_css</code> se usa para obtener un único resultado y no un NodeSet y sí, un NodeSet también se puede iterar con <code class="language-plaintext highlighter-rouge">map</code>. Cuando obtenemos un nodo podemos extraer los valores de sus atributos de la misma forma que si accediéramos a un Hash.</p>
+
+<h3 id="escribir-los-resultados">Escribir los resultados.</h3>
+
+<p>Y por último escribes tus resultados donde tú quieras y de la forma que tú quieras. Aquí te mostraré como sería si quieres escribirlos en un CSV.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">CSV</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"myfile.csv"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
+    <span class="n">projects</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="nb">p</span><span class="p">.</span><span class="nf">to_a</span><span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Esto es un ejemplo bien simple y claro que se puede mejorar.</p>
+
+<h2 id="formas-de-buscar">Formas de buscar</h2>
+
+<p>Ahora que sabemos como es el proceso en general mostraré un par de ejemplos mas sobre como podemos buscar en el documento.</p>
+
+<ol>
+  <li>Para buscar por elemento, clase y nuevamente un elemento:
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titles</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.shadow-indigo-200 h3"</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:text</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
+<span class="c1"># ["CalendarioChileno", "ComoCambio", "Paso App", ...]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Para buscar por valor de un atributo de un elemento:
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">images</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'img[alt="image"]'</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="p">[</span><span class="s1">'src'</span><span class="p">]</span> <span class="p">}</span>
+<span class="c1"># ["assets/images/calendariochileno.png", ... ]</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="últimas-reflexiones">Últimas reflexiones</h2>
+
+<p>Nokogiri es una excelente herramienta para obtener información de páginas webs, su uso es fácil y cuando se entiende el uso de los selectores no toma mucho tiempo realizar un simple web scraping.</p>
+
+<p>Puede que en el camino encuentres problemas como bloqueos de tu ip por muchas consultas seguidas o que tengas que resolver algún captcha. Pero no eres el primero en enfrentarte a esos problemas y ya hay gente que ha trabajado en soluciones: puedes utilizar servicios de terceros como <a href="https://apify.com/">Apify</a> o correr proyectos como <a href="https://github.com/FlareSolverr/FlareSolverr">CloudflareSolverRe</a> que resolverán las captchas de cloudflare por ti.</p>]]></content><author><name>Andrés</name></author><category term="Ruby" /><category term="Web scraping" /><category term="Nokogiri" /><summary type="html"><![CDATA[Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/nokogiri.png" /><media:content medium="image" url="https://a-chacon.com/assets/images/nokogiri.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Creating a chatbot with GPT and Rails.</title><link href="https://a-chacon.com/en/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html" rel="alternate" type="text/html" title="Creating a chatbot with GPT and Rails." /><published>2023-08-14T00:00:00+02:00</published><updated>2023-08-14T00:00:00+02:00</updated><id>https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt</id><content type="html" xml:base="https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html"><![CDATA[<p><img src="/assets/images/minichat1.gif" alt="Demo" /></p>
+
+<p>In today’s digital age, interaction with users is essential to provide richer and more personalized online experiences. ChatGPT, developed by OpenAI, emerges as an innovative solution for creating automated conversations based on natural language. ChatGPT uses the power of deep learning to generate contextual and consistent responses that simulate a human conversation. This advanced technology allows developers to incorporate ChatGPT’s artificial intelligence into various applications, providing seamless and engaging interaction with users.</p>
+
+<p>When it comes to streamlining the web application development process, Ruby on Rails, commonly known as Rails, emerges as a reliable and efficient framework. Rails is an open source framework that is based on the Ruby programming language. Offering a well-defined structure and robust conventions, Rails simplifies the creation and maintenance of web applications by providing a variety of pre-built tools and libraries. The modularity and efficiency-oriented nature of Rails make it the preferred choice for many developers when building robust and scalable web applications.</p>
+
+<p><strong>Incomplete translation</strong></p>
+
+<h2 id="creando-nuestra-aplicación-rails">Creando nuestra aplicación Rails.</h2>
+
+<p>La aplicación será una muestra simple de lo que se puede hacer integrandose con ChatGPT. El modelo sera algo basico donde guardaremos un Token o Api key de OpenAI que tendra conversaciones y estas a su ves tendran mensajes.</p>
+
+<p>Crear la aplicacion Ruby On Rails, en mi caso use el nombre de <code class="language-plaintext highlighter-rouge">minichat</code>, tu puedes ocupar el que quieras:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails new minichat <span class="nt">--css</span> tailwind
+</code></pre></div></div>
+
+<p>Para interactuar con la API de OpenAI usaremos la gema <code class="language-plaintext highlighter-rouge">ruby-openai</code>. Asi que la agregamos a nuestro Gemfile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"ruby-openai"</span>
+</code></pre></div></div>
+
+<p>Y luego ejecutamos <code class="language-plaintext highlighter-rouge">bundle install</code>.</p>
+
+<h3 id="modelos">Modelos</h3>
+
+<p>Como comente en un principio nuestra aplicación se basara en 3 simples modelos. El modelo <code class="language-plaintext highlighter-rouge">token</code>, que almacenara un api token de OpenAI y que será usado como autenticación tanto en la app como para interactuar con la API de OpenAI.
+Luego tendremos el modelo <code class="language-plaintext highlighter-rouge">Conversation</code> que guardara las configuraciones de cada conversación. Y Por ultimo nuestro modelo <code class="language-plaintext highlighter-rouge">M̀essage</code> que representará un mensaje, ya sea de sistema, de usuario o de asistente.</p>
+
+<p>Creamos nuestros modelos con las siguientes instrucciones:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g model token token:string 
+rails g model conversation temperature:float init_system_message:text model:string token:belongs_to
+rails g model message content:text role:integer conversation:belongs_to
+</code></pre></div></div>
+<p>Ejecutamos las migraciones con el comando <code class="language-plaintext highlighter-rouge">rails db:migrate</code>.</p>
+
+<p>Y completamos el codigo de nuestros modelos. Deberian lucir de la siguiente manera:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/models/token.rb</span>
+
+<span class="k">class</span> <span class="nc">Token</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">has_many</span> <span class="ss">:conversations</span>
+  <span class="n">validates</span> <span class="ss">:token</span><span class="p">,</span> <span class="ss">presence: </span><span class="kp">true</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/models/conversation.rb</span>
+
+<span class="k">class</span> <span class="nc">Conversation</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">belongs_to</span> <span class="ss">:token</span>
+  <span class="n">has_many</span> <span class="ss">:messages</span>
+
+  <span class="n">after_create</span> <span class="ss">:create_system_message</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">create_system_message</span>
+    <span class="k">return</span> <span class="k">if</span> <span class="n">init_system_message</span><span class="p">.</span><span class="nf">empty?</span>
+
+    <span class="n">messages</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">role: </span><span class="s1">'system'</span><span class="p">,</span> <span class="ss">content: </span><span class="n">init_system_message</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/models/message.rb</span>
+
+<span class="k">class</span> <span class="nc">Message</span> <span class="o">&lt;</span> <span class="no">ApplicationRecord</span>
+  <span class="n">belongs_to</span> <span class="ss">:conversation</span>
+  <span class="n">enum</span> <span class="ss">:role</span><span class="p">,</span> <span class="sx">%i[system user assistant]</span><span class="p">,</span> <span class="ss">default: :user</span>
+
+  <span class="n">after_create_commit</span> <span class="nb">lambda</span> <span class="p">{</span>
+                        <span class="n">broadcast_append_to</span> <span class="s1">'messages'</span><span class="p">,</span> <span class="ss">partial: </span><span class="s1">'messages/message'</span><span class="p">,</span> <span class="ss">locals: </span><span class="p">{</span> <span class="ss">message: </span><span class="nb">self</span> <span class="p">},</span>
+                                                        <span class="ss">target: </span><span class="s1">'messages'</span>
+                      <span class="p">}</span>
+  <span class="n">after_create</span> <span class="ss">:generate_ai_response</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">generate_ai_response</span>
+    <span class="k">return</span> <span class="k">if</span> <span class="n">role</span> <span class="o">!=</span> <span class="s1">'user'</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">chat</span><span class="p">(</span><span class="ss">messages: </span><span class="n">conversation</span><span class="p">.</span><span class="nf">messages</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="p">{</span> <span class="ss">role: </span><span class="n">m</span><span class="p">.</span><span class="nf">role</span><span class="p">,</span> <span class="ss">content: </span><span class="n">m</span><span class="p">.</span><span class="nf">content</span> <span class="p">}</span> <span class="p">})</span>
+    <span class="n">conversation</span><span class="p">.</span><span class="nf">messages</span> <span class="o">&lt;&lt;</span> <span class="no">Message</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="ss">role: </span><span class="s1">'assistant'</span><span class="p">,</span> <span class="ss">content: </span><span class="n">response</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">chat</span><span class="p">(</span><span class="ss">model: </span><span class="s1">'gpt-3.5-turbo'</span><span class="p">,</span> <span class="ss">messages: </span><span class="p">[])</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="no">OpenAI</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">access_token: </span><span class="n">conversation</span><span class="p">.</span><span class="nf">token</span><span class="p">.</span><span class="nf">token</span><span class="p">)</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">chat</span><span class="p">(</span>
+      <span class="ss">parameters: </span><span class="p">{</span>
+        <span class="n">model</span><span class="p">:,</span> <span class="c1"># Required.</span>
+        <span class="n">messages</span><span class="p">:,</span> <span class="c1"># Required.</span>
+        <span class="ss">temperature: </span><span class="n">conversation</span><span class="p">.</span><span class="nf">temperature</span>
+      <span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="n">response</span><span class="p">.</span><span class="nf">dig</span><span class="p">(</span><span class="s1">'choices'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">'message'</span><span class="p">,</span> <span class="s1">'content'</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Este ultimo es donde ocurre la interacción con ChatGPT y que explicare de forma mas detallada.</p>
+
+<h4 id="modelo-message-y-chatgpt">Modelo Message y ChatGPT</h4>
+
+<p>El modelo message realiza dos acciones importantes:</p>
+
+<ol>
+  <li>Transmitir una vista parcial de sí mismo a cualquier conversación activa en la que deba aparecer. Esto se hace con el fin de no tener que recargar el chat cada vez que hay un mensaje nuevo
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="n">after_create_commit</span> <span class="nb">lambda</span> <span class="p">{</span>
+                     <span class="n">broadcast_append_to</span> <span class="s1">'messages'</span><span class="p">,</span> <span class="ss">partial: </span><span class="s1">'messages/message'</span><span class="p">,</span> <span class="ss">locals: </span><span class="p">{</span> <span class="ss">message: </span><span class="nb">self</span> <span class="p">},</span>
+                                                     <span class="ss">target: </span><span class="s1">'messages'</span>
+                   <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Si el último mensaje creado fue por el usuario, entonces ChatGPT debe generar una respuesta que no es nada más que un nuevo mensaje teniendo en cuenta el detalle de que ChatGPT <strong>no tiene memoria</strong>. Por lo que cada vez que necesitamos generar una respuesta nueva debemos enviar toda la conversación:
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">...</span>
+<span class="n">after_create</span> <span class="ss">:generate_ai_response</span>
+<span class="o">...</span>
+<span class="c1"># Aqui obtenemos la conversacion completa y la enviamos como array en messages.</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">chat</span><span class="p">(</span><span class="ss">messages: </span><span class="n">conversation</span><span class="p">.</span><span class="nf">messages</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="p">{</span> <span class="ss">role: </span><span class="n">m</span><span class="p">.</span><span class="nf">role</span><span class="p">,</span> <span class="ss">content: </span><span class="n">m</span><span class="p">.</span><span class="nf">content</span> <span class="p">}</span> <span class="p">})</span>
+<span class="o">...</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="controladores">Controladores</h2>
+
+<p>Necesitaremos un par de acciones sobre nuestros modelos, así que crearemos 3 controladores con sus correspondientes vistas:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g controller tokens new create
+rails g controller conversations new create index show
+rails g controller messages create index
+</code></pre></div></div>
+
+<p>Partiremos con nuestro método de autorización. Si no tenemos API Key entonces no continuamos, para eso definimos una función que esté disponible para todos nuestros controladores:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/controller/application_controller.rb</span>
+
+<span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="k">def</span> <span class="nf">authorize!</span>
+    <span class="k">if</span> <span class="n">session</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span>
+      <span class="vi">@token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">token: </span><span class="n">session</span><span class="p">[</span><span class="ss">:token</span><span class="p">])</span>
+    <span class="k">else</span>
+      <span class="n">redirect_to</span> <span class="n">root_url</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Luego nuestros otros controladores deberían verse de la siguiente manera:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/controllers/tokens_controller.rb </span>
+
+<span class="k">class</span> <span class="nc">TokensController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@token</span> <span class="o">=</span> <span class="no">Token</span><span class="p">.</span><span class="nf">find_or_create_by</span><span class="p">(</span><span class="ss">token: </span><span class="n">params</span><span class="p">[</span><span class="s1">'token'</span><span class="p">][</span><span class="s1">'token'</span><span class="p">])</span>
+    <span class="n">session</span><span class="p">[</span><span class="ss">:token</span><span class="p">]</span> <span class="o">=</span> <span class="vi">@token</span><span class="p">.</span><span class="nf">token</span>
+
+    <span class="n">redirect_to</span> <span class="n">conversations_url</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/controller/conversations_controller.rb</span>
+
+<span class="k">class</span> <span class="nc">ConversationsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="n">before_action</span> <span class="ss">:authorize!</span>
+
+  <span class="k">def</span> <span class="nf">new</span>
+    <span class="vi">@conversation</span> <span class="o">=</span> <span class="no">Conversation</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@conversation</span> <span class="o">=</span> <span class="no">Conversation</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">conversation_params</span><span class="p">)</span>
+    <span class="vi">@conversation</span><span class="p">.</span><span class="nf">token</span> <span class="o">=</span> <span class="vi">@token</span>
+
+    <span class="k">if</span> <span class="vi">@conversation</span><span class="p">.</span><span class="nf">save!</span>
+      <span class="n">redirect_to</span> <span class="n">conversation_url</span><span class="p">(</span><span class="vi">@conversation</span><span class="p">)</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">index</span>
+    <span class="vi">@conversations</span> <span class="o">=</span> <span class="vi">@token</span><span class="p">.</span><span class="nf">conversations</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">show</span>
+    <span class="vi">@conversation</span> <span class="o">=</span> <span class="no">Conversation</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:id</span><span class="p">])</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">conversation_params</span>
+    <span class="n">params</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="ss">:conversation</span><span class="p">,</span> <span class="p">{}).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:temperature</span><span class="p">,</span> <span class="ss">:init_system_message</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/controller/messages_controller.rb</span>
+
+<span class="k">class</span> <span class="nc">MessagesController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="vi">@conversation</span> <span class="o">=</span> <span class="no">Conversation</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="ss">:conversation_id</span><span class="p">])</span>
+    <span class="vi">@message</span> <span class="o">=</span> <span class="vi">@conversation</span><span class="p">.</span><span class="nf">messages</span><span class="p">.</span><span class="nf">create</span><span class="p">(</span><span class="n">message_params</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="kp">private</span>
+
+  <span class="k">def</span> <span class="nf">message_params</span>
+    <span class="n">params</span><span class="p">.</span><span class="nf">require</span><span class="p">(</span><span class="ss">:message</span><span class="p">).</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:content</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="vistas">Vistas</h2>
+
+<p>Por último dejaré el código de las vistas:</p>
+
+<h3 id="tokens">Tokens</h3>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code># app/views/tokens/new.html.erb
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"font-bold text-4xl"</span><span class="nt">&gt;</span>OpenAI api key:<span class="nt">&lt;/h1&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"p-2"</span><span class="nt">&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">form_with</span> <span class="ss">model: </span><span class="vi">@token</span> <span class="k">do</span> <span class="o">|</span><span class="n">form</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">text_field</span> <span class="ss">:token</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">submit</span> <span class="s2">"Ingresar"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"</span> <span class="cp">%&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="conversations">Conversations</h3>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code># app/views/conversations/index.html.erb
+
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"font-bold text-4xl pr-2"</span><span class="nt">&gt;</span>Conversations<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">new_conversation_path</span> <span class="cp">%&gt;</span><span class="s">"</span> <span class="na">class=</span><span class="s">"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"</span><span class="nt">&gt;</span>Nueva<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-disc p-4"</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;%</span> <span class="vi">@conversations</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"pb-2"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">conversation_url</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="cp">%&gt;</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">&lt;%=</span> <span class="n">c</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span> - <span class="cp">&lt;%=</span> <span class="n">c</span><span class="p">.</span><span class="nf">init_system_message</span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="mi">40</span><span class="p">]</span><span class="cp">%&gt;</span>...<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">if</span> <span class="vi">@conversations</span><span class="p">.</span><span class="nf">empty?</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"text-xl my-4"</span><span class="nt">&gt;</span>No conversations yet<span class="nt">&lt;/span&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code># app/views/conversations/new.html.erb 
+
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"font-bold text-4xl"</span><span class="nt">&gt;</span>New Conversation<span class="nt">&lt;/h1&gt;</span>
+  <span class="cp">&lt;%=</span> <span class="n">form_with</span> <span class="ss">model: </span><span class="vi">@conversation</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"grid grid-cols-2 gap-4"</span> <span class="k">do</span> <span class="o">|</span><span class="n">form</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:temperature</span><span class="p">,</span> <span class="s2">"Model temperature:"</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">number_field</span> <span class="ss">:temperature</span><span class="p">,</span> <span class="ss">in: </span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span><span class="o">..</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span> <span class="ss">step: </span><span class="mf">0.1</span> <span class="cp">%&gt;</span>
+
+    <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">label</span> <span class="ss">:init_system_message</span><span class="p">,</span> <span class="s2">"Initial message:"</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">text_area</span> <span class="ss">:init_system_message</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">submit</span> <span class="s2">"Crear"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"</span> <span class="cp">%&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+</code></pre></div></div>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code># app/views/conversations/show.html.erb 
+
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"font-bold text-4xl"</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="n">conversations_path</span> <span class="cp">%&gt;</span><span class="s">"</span> <span class="na">class=</span><span class="s">"text-blue-600 hover:text-blue-300"</span> <span class="nt">&gt;</span>Conversations<span class="nt">&lt;/a&gt;</span> # <span class="cp">&lt;%=</span> <span class="vi">@conversation</span><span class="p">.</span><span class="nf">id</span> <span class="cp">%&gt;</span><span class="nt">&lt;/h1&gt;</span>
+
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"chat-messages"</span> <span class="na">class=</span><span class="s">"w-6/12"</span><span class="nt">&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">turbo_stream_from</span> <span class="s2">"messages"</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">turbo_frame_tag</span> <span class="s2">"messages"</span> <span class="k">do</span> <span class="cp">%&gt;</span>
+        <span class="cp">&lt;%=</span> <span class="n">render</span> <span class="vi">@conversation</span><span class="p">.</span><span class="nf">messages</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="cp">&lt;%=</span> <span class="n">form_with</span><span class="p">(</span><span class="ss">model: </span><span class="p">[</span><span class="vi">@conversation</span><span class="p">,</span> <span class="no">Message</span><span class="p">.</span><span class="nf">new</span><span class="p">],</span> <span class="ss">remote: </span><span class="kp">true</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">form</span><span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">text_field</span> <span class="ss">:content</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"w-96 rounded-lg"</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">form</span><span class="p">.</span><span class="nf">submit</span> <span class="s2">"Enviar"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h3 id="messages">Messages</h3>
+
+<p>Lo único especial de esta vista será que diferenciará mensajes por rol con distintos colores.</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code># app/views/messages/_message.html.erb
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"my-1"</span><span class="nt">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">if</span> <span class="n">message</span><span class="p">.</span><span class="nf">role</span> <span class="o">==</span> <span class="s2">"user"</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-blue-500 rounded-lg"</span><span class="nt">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">elsif</span> <span class="n">message</span><span class="p">.</span><span class="nf">role</span> <span class="o">==</span> <span class="s2">"assistant"</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-emerald-500 rounded-lg"</span><span class="nt">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">elsif</span> <span class="n">message</span><span class="p">.</span><span class="nf">role</span> <span class="o">==</span> <span class="s2">"system"</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"bg-neutral-700 rounded-lg"</span><span class="nt">&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+      <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"p-2 text-white"</span><span class="nt">&gt;</span><span class="cp">&lt;%=</span> <span class="n">message</span><span class="p">.</span><span class="nf">content</span> <span class="cp">%&gt;</span><span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<h2 id="rutas">Rutas</h2>
+
+<p>Configuraremos nuestro archivo <code class="language-plaintext highlighter-rouge">routes.rb</code> de la siguiente forma:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="n">root</span> <span class="s1">'tokens#new'</span>
+
+  <span class="n">resources</span> <span class="ss">:tokens</span><span class="p">,</span> <span class="ss">only: </span><span class="p">[</span><span class="ss">:create</span><span class="p">]</span>
+  <span class="n">resources</span> <span class="ss">:conversations</span><span class="p">,</span> <span class="ss">only: </span><span class="p">[</span><span class="ss">:new</span><span class="p">,</span> <span class="ss">:create</span><span class="p">,</span> <span class="ss">:index</span><span class="p">,</span> <span class="ss">:show</span><span class="p">]</span>
+  <span class="n">resources</span> <span class="ss">:messages</span><span class="p">,</span> <span class="ss">only: </span><span class="p">[</span><span class="ss">:create</span><span class="p">,</span> <span class="ss">:index</span><span class="p">]</span>
+<span class="k">end</span>
+
+</code></pre></div></div>
+
+<h2 id="y-probamos-nuestra-aplicación">Y probamos nuestra aplicación.</h2>
+
+<p>Levantamos nuestro servidor con <code class="language-plaintext highlighter-rouge">bin/dev</code> para que funcione tailwindcss y deberíamos poder realizar un flujo como el siguiente:</p>
+
+<p><img src="/assets/images/minichat1.gif" alt="Demo" /></p>
+
+<h2 id="conclusión">Conclusión.</h2>
+
+<p>Luego de haber realizado un par de aplicaciones de esta forma puedo comentar que solo hay dos puntos en lo que hay que fijarse y que podrían ser nuevos para alguien que ya ha realizado desarrollos con integraciones:</p>
+
+<ol>
+  <li>
+    <p>Tener presente que ChatGPT no tiene memoria, por lo que cada vez que queramos continuar con la conversación debemos enviarla completamente. O sea, la responsabilidad de la persistencia corre por nuestra cuenta.</p>
+  </li>
+  <li>
+    <p>Los mensajes de sistema nos sirven para cargar información e instrucciones a ChatGPT.</p>
+  </li>
+</ol>]]></content><author><name>Andrés</name></author><category term="Rails" /><category term="ChatGPT" /><category term="Chat" /><summary type="html"><![CDATA[We will see how to create a custom chat with persistence with Ruby On Rails and ChatGPT. After interacting in a couple of applications with the OpenAi API I want to show how you could make a simple chat that could scale to whatever you want using Ruby On Rails.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/chatpt.webp" /><media:content medium="image" url="https://a-chacon.com/assets/images/chatpt.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">docker-compose.yml for raise up PostgreSQL and pgAdmin.</title><link href="https://a-chacon.com/en/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html" rel="alternate" type="text/html" title="docker-compose.yml for raise up PostgreSQL and pgAdmin." /><published>2023-07-08T00:00:00+02:00</published><updated>2023-07-08T00:00:00+02:00</updated><id>https://a-chacon.com/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin</id><content type="html" xml:base="https://a-chacon.com/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html"><![CDATA[<p>Translated with www.DeepL.com/Translator</p>
+
+<p>The <a href="https://www.postgresql.org/">PostgreSQL</a> database is an open source object-relational database system. PostgreSQL has a graphical user interface (GUI) administration control for database administration called <a href="https://www.pgadmin.org/">pgAdmin</a>. pgAdmin is a design and management interface for the PostgreSQL database. Simple operations, datasheets and databases can be performed with pgAdmin by interacting with the local file system of the database allowed by the user.</p>
+
+<p><a href="https://www.docker.com">Docker</a> will be the tool that will help us to run these two services easily and quickly, with data persistence. This way we will have an environment ready in a few minutes to continue working.</p>
+
+<h2 id="docker-compose-up-postgresql-y-pgadmin">Docker compose up: PostgreSQL y pgAdmin</h2>
+
+<p><strong>Requires docker installed</strong></p>
+
+<p>Create a folder in your project directory and inside it a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file with the following content:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.8'</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">db</span><span class="pi">:</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">pg_container</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">postgres</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">POSTGRES_USER</span><span class="pi">:</span> <span class="s">admin</span>
+      <span class="na">POSTGRES_PASSWORD</span><span class="pi">:</span> <span class="s">admin</span>
+      <span class="na">POSTGRES_DB</span><span class="pi">:</span> <span class="s">my_db</span>
+      <span class="na">PGDATA</span><span class="pi">:</span> <span class="s">/var/lib/postgresql/data</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">5432:5432</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">pgdata:/var/lib/postgresql/data</span>
+  <span class="na">pgadmin</span><span class="pi">:</span>
+    <span class="na">container_name</span><span class="pi">:</span> <span class="s">pgadmin4_container</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">dpage/pgadmin4</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">always</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">PGADMIN_DEFAULT_EMAIL</span><span class="pi">:</span> <span class="s">admin@admin.com</span>
+      <span class="na">PGADMIN_DEFAULT_PASSWORD</span><span class="pi">:</span> <span class="s">admin</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">5050:80"</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">pgadmin-data:/var/lib/pgadmin</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">pgdata</span><span class="pi">:</span>
+  <span class="na">pgadmin-data</span><span class="pi">:</span>
+
+</code></pre></div></div>
+<ul>
+  <li><a href="https://hub.docker.com/_/postgres/">Link</a> to the full documentation of the image used for PostgreSQL.</li>
+  <li><a href="https://hub.docker.com/r/dpage/pgadmin4/">Link</a> to the full documentation of the image used for pgAdmin.</li>
+</ul>
+
+<p>Save the changes and then raise the containers with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up
+</code></pre></div></div>
+<p>If you want to leave the containers running in the background don’t forget the <code class="language-plaintext highlighter-rouge">-d</code> flag. You will be able to access pgAdmin in your browser at <code class="language-plaintext highlighter-rouge">http://localhost:5050</code>.</p>
+
+<p>And that’s it. <strong>Important</strong>: You can use whatever credentials you want as long as it is a local development environment and do not pretend to use this definition of docker compose in a productive environment.</p>]]></content><author><name>Andrés</name></author><category term="Docker" /><category term="pgAdmin" /><category term="PostgreSQL" /><summary type="html"><![CDATA[PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools with docker compose.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/postgresql.jpg" /><media:content medium="image" url="https://a-chacon.com/assets/images/postgresql.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">docker-compose.yml to raise MariaDB (MySQL) and phpMyAdmin.</title><link href="https://a-chacon.com/en/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html" rel="alternate" type="text/html" title="docker-compose.yml to raise MariaDB (MySQL) and phpMyAdmin." /><published>2023-07-07T00:00:00+02:00</published><updated>2023-07-07T00:00:00+02:00</updated><id>https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin</id><content type="html" xml:base="https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html"><![CDATA[<p><a href="&quot;https://mariadb.org/es/&quot;">MariaDB</a> is one of the most popular open source relational database management systems in the world, and on the other hand, <a href="https://www.phpmyadmin.net/">PhpMyadmin</a> is another great stable and also free software tool written in PHP that serves to manage both databases on a MySQL server and MariaDB.</p>
+
+<p>And <a href="https://www.docker.com&quot;">docker</a> will be the tool that will help us to run these two services in an easy and fast way, with data persistence. So we will have an environment ready in a few minutes to continue working.</p>
+
+<h2 id="docker-compose-up-mariadb-and-phpmyadmin">Docker compose up: MariaDB and PhpMyAdmin</h2>
+
+<p><strong>Requires docker installed</strong></p>
+
+<p>Create a folder in your project directory and inside it a <code class="language-plaintext highlighter-rouge">docker-compose.yml</code> file with the following content:</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.8"</span>
+
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">mariadb:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">3306:3306</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">MYSQL_ROOT_PASSWORD</span><span class="pi">:</span> <span class="s">rootpass</span>
+      <span class="na">MYSQL_USER</span><span class="pi">:</span> <span class="s">abc</span>
+      <span class="na">MYSQL_PASSWORD</span><span class="pi">:</span> <span class="s">abc123</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">mysql:/var/lib/mysql</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+
+  <span class="na">phpmyadmin</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">phpmyadmin:latest</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">8080:80</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">PMA_HOST</span><span class="pi">:</span> <span class="s">mysql</span>
+      <span class="na">PMA_USER</span><span class="pi">:</span> <span class="s">auser</span>
+      <span class="na">PMA_PASSWORD</span><span class="pi">:</span> <span class="s">pass12345</span>
+    <span class="na">restart</span><span class="pi">:</span> <span class="s">unless-stopped</span>
+
+<span class="na">volumes</span><span class="pi">:</span>
+  <span class="na">mysql</span><span class="pi">:</span>
+
+</code></pre></div></div>
+<ul>
+  <li><a href="https://hub.docker.com/_/mariadb">Link</a> to the complete documentation of the image used for MariaDB.</li>
+  <li><a href="https://hub.docker.com/_/phpmyadmin/">Link</a>to the full documentation of the image used for PhpMyadmin.</li>
+</ul>
+
+<p>Save the changes and then raise the containers with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up
+</code></pre></div></div>
+
+<p>If you want to leave the containers running in background don’t forget the <code class="language-plaintext highlighter-rouge">-d</code> flag. You will be able to access PhpMyadmin in your browser at <code class="language-plaintext highlighter-rouge">http://localhost:8080</code>.</p>
+
+<p>And that’s it. <strong>Important</strong>: You can use whatever credentials you want as long as it is a local development environment and do not pretend to use this docker compose definition in a productive environment.</p>]]></content><author><name>Andrés</name></author><category term="Docker" /><category term="MariaDB" /><category term="PhpMyAdmin" /><category term="MySQL" /><summary type="html"><![CDATA[It is common to develop a project that uses MySQL as a relational database and you need a graphical administrator to manage your databases. Here I will show you how to build MariaDB and phpMyAdmin at once with a docker compose file with persistence.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/mariadb.jpg" /><media:content medium="image" url="https://a-chacon.com/assets/images/mariadb.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">SpaceVim: My new code editor and how I set it up for Ruby programming.</title><link href="https://a-chacon.com/en/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html" rel="alternate" type="text/html" title="SpaceVim: My new code editor and how I set it up for Ruby programming." /><published>2023-06-15T00:00:00+02:00</published><updated>2023-06-15T00:00:00+02:00</updated><id>https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor</id><content type="html" xml:base="https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html"><![CDATA[<p>Translated from Spanish version with: https://www.deepl.com</p>
+
+<p><a href="https://spacevim.org/">SpaceVim</a> is defined as a Vim/NeoVim distribution. Some time ago I felt like learning how to use Vim and when I found this project 
+and when I found this project I was convinced to use it as my main code editor and leave Atom behind. So far I have found it excellent,
+you increase productivity as you depend less and less on the mouse. I’m still not an expert in Vim, but I can move better and better in the code.
+code.</p>
+
+<p>And the facilities that SpaceVim includes for users who are just starting in the world of Vim are very good. For example, to install a new plugin, all you need to do is to press
+press <code class="language-plaintext highlighter-rouge">SPC f v d</code> (open SpaceVim configuration file) and then type the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[custom_plugins]]
+repo = 'ryanoasis/vim-devicons'
+merged = false
+</code></pre></div></div>
+<p>And that’s it, the next time you start the editor, the plugin will install itself.</p>
+
+<p>So, after a couple of months using SpaceVim I will comment what have been my configurations to use it as a code editor for Ruby (main language in which I program)
+and although in the official documentation there is a <a href="https://spacevim.org/use-vim-as-a-ruby-ide/">page</a> where they explain how to configure it to program with Ruby,
+it seems to me that there are a couple of more details to mention for everything to work correctly.</p>
+
+<p><strong>This post is not intended to explain how to install SpaceVim or even less Vim. That can be found <a href="https://spacevim.org/quick-start-guide/">here</a>.</strong> **## Syntax linting</p>
+
+<h3 id="syntax-linting">Syntax linting</h3>
+
+<p>In the <code class="language-plaintext highlighter-rouge">Syntax linting</code> section they suggest installing rubocop so that <a href="https://github.com/neomake/neomake">Neomake</a> can deliver errors on your code asynchronously,
+this didn’t work for me and that’s because rubocop’s output is not compatible with Neomake, so what I did was to try <code class="language-plaintext highlighter-rouge">ruby-lint</code> which does work, 
+but the project seems to me a bit abandoned, even the repository is archived. So after testing I recommend that for syntax linting 
+use <a href="https://github.com/troessner/reek">reek</a> and configure it as follows in your vimrc:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let g:neomake_ruby_enabled_makers = ['reek']]
+</code></pre></div></div>
+
+<p><img src="/assets/images/spacevim-linting.gif" alt="&quot;Spacevim linting working&quot;" /></p>
+
+<h3 id="code-formatting">Code formatting</h3>
+
+<p>Para formatear el código mencionan <code class="language-plaintext highlighter-rouge">rufo</code>. Personalmente, prefiero <code class="language-plaintext highlighter-rouge">rubocop</code>, solo basta con tener rubocop y no <code class="language-plaintext highlighter-rouge">rufo</code>. Y si te parece bien puedes configurar para darle formato
+al código al momento de guardar con la siguiente opción:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> [[layers]]
+name = "lang#ruby"
+format_on_save = true
+</code></pre></div></div>
+
+<p><img src="/assets/images/spacevim-format-code.gif" alt="" /></p>
+
+<h3 id="autocompletion">Autocompletion</h3>
+
+<p>For me this is an important topic, the autocompletion of the code helps a lot when developing. And that’s why I had to improve the default autocompletion
+that SpaceVim delivers and for this I did it integrating <a href="https://solargraph.org/">Solargraph</a>.</p>
+
+<p>The first thing you have to do is to change the default autocomplete engine to <a href="https://github.com/neoclide/coc.nvim">coc</a>. You do this with the following option:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[options]
+autocomplete_method = "coc"
+</code></pre></div></div>
+
+<p>After this SpaceVim will take care of installing coc.</p>
+
+<p>If you don’t have the Solargraph gem installed now is the time to do it:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install solargraph
+</code></pre></div></div>
+
+<p>Then for <code class="language-plaintext highlighter-rouge">coc</code> to work with Solargraph we must install a plugin to <code class="language-plaintext highlighter-rouge">coc</code> by running the following command in Vim/NeoVim:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CocInstall coc-solargraph
+</code></pre></div></div>
+
+<p>And we can start enjoying good autocompletion, including documentation.</p>
+
+<p><img src="/assets/images/spacevim-autocompletion.gif" alt="&quot;SpaceVim autocompletion working&quot;" /></p>
+
+<hr />
+
+<p>And to make your Spacevim a nicer space I suggest some settings:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Enable the git layer
+[[layers]]
+name = "git"
+
+# Icons for your NERDTree
+[[custom_plugins]]
+repo = 'ryanoasis/vim-devicons'
+merged = false
+
+# Colors according to file type in NERDTree
+[[custom_plugins]]
+repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
+merged = false
+
+# Automatically add end to the end of certain Ruby structures
+[[custom_plugins]]
+repo = "tpope/vim-endwise"
+merged = false
+
+# higlighter 
+[[custom_plugins]]
+repo = "ap/vim-css-color"
+merged = false
+</code></pre></div></div>
+
+<p>Finally, <strong>if you want to achieve transparency in the background</strong> of your SpaceVim what worked for me was to use the same color 
+in both SpaceVim and my terminal (the latter with transparency).</p>
+
+<hr />
+
+<p>So, with the Ruby layer enabled, code linting, code formatting and auto-completion working we can start developing without any problems.
+SpaceVim comes with many more built-in features that can help you (search methods, terminal, todo manager, etc.) just look in its documentation or ask through the channels maintained by the community.</p>
+
+<p>If you are just starting with Vim I suggest the following video:</p>
+<ul>
+  <li>https://youtu.be/RZ4p-saaQkc https://youtu.be/RZ4p-saaQkc</li>
+</ul>]]></content><author><name>Andrés</name></author><category term="Vim" /><category term="Code" /><category term="Ruby" /><category term="IDE" /><summary type="html"><![CDATA[After Atom was decommissioned, I started looking for a new code editor that met the important requirement of being open source and with a good community behind it. And so I found SpaceVim, a Vim/NeoVim distribution, inspired by SpaceMacs.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/spacevim.png" /><media:content medium="image" url="https://a-chacon.com/assets/images/spacevim.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Minitest-cc: A minimalistic way to know what is the code coverage of your tests.</title><link href="https://a-chacon.com/en/rails/ruby/minitest/2023/06/08/minitest-cc.html" rel="alternate" type="text/html" title="Minitest-cc: A minimalistic way to know what is the code coverage of your tests." /><published>2023-06-08T00:00:00+02:00</published><updated>2023-06-08T00:00:00+02:00</updated><id>https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc</id><content type="html" xml:base="https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc.html"><![CDATA[<p>When it comes to Code Coverage in Ruby everyone thinks of SimpleCov. The gem that delivers a complete coverage report and you can see the details in HTML files that it creates in your project. But when it comes to just having a reference about your coverage and not including more files and settings to your project, that’s where this gem/plug-in for Minitest comes to work.</p>
+
+<p>The idea is to make a report as simple as possible, without persistence, to serve as a reference when you are developing. In each execution of your test suite, either in general or by specific file, you can see what the coverage is after the execution ends.</p>
+
+<p>To install the gem is as easy as adding it to your Gemfile:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s1">'minitest-cc'</span>
+</code></pre></div></div>
+
+<p>Add the following lines to the beginning of your file <code class="language-plaintext highlighter-rouge">test_helper.rb</code>:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'minitest/cc'</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">start</span>
+</code></pre></div></div>
+
+<p>After running your tests you should see an output like the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Running 8 tests <span class="k">in </span>a single process <span class="o">(</span>parallelization threshold is 50<span class="o">)</span>   
+Run options: <span class="nt">--seed</span> 26716   
+
+<span class="c"># Running:   </span>
+
+........   
+
+<span class="c"># Coverage:   </span>
+
+Lines: 100.0%   Branches: 50.0% Methods: 100.0%   
+
+Average: 83.33%   
+
+
+Finished <span class="k">in </span>0.823512s, 9.7145 runs/s, 10.9288 assertions/s.   
+8 runs, 9 assertions, 0 failures, 0 errors, 0 skips
+</code></pre></div></div>
+
+<p>And that’s it. There are two important things you can configure:</p>
+
+<ul>
+  <li>The output in summary form or detailed by files (If your project is very large I don’t recommend it).</li>
+  <li>Path of files to check if they are executed</li>
+</ul>
+
+<p>Here is an example of how these settings could be applied:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">start</span><span class="p">(</span><span class="ss">:lines</span><span class="p">,</span> <span class="ss">:branches</span><span class="p">,</span> <span class="ss">:methods</span><span class="p">)</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">tracked_files</span> <span class="o">=</span> <span class="p">[</span>  
+  <span class="s1">'./app/\*\*/\*.rb'</span><span class="p">,</span>  
+  <span class="s1">'./lib/\*\*/\*.rb'</span>  
+<span class="p">]</span>  
+<span class="no">Minitest</span><span class="o">::</span><span class="no">Cc</span><span class="p">.</span><span class="nf">cc_mode</span> <span class="o">=</span> <span class="ss">:per_file</span>
+</code></pre></div></div>
+
+<p>In conclusion, Minitest-cc is a simple and easy-to-use option to get a general reference on the coverage of your tests.</p>]]></content><author><name>Andrés</name></author><category term="Rails" /><category term="Ruby" /><category term="Minitest" /><summary type="html"><![CDATA[Ministest-cc is a lightweight and simple plug-in for the Minitest framework that provides an output about the code coverage of your tests. Here we will see how to install it and how it works.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/ruby.webp" /><media:content medium="image" url="https://a-chacon.com/assets/images/ruby.webp" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
