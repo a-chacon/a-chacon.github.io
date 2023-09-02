@@ -45,6 +45,10 @@
     
         
             <url>
+                <loc>https://a-chacon.com/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
+            </url>
+        
+            <url>
                 <loc>https://a-chacon.com/en/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html</loc>
             </url>
         
@@ -109,6 +113,10 @@
     
 
     
+        
+            <url>
+                <loc>https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
+            </url>
         
             <url>
                 <loc>https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html</loc>

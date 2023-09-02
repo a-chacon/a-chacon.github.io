@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- General tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Web scraping with Ruby: Using Nokogiri.</title>
+  <meta name="description" content="Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem.">
+  <meta name=”robots” content="index, follow">
+  <meta http-equiv="Content-Language" content="en">
+<link rel="alternate" hreflang="es" href="https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html"/>
+<link rel="alternate" hreflang="en" href="https://a-chacon.com/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html"/>
+
+  <link rel="canonical" href="https://a-chacon.com/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html">
+  <!-- Favicon tags -->
+  <link rel="icon" type="image/x-icon" href="/en/assets/images/favicon.ico">
+  <!-- Opengraph tags -->
+  <meta property="og:title" content="Web scraping with Ruby: Using Nokogiri. - a-chacon" />
+  <meta property="twitter:title" content="Web scraping with Ruby: Using Nokogiri. - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/Web scraping with Ruby: Using Nokogiri." />
+  <meta property="og:image" content="https://a-chacon.com/assets/images/nokogiri.png" />
+  <meta property="twitter:image" content="https://a-chacon.com/assets/images/nokogiri.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem." />
+  <meta property="twitter:description" content="Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem." />
+  <!-- Style tags -->
+  <link rel="stylesheet" href="/en/assets/css/application.css">
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+
+  <script data-host="https://app.microanalytics.io" data-dnt="false" src="https://app.microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script>
+</head>
+
+<body class="bg-neutral-50">
+  
+    <nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4 text-neutral-500 lg:py-6">
+  <div class="flex w-full flex-wrap items-center justify-between px-5">
+
+    <a class="flex" href="/en/" aria-label="Home page">
+      <img src="/assets/images/keyboard-key-a.png" alt="keyboard key a" class="block h-8 w-auto">
+      <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Developer</span></p>
+    </a>
+
+    <div class="flex divide-x text-black">
+      <div><a class="px-4 hover:text-neutral-500" href="/en/projects">Projects</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="/en/blog">Blog</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html">es</a></div>
+    </div>
+  </div>
+</nav>
+
+  
+  <link rel="stylesheet" href="/en/assets/css/monokai.css">
+<div class="flex justify-center pt-16 md:pt-24 pb-16 text-neutral-500">
+  <div id="post" class="prose prose-neutral flex flex-col w-11/12 md:max-w-2xl">
+    <h1 class="text-center text-3xl md:text-5xl text-black">Web scraping with Ruby: Using Nokogiri.</h1>
+    <div class="flex justify-center">
+      <p class="px-2">Andrés</p>
+      <p>•</p>
+      <p class="px-2">1 September 2023</p>
+    </div>
+    <div class="flex justify-center">
+      
+      <span class="text-sm px-2">#Ruby</span>
+      
+      <span class="text-sm px-2">#Web scraping</span>
+      
+      <span class="text-sm px-2">#Nokogiri</span>
+      
+    </div>
+    <img src="/assets/images/nokogiri.png" alt="Web scraping with Ruby: Using Nokogiri.">
+    <strong>Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem.</strong>
+    <p>Nokogiri es una de las gemas más famosas dentro del ecosistema de Ruby. Incluso tiene más descargas registradas en <a href="https://rubygems.org">rubygems.org</a> que Rails (693.378.140 hasta el momento de escribir esto. Rails solo tiene 460.230.689). Sirve para trabajar con documentos tanto XML como HTML, provee una API simple para leer, escribir y consultar sobre documentos.</p>
+
+<p>Veremos como utilizarla para realizar un simple web scraping. Si conocemos los ids, las clases o los tipos de elementos HTML donde están guardados los datos que necesitamos, entonces podremos extraerlos. El primer paso será consultar la página web que contiene los datos que necesitamos, luego buscar nuestra información y por último escribirlos en un archivo CSV.</p>
+
+<h2 id="obtener-la-pagina-web">Obtener la pagina web.</h2>
+
+<p><img src="/assets/images/scraping_projects.png" alt="" /></p>
+
+<p>Vamos a suponer que haremos un web scraping de mi propia página web con el fin de obtener un listado de proyectos. Para esto, la forma más sencilla de consultar nuestra página será de la siguiente forma:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span>
+<span class="nb">require</span> <span class="s1">'open-uri'</span>
+<span class="nb">require</span> <span class="s1">'csv'</span>
+
+<span class="n">html_doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"https://a-chacon.com/projects"</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>Con esto ya tendremos nuestro documento HTML listo para consultar a través del objeto <code class="language-plaintext highlighter-rouge">html_doc</code>.</p>
+
+<h2 id="realizando-consultas-con-nokogiri">Realizando consultas con Nokogiri</h2>
+
+<p>Para consultar el documento utilizaremos el selector <code class="language-plaintext highlighter-rouge">css</code> que siempre retorna un <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">NodeSet</a>, algo muy parecido a un Array. Este NodeSet contiene una lista de objetos <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">Node</a>. Los métodos de cada una de estas clases los iremos viendo más adelante.</p>
+
+<h3 id="definir-que-queremos-extraer">Definir que queremos extraer</h3>
+
+<p>Para saber lo que estamos buscando haremos uso de una estructura:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Project</span> <span class="o">=</span> <span class="no">Struct</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:image</span><span class="p">,</span> <span class="ss">:tags</span><span class="p">)</span>
+
+<span class="n">projects</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></div>
+
+<p>Ahora que sabemos lo que buscamos, vamos por ello.</p>
+
+<h3 id="obtener-todas-las-cards-mediante-atributo-html-y-clase-css">Obtener todas las cards mediante atributo HTML y clase CSS</h3>
+
+<p><img src="/assets/images/scraping_div.png" alt="" /></p>
+
+<p>Para obtener las cards lo haremos mediante la selección de atributo y clase. Esto se vería de la siguiente forma:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.shadow-indigo-200"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Esto nos retornará un NodeSet de todas las coincidencias que se den para un <code class="language-plaintext highlighter-rouge">div</code> que contenga la clase css <code class="language-plaintext highlighter-rouge">shadow-indigo-200</code>.</p>
+
+<p>En este caso, el NodeSet debería contener elementos HTML con la siguiente estructura:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"assets/images/comocambio.jpg"</span> <span class="na">alt=</span><span class="s">"image"</span> <span class="na">class=</span><span class="s">"object-cover w-full max-h-48"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"px-6 pt-4 flex justify-center"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"inline-block px-2 py-1 text-sm mr-2 mb-2"</span><span class="nt">&gt;</span>#Rails<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"inline-block px-2 py-1 text-sm mr-2 mb-2"</span><span class="nt">&gt;</span>#AWS<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"text-center mx-8 mb-8"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h3</span> <span class="na">class=</span><span class="s">"text-black font-medium hover:text-primary mb-4 block text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px]"</span><span class="nt">&gt;</span>
+            ComoCambio
+        <span class="nt">&lt;/h3&gt;</span>
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-body-color mb-7 text-base md:text-lg leading-relaxed"</span><span class="nt">&gt;</span>
+            ComoCambio: Impulsando una cultura saludable como parte del programa de Cencosud. Proyecto en desarrollo desde hace dos años, donde contribuyo como desarrollador back-end y DevOps freelance para Zeeers.
+        <span class="nt">&lt;/p&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex justify-center"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"pr-3 transition hover:scale-110 duration-300"</span> <span class="na">href=</span><span class="s">"https://comocambio.com"</span> <span class="na">target=</span><span class="s">"_blank"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/assets/images/link.png"</span> <span class="na">alt</span> <span class="na">class=</span><span class="s">"h-6"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+...
+</code></pre></div></div>
+
+<h3 id="iteramos-sobre-las-cards-para-extraer-lo-que-necesitamos">Iteramos sobre las cards para extraer lo que necesitamos</h3>
+
+<p>Ahora que tenemos lista de nodos podemos iterarlo de la misma forma que un Array.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"h3"</span><span class="p">).</span><span class="nf">content</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"p"</span><span class="p">).</span><span class="nf">content</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"img.object-cover"</span><span class="p">)[</span><span class="s2">"src"</span><span class="p">]</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"span"</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">t</span><span class="o">|</span> <span class="n">t</span><span class="p">.</span><span class="nf">content</span><span class="p">}</span>
+
+    <span class="n">projects</span> <span class="o">&lt;&lt;</span> <span class="no">Project</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">at_css</code> se usa para obtener un único resultado y no un NodeSet y sí, un NodeSet también se puede iterar con <code class="language-plaintext highlighter-rouge">map</code>. Cuando obtenemos un nodo podemos extraer los valores de sus atributos de la misma forma que si accediéramos a un Hash.</p>
+
+<h3 id="escribir-los-resultados">Escribir los resultados.</h3>
+
+<p>Y por último escribes tus resultados donde tú quieras y de la forma que tú quieras. Aquí te mostraré como sería si quieres escribirlos en un CSV.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">CSV</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"myfile.csv"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
+    <span class="n">projects</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="nb">p</span><span class="p">.</span><span class="nf">to_a</span><span class="p">}</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Esto es un ejemplo bien simple y claro que se puede mejorar.</p>
+
+<h2 id="formas-de-buscar">Formas de buscar</h2>
+
+<p>Ahora que sabemos como es el proceso en general mostraré un par de ejemplos mas sobre como podemos buscar en el documento.</p>
+
+<ol>
+  <li>Para buscar por elemento, clase y nuevamente un elemento:
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titles</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.shadow-indigo-200 h3"</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:text</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
+<span class="c1"># ["CalendarioChileno", "ComoCambio", "Paso App", ...]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Para buscar por valor de un atributo de un elemento:
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">images</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'img[alt="image"]'</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="p">[</span><span class="s1">'src'</span><span class="p">]</span> <span class="p">}</span>
+<span class="c1"># ["assets/images/calendariochileno.png", ... ]</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="últimas-reflexiones">Últimas reflexiones</h2>
+
+<p>Nokogiri es una excelente herramienta para obtener información de páginas webs, su uso es fácil y cuando se entiende el uso de los selectores no toma mucho tiempo realizar un simple web scraping.</p>
+
+<p>Puede que en el camino encuentres problemas como bloqueos de tu ip por muchas consultas seguidas o que tengas que resolver algún captcha. Pero no eres el primero en enfrentarte a esos problemas y ya hay gente que ha trabajado en soluciones: puedes utilizar servicios de terceros como <a href="https://apify.com/">Apify</a> o correr proyectos como <a href="https://github.com/FlareSolverr/FlareSolverr">CloudflareSolverRe</a> que resolverán las captchas de cloudflare por ti.</p>
+
+
+    <div class="flex justify-center mb-10">
+      
+      <a class="pr-2" href="/en/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html">&laquo; Creating a chatbot with GPT and Rails.</a>
+      
+      
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = "https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        
+        this.language = "en";
+        
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://a-chacon-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</div>
+
+   <div class="">
+	<div class="text-black flex justify-center gap-x-5 pt-6 pb-8">   
+
+		<!-- FACEBOOK --!>
+		<a class="text-xl" href="https://www.facebook.com/sharer/sharer.php?u=https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html" onclick="window.open(this.href, 'mywin',
+		'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+      <div class="pr-3 transition hover:scale-110 duration-300">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+      </div>
+    </a>
+
+		<!-- Twitter --!>
+		<a class="text-xl" href="https://twitter.com/intent/tweet?text=Web scraping with Ruby: Using Nokogiri.&url=https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter">
+	  	<div class="pr-3 transition hover:scale-110 duration-300">
+	  		<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+			</div>
+    </a>
+
+		<!-- LINKEDIN --!>
+		<a class="text-xl" href="https://www.linkedin.com/shareArticle?mini=true&url=https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html&title=&summary=&source=webjeda" onclick="window.open(this.href, 'mywin',
+		'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+			<div class="pr-3 transition hover:scale-110 duration-300">
+				<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+			</div>
+    </a>
+
+	</div>
+</div>
+
+</body>
+
+</html>
