@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/en/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/en/" rel="alternate" type="text/html" /><updated>2023-09-02T20:55:18+02:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="en"><title type="html">Web scraping with Ruby: Using Nokogiri.</title><link href="https://a-chacon.com/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html" rel="alternate" type="text/html" title="Web scraping with Ruby: Using Nokogiri." /><published>2023-09-01T00:00:00+02:00</published><updated>2023-09-01T00:00:00+02:00</updated><id>https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri</id><content type="html" xml:base="https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html"><![CDATA[<p>Nokogiri es una de las gemas más famosas dentro del ecosistema de Ruby. Incluso tiene más descargas registradas en <a href="https://rubygems.org">rubygems.org</a> que Rails (693.378.140 hasta el momento de escribir esto. Rails solo tiene 460.230.689). Sirve para trabajar con documentos tanto XML como HTML, provee una API simple para leer, escribir y consultar sobre documentos.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://a-chacon.com/en/feed.xml" rel="self" type="application/atom+xml" /><link href="https://a-chacon.com/en/" rel="alternate" type="text/html" /><updated>2023-09-03T15:55:15+02:00</updated><id>https://a-chacon.com/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="en"><title type="html">Web scraping with Ruby: Using Nokogiri.</title><link href="https://a-chacon.com/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html" rel="alternate" type="text/html" title="Web scraping with Ruby: Using Nokogiri." /><published>2023-09-01T00:00:00+02:00</published><updated>2023-09-01T00:00:00+02:00</updated><id>https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri</id><content type="html" xml:base="https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html"><![CDATA[<p>Nokogiri is one of the most famous gems within the Ruby ecosystem. It even has more downloads registered on <a href="https://rubygems.org">rubygems.org</a> than Rails (693,378,140 as of this writing. Rails has only 460,230,689). It works with both XML and HTML documents, provides a simple API for reading, writing and querying documents.</p>
 
-<p>Veremos como utilizarla para realizar un simple web scraping. Si conocemos los ids, las clases o los tipos de elementos HTML donde están guardados los datos que necesitamos, entonces podremos extraerlos. El primer paso será consultar la página web que contiene los datos que necesitamos, luego buscar nuestra información y por último escribirlos en un archivo CSV.</p>
+<p>We will see how to use it to perform a simple web scraping. If we know the ids, classes or types of HTML elements where the data we need are stored, then we can extract them. The first step will be to consult the web page that contains the data we need, then search for our information and finally write it in a CSV file.</p>
 
-<h2 id="obtener-la-pagina-web">Obtener la pagina web.</h2>
+<h2 id="get-the-web-page">Get the web page.</h2>
 
 <p><img src="/assets/images/scraping_projects.png" alt="" /></p>
 
-<p>Vamos a suponer que haremos un web scraping de mi propia página web con el fin de obtener un listado de proyectos. Para esto, la forma más sencilla de consultar nuestra página será de la siguiente forma:</p>
+<p>Let’s suppose that we will do a web scraping of my own web page in order to obtain a list of projects. For this, the easiest way to query our page will be as follows:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'nokogiri'</span>
 <span class="nb">require</span> <span class="s1">'open-uri'</span>
@@ -15,35 +15,35 @@
 <span class="n">html_doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="no">URI</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"https://a-chacon.com/projects"</span><span class="p">))</span>
 </code></pre></div></div>
 
-<p>Con esto ya tendremos nuestro documento HTML listo para consultar a través del objeto <code class="language-plaintext highlighter-rouge">html_doc</code>.</p>
+<p>With this we will have our HTML document ready to query through the <code class="language-plaintext highlighter-rouge">html_doc</code> object.</p>
 
-<h2 id="realizando-consultas-con-nokogiri">Realizando consultas con Nokogiri</h2>
+<h2 id="consulting-with-nokogiri">Consulting with Nokogiri</h2>
 
-<p>Para consultar el documento utilizaremos el selector <code class="language-plaintext highlighter-rouge">css</code> que siempre retorna un <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">NodeSet</a>, algo muy parecido a un Array. Este NodeSet contiene una lista de objetos <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">Node</a>. Los métodos de cada una de estas clases los iremos viendo más adelante.</p>
+<p>Para consultar el documento utilizaremos el selector css que siempre retorna un <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">NodeSet</a>, algo muy parecido a un Array. Este NodeSet contiene una lista de objetos <a href="https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet">Node</a>. Los métodos de cada una de estas clases los iremos viendo más adelante.</p>
 
-<h3 id="definir-que-queremos-extraer">Definir que queremos extraer</h3>
+<h3 id="define-what-we-want-to-extract">Define what we want to extract</h3>
 
-<p>Para saber lo que estamos buscando haremos uso de una estructura:</p>
+<p>To know what we are looking for, we will use a structure:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Project</span> <span class="o">=</span> <span class="no">Struct</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="ss">:title</span><span class="p">,</span> <span class="ss">:description</span><span class="p">,</span> <span class="ss">:image</span><span class="p">,</span> <span class="ss">:tags</span><span class="p">)</span>
 
 <span class="n">projects</span> <span class="o">=</span> <span class="p">[]</span>
 </code></pre></div></div>
 
-<p>Ahora que sabemos lo que buscamos, vamos por ello.</p>
+<p>Now that we know what we’re looking for, let’s go for it.</p>
 
-<h3 id="obtener-todas-las-cards-mediante-atributo-html-y-clase-css">Obtener todas las cards mediante atributo HTML y clase CSS</h3>
+<h3 id="get-all-cards-via-html-attribute-and-css-class">Get all cards via HTML attribute and CSS class</h3>
 
 <p><img src="/assets/images/scraping_div.png" alt="" /></p>
 
-<p>Para obtener las cards lo haremos mediante la selección de atributo y clase. Esto se vería de la siguiente forma:</p>
+<p>To obtain the cards we will do it by selecting the attribute and class. This would look like this:</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.shadow-indigo-200"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>Esto nos retornará un NodeSet de todas las coincidencias que se den para un <code class="language-plaintext highlighter-rouge">div</code> que contenga la clase css <code class="language-plaintext highlighter-rouge">shadow-indigo-200</code>.</p>
+<p>This will return a NodeSet of all matches for a <code class="language-plaintext highlighter-rouge">div</code> containing the css class <code class="language-plaintext highlighter-rouge">shadow-indigo-200</code>.</p>
 
-<p>En este caso, el NodeSet debería contener elementos HTML con la siguiente estructura:</p>
+<p>In this case, the NodeSet should contain HTML elements with the following structure:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mb-10 overflow-hidden rounded-lg bg-white shadow-lg shadow-indigo-200"</span><span class="nt">&gt;</span>
@@ -69,9 +69,9 @@
 ...
 </code></pre></div></div>
 
-<h3 id="iteramos-sobre-las-cards-para-extraer-lo-que-necesitamos">Iteramos sobre las cards para extraer lo que necesitamos</h3>
+<h3 id="iterate-over-the-cards-to-extract-what-is-needed">Iterate over the cards to extract what is needed</h3>
 
-<p>Ahora que tenemos lista de nodos podemos iterarlo de la misma forma que un Array.</p>
+<p>Now that we have a list of nodes we can iterate it in the same way as an Array.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cards</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">c</span><span class="o">|</span>
     <span class="n">title</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="nf">at_css</span><span class="p">(</span><span class="s2">"h3"</span><span class="p">).</span><span class="nf">content</span>
@@ -83,41 +83,41 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">at_css</code> se usa para obtener un único resultado y no un NodeSet y sí, un NodeSet también se puede iterar con <code class="language-plaintext highlighter-rouge">map</code>. Cuando obtenemos un nodo podemos extraer los valores de sus atributos de la misma forma que si accediéramos a un Hash.</p>
+<p><code class="language-plaintext highlighter-rouge">at_css</code> is used to get a single result and not a NodeSet and yes, a NodeSet can also be iterated with <code class="language-plaintext highlighter-rouge">map</code>. When we get a node we can extract the values of its attributes in the same way as if we were accessing a Hash.</p>
 
-<h3 id="escribir-los-resultados">Escribir los resultados.</h3>
+<h3 id="write-the-results">Write the results.</h3>
 
-<p>Y por último escribes tus resultados donde tú quieras y de la forma que tú quieras. Aquí te mostraré como sería si quieres escribirlos en un CSV.</p>
+<p>And finally you write your results where you want and the way you want. Here I will show you how it would be if you want to write them in a CSV.</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">CSV</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s2">"myfile.csv"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
     <span class="n">projects</span><span class="p">.</span><span class="nf">each</span> <span class="p">{</span><span class="o">|</span><span class="nb">p</span><span class="o">|</span> <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="nb">p</span><span class="p">.</span><span class="nf">to_a</span><span class="p">}</span>
 <span class="k">end</span>
 </code></pre></div></div>
 
-<p>Esto es un ejemplo bien simple y claro que se puede mejorar.</p>
+<p>This is a very simple and clear example that can be improved.</p>
 
-<h2 id="formas-de-buscar">Formas de buscar</h2>
+<h2 id="ways-to-search">Ways to search</h2>
 
-<p>Ahora que sabemos como es el proceso en general mostraré un par de ejemplos mas sobre como podemos buscar en el documento.</p>
+<p>Now that we know how the process is in general, I will show a couple more examples of how we can search in the document.</p>
 
 <ol>
-  <li>Para buscar por elemento, clase y nuevamente un elemento:
+  <li>To search by element, class and again an element:
     <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">titles</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s2">"div.shadow-indigo-200 h3"</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:text</span><span class="p">).</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
 <span class="c1"># ["CalendarioChileno", "ComoCambio", "Paso App", ...]</span>
 </code></pre></div>    </div>
   </li>
-  <li>Para buscar por valor de un atributo de un elemento:
+  <li>To search by value of an attribute of an element:
     <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">images</span> <span class="o">=</span> <span class="n">html_doc</span><span class="p">.</span><span class="nf">css</span><span class="p">(</span><span class="s1">'img[alt="image"]'</span><span class="p">).</span><span class="nf">map</span><span class="p">{</span><span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="n">i</span><span class="p">[</span><span class="s1">'src'</span><span class="p">]</span> <span class="p">}</span>
 <span class="c1"># ["assets/images/calendariochileno.png", ... ]</span>
 </code></pre></div>    </div>
   </li>
 </ol>
 
-<h2 id="últimas-reflexiones">Últimas reflexiones</h2>
+<h2 id="last-thoughts">Last thoughts</h2>
 
-<p>Nokogiri es una excelente herramienta para obtener información de páginas webs, su uso es fácil y cuando se entiende el uso de los selectores no toma mucho tiempo realizar un simple web scraping.</p>
+<p>Nokogiri is an excellent tool to obtain information from web pages, its use is easy and when you understand the use of selectors it does not take much time to perform a simple web scraping.</p>
 
-<p>Puede que en el camino encuentres problemas como bloqueos de tu ip por muchas consultas seguidas o que tengas que resolver algún captcha. Pero no eres el primero en enfrentarte a esos problemas y ya hay gente que ha trabajado en soluciones: puedes utilizar servicios de terceros como <a href="https://apify.com/">Apify</a> o correr proyectos como <a href="https://github.com/FlareSolverr/FlareSolverr">CloudflareSolverRe</a> que resolverán las captchas de cloudflare por ti.</p>]]></content><author><name>Andrés</name></author><category term="Ruby" /><category term="Web scraping" /><category term="Nokogiri" /><summary type="html"><![CDATA[Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/nokogiri.png" /><media:content medium="image" url="https://a-chacon.com/assets/images/nokogiri.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Creating a chatbot with GPT and Rails.</title><link href="https://a-chacon.com/en/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html" rel="alternate" type="text/html" title="Creating a chatbot with GPT and Rails." /><published>2023-08-14T00:00:00+02:00</published><updated>2023-08-14T00:00:00+02:00</updated><id>https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt</id><content type="html" xml:base="https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html"><![CDATA[<p><img src="/assets/images/minichat1.gif" alt="Demo" /></p>
+<p>You may encounter problems along the way such as blocking your ip for too many queries in a row or you may have to solve a captcha. But you are not the first to face such problems and there are already people who have worked on solutions: you can use third party services like <a href="https://apify.com/">Apify</a> or run projects like <a href="https://github.com/FlareSolverr/FlareSolverr">CloudflareSolverRe</a> that will solve cloudflare captchas for you.</p>]]></content><author><name>Andrés</name></author><category term="Ruby" /><category term="Web scraping" /><category term="Nokogiri" /><summary type="html"><![CDATA[Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://a-chacon.com/assets/images/nokogiri.png" /><media:content medium="image" url="https://a-chacon.com/assets/images/nokogiri.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Creating a chatbot with GPT and Rails.</title><link href="https://a-chacon.com/en/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html" rel="alternate" type="text/html" title="Creating a chatbot with GPT and Rails." /><published>2023-08-14T00:00:00+02:00</published><updated>2023-08-14T00:00:00+02:00</updated><id>https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt</id><content type="html" xml:base="https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html"><![CDATA[<p><img src="/assets/images/minichat1.gif" alt="Demo" /></p>
 
 <p>In today’s digital age, interaction with users is essential to provide richer and more personalized online experiences. ChatGPT, developed by OpenAI, emerges as an innovative solution for creating automated conversations based on natural language. ChatGPT uses the power of deep learning to generate contextual and consistent responses that simulate a human conversation. This advanced technology allows developers to incorporate ChatGPT’s artificial intelligence into various applications, providing seamless and engaging interaction with users.</p>
 

@@ -10,15 +10,15 @@ author: Andrés
 comments: true
 ---
 
-Nokogiri es una de las gemas más famosas dentro del ecosistema de Ruby. Incluso tiene más descargas registradas en [rubygems.org](https://rubygems.org) que Rails (693.378.140 hasta el momento de escribir esto. Rails solo tiene 460.230.689). Sirve para trabajar con documentos tanto XML como HTML, provee una API simple para leer, escribir y consultar sobre documentos.
+Nokogiri is one of the most famous gems within the Ruby ecosystem. It even has more downloads registered on [rubygems.org](https://rubygems.org) than Rails (693,378,140 as of this writing. Rails has only 460,230,689). It works with both XML and HTML documents, provides a simple API for reading, writing and querying documents.
 
-Veremos como utilizarla para realizar un simple web scraping. Si conocemos los ids, las clases o los tipos de elementos HTML donde están guardados los datos que necesitamos, entonces podremos extraerlos. El primer paso será consultar la página web que contiene los datos que necesitamos, luego buscar nuestra información y por último escribirlos en un archivo CSV.
+We will see how to use it to perform a simple web scraping. If we know the ids, classes or types of HTML elements where the data we need are stored, then we can extract them. The first step will be to consult the web page that contains the data we need, then search for our information and finally write it in a CSV file.
 
-## Obtener la pagina web.
+## Get the web page.
 
 ![](/assets/images/scraping_projects.png)
 
-Vamos a suponer que haremos un web scraping de mi propia página web con el fin de obtener un listado de proyectos. Para esto, la forma más sencilla de consultar nuestra página será de la siguiente forma:
+Let's suppose that we will do a web scraping of my own web page in order to obtain a list of projects. For this, the easiest way to query our page will be as follows:
 
 ```ruby
 require 'nokogiri'
@@ -28,15 +28,15 @@ require 'csv'
 html_doc = Nokogiri::HTML(URI.open("https://a-chacon.com/projects"))
 ```
 
-Con esto ya tendremos nuestro documento HTML listo para consultar a través del objeto `html_doc`.
+With this we will have our HTML document ready to query through the `html_doc` object.
 
-## Realizando consultas con Nokogiri
+## Consulting with Nokogiri
 
-Para consultar el documento utilizaremos el selector `css` que siempre retorna un [NodeSet](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet), algo muy parecido a un Array. Este NodeSet contiene una lista de objetos [Node](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet). Los métodos de cada una de estas clases los iremos viendo más adelante.
+Para consultar el documento utilizaremos el selector css que siempre retorna un [NodeSet](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet), algo muy parecido a un Array. Este NodeSet contiene una lista de objetos [Node](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet). Los métodos de cada una de estas clases los iremos viendo más adelante.
 
-### Definir que queremos extraer
+### Define what we want to extract
 
-Para saber lo que estamos buscando haremos uso de una estructura:
+To know what we are looking for, we will use a structure:
 
 ```ruby
 Project = Struct.new(:title, :description, :image, :tags)
@@ -44,21 +44,21 @@ Project = Struct.new(:title, :description, :image, :tags)
 projects = []
 ```
 
-Ahora que sabemos lo que buscamos, vamos por ello.
+Now that we know what we're looking for, let's go for it.
 
-### Obtener todas las cards mediante atributo HTML y clase CSS
+### Get all cards via HTML attribute and CSS class
 
 ![](/assets/images/scraping_div.png)
 
-Para obtener las cards lo haremos mediante la selección de atributo y clase. Esto se vería de la siguiente forma:
+To obtain the cards we will do it by selecting the attribute and class. This would look like this:
 
 ```ruby
 cards = html_doc.css("div.shadow-indigo-200")
 ```
 
-Esto nos retornará un NodeSet de todas las coincidencias que se den para un `div` que contenga la clase css `shadow-indigo-200`. 
+This will return a NodeSet of all matches for a `div` containing the css class `shadow-indigo-200`.
 
-En este caso, el NodeSet debería contener elementos HTML con la siguiente estructura:
+In this case, the NodeSet should contain HTML elements with the following structure:
 
 ```html
 ...
@@ -85,9 +85,9 @@ En este caso, el NodeSet debería contener elementos HTML con la siguiente estru
 ...
 ```
 
-### Iteramos sobre las cards para extraer lo que necesitamos
+### Iterate over the cards to extract what is needed
 
-Ahora que tenemos lista de nodos podemos iterarlo de la misma forma que un Array.
+Now that we have a list of nodes we can iterate it in the same way as an Array.
 
 ```ruby
 cards.each do |c|
@@ -100,11 +100,11 @@ cards.each do |c|
 end
 ```
 
-`at_css` se usa para obtener un único resultado y no un NodeSet y sí, un NodeSet también se puede iterar con `map`. Cuando obtenemos un nodo podemos extraer los valores de sus atributos de la misma forma que si accediéramos a un Hash.
+`at_css` is used to get a single result and not a NodeSet and yes, a NodeSet can also be iterated with `map`. When we get a node we can extract the values of its attributes in the same way as if we were accessing a Hash.
 
-### Escribir los resultados.
+### Write the results.
 
-Y por último escribes tus resultados donde tú quieras y de la forma que tú quieras. Aquí te mostraré como sería si quieres escribirlos en un CSV.
+And finally you write your results where you want and the way you want. Here I will show you how it would be if you want to write them in a CSV.
 
 ```ruby
 CSV.open("myfile.csv", "w") do |csv|
@@ -112,26 +112,26 @@ CSV.open("myfile.csv", "w") do |csv|
 end
 ```
 
-Esto es un ejemplo bien simple y claro que se puede mejorar.
+This is a very simple and clear example that can be improved.
 
-## Formas de buscar
+## Ways to search
 
-Ahora que sabemos como es el proceso en general mostraré un par de ejemplos mas sobre como podemos buscar en el documento.
+Now that we know how the process is in general, I will show a couple more examples of how we can search in the document.
 
-1. Para buscar por elemento, clase y nuevamente un elemento:
+1. To search by element, class and again an element:
 ```ruby
 titles = html_doc.css("div.shadow-indigo-200 h3").map(&:text).map(&:strip)
 # ["CalendarioChileno", "ComoCambio", "Paso App", ...]
 ```
 
-2. Para buscar por valor de un atributo de un elemento:
+2. To search by value of an attribute of an element:
 ```ruby
 images = html_doc.css('img[alt="image"]').map{|i| i['src'] }
 # ["assets/images/calendariochileno.png", ... ]
 ```
 
-## Últimas reflexiones
+## Last thoughts
 
-Nokogiri es una excelente herramienta para obtener información de páginas webs, su uso es fácil y cuando se entiende el uso de los selectores no toma mucho tiempo realizar un simple web scraping. 
+Nokogiri is an excellent tool to obtain information from web pages, its use is easy and when you understand the use of selectors it does not take much time to perform a simple web scraping.
 
-Puede que en el camino encuentres problemas como bloqueos de tu ip por muchas consultas seguidas o que tengas que resolver algún captcha. Pero no eres el primero en enfrentarte a esos problemas y ya hay gente que ha trabajado en soluciones: puedes utilizar servicios de terceros como [Apify](https://apify.com/) o correr proyectos como [CloudflareSolverRe](https://github.com/FlareSolverr/FlareSolverr) que resolverán las captchas de cloudflare por ti.
+You may encounter problems along the way such as blocking your ip for too many queries in a row or you may have to solve a captcha. But you are not the first to face such problems and there are already people who have worked on solutions: you can use third party services like [Apify](https://apify.com/) or run projects like [CloudflareSolverRe](https://github.com/FlareSolverr/FlareSolverr) that will solve cloudflare captchas for you.
