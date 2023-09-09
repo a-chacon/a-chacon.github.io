@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- General tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué.</title>
+  <meta name="description" content="hCaptcha se define como el mayor servicio de catpcha independiente. Dicen estar funcionando en un 15% de internet y que es posible competir con los gigantes tecnológicos enfocándose en la privacidad. Veremos como es de sencillo instalar este captcha en una aplicación Ruby on Rails.">
+  <meta name=”robots” content="index, follow">
+  <meta http-equiv="Content-Language" content="en">
+<link rel="alternate" hreflang="es" href="http://localhost:4000/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html"/>
+<link rel="alternate" hreflang="en" href="http://localhost:4000/en/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html"/>
+
+  <link rel="canonical" href="http://localhost:4000/en/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html">
+  <!-- Favicon tags -->
+  <link rel="icon" type="image/x-icon" href="/en/assets/images/favicon.ico">
+  <!-- Opengraph tags -->
+  <meta property="og:title" content="hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué. - a-chacon" />
+  <meta property="twitter:title" content="hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué. - a-chacon" />
+  <meta property="og:url" content="https://a-chacon.com/hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué." />
+  <meta property="og:image" content="http://localhost:4000/assets/images/hcaptcha.jpg" />
+  <meta property="twitter:image" content="http://localhost:4000/assets/images/hcaptcha.jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="hCaptcha se define como el mayor servicio de catpcha independiente. Dicen estar funcionando en un 15% de internet y que es posible competir con los gigantes tecnológicos enfocándose en la privacidad. Veremos como es de sencillo instalar este captcha en una aplicación Ruby on Rails." />
+  <meta property="twitter:description" content="hCaptcha se define como el mayor servicio de catpcha independiente. Dicen estar funcionando en un 15% de internet y que es posible competir con los gigantes tecnológicos enfocándose en la privacidad. Veremos como es de sencillo instalar este captcha en una aplicación Ruby on Rails." />
+  <!-- Style tags -->
+  <link rel="stylesheet" href="/en/assets/css/application.css">
+  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+
+  <script data-host="https://app.microanalytics.io" data-dnt="false" src="https://app.microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script>
+</head>
+
+<body class="bg-neutral-50">
+  
+    <nav class="absolute top-0 left-0 right-0 flex w-full flex-wrap items-center justify-between py-4 text-neutral-500 lg:py-6">
+  <div class="flex w-full flex-wrap items-center justify-between px-5">
+
+    <a class="flex" href="/en/" aria-label="Home page">
+      <img src="/assets/images/keyboard-key-a.png" alt="Letra a de un teclado" class="block h-8 w-auto">
+      <p class="pl-4 hidden md:block text-xl text-neutral-900">Andres Chacon - <span class="text-base text-neutral-500">Desarrollador</span></p>
+    </a>
+
+    <div class="flex divide-x text-black">
+      <div><a class="px-4 hover:text-neutral-500" href="/en/projects">Proyectos</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="/en/blog">Blog</a></div>
+      <div><a class="px-4 hover:text-neutral-500" href="http://localhost:4000/en/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html">en</a></div>
+    </div>
+  </div>
+</nav>
+
+  
+  <link rel="stylesheet" href="/en/assets/css/monokai.css">
+<div class="flex justify-center pt-16 md:pt-24 pb-16 text-neutral-500">
+  <div id="post" class="prose prose-neutral flex flex-col w-11/12 md:max-w-2xl">
+    <h1 class="text-center text-3xl md:text-5xl text-black">hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué.</h1>
+    <div class="flex justify-center">
+      <p class="px-2">Andrés</p>
+      <p>•</p>
+      <p class="px-2">10 September 2023</p>
+    </div>
+    <div class="flex justify-center">
+      
+      <span class="text-sm px-2">#Ruby</span>
+      
+      <span class="text-sm px-2">#RubyOnRails</span>
+      
+      <span class="text-sm px-2">#hCaptcha</span>
+      
+    </div>
+    <img src="/assets/images/hcaptcha.jpg" alt="hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué.">
+    <strong>hCaptcha se define como el mayor servicio de catpcha independiente. Dicen estar funcionando en un 15% de internet y que es posible competir con los gigantes tecnológicos enfocándose en la privacidad. Veremos como es de sencillo instalar este captcha en una aplicación Ruby on Rails.</strong>
+    <p>La principal función de un captcha es impedir el paso de bots a nuestras paginas webs, pero esta tarea cada vez se ha ido haciendo mas dificil con el paso del tiempo. Los bots tanto buenos como malos se han vuelto mas sofisticados. Y es por esto que hasta el momento la mejor forma de distinguir un usuario real de una maquina, sin comprometer la identidad real de los usuarios, es mediante el uso de desafios.</p>
+
+<blockquote>
+  <p>Si queremos preservar nuestra privacidad en línea, necesitamos formas de verificar que una persona está interactuando con servicios en línea sin intentar vincular eso a la identidad real de nadie.</p>
+</blockquote>
+
+<h3 id="porque-no-usar-recaptcha-de-google">Porque no usar reCaptcha de Google</h3>
+
+<p>Google es un negocio principalmente de publicidad. Su producto son 
+los datos de sus usuarios (sus “usados” diría Richard Stallman). Y cada 
+vez que se encuentran con un bot no es negocio para ellos, por lo que 
+nos podríamos preguntar: ¿Cuál es su real interés por detener bots? 
+probablemente, sea obtener más datos sobre usuarios. Y así fue como 
+dejaron obsoleta su solución de reCatpcha v2 y lanzaron reCaptcha v3, 
+que te recomiendan incrustar en cada página de tu sitio y que no requiere interacción del usuario.</p>
+
+<p>¿Cómo logran que no haya interacción de los usuarios para definir si son bots o no? Datos y más datos vinculados a identidades reales que muy probablemente usen para más cosas que solo definir si se trata de un bot o no. Tal vez hayas notado que usando un navegador web limpio (sin cookies ni historial) te ha costado mucho más resolver un captcha de Google que cuando tienes una cuenta de Google abierta o has navegado por varios sitios ya. Puedes leer más sobre este tema <a href="https://www.fastcompany.com/90369697/googles-new-recaptcha-has-a-dark-side">aquí.</a></p>
+
+<blockquote>
+  <p>El enfoque de almacenar todo también perjudica la experiencia del usuario, viola la privacidad y acaba castigando a personas reales que no han optado por el ecosistema de Google, por ejemplo, utilizando Firefox.</p>
+</blockquote>
+
+<h1 id="comenzamos-con-nuestra-aplicación">Comenzamos con nuestra aplicación.</h1>
+
+<p><strong>Esto es una aplicación básica que no contempla todos los casos de uso posibles. Solo es un happy path</strong></p>
+
+<p>Crearemos un inicio de sesión donde integraremos hCatpcha. Veremos como integrarlo tanto en la vista de login, como la verificación que debemos realizar de lado del servidor del token generado por el captcha.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails new hcaptcha <span class="nt">--css</span> tailwind
+</code></pre></div></div>
+
+<p>Creamos nuestro modelo <code class="language-plaintext highlighter-rouge">User</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g model user email:string password_digest:string
+</code></pre></div></div>
+
+<p>Migramos con <code class="language-plaintext highlighter-rouge">rails db:migrate</code> y creamos nuestro controlador para hacer login:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rails g controller authentication new create show
+</code></pre></div></div>
+
+<p>Agregaremos <code class="language-plaintext highlighter-rouge">has_secure_password</code> a nuestro modelo <code class="language-plaintext highlighter-rouge">User</code> y crearemos rápidamente un usuario nuevo entrando a la consola de rails con <code class="language-plaintext highlighter-rouge">rails c</code> y luego <code class="language-plaintext highlighter-rouge">User.create(email: "a@test.com", password: "Test12345")</code>.</p>
+
+<p>Y por último haremos que nuestro archivo <code class="language-plaintext highlighter-rouge">routes.rb</code> se vea de la siguiente manera:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="n">root</span> <span class="s1">'authentication#new'</span>
+  <span class="n">resources</span> <span class="ss">:authentication</span><span class="p">,</span> <span class="ss">only: </span><span class="sx">%i[create show]</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="cuenta-en-hcaptcha">Cuenta en hCaptcha</h2>
+
+<p>Debes create una cuenta <a href="https://dashboard.hcaptcha.com/signup">aquí</a> y obtener un <code class="language-plaintext highlighter-rouge">site_key</code> y un <code class="language-plaintext highlighter-rouge">secret_key</code>.</p>
+
+<p><img src="/assets/images/hcaptcha_sitekey.png" alt="" /></p>
+
+<p>Copiamos el sitekey y lo agregamos a nuestro <code class="language-plaintext highlighter-rouge">crendetials.yml</code> con el nombre de <code class="language-plaintext highlighter-rouge">hcatpcha_site_key</code>.</p>
+
+<p><img src="/assets/images/hcaptcha_secret.png" alt="" /></p>
+
+<p>Copiamos el secret key y lo agregamos a nuestro <code class="language-plaintext highlighter-rouge">crendetials.yml</code> con el nombre de <code class="language-plaintext highlighter-rouge">hcatpcha_secret_key</code>.</p>
+
+<h1 id="vistas">Vistas</h1>
+
+<p>Crearemos un formulario simple donde pediremos el email y la contraseña. Adentro del mismo form agregaremos las líneas necesarias para que el captcha se despliegue y también agregaremos una forma simple de desplegar mensajes flash. Entonces nuestra vista <code class="language-plaintext highlighter-rouge">app/views/authentication/new.html.erb</code> se estaría viendo de la siguiente forma:</p>
+
+<div class="language-erb highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex min-h-full flex-col justify-center px-6 py-12"</span><span class="nt">&gt;</span>
+  
+  <span class="cp">&lt;%</span> <span class="n">flash</span><span class="p">.</span><span class="nf">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">type</span><span class="p">,</span> <span class="n">msg</span><span class="o">|</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;div&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">msg</span> <span class="cp">%&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+
+  <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"mt-10 text-center text-2xl font-bold text-gray-900"</span><span class="nt">&gt;</span>Entrar<span class="nt">&lt;/h2&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"mt-10"</span><span class="nt">&gt;</span>
+    <span class="cp">&lt;%=</span> <span class="n">form_with</span> <span class="ss">url: </span><span class="n">authentication_index_path</span> <span class="k">do</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="cp">%&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">text_field</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"</span> <span class="cp">%&gt;</span><span class="nt">&lt;br&gt;</span>
+      <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">password_field</span> <span class="ss">:password</span> <span class="p">,</span><span class="ss">class: </span><span class="s2">"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600"</span> <span class="cp">%&gt;</span><span class="nt">&lt;br&gt;</span>
+
+      <span class="c">&lt;!-- hCaptcha --&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"h-captcha"</span> <span class="na">data-sitekey=</span><span class="s">"</span><span class="cp">&lt;%=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">hcaptcha_site_key</span> <span class="cp">%&gt;</span><span class="s">"</span><span class="nt">&gt;&lt;/div&gt;</span>
+      <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://js.hcaptcha.com/1/api.js"</span> <span class="na">async</span> <span class="na">defer</span><span class="nt">&gt;&lt;/script&gt;</span>
+      <span class="c">&lt;!-- end hCaptcha --&gt;</span>
+
+      <span class="cp">&lt;%=</span> <span class="n">f</span><span class="p">.</span><span class="nf">submit</span> <span class="s2">"Entrar"</span><span class="p">,</span> <span class="ss">class: </span><span class="s2">"flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"</span> <span class="cp">%&gt;</span>
+    <span class="cp">&lt;%</span> <span class="k">end</span> <span class="cp">%&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p>Notar que el <code class="language-plaintext highlighter-rouge">site_key</code> lo obtenemos de forma dinámica desde nuestro archivo <code class="language-plaintext highlighter-rouge">credentials.yml</code>.</p>
+
+<h1 id="comprobar-los-datos-del-formulario">Comprobar los datos del formulario.</h1>
+
+<p>Antes de trabajar en nuestro controlador debemos saber que necesitaremos de un método para verificar la respuesta de nuestro captcha. Para esto crearemos un concern que se llamara <code class="language-plaintext highlighter-rouge">HcatpchaConcern</code> y tendrá el siguiente código:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="k">module</span> <span class="nn">HcaptchaConcern</span>
+  <span class="kp">extend</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Concern</span>
+
+  <span class="k">def</span> <span class="nf">verify</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s1">'https://hcaptcha.com/siteverify'</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">post_form</span><span class="p">(</span><span class="n">uri</span><span class="p">,</span> <span class="s1">'secret'</span> <span class="o">=&gt;</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">credentials</span><span class="p">.</span><span class="nf">hcaptcha_secret_key</span><span class="p">,</span>
+                                   <span class="s1">'response'</span> <span class="o">=&gt;</span> <span class="n">params</span><span class="p">[</span><span class="s1">'g-recaptcha-response'</span><span class="p">])</span>
+
+    <span class="n">response_data</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">res</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="k">if</span> <span class="no">ActiveModel</span><span class="o">::</span><span class="no">Type</span><span class="o">::</span><span class="no">Boolean</span><span class="p">.</span><span class="nf">new</span><span class="p">.</span><span class="nf">cast</span><span class="p">(</span><span class="n">response_data</span><span class="p">[</span><span class="s1">'success'</span><span class="p">])</span>
+
+    <span class="n">flash</span><span class="p">[</span><span class="ss">:notice</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'hCaptcha could not be verify.'</span>
+    <span class="n">redirect_to</span> <span class="n">request</span><span class="p">.</span><span class="nf">referrer</span> <span class="o">||</span> <span class="n">root_path</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Ahora si en nuestro controlador usaremos este concern y verificaremos todo lo demás:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">AuthenticationController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+  <span class="kp">include</span> <span class="no">HcaptchaConcern</span>
+
+  <span class="n">before_action</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="n">verify</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="p">},</span> <span class="ss">only: :create</span>
+
+  <span class="k">def</span> <span class="nf">new</span><span class="p">;</span> <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">create</span>
+    <span class="n">session_params</span> <span class="o">=</span> <span class="n">params</span><span class="p">.</span><span class="nf">permit</span><span class="p">(</span><span class="ss">:email</span><span class="p">,</span> <span class="ss">:password</span><span class="p">)</span>
+    <span class="vi">@user</span> <span class="o">=</span> <span class="no">User</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">email: </span><span class="n">session_params</span><span class="p">[</span><span class="ss">:email</span><span class="p">])</span>
+
+    <span class="n">flash</span><span class="p">[</span><span class="ss">:notice</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="vi">@user</span> <span class="o">&amp;&amp;</span> <span class="vi">@user</span><span class="p">.</span><span class="nf">authenticate</span><span class="p">(</span><span class="n">session_params</span><span class="p">[</span><span class="ss">:password</span><span class="p">])</span>
+                       <span class="s1">'Login is valid!'</span>
+                     <span class="k">else</span>
+                       <span class="s1">'Login is invalid!'</span>
+                     <span class="k">end</span>
+
+    <span class="n">redirect_to</span> <span class="n">root_path</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<hr />
+
+<h1 id="resultado">Resultado</h1>
+
+<p><img src="/assets/images/hcaptcha.gif" alt="" /></p>
+
+<hr />
+
+<p>Algunas cosas a tener en consideración:</p>
+<ul>
+  <li>Si vas a desarrollar en localhost te recomiendo ver <a href="https://docs.hcaptcha.com/#local-development">esto.</a></li>
+  <li>Puedes ver toda la documentación de hcaptcha <a href="https://docs.hcaptcha.com/">aquí</a></li>
+</ul>
+
+<p>En conclusión, la integración de hCaptcha en tu aplicación Ruby on Rails ofrece una solución efectiva y ética para proteger tus páginas web de bots y preservar la privacidad en línea de tus usuarios. A diferencia de otras opciones, como reCaptcha de Google, hCaptcha se centra en la seguridad sin comprometer la identidad de los usuarios ni recopilar datos intrusivos. Al elegir hCaptcha, no solo estás protegiendo tu sitio web de amenazas automatizadas, sino que también estás contribuyendo a un entorno en línea más seguro y respetuoso con la privacidad de tus visitantes. Esta integración puede mejorar significativamente la experiencia de usuario y garantizar un acceso más seguro a tus servicios en línea.</p>
+
+
+    <div class="flex justify-center mb-10">
+      
+      <a class="pr-2" href="/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html">&laquo; Web scraping with Ruby: Using Nokogiri.</a>
+      
+      
+    </div>
+
+    
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = "http://localhost:4000/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html";  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = "/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        
+      };
+
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+          s = d.createElement('script');
+        s.src = 'https://a-chacon-com.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</div>
+
+   <div class="">
+	<div class="text-black flex justify-center gap-x-5 pt-6 pb-8">   
+
+		<!-- FACEBOOK --!>
+		<a class="text-xl" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html" onclick="window.open(this.href, 'mywin',
+		'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+      <div class="pr-3 transition hover:scale-110 duration-300">
+        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook-f" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path></svg>
+      </div>
+    </a>
+
+		<!-- Twitter --!>
+		<a class="text-xl" href="https://twitter.com/intent/tweet?text=hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué.&url=http://localhost:4000/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter">
+	  	<div class="pr-3 transition hover:scale-110 duration-300">
+	  		<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
+			</div>
+    </a>
+
+		<!-- LINKEDIN --!>
+		<a class="text-xl" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/ruby/rubyonrails/hcaptcha/2023/09/10/using-hcaptcha-in-rails.html&title=&summary=&source=webjeda" onclick="window.open(this.href, 'mywin',
+		'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+			<div class="pr-3 transition hover:scale-110 duration-300">
+				<svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin" class="w-5 h-5 mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
+			</div>
+    </a>
+
+	</div>
+</div>
+
+</body>
+
+</html>
