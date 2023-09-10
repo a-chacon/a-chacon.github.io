@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "hCaptcha: Cómo integrarlo en tu aplicación Ruby on Rails y por qué."
+title: "hCaptcha: How to integrate it into your Ruby on Rails application and why."
 categories: [Ruby, RubyOnRails, hCaptcha]
-excerpt: hCaptcha se define como el mayor servicio de catpcha independiente. Dicen estar funcionando en un 15% de internet y que es posible competir con los gigantes tecnológicos enfocándose en la privacidad. Veremos como es de sencillo instalar este captcha en una aplicación Ruby on Rails.
+excerpt: hCaptcha defines itself as the largest independent catpcha service. They claim to be running on 15% of the internet and that it is possible to compete with the tech giants by focusing on privacy. Let's see how easy it is to install this captcha in a Ruby on Rails application.
 image: /assets/images/hcaptcha.jpg
 lang: en
 time: 8 min
@@ -10,49 +10,43 @@ author: Andrés
 comments: true
 ---
 
-La principal función de un captcha es impedir el paso de bots a nuestras paginas webs, pero esta tarea cada vez se ha ido haciendo mas dificil con el paso del tiempo. Los bots tanto buenos como malos se han vuelto mas sofisticados. Y es por esto que hasta el momento la mejor forma de distinguir un usuario real de una maquina, sin comprometer la identidad real de los usuarios, es mediante el uso de desafios.
+The main function of a captcha is to prevent the passage of bots to our web pages, but this task has become increasingly difficult over time. Both good and bad bots have become more sophisticated. And that is why so far the best way to distinguish a real user from a machine, without compromising the real identity of the users, is through the use of challenges.
 
->  Si queremos preservar nuestra privacidad en línea, necesitamos formas de verificar que una persona está interactuando con servicios en línea sin intentar vincular eso a la identidad real de nadie.
+>  If we want to preserve our privacy online, we need ways to verify that a person is interacting with online services without trying to link that to anyone's real identity.
 
-### Porque no usar reCaptcha de Google
+### Why not to use Google reCaptcha?
 
-Google es un negocio principalmente de publicidad. Su producto son 
-los datos de sus usuarios (sus “usados” diría Richard Stallman). Y cada 
-vez que se encuentran con un bot no es negocio para ellos, por lo que 
-nos podríamos preguntar: ¿Cuál es su real interés por detener bots? 
-probablemente, sea obtener más datos sobre usuarios. Y así fue como 
-dejaron obsoleta su solución de reCatpcha v2 y lanzaron reCaptcha v3, 
-que te recomiendan incrustar en cada página de tu sitio y que no requiere interacción del usuario.
+Google is primarily an advertising business. Their product is their users' data (their "used" as Richard Stallman would say). And every time they encounter a bot it's not business for them, so we could ask: What is their real interest in stopping bots? Probably, it's to get more data about users. And that's how they made their reCatpcha v2 solution obsolete and launched reCaptcha v3, which they recommend you embed on every page of your site and which requires no user interaction.
 
-¿Cómo logran que no haya interacción de los usuarios para definir si son bots o no? Datos y más datos vinculados a identidades reales que muy probablemente usen para más cosas que solo definir si se trata de un bot o no. Tal vez hayas notado que usando un navegador web limpio (sin cookies ni historial) te ha costado mucho más resolver un captcha de Google que cuando tienes una cuenta de Google abierta o has navegado por varios sitios ya. Puedes leer más sobre este tema [aquí.](https://www.fastcompany.com/90369697/googles-new-recaptcha-has-a-dark-side)
+How do you make it so that there is no user interaction to define if they are bots or not? Data and more data linked to real identities that they most likely use for more than just defining if it is a bot or not. Maybe you have noticed that using a clean web browser (without cookies or history) it has taken you much longer to solve a Google captcha than when you have a Google account open or have browsed several sites already. You can read more about this topic [here](https://www.fastcompany.com/90369697/googles-new-recaptcha-has-a-dark-side).
 
-> El enfoque de almacenar todo también perjudica la experiencia del usuario, viola la privacidad y acaba castigando a personas reales que no han optado por el ecosistema de Google, por ejemplo, utilizando Firefox.
+> The approach of storing everything also hurts the user experience, violates privacy and ends up punishing real people who have not opted for the Google ecosystem, for example, by using Firefox.
 
-# Comenzamos con nuestra aplicación.
+# We start with our application.
 
-**Esto es una aplicación básica que no contempla todos los casos de uso posibles. Solo es un happy path**
+**This is a basic application that does not contemplate all possible use cases. It is only a happy path**
 
-Crearemos un inicio de sesión donde integraremos hCatpcha. Veremos como integrarlo tanto en la vista de login, como la verificación que debemos realizar de lado del servidor del token generado por el captcha.
+We will create a login where we will integrate hCatpcha. We will see how to integrate it in the login view, as well as the server-side verification of the token generated by the captcha.
 
 ```bash
 rails new hcaptcha --css tailwind
 ```
 
-Creamos nuestro modelo `User`:
+Create our `User` model:
 
 ```bash
 rails g model user email:string password_digest:string
 ```
 
-Migramos con `rails db:migrate` y creamos nuestro controlador para hacer login: 
+Run migrations with `rails db:migrate` and then create our controller for make logins work: 
 
 ```bash
 rails g controller authentication new create show
 ```
 
-Agregaremos `has_secure_password` a nuestro modelo `User` y crearemos rápidamente un usuario nuevo entrando a la consola de rails con `rails c` y luego `User.create(email: "a@test.com", password: "Test12345")`.
+We will add `has_secure_password` to our `User` model and quickly create a new user by logging into the rails console with `rails c` and then `User.create(email: "a@test.com", password: "Test12345")`.
 
-Y por último haremos que nuestro archivo `routes.rb` se vea de la siguiente manera:
+And finally we will make our `routes.rb` file look like this:
 
 ```ruby
 Rails.application.routes.draw do
@@ -61,21 +55,21 @@ Rails.application.routes.draw do
 end
 ```
 
-## Cuenta en hCaptcha
+## hCaptcha's account
 
-Debes create una cuenta [aquí](https://dashboard.hcaptcha.com/signup) y obtener un `site_key` y un `secret_key`.
+You must create an account [here](https://dashboard.hcaptcha.com/signup) and get a `site_key` and a `secret_key`.
 
 ![](/assets/images/hcaptcha_sitekey.png)
 
-Copiamos el sitekey y lo agregamos a nuestro `crendetials.yml` con el nombre de `hcatpcha_site_key`.
+We copy the sitekey and add it to our `crendetials.yml` with the name `hcatpcha_site_key`.
 
 ![](/assets/images/hcaptcha_secret.png)
 
-Copiamos el secret key y lo agregamos a nuestro `crendetials.yml` con el nombre de `hcatpcha_secret_key`.
+We copy the secret key and add it to our `crendetials.yml` with the name `hcatpcha_secret_key`.
 
-# Vistas
+# Views
 
-Crearemos un formulario simple donde pediremos el email y la contraseña. Adentro del mismo form agregaremos las líneas necesarias para que el captcha se despliegue y también agregaremos una forma simple de desplegar mensajes flash. Entonces nuestra vista `app/views/authentication/new.html.erb` se estaría viendo de la siguiente forma:
+We will create a simple form where we will ask for the email and password. Inside the same form we will add the necessary lines for the captcha to be displayed and we will also add a simple way to display flash messages. Then our `app/views/authentication/new.html.erb` view would look like this:
 
 ```erb
 <div class="flex min-h-full flex-col justify-center px-6 py-12">
@@ -104,11 +98,11 @@ Crearemos un formulario simple donde pediremos el email y la contraseña. Adentr
 </div>
 ```
 
-Notar que el `site_key` lo obtenemos de forma dinámica desde nuestro archivo `credentials.yml`.
+Note that the `site_key` is obtained dynamically from our `credentials.yml` file.
 
-# Comprobar los datos del formulario.
+# Check the data obtained in the form.
 
-Antes de trabajar en nuestro controlador debemos saber que necesitaremos de un método para verificar la respuesta de nuestro captcha. Para esto crearemos un concern que se llamara `HcatpchaConcern` y tendrá el siguiente código:
+Before working on our controller we must know that we will need a method to verify the response of our captcha. For this we will create a concern that will be called `HcatpchaConcern` and will have the following code:
 
 ```ruby
 require 'net/http'
@@ -131,7 +125,7 @@ module HcaptchaConcern
 end
 ```
 
-Ahora si en nuestro controlador usaremos este concern y verificaremos todo lo demás:
+Now if in our controller we will use this concern and verify everything else:
 
 ```ruby
 class AuthenticationController < ApplicationController
@@ -157,14 +151,14 @@ end
 ```
 ---
 
-# Resultado
+# Results
 
 ![](/assets/images/hcaptcha.gif)
 
 ---
 
-Algunas cosas a tener en consideración:
-- Si vas a desarrollar en localhost te recomiendo ver [esto.](https://docs.hcaptcha.com/#local-development)
-- Puedes ver toda la documentación de hcaptcha [aquí](https://docs.hcaptcha.com/)
+Some things to take into consideration:
+- If you are going to develop on localhost I recommend you see [this.](https://docs.hcaptcha.com/#local-development).
+- You can see all the hcaptcha documentation [here](https://docs.hcaptcha.com/)
 
-En conclusión, la integración de hCaptcha en tu aplicación Ruby on Rails ofrece una solución efectiva y ética para proteger tus páginas web de bots y preservar la privacidad en línea de tus usuarios. A diferencia de otras opciones, como reCaptcha de Google, hCaptcha se centra en la seguridad sin comprometer la identidad de los usuarios ni recopilar datos intrusivos. Al elegir hCaptcha, no solo estás protegiendo tu sitio web de amenazas automatizadas, sino que también estás contribuyendo a un entorno en línea más seguro y respetuoso con la privacidad de tus visitantes. Esta integración puede mejorar significativamente la experiencia de usuario y garantizar un acceso más seguro a tus servicios en línea.
+In conclusion, integrating hCaptcha into your Ruby on Rails application offers an effective and ethical solution to protect your web pages from bots and preserve the online privacy of your users. Unlike other options, such as Google's reCaptcha, hCaptcha focuses on security without compromising users' identities or collecting intrusive data. By choosing hCaptcha, you are not only protecting your website from automated threats, but you are also contributing to a safer and more privacy-friendly online environment for your visitors. This integration can significantly improve the user experience and ensure safer access to your online services.
