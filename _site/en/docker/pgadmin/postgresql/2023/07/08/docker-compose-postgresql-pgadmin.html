@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>docker-compose.yml for raise up PostgreSQL and pgAdmin.</title>
-  <meta name="description" content="PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools with docker compose.">
+  <meta name="description" content="PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools using docker compose.">
   <meta name=”robots” content="index, follow">
   <meta http-equiv="Content-Language" content="en">
 <link rel="alternate" hreflang="es" href="https://a-chacon.com/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html"/>
@@ -22,8 +22,8 @@
   <meta property="og:image" content="https://a-chacon.com/assets/images/postgresql.jpg" />
   <meta property="twitter:image" content="https://a-chacon.com/assets/images/postgresql.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools with docker compose." />
-  <meta property="twitter:description" content="PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools with docker compose." />
+  <meta property="og:description" content="PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools using docker compose." />
+  <meta property="twitter:description" content="PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools using docker compose." />
   <!-- Style tags -->
   <link rel="stylesheet" href="/en/assets/css/application.css">
   <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
@@ -69,10 +69,10 @@
       
     </div>
     <img src="/assets/images/postgresql.jpg" alt="docker-compose.yml for raise up PostgreSQL and pgAdmin.">
-    <strong>PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools with docker compose.</strong>
+    <strong>PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools using docker compose.</strong>
     <p>Translated with www.DeepL.com/Translator</p>
 
-<p>The <a href="https://www.postgresql.org/">PostgreSQL</a> database is an open source object-relational database system. PostgreSQL has a graphical user interface (GUI) administration control for database administration called <a href="https://www.pgadmin.org/">pgAdmin</a>. pgAdmin is a design and management interface for the PostgreSQL database. Simple operations, datasheets and databases can be performed with pgAdmin by interacting with the local file system of the database allowed by the user.</p>
+<p>The <a href="https://www.postgresql.org/">PostgreSQL</a> database is an open source <strong>object-relational database</strong> system. PostgreSQL has a graphical user interface (GUI) administration control for database administration called <a href="https://www.pgadmin.org/">pgAdmin</a>. pgAdmin is a design and management interface for the PostgreSQL database. Simple operations, datasheets and databases can be performed with pgAdmin by interacting with the local file system of the database allowed by the user.</p>
 
 <p><a href="https://www.docker.com">Docker</a> will be the tool that will help us to run these two services easily and quickly, with data persistence. This way we will have an environment ready in a few minutes to continue working.</p>
 
@@ -115,8 +115,8 @@
 
 </code></pre></div></div>
 <ul>
-  <li><a href="https://hub.docker.com/_/postgres/">Link</a> to the full documentation of the image used for PostgreSQL.</li>
-  <li><a href="https://hub.docker.com/r/dpage/pgadmin4/">Link</a> to the full documentation of the image used for pgAdmin.</li>
+  <li><a href="https://hub.docker.com/_/postgres/">Link</a> to the <strong>full documentation</strong> of the image used for PostgreSQL.</li>
+  <li><a href="https://hub.docker.com/r/dpage/pgadmin4/">Link</a> to the <strong>full documentation</strong> of the image used for pgAdmin.</li>
 </ul>
 
 <p>Save the changes and then raise the containers with the following command:</p>
@@ -124,6 +124,8 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up
 </code></pre></div></div>
 <p>If you want to leave the containers running in the background don’t forget the <code class="language-plaintext highlighter-rouge">-d</code> flag. You will be able to access pgAdmin in your browser at <code class="language-plaintext highlighter-rouge">http://localhost:5050</code>.</p>
+
+<p><img src="/assets/images/pgadmin.png" alt="main view of pgAdmin" /></p>
 
 <p>And that’s it. <strong>Important</strong>: You can use whatever credentials you want as long as it is a local development environment and do not pretend to use this definition of docker compose in a productive environment.</p>
 

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>docker-compose.yml para levantar PostgreSQL y pgAdmin.</title>
-  <meta name="description" content="PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma facíl y rápida con docker compose.">
+  <meta name="description" content="PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma fácil y rápida utilizando docker compose.">
   <meta name=”robots” content="index, follow">
   <meta http-equiv="Content-Language" content="es">
 <link rel="alternate" hreflang="es" href="https://a-chacon.com/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html"/>
@@ -22,8 +22,8 @@
   <meta property="og:image" content="https://a-chacon.com/assets/images/postgresql.jpg" />
   <meta property="twitter:image" content="https://a-chacon.com/assets/images/postgresql.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:description" content="PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma facíl y rápida con docker compose." />
-  <meta property="twitter:description" content="PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma facíl y rápida con docker compose." />
+  <meta property="og:description" content="PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma fácil y rápida utilizando docker compose." />
+  <meta property="twitter:description" content="PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma fácil y rápida utilizando docker compose." />
   <!-- Style tags -->
   <link rel="stylesheet" href="/assets/css/application.css">
   <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
@@ -69,10 +69,10 @@
       
     </div>
     <img src="/assets/images/postgresql.jpg" alt="docker-compose.yml para levantar PostgreSQL y pgAdmin.">
-    <strong>PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma facíl y rápida con docker compose.</strong>
-    <p>La base de datos <a href="https://www.postgresql.org/">PostgreSQL</a> es un sistema de base de datos relacional de objetos y de código abierto. PostgreSQL tiene un control de administración de interfaz gráfica de usuario (GUI) para la administración de la base de datos llamada <a href="https://www.pgadmin.org/">pgAdmin</a>. pgAdmin es una interfaz de diseño y gestión para la base de datos PostgreSQL. Se pueden realizar operaciones, hojas de datos y bases de datos simples con pgAdmin interactuando con el sistema de archivos local de la base de datos permitido por el usuario.</p>
+    <strong>PostgreSQL y pgAdmin es un stack común de usar al momento de desarrollar un proyecto web. En este artículo veremos como levantar estas dos herramientas de forma fácil y rápida utilizando docker compose.</strong>
+    <p>La base de datos <a href="https://www.postgresql.org/">PostgreSQL</a> es un sistema de <strong>base de datos relacional</strong> de objetos y de código abierto. PostgreSQL tiene un control de administración de interfaz gráfica de usuario (GUI) para la administración de la base de datos llamada <a href="https://www.pgadmin.org/">pgAdmin</a>. <strong>pgAdmin</strong> es una interfaz de diseño y gestión para la base de datos PostgreSQL. Se pueden realizar operaciones, hojas de datos y bases de datos simples con pgAdmin interactuando con el sistema de archivos local de la base de datos permitido por el usuario.</p>
 
-<p><a href="https://www.docker.com">Docker</a> será la herramienta que nos ayudará a correr estos dos servicios de forma fácil y rápida, con persistencia de datos. Así tendremos un ambiente listo en unos pocos minutos para seguir trabajando.</p>
+<p><a href="https://www.docker.com">Docker</a> será la herramienta que nos ayudará a levantar estos dos servicios de forma fácil y rápida, con persistencia de datos. Así tendremos un ambiente listo en unos pocos minutos para seguir trabajando.</p>
 
 <h2 id="docker-compose-up-postgresql-y-pgadmin">Docker compose up: PostgreSQL y pgAdmin</h2>
 
@@ -113,8 +113,8 @@
 
 </code></pre></div></div>
 <ul>
-  <li><a href="https://hub.docker.com/_/postgres/">Link</a> a la documentación completa de la imagen usada para PostgreSQL.</li>
-  <li><a href="https://hub.docker.com/r/dpage/pgadmin4/">Link</a> a la documentación completa de la imagen usada para pgAdmin.</li>
+  <li><a href="https://hub.docker.com/_/postgres/">Link</a> a la <strong>documentación completa</strong> de la imagen usada para PostgreSQL.</li>
+  <li><a href="https://hub.docker.com/r/dpage/pgadmin4/">Link</a> a la <strong>documentación completa</strong> de la imagen usada para pgAdmin.</li>
 </ul>
 
 <p>Guarda los cambios y luego levanta los contenedores con el siguiente comando:</p>
@@ -123,6 +123,8 @@
 </code></pre></div></div>
 
 <p>Si quieres dejar corriendo los contenedores en background no olvides la flag <code class="language-plaintext highlighter-rouge">-d</code>. Podrás ingresar a pgAdmin en tu navegador en la dirección <code class="language-plaintext highlighter-rouge">http://localhost:5050</code></p>
+
+<p><img src="/assets/images/pgadmin.png" alt="página principal de pgAdmin" /></p>
 
 <p>Y eso es todo. <strong>Importante</strong>: Puedes usar las credenciales que quieras siempre que sea un ambiente de desarrollo local y no pretender usar esta definición de docker compose en un ambiente productivo.</p>
 

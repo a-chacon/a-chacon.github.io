@@ -2,7 +2,7 @@
 layout: post
 title: "docker-compose.yml for raise up PostgreSQL and pgAdmin."
 categories: [Docker, pgAdmin, PostgreSQL]
-excerpt: PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools with docker compose.
+excerpt: PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools using docker compose.
 image: /assets/images/postgresql.jpg
 lang: en
 time: 5 min
@@ -12,7 +12,7 @@ comments: true
 
 Translated with www.DeepL.com/Translator
 
-The [PostgreSQL](https://www.postgresql.org/) database is an open source object-relational database system. PostgreSQL has a graphical user interface (GUI) administration control for database administration called [pgAdmin](https://www.pgadmin.org/). pgAdmin is a design and management interface for the PostgreSQL database. Simple operations, datasheets and databases can be performed with pgAdmin by interacting with the local file system of the database allowed by the user.
+The [PostgreSQL](https://www.postgresql.org/) database is an open source **object-relational database** system. PostgreSQL has a graphical user interface (GUI) administration control for database administration called [pgAdmin](https://www.pgadmin.org/). pgAdmin is a design and management interface for the PostgreSQL database. Simple operations, datasheets and databases can be performed with pgAdmin by interacting with the local file system of the database allowed by the user.
 
 [Docker](https://www.docker.com) will be the tool that will help us to run these two services easily and quickly, with data persistence. This way we will have an environment ready in a few minutes to continue working.
 
@@ -56,8 +56,8 @@ volumes:
   pgadmin-data:
 
 ```
-- [Link](https://hub.docker.com/_/postgres/) to the full documentation of the image used for PostgreSQL.
-- [Link](https://hub.docker.com/r/dpage/pgadmin4/) to the full documentation of the image used for pgAdmin.
+- [Link](https://hub.docker.com/_/postgres/) to the **full documentation** of the image used for PostgreSQL.
+- [Link](https://hub.docker.com/r/dpage/pgadmin4/) to the **full documentation** of the image used for pgAdmin.
 
 Save the changes and then raise the containers with the following command:
 
@@ -65,5 +65,7 @@ Save the changes and then raise the containers with the following command:
 docker compose up
 ```
 If you want to leave the containers running in the background don't forget the `-d` flag. You will be able to access pgAdmin in your browser at `http://localhost:5050`.
+
+![main view of pgAdmin](/assets/images/pgadmin.png)
 
 And that's it. **Important**: You can use whatever credentials you want as long as it is a local development environment and do not pretend to use this definition of docker compose in a productive environment.
