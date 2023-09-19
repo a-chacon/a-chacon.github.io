@@ -37,4 +37,4 @@ como consecuencia la huella de carbono de tu sitio web.
 
 ---
 
-Estos no son los únicos servicios que realizan esta misma tarea y puede que haya otros más avanzados. Pero lo importante es tomar conciencia de que nuestra informática también genera un impacto negativo sobre el medioambiente del cual debemos que hacernos cargo.
+Estos no son los únicos servicios que realizan esta misma tarea y puede que haya otros más avanzados. Pero lo importante es tomar conciencia de que nuestra informática también genera un impacto negativo sobre el medioambiente del cual debemos hacernos cargo.
