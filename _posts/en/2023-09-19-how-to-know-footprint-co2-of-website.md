@@ -4,7 +4,7 @@ title: "Do you know how much CO2 your website generates?"
 categories: [web, environment, co2]
 excerpt: "Nowadays, anyone who wants to be known by the world creates a website concerned that the costs are not high, the communication is clear, the design is beautiful and it never stops working. But I think there is another aspect to take into consideration equally or more important: the carbon footprint." 
 image: /assets/images/huella.jpeg
-lang: es
+lang: en
 time: 5 min
 author: Andrés
 comments: true
