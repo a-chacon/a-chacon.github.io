@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Privacidad Digital: ¿Estás Dispuesto a Dejar que Te Observen?"
-categories: [web, privacy, privacidad]
+categories: [Web, Privacy]
 excerpt: El derecho a tener privacidad se relaciona directamente con el derecho a la libertad de expresión, a la igualdad y  a la no discriminación. Si perdemos el primero entonces es muy probable que los siguientes tambien se vean vulnerados. Para evitar esto debemos hacernos conciente de que datos entregamos (dificíl saber), con quienes serán compartidos, para que se utilizarán y como cuidarnos al navegar.
 image: /assets/images/privacy.webp
 lang: es

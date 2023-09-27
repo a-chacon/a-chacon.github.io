@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Web scraping con Ruby: Usando Nokogiri."
-categories: [Ruby, Web scraping, Nokogiri]
+categories: [Ruby, Scraping, Nokogiri]
 excerpt: Ruby tiene una gema muy buena para hacer web scraping llamada Nokogiri. Entre sus funciones tiene la posibilidad de leer y consultar sobre documentos HTML con selectores CCS. En este caso estaré documentando los pasos para realizar un web scraping de ejemplo usando esta gema.
 image: /assets/images/nokogiri.png
 lang: es

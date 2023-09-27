@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Creando un chatbot con GPT y Rails."
-categories: [Rails, ChatGPT, Chat]
+categories: [Rails, ChatGPT]
 excerpt: Veremos como crear un chat customizado y con persistencia con Ruby On Rails y ChatGPT. Luego de estar interactuando en un par de aplicaciones con la API de OpenAi quiero mostrar como se podria hacer un simple chat que podria escalar a lo que tu quieras usando Ruby On Rails.
 image: /assets/images/chatpt.webp
 lang: es

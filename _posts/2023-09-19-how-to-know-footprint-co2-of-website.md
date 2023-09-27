@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "¿Sabes cuánto CO2 genera tu sitio web?"
-categories: [web, environment, co2]
+categories: [Web, environment, co2]
 excerpt: "En la actualidad, cualquiera que quiera ser conocido por el mundo crea una página web preocupado de que los costos no sean altos, la comunicación clara, el diseño bonito y nunca deje de funcionar. Pero creo que hay otro aspecto a tener en consideración igual o más importante: La huella de carbono." 
 image: /assets/images/huella.jpeg
 lang: es

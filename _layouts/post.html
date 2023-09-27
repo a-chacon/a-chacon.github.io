@@ -12,7 +12,7 @@ layout: default
     </div>
     <div class="flex justify-center">
       {% for tag in page.categories %}
-      <span class="text-sm px-2">#{{ tag }}</span>
+      <span class="text-sm px-2"><a href="/tags#{{tag}}">#{{ tag }}</a></span>
       {% endfor %}
     </div>
     <img src="{{page.image}}" alt="{{page.title}}">

@@ -39,6 +39,14 @@
     
         
             
+                <url>
+                    <loc>https://a-chacon.com/en/tags</loc>
+                </url>
+            
+        
+    
+        
+            
         
     
 
@@ -49,19 +57,19 @@
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/web/privacy/privacidad/2023/09/14/why-privacy-matters.html</loc>
+                <loc>https://a-chacon.com/en/web/privacy/2023/09/14/why-privacy-matters.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/ruby/rubyonrails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
+                <loc>https://a-chacon.com/en/ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
+                <loc>https://a-chacon.com/en/ruby/scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html</loc>
+                <loc>https://a-chacon.com/en/rails/chatgpt/2023/08/14/chat-rails-chatgpt.html</loc>
             </url>
         
             <url>
@@ -69,11 +77,11 @@
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
+                <loc>https://a-chacon.com/en/docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
+                <loc>https://a-chacon.com/en/vim/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
             </url>
         
             <url>
@@ -121,6 +129,14 @@
     
         
             
+                <url>
+                    <loc>https://a-chacon.com/tags</loc>
+                </url>
+            
+        
+    
+        
+            
         
     
 
@@ -131,19 +147,19 @@
             </url>
         
             <url>
-                <loc>https://a-chacon.com/web/privacy/privacidad/2023/09/14/why-privacy-matters.html</loc>
+                <loc>https://a-chacon.com/web/privacy/2023/09/14/why-privacy-matters.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/ruby/rubyonrails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
+                <loc>https://a-chacon.com/ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/ruby/web%20scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
+                <loc>https://a-chacon.com/ruby/scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/rails/chatgpt/chat/2023/08/14/chat-rails-chatgpt.html</loc>
+                <loc>https://a-chacon.com/rails/chatgpt/2023/08/14/chat-rails-chatgpt.html</loc>
             </url>
         
             <url>
@@ -151,11 +167,11 @@
             </url>
         
             <url>
-                <loc>https://a-chacon.com/docker/mariadb/phpmyadmin/mysql/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
+                <loc>https://a-chacon.com/docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/vim/code/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
+                <loc>https://a-chacon.com/vim/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
             </url>
         
             <url>

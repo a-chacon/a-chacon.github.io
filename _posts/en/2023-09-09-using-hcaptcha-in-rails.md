@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "hCaptcha: How to integrate it into your Ruby on Rails application and why."
-categories: [Ruby, RubyOnRails, hCaptcha]
+categories: [Ruby, Rails, hCaptcha]
 excerpt: hCaptcha defines itself as the largest independent catpcha service. They claim to be running on 15% of the internet and that it is possible to compete with the tech giants by focusing on privacy. Let's see how easy it is to install this captcha in a Ruby on Rails application.
 image: /assets/images/hcaptcha.jpg
 lang: en

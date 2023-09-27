@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Digital Privacy: Are You Willing to Let Them Watch You?"
-categories: [web, privacy, privacidad]
+categories: [Web, Privacy]
 excerpt: The right to privacy is directly related to the right to freedom of expression, equality and non-discrimination. If we lose the first one then it is very likely that the following will also be violated. To avoid this we must be aware of what data we give out (difficult to know), with whom it will be shared, what it will be used for and how to take care of ourselves when browsing.
 image: /assets/images/privacy.webp
 lang: en

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Web scraping with Ruby: Using Nokogiri."
-categories: [Ruby, Web scraping, Nokogiri]
+categories: [Ruby, Scraping, Nokogiri]
 excerpt: Ruby has a very good gem for web scraping called Nokogiri. Among its functions it has the ability to read and query HTML documents with CCS selectors. In this case I will be documenting the steps to perform an example web scraping using this gem.
 image: /assets/images/nokogiri.png
 lang: en
