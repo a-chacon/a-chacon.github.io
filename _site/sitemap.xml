@@ -6,7 +6,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/en/404.html</loc>
+                    <loc>http://localhost:4000/en/404.html</loc>
                 </url>
             
         
@@ -14,7 +14,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/en/blog</loc>
+                    <loc>http://localhost:4000/en/blog</loc>
                 </url>
             
         
@@ -22,7 +22,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/en/</loc>
+                    <loc>http://localhost:4000/en/</loc>
                 </url>
             
         
@@ -30,7 +30,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/en/projects</loc>
+                    <loc>http://localhost:4000/en/projects</loc>
                 </url>
             
         
@@ -40,7 +40,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/en/tags</loc>
+                    <loc>http://localhost:4000/en/tags</loc>
                 </url>
             
         
@@ -53,39 +53,39 @@
     
         
             <url>
-                <loc>https://a-chacon.com/en/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html</loc>
+                <loc>http://localhost:4000/en/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/web/privacy/2023/09/14/why-privacy-matters.html</loc>
+                <loc>http://localhost:4000/en/web/privacy/2023/09/14/why-privacy-matters.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
+                <loc>http://localhost:4000/en/ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/ruby/scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
+                <loc>http://localhost:4000/en/ruby/scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/rails/chatgpt/2023/08/14/chat-rails-chatgpt.html</loc>
+                <loc>http://localhost:4000/en/rails/chatgpt/2023/08/14/chat-rails-chatgpt.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
+                <loc>http://localhost:4000/en/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
+                <loc>http://localhost:4000/en/docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/vim/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
+                <loc>http://localhost:4000/en/vim/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/en/rails/ruby/minitest/2023/06/08/minitest-cc.html</loc>
+                <loc>http://localhost:4000/en/rails/ruby/minitest/2023/06/08/minitest-cc.html</loc>
             </url>
         
     
@@ -96,7 +96,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/404.html</loc>
+                    <loc>http://localhost:4000/404.html</loc>
                 </url>
             
         
@@ -104,7 +104,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/blog</loc>
+                    <loc>http://localhost:4000/blog</loc>
                 </url>
             
         
@@ -112,7 +112,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/</loc>
+                    <loc>http://localhost:4000/</loc>
                 </url>
             
         
@@ -120,7 +120,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/projects</loc>
+                    <loc>http://localhost:4000/projects</loc>
                 </url>
             
         
@@ -130,7 +130,7 @@
         
             
                 <url>
-                    <loc>https://a-chacon.com/tags</loc>
+                    <loc>http://localhost:4000/tags</loc>
                 </url>
             
         
@@ -143,39 +143,39 @@
     
         
             <url>
-                <loc>https://a-chacon.com/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html</loc>
+                <loc>http://localhost:4000/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/web/privacy/2023/09/14/why-privacy-matters.html</loc>
+                <loc>http://localhost:4000/web/privacy/2023/09/14/why-privacy-matters.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
+                <loc>http://localhost:4000/ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/ruby/scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
+                <loc>http://localhost:4000/ruby/scraping/nokogiri/2023/09/01/using-nokogiri.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/rails/chatgpt/2023/08/14/chat-rails-chatgpt.html</loc>
+                <loc>http://localhost:4000/rails/chatgpt/2023/08/14/chat-rails-chatgpt.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
+                <loc>http://localhost:4000/docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
+                <loc>http://localhost:4000/docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/vim/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
+                <loc>http://localhost:4000/vim/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html</loc>
             </url>
         
             <url>
-                <loc>https://a-chacon.com/rails/ruby/minitest/2023/06/08/minitest-cc.html</loc>
+                <loc>http://localhost:4000/rails/ruby/minitest/2023/06/08/minitest-cc.html</loc>
             </url>
         
     
