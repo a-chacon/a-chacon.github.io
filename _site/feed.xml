@@ -1,4 +1,129 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-27T18:21:57+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="es"><title type="html">¿Sabes cuánto CO2 genera tu sitio web?</title><link href="http://localhost:4000/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html" rel="alternate" type="text/html" title="¿Sabes cuánto CO2 genera tu sitio web?" /><published>2023-09-19T00:00:00+02:00</published><updated>2023-09-19T00:00:00+02:00</updated><id>http://localhost:4000/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website</id><content type="html" xml:base="http://localhost:4000/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html"><![CDATA[<p>Un sitio web siempre se almacena en un servidor, muy probablemente en lo que llamamos la “nube”, que no es más que un conjunto de computadoras que consumen una gran cantidad de energía, ya sea para su funcionamiento o para su refrigeración (sí, la electricidad que fluye a través de cada microchip genera calor). Entonces, dado que todas estas computadoras que mantienen en funcionamiento la “nube” consumen una cantidad significativa de energía eléctrica, es importante preguntarse: ¿de dónde proviene la mayor parte de esa energía? En su mayoría, proviene de fuentes de energía que utilizan combustibles fósiles, lo que tiene un impacto negativo en el medio ambiente.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-10-02T15:38:54+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">a-chacon</title><entry xml:lang="es"><title type="html">Crea Tu Sitio Web Gratis: Jekyll y GitHub Pages te Lo Hacen Posible</title><link href="http://localhost:4000/web/jekyll/2023/10/02/make-your-wersite-with-jekyll-githubpages.html" rel="alternate" type="text/html" title="Crea Tu Sitio Web Gratis: Jekyll y GitHub Pages te Lo Hacen Posible" /><published>2023-10-02T00:00:00+02:00</published><updated>2023-10-02T00:00:00+02:00</updated><id>http://localhost:4000/web/jekyll/2023/10/02/make-your-wersite-with-jekyll-githubpages</id><content type="html" xml:base="http://localhost:4000/web/jekyll/2023/10/02/make-your-wersite-with-jekyll-githubpages.html"><![CDATA[<p><a href="https://jekyllrb.com/">Jekyll</a> es un motor de generación de sitios web estáticos y <a href="https://pages.github.com/">GitHub Pages</a> es un servicio de alojamiento gratuito proporcionado por GitHub. Combinando estas dos herramientas, puedes crear fácilmente un sitio web estático para mostrar tus proyectos, blogs o cualquier otro contenido que desees compartir.</p>
+
+<h2 id="jekyll">Jekyll</h2>
+
+<h3 id="instalando-jekyll">Instalando Jekyll</h3>
+
+<p>Para instalar jekyll necesitas Ruby en tu computadora. Puedes verificar si Ruby está instalado ejecutando:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">--version</span>
+</code></pre></div></div>
+<p>Si no tienes Ruby instalado, sigue las instrucciones en <a href="https://www.ruby-lang.org/en/documentation/installation/">ruby-lang.org</a> para instalarlo.</p>
+
+<p>Luego instala jekyll:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem install jekyll
+</code></pre></div></div>
+
+<h3 id="nuevo-proyecto-con-jekyll">Nuevo proyecto con jekyll</h3>
+
+<p>Crearemos nuestro proyecto con Jekyll usando el siguiente comando:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new mysite
+</code></pre></div></div>
+
+<h3 id="agregaremos-un-poco-de-contenido">Agregaremos un poco de contenido</h3>
+
+<p>Jekyll es un generador de sitios web estáticos que convierte contenido escrito en <strong>Markdown</strong> o <strong>HTML</strong> en páginas web estáticas precompiladas. Para entender  un poco mas como funciona agregaremos algo de contenido a nuestra pagina <code class="language-plaintext highlighter-rouge">index.markdown</code> que se encuentra en la raiz de nuestro proyecto. Abre el archivo con tu editor favorito y agrega el siguiente contenido:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
+<span class="nn">---</span>
+
+<span class="gh"># This is mysite</span>
+
+I will show you amazings things.
+
+<span class="gu">## Hello world</span>
+
+This is an aweson jekyll site created by me.
+
+<span class="sb">`def main; end`</span>
+
+A wise man says:
+<span class="gt">
+&gt;&gt; To be, or not to be</span><span class="sb">
+
+
+</span></code></pre></div></div>
+
+<h3 id="probamos-nuestra-página-en-local">Probamos nuestra página en local</h3>
+
+<p>Ejecutamos el servidor local con el siguiente comando :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle exec jekyll serve
+</code></pre></div></div>
+
+<p>Luego, abre tu navegador web e ingresa a <code class="language-plaintext highlighter-rouge">http://localhost:4000</code> para ver tu sitio web en desarrollo. Te podrás dar cuenta que nuestro markdown termina convertido en html. Para produndizar mas sobre como funciona jekyll y todo lo que puedes lograr te recomiendo que leas la documentación.</p>
+
+<h2 id="github">Github</h2>
+
+<p>Si es que ya tienes cuenta en GitHub entonces puedes usar esa y si no te creas una nueva.</p>
+
+<h3 id="nuevo-repositorio">Nuevo repositorio</h3>
+
+<p><img src="/assets/images/newrepogithub.png" alt="" /></p>
+
+<p>Creamos un <strong>repositorio en blanco</strong> para nuestro proyecto. El nombre del repositorio debe ser el nombre de nuestro usuario en github si que es queremos que nuestro sitio quede en la raiz del dominio que nos entrega github. Ejemplo: Si tu username es <code class="language-plaintext highlighter-rouge">luisito123</code> entonces tu respositorio debe llamarse <code class="language-plaintext highlighter-rouge">luisito123.github.io</code>. Y el repositorio debe ser <strong>público</strong>.</p>
+
+<p><img src="/assets/images/reponame.png" alt="" /></p>
+
+<h2 id="agregamos-una-clave-ssh">Agregamos una clave ssh</h2>
+
+<p>Para lograr subir cambios a nuestro repositorio debemos agregar nuestra clave ssh en GitHub. Para esto puede mirarte esta <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">guía</a>.</p>
+
+<h2 id="subimos-nuestros-cambios">Subimos nuestros cambios</h2>
+
+<h3 id="por-primera-vez">Por primera vez</h3>
+
+<p>Despues de crear nuestro proyecto debemos inicializar el repositorio git y subir nuestros cambios ejecutando los siguientes comandos en la raíz de nuestro proyecto y tomando en cuenta que la url <strong>debe ser la de tu repositorio</strong>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/{YOUR_ACCOUNT}/{YOUR_ACCOUNT}.github.io.git
+git push -u origin main
+</code></pre></div></div>
+
+<h3 id="despues">Despues</h3>
+
+<p>Para una siguiente ves solo tendras que agregar tus cambios, realizar el commit y hacer el push:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add .
+git commit -m "A message here!"
+git push origin main
+</code></pre></div></div>
+
+<h2 id="configuramos-el-despliegue">Configuramos el despliegue</h2>
+
+<p>Para lograr que nuestra pagina se publique debemos configurar nuestro repositorio con github pages.</p>
+
+<p>Seleccionamos la pestaña configuraciones de nuestro repositorio.</p>
+
+<p><img src="/assets/images/githubsettings.png" alt="" /></p>
+
+<p>Luego seleccionamos Pages.</p>
+
+<p><img src="/assets/images/githubpages.png" alt="" /></p>
+
+<p>Y finalmente en el apartado de <code class="language-plaintext highlighter-rouge">branch</code> seleccionamos nuestra rama <code class="language-plaintext highlighter-rouge">main</code> y le damos a guardar.</p>
+
+<p><img src="/assets/images/githubbranch.png" alt="" /></p>
+
+<p>Con esto deberia empezar a correr el primer pipeline que va a hacer un despliegue del codigo que esta actualmente en el respositorio. Despues de uno o dos minutos podrás ver tu sitio en la url del mismo nombre de tu respositorio, en mi caso: <code class="language-plaintext highlighter-rouge">m̀ysiteduck.github.io</code>.</p>
+
+<h1 id="últimos-detalles">Últimos detalles</h1>
+
+<p>Como podemos ver, hacer tu sitio con Jekyll y desplegarlo en GitHub pages puede ser una buena opción sobre todo si es que ya sabes algo de markdown y versionamiento con git. Este mismo sitio tambien funciona de la misma forma.</p>
+
+<p>Algunos tips que te pueden interesar si seguiras trabajando con Jekyll y GitHub Pages:</p>
+
+<ul>
+  <li><a href="https://docs.github.com/es/pages/configuring-a-custom-domain-for-your-github-pages-site">Cómo configurar tu dominio en github pages</a></li>
+  <li><a href="https://jekyll.github.io/jekyll-admin/">Usar jekyll-admin para editar tus paginas mediante una UI.</a></li>
+  <li><a href="https://jekyllrb.com/docs/themes/">Instalar un tema en jekyll.</a></li>
+</ul>]]></content><author><name>Andrés</name></author><category term="Web" /><category term="Jekyll" /><summary type="html"><![CDATA[Descubre cómo montar tu propio sitio web sin costo alguno utilizando Jekyll y GitHub Pages.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/jekyll.png" /><media:content medium="image" url="http://localhost:4000/assets/images/jekyll.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="es"><title type="html">¿Sabes cuánto CO2 genera tu sitio web?</title><link href="http://localhost:4000/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html" rel="alternate" type="text/html" title="¿Sabes cuánto CO2 genera tu sitio web?" /><published>2023-09-19T00:00:00+02:00</published><updated>2023-09-19T00:00:00+02:00</updated><id>http://localhost:4000/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website</id><content type="html" xml:base="http://localhost:4000/web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html"><![CDATA[<p>Un sitio web siempre se almacena en un servidor, muy probablemente en lo que llamamos la “nube”, que no es más que un conjunto de computadoras que consumen una gran cantidad de energía, ya sea para su funcionamiento o para su refrigeración (sí, la electricidad que fluye a través de cada microchip genera calor). Entonces, dado que todas estas computadoras que mantienen en funcionamiento la “nube” consumen una cantidad significativa de energía eléctrica, es importante preguntarse: ¿de dónde proviene la mayor parte de esa energía? En su mayoría, proviene de fuentes de energía que utilizan combustibles fósiles, lo que tiene un impacto negativo en el medio ambiente.</p>
 
 <blockquote>
   <p>Un sitio web produce 1,76 gr de CO2 por visita de media de la potencia de procesamiento necesaria para cargar y entregar la página.</p>
