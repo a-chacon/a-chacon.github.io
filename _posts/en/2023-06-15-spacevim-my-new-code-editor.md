@@ -2,7 +2,7 @@
 layout: post
 title: "SpaceVim: My new code editor and how I set it up for Ruby programming."
 categories: [Vim, Ruby, IDE]
-excerpt: After Atom was decommissioned, I started looking for a new code editor that met the important requirement of being open source and with a good community behind it. And so I found SpaceVim, a Vim/NeoVim distribution, inspired by SpaceMacs.
+excerpt: "Find out how I set up SpaceVim as my new code editor for Ruby programming after saying goodbye to Atom. SpaceVim is a Vim/NeoVim distribution, inspired by SpaceMacs, that offers a powerful open source alternative backed by a strong community. Get practical tips and tricks to maximize your programming efficiency with this versatile tool." 
 image: /assets/images/spacevim.png
 lang: en
 time: 10 min
