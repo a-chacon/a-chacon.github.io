@@ -12,45 +12,43 @@ comments: true
 
 ![Demo](/assets/images/minichat1.gif)
 
-In today's digital age, interaction with users is essential to provide richer and more personalized online experiences. ChatGPT, developed by OpenAI, emerges as an innovative solution for creating automated conversations based on natural language. ChatGPT uses the power of deep learning to generate contextual and consistent responses that simulate a human conversation. This advanced technology allows developers to incorporate ChatGPT's artificial intelligence into various applications, providing seamless and engaging interaction with users.
+Nowadays, interaction with users is crucial to improve online experiences. OpenAI's ChatGPT is an innovative solution that uses deep learning to create automated conversations that resemble human dialogues. This allows developers to integrate ChatGPT's artificial intelligence into various applications, providing more natural interaction with users.To streamline web application development, Ruby on Rails (known as Rails) stands out as a reliable and efficient framework. Rails, based on Ruby, simplifies the creation and maintenance of web applications by providing a robust framework and pre-built tools, making it the preferred choice of many developers for building robust and scalable web applications.
 
-When it comes to streamlining the web application development process, Ruby on Rails, commonly known as Rails, emerges as a reliable and efficient framework. Rails is an open source framework that is based on the Ruby programming language. Offering a well-defined structure and robust conventions, Rails simplifies the creation and maintenance of web applications by providing a variety of pre-built tools and libraries. The modularity and efficiency-oriented nature of Rails make it the preferred choice for many developers when building robust and scalable web applications.
+## Creating our Rails application.
 
-**Incomplete translation**
+The application will be a simple sample of what can be done by integrating with ChatGPT. The model will be something basic where we will store an OpenAI token or Api key that will have conversations and these in turn will have messages. 
+and these in turn will have messages.
 
-## Creando nuestra aplicación Rails.
-
-La aplicación será una muestra simple de lo que se puede hacer integrandose con ChatGPT. El modelo sera algo basico donde guardaremos un Token o Api key de OpenAI que tendra conversaciones y estas a su ves tendran mensajes.
-
-Crear la aplicacion Ruby On Rails, en mi caso use el nombre de `minichat`, tu puedes ocupar el que quieras:
+Create the Ruby On Rails application, in my case I used the name `minichat`, you can use the name you want:
 
 ```bash
 rails new minichat --css tailwind
 ```
 
-Para interactuar con la API de OpenAI usaremos la gema `ruby-openai`. Asi que la agregamos a nuestro Gemfile:
+To interact with the OpenAI API we will use the `ruby-openai` gem. So we add it to our Gemfile:
 
 ```ruby
 gem "ruby-openai"
 ```
 
-Y luego ejecutamos `bundle install`.
+And then we run `bundle install`.
 
-### Modelos
+### Models
 
-Como comente en un principio nuestra aplicación se basara en 3 simples modelos. El modelo `token`, que almacenara un api token de OpenAI y que será usado como autenticación tanto en la app como para interactuar con la API de OpenAI.
-Luego tendremos el modelo `Conversation` que guardara las configuraciones de cada conversación. Y Por ultimo nuestro modelo `M̀essage` que representará un mensaje, ya sea de sistema, de usuario o de asistente.
+As I said at the beginning our application will be based on 3 simple models. The `token` model, which will store an OpenAI api token and will be used as authentication both in the app and to interact with the OpenAI API.
+Then we will have the `Conversation` model that will store the configurations of each conversation. And finally our `M̀essage` model that will represent a message, either system, user or wizard.
 
-Creamos nuestros modelos con las siguientes instrucciones:
+We create our models with the following instructions:
 
 ```bash
 rails g model token token:string 
 rails g model conversation temperature:float init_system_message:text model:string token:belongs_to
 rails g model message content:text role:integer conversation:belongs_to
 ```
-Ejecutamos las migraciones con el comando `rails db:migrate`.
 
-Y completamos el codigo de nuestros modelos. Deberian lucir de la siguiente manera:
+We run the migrations with the `rails db:migrate` command.
+
+And we complete the code of our models. They should look like this:
 
 ```ruby
 # app/models/token.rb
@@ -119,13 +117,14 @@ class Message < ApplicationRecord
 end
 ```
 
-Este ultimo es donde ocurre la interacción con ChatGPT y que explicare de forma mas detallada.
+The latter is where the interaction with ChatGPT takes place and which I will explain in more detail.
 
-#### Modelo Message y ChatGPT
 
-El modelo message realiza dos acciones importantes:
+#### Message Model and ChatGPT
 
-1. Transmitir una vista parcial de sí mismo a cualquier conversación activa en la que deba aparecer. Esto se hace con el fin de no tener que recargar el chat cada vez que hay un mensaje nuevo
+The message model performs two important actions:
+
+1. Transmit a partial view of itself to any active conversation in which it should appear. This is done in order not to have to reload the chat every time there is a new message.
 ```ruby
   after_create_commit lambda {
                         broadcast_append_to 'messages', partial: 'messages/message', locals: { message: self },
@@ -133,20 +132,19 @@ El modelo message realiza dos acciones importantes:
                       }
 ```
 
-2. Si el último mensaje creado fue por el usuario, entonces ChatGPT debe generar una respuesta que no es nada más que un nuevo mensaje teniendo en cuenta el detalle de que ChatGPT **no tiene memoria**. Por lo que cada vez que necesitamos generar una respuesta nueva debemos enviar toda la conversación:
+2. If the last message created was by the user, then ChatGPT must generate a response which is nothing more than a new message taking into account the detail that ChatGPT **has no memory**. So every time we need to generate a new reply we must send the whole conversation:
 ```ruby
 ...
 after_create :generate_ai_response
 ...
-# Aqui obtenemos la conversacion completa y la enviamos como array en messages.
+# Here we get the whole conversation and send it as an array in messages.
 response = chat(messages: conversation.messages.map { |m| { role: m.role, content: m.content } })
 ...
 ```
 
+## Controllers
 
-## Controladores
-
-Necesitaremos un par de acciones sobre nuestros modelos, así que crearemos 3 controladores con sus correspondientes vistas:
+We will need a couple of actions on our models, so we will create 3 controllers with their corresponding views:
 
 ```bash
 rails g controller tokens new create
@@ -154,7 +152,7 @@ rails g controller conversations new create index show
 rails g controller messages create index
 ```
 
-Partiremos con nuestro método de autorización. Si no tenemos API Key entonces no continuamos, para eso definimos una función que esté disponible para todos nuestros controladores:
+We will start with our authorization method. If we don't have API Key then we don't continue, for that we define a function that is available for all our controllers:
 
 ```ruby
 # app/controller/application_controller.rb
@@ -170,7 +168,7 @@ class ApplicationController < ActionController::Base
 end
 ```
 
-Luego nuestros otros controladores deberían verse de la siguiente manera:
+Then our other controllers should look like this:
 
 ```ruby
 # app/controllers/tokens_controller.rb 
@@ -241,9 +239,9 @@ class MessagesController < ApplicationController
 end
 ```
 
-## Vistas
+## Views
 
-Por último dejaré el código de las vistas:
+Finally I will leave the code of the views:
 
 ### Tokens
 
@@ -323,7 +321,7 @@ Por último dejaré el código de las vistas:
 
 ### Messages
 
-Lo único especial de esta vista será que diferenciará mensajes por rol con distintos colores.
+The only special thing about this view will be that it will differentiate messages by role with different colors.
 
 ```erb
 # app/views/messages/_message.html.erb
@@ -340,9 +338,10 @@ Lo único especial de esta vista será que diferenciará mensajes por rol con di
     </div>
 </div>
 ```
-## Rutas
 
-Configuraremos nuestro archivo `routes.rb` de la siguiente forma:
+## Routes
+
+We will configure our `routes.rb` file as follows:
 
 ```ruby
 Rails.application.routes.draw do
@@ -355,17 +354,20 @@ end
 
 ```
 
-## Y probamos nuestra aplicación.
+## And we test our application.
 
-Levantamos nuestro servidor con `bin/dev` para que funcione tailwindcss y deberíamos poder realizar un flujo como el siguiente:
+We pull up our server with `bin/dev` to get tailwindcss working and we should be able to do a flow like the following:
 
 ![Demo](/assets/images/minichat1.gif)
 
+## Conclusion.
 
-## Conclusión.
+After having realized a couple of applications in this way I would like to highlight two important points that could be useful for anyone who is going to develop a chatbot with Ruby on Rails and ChatGPT:
 
-Luego de haber realizado un par de aplicaciones de esta forma puedo comentar que solo hay dos puntos en lo que hay que fijarse y que podrían ser nuevos para alguien que ya ha realizado desarrollos con integraciones:
+1. **Conversation persistence:** It is essential to keep in mind that ChatGPT has no long term memory. This means that every time you want to continue a conversation, you will have to provide all the previous conversation in the request, since the model does not retain information. The responsibility of managing and maintaining the persistence of the conversation falls on us as developers.
 
-1. Tener presente que ChatGPT no tiene memoria, por lo que cada vez que queramos continuar con la conversación debemos enviarla completamente. O sea, la responsabilidad de la persistencia corre por nuestra cuenta.
+2. **System messages**: These messages allow you to upload information and provide clear instructions to ChatGPT during the conversation. This is especially useful for guiding the flow of the conversation and ensuring that the chatbot understands the context and intentions of the user.
 
-2. Los mensajes de sistema nos sirven para cargar información e instrucciones a ChatGPT.
+**When you sign up you get $5 credit**, which gives you for several conversations. So you can start your trial and error journey. 
+
+Any questions feel free to leave me a message.

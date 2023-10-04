@@ -12,9 +12,7 @@ comments: true
 
 ![Demo](/assets/images/minichat1.gif)
 
-En la era digital actual, la interacción con los usuarios es esencial para brindar experiencias en línea más ricas y personalizadas. ChatGPT, desarrollado por OpenAI, emerge como una solución innovadora en la creación de conversaciones automáticas basadas en lenguaje natural. ChatGPT utiliza el poder del aprendizaje profundo para generar respuestas contextuales y coherentes que simulan una conversación humana. Esta tecnología avanzada permite a los desarrolladores incorporar la inteligencia artificial de ChatGPT en diversas aplicaciones, proporcionando una interacción fluida y atractiva con los usuarios.
-
-Cuando se trata de agilizar el proceso de desarrollo de aplicaciones web, Ruby on Rails, comúnmente conocido como Rails, emerge como un marco de trabajo confiable y eficiente. Rails es un framework de código abierto que se basa en el lenguaje de programación Ruby. Ofreciendo una estructura bien definida y convenciones sólidas, Rails simplifica la creación y el mantenimiento de aplicaciones web al proporcionar una variedad de herramientas y bibliotecas preconstruidas. La modularidad y la naturaleza orientada a la eficiencia de Rails lo convierten en la elección preferida para muchos desarrolladores a la hora de construir aplicaciones web robustas y escalables.
+En la actualidad, la interacción con los usuarios es crucial para mejorar las experiencias en línea. ChatGPT de OpenAI es una solución innovadora que utiliza el aprendizaje profundo para crear conversaciones automáticas que se asemejan a diálogos humanos. Esto permite a los desarrolladores integrar la inteligencia artificial de ChatGPT en diversas aplicaciones, ofreciendo una interacción más natural con los usuarios. Para agilizar el desarrollo de aplicaciones web, Ruby on Rails (conocido como Rails) se destaca como un marco de trabajo confiable y eficiente. Rails, basado en Ruby, simplifica la creación y el mantenimiento de aplicaciones web al proporcionar una estructura sólida y herramientas preconstruidas, lo que lo convierte en la elección preferida de muchos desarrolladores para construir aplicaciones web sólidas y escalables.
 
 ## Creando nuestra aplicación Rails.
 
@@ -359,11 +357,17 @@ Levantamos nuestro servidor con `bin/dev` para que funcione tailwindcss y deber�
 
 ![Demo](/assets/images/minichat1.gif)
 
-
 ## Conclusión.
 
-Luego de haber realizado un par de aplicaciones de esta forma puedo comentar que solo hay dos puntos en lo que hay que fijarse y que podrían ser nuevos para alguien que ya ha realizado desarrollos con integraciones:
+Luego de haber realizado un par de aplicaciones de esta forma me gustaría resaltar dos puntos importantes que podrían resultar útiles para quien vaya a desarrollar un chatbot con Ruby on Rails y ChatGPT:
 
-1. Tener presente que ChatGPT no tiene memoria, por lo que cada vez que queramos continuar con la conversación debemos enviarla completamente. O sea, la responsabilidad de la persistencia corre por nuestra cuenta.
+1. **Persistencia de la conversación:** Es fundamental tener en cuenta que ChatGPT no posee memoria a largo plazo. Esto significa que cada vez que desees continuar una conversación, deberás proporcionar toda la conversación previa en la solicitud, ya que el modelo no retiene información. La responsabilidad de gestionar y mantener la persistencia de la conversación recae en nosotros como desarrolladores.
 
-2. Los mensajes de sistema nos sirven para cargar información e instrucciones a ChatGPT.
+2. **Mensajes de sistema**: Estos mensajes permiten cargar información y proporcionar instrucciones claras a ChatGPT durante la conversación. Esto es especialmente útil para guiar el flujo de la conversación y asegurarse de que el chatbot comprenda el contexto y las intenciones del usuario
+
+**Cuando te registras obtienes 5 dólares de crédito**, lo que te da para varias conversaciones. Así que puedes comenzar con tu viaje de prueba y error. 
+
+Cualquier inquietud no dudes en dejarme un mensaje.
+
+
+

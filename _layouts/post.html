@@ -17,7 +17,10 @@ layout: default
     </div>
     <img src="{{page.image}}" alt="{{page.title}}">
     <strong>{{ page.excerpt }}</strong>
-    {{content}}
+
+    <div class="my-6">
+      {{content}}
+    </div>
 
     <div class="flex justify-center mb-10">
       {% if page.previous.url %}
@@ -32,8 +35,8 @@ layout: default
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function () {
-        this.page.url = "{{ site.url }}{{ page.url | replace:'index.html',''}}";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "{{ page.url }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = "{{ site.url }}{{ page.url | replace:'index.html',''}}";
+        this.page.identifier = "{{ page.url }}"; 
         {% if page.lang == "en" %}
         this.language = "{{ page.lang }}";
         {% endif %}
