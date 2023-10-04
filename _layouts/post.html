@@ -28,7 +28,7 @@ layout: default
       {% endif %}
     </div>
 
-    {% if page.comments %}
+    {% if page.comments and jekyll.environment == "production" %}
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function () {
