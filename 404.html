@@ -4,22 +4,22 @@ title: Not found
 permalink: /404.html
 ---
 <script type="module">
-var app = document.getElementById('notfound');
+  var app = document.getElementById('notfound');
 
-var typewriter = new Typewriter(app, {
-  loop: true,
-  delay: 95,
-});
+  var typewriter = new Typewriter(app, {
+    loop: true,
+    delay: 95,
+  });
 
-typewriter
-  .pauseFor(1000)
-  .typeString('<strong>404</strong> Not Found.')
-  .pauseFor(1500)
-  .deleteChars(10)
-  .pauseFor(1000)
-  .typeString('Página no encontrada.')
-  .pauseFor(4500)
-  .start();
+  typewriter
+    .pauseFor(1000)
+    .typeString('<strong>404</strong> Not Found.')
+    .pauseFor(1500)
+    .deleteChars(10)
+    .pauseFor(1000)
+    .typeString('Página no encontrada.')
+    .pauseFor(4500)
+    .start();
 </script>
 <div class="flex items-center justify-center h-screen text-center">
   <div id="notfound" class="text-3xl md:text-6xl text-black"></div>
