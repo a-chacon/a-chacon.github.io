@@ -25,14 +25,14 @@ typewriter
 
 <div class="flex justify-center p-4 pt-16 md:pt-24 pb-16 text-neutral-500">
   <div class="flex flex-col max-w-xl">
-    <div id="title" class="text-3xl md:text-5xl text-black"></div>
+    <h1 id="title" class="text-3xl md:text-5xl text-black">Publications and more.</h1>
     <p class="pt-4 pb-2 border-b-2 text-lg md:text-xl">Journey of discovery and learning. Here, I write what I want. Programming, privacy, open-source software, and more.</p>
     <ul>
       {% for post in site.posts %}
         <li class="flex flex-col py-8 border-b">
           <p class="text-right">{{ post.date | date: "%-d %B %Y" }}</p>
           <img src="{{ post.image }}" alt="Imagen descriptiva del post" class="object-cover h-32 md:h-48">
-          <a href="{{ post.url }}" class="text-2xl text-black pt-2">{{ post.title }}</a>
+          <a href="{{ post.url }}" class="text-2xl text-black pt-2"><h2>{{ post.title }}</h2></a>
           <p class="pt-2 md:text-lg">{{ post.excerpt }}</p>
           <div class="flex justify-end pt-2">
             <span class="text-neutral-500 pr-2">{{ post.time }}</span> 
