@@ -26,7 +26,7 @@ tu sitio con un promedio de vistas mensuales, ejemplifica el resultado
 para que se entiendan las consecuencias del resultado y tienen una 
 página donde informan como funciona internamente el cálculo.
 
-## 2. [Carbon Neutral Website](https://www.websitecarbon.com/) 
+## 2. [Carbon Neutral Website](https://carbonneutralwebsite.org/) 
 
 ![](/assets/images/carbonneutral.png)
 

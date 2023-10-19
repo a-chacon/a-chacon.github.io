@@ -22,7 +22,7 @@ And since we live in the information age, it is necessary to have enough data to
 
 They are defined with the original website carbon footprint calculator. It informs you very well about the amount of kg of CO₂ produced by your site with an average of monthly views, it exemplifies the result so that the consequences of the result are understood and they have a page where they inform how the calculation works internally.
 
-## 2. [Carbon Neutral Website](https://www.websitecarbon.com/) 
+## 2. [Carbon Neutral Website](https://carbonneutralwebsite.org/) 
 
 ![](/assets/images/carbonneutral.png)
 
