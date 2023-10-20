@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🚀Guia general para correr Ruby on Rails con Docker🚀"
+title: "🚀Guía general para correr Ruby on Rails con Docker🚀"
 categories: [Rails, Docker]
 excerpt: "Montar Ruby on Rails en Docker ofrece aislamiento para evitar conflictos, portabilidad para llevar tu aplicación a cualquier lugar, escalabilidad sin esfuerzo, mantenimiento sencillo y colaboración eficiente en equipo." 
 image: /assets/images/railsdocker.png
