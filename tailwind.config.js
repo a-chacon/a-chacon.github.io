@@ -1,6 +1,5 @@
 module.exports = {
   content: [
-    '_site/**/*.html',
     '*.html',
     '_layouts/**/*.html',
     '_includes/**/*.html'

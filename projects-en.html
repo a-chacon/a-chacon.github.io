@@ -7,8 +7,8 @@ lang: en
 ---
 
 <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20">
-  <div class="container mx-auto">
-    <div class="mx-4 flex flex-wrap">
+  <div class="w-11/12 md:w-10/12 mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {% for project in site.data.projects %}
         {% include project_card.html project=project%} 
       {% endfor %}

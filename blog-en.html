@@ -32,8 +32,8 @@ typewriter
         <li class="flex flex-col py-8 border-b">
           <p class="text-right">{{ post.date | date: "%-d %B %Y" }}</p>
           <img src="{{ post.image }}" alt="Imagen descriptiva del post" class="object-cover h-32 md:h-48">
-          <a href="{{ post.url }}" class="text-2xl text-black pt-2"><h2>{{ post.title }}</h2></a>
-          <p class="pt-2 md:text-lg">{{ post.excerpt }}</p>
+          <a href="{{ post.url }}" class="text-xl xl:text-2xl text-black pt-2"><h2>{{ post.title }}</h2></a>
+          <p class="pt-2 xl:text-lg">{{ post.excerpt }}</p>
           <div class="flex justify-end pt-2">
             <span class="text-neutral-500 pr-2">{{ post.time }}</span> 
             <a class="text-black hover:text-neutral-500"  href="{{ post.url }}">Continue reading -></a>
