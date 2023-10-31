@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "docker-compose.yml for raise up PostgreSQL and pgAdmin."
+title: "PostgreSQL and pgAdmin in Docker Compose: Quickstart"
 categories: [Docker, pgAdmin, PostgreSQL]
-excerpt: PostgreSQL and pgAdmin is a common stack to use when developing a web project. In this article, we will see how to easily and quickly deploy these two tools using docker compose.
+excerpt: Discover how to get PostgreSQL and pgAdmin up and running in an agile way with Docker Compose. A quick guide to get your tools ready in minutes in your local development environment.
 image: /assets/images/postgresql.jpg
 lang: en
 time: 5 min

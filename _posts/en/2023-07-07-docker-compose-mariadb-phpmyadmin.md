@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "docker-compose.yml to raise MariaDB (MySQL) and phpMyAdmin."
+title: "Using MariaDB and phpMyAdmin with Docker and Docker Compose"
 categories: [Docker, MariaDB, PhpMyAdmin]
-excerpt: It is common to develop a project that uses MySQL as a relational database and you need a graphical administrator to manage your databases. Here I will show you how to build MariaDB and phpMyAdmin at once with a docker compose file with persistence.
+excerpt: Quickly and efficiently configure MariaDB and phpMyAdmin in Docker Compose to simplify the management of your databases in your development environment.
 image: /assets/images/mariadb.jpg
 lang: en
 time: 5 min
