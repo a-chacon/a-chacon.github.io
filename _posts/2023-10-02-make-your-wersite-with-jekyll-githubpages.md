@@ -77,6 +77,8 @@ Luego, abre tu navegador web e ingresa a `http://localhost:4000` para ver tu sit
 
 Si es que ya tienes cuenta en GitHub entonces puedes usar esa y si no te creas una nueva.
 
+Para hacer esto mismo con GitLab puedes mirar [aquí](/web/jekyll/2023/11/01/jekyll-gitlab-pages.html)
+
 ### Nuevo repositorio
 
 ![](/assets/images/newrepogithub.png)
