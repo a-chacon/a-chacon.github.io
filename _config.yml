@@ -12,7 +12,6 @@ defaults:
       sitemap: false
 
 plugins:
-  - jekyll-feed
   - jekyll-polyglot
 
 languages: ["en", "es"]
