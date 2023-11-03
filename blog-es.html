@@ -25,7 +25,25 @@ typewriter
 <div class="flex justify-center p-4 pt-16 md:pt-24 pb-16 text-neutral-500">
   <div class="flex flex-col max-w-xl">
     <h1 id="title" class="text-3xl md:text-5xl text-black">Publicaciones y más</h1>
-    <p class="pt-4 pb-2 border-b-2 text-lg md:text-xl">Viaje de descubrimiento y aprendizaje. Aquí escribo lo que quiero. Programación, privacidad, software libre, Ruby y más.</p>
+    <div class="flex flex-row items-center pt-4 pb-2 border-b-2 gap-2">
+      <p class=" text-lg md:text-xl">Viaje de descubrimiento y aprendizaje. Aquí escribo lo que quiero. Programación, privacidad, software libre, Ruby y más.</p>
+      <a href="{{ site.url }}/feed.xml">
+        <svg class="h-8" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <title>RSS-color</title>
+            <desc>Created with Sketch.</desc>
+            <defs> </defs>
+            <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Color-" transform="translate(-800.000000, -760.000000)" fill="#FF9A00">
+                <path d="M800.000471,797.714286 C800.000471,794.243 802.81487,791.428571 806.286118,791.428571 C809.757367,791.428571 812.571765,794.243 812.571765,797.714286 C812.571765,801.185571 809.757367,804 806.286118,804 C802.81487,804 800.000471,801.185571 800.000471,797.714286 Z M844,804 L835.619661,804 C835.619661,784.358714 819.641547,768.380429 800.000471,768.380429 L800.000471,760 C824.261497,760 844,779.738714 844,804 Z M829.333543,804 L820.953204,804 C820.953204,792.446857 811.553019,783.048143 800,783.048143 L800,774.666143 C816.174541,774.666143 829.333543,787.825286 829.333543,804 Z" id="RSS"> </path>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </a>
+    </div>
     <ul>
       {% for post in site.posts %}
         <li class="flex flex-col py-8 border-b">
