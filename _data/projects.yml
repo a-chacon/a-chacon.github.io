@@ -1,11 +1,11 @@
 - es:
-    title: 2048
-    description: "2048 es una plataforma para compartir artículos técnicos, herramientas, proyectos de código abierto y todo lo relacionado con la programación. Conéctate con desarrolladores, comparte conocimientos y creced juntos."
+    title: Resourc
+    description: "Resourc es una plataforma para compartir artículos técnicos, herramientas, proyectos de código abierto y todo lo relacionado con la programación. Conéctate con desarrolladores, comparte conocimientos y creced juntos."
   en:
-    title: 2048
-    description: 2048 is a platform for sharing technical articles, tools, open-source projects, and everything related to programming. Connect with developers, share knowledge, and grow together.
-  image: assets/images/2048.png
-  web: https://2048.fly.dev
+    title: Resourc
+    description: Resourc is a platform for sharing technical articles, tools, open-source projects, and everything related to programming. Connect with developers, share knowledge, and grow together.
+  image: https://resourc.tech/logo.webp
+  web: https://resourc.tech
   tags:
     - Rails
     - Tailwindcss
