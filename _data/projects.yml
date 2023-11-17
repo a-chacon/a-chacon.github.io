@@ -1,4 +1,16 @@
 - es:
+    title: Wind Theme
+    description: "Wind es un tema Jekyll limpio y minimalista diseñado para ofrecer una experiencia de blog agradable. Con un enfoque en la simplicidad y estética, Wind aporta un toque elegante a su blog o sitio web personal."
+  en:
+    title: Wind Theme
+    description: Wind is a clean, minimalistic Jekyll theme designed to offer a delightful blogging experience. With a focus on simplicity and aesthetics, Wind brings an elegant touch to your blog or personal website.
+  image: https://camo.githubusercontent.com/b06303a050eeb0caf3c1ac15d2f8680a28883a4a4e4dafe476a41dae6ddccc5d/68747470733a2f2f692e706f7374696d672e63632f514d6b436d5278322f73637265656e73686f742e706e67
+  web: https://wind-site-a-chacon-6a52e6cfd07a698368129fcdb6001ca6dc9154381681.gitlab.io/
+  tags:
+    - Jekyll
+    - Tailwindcss
+
+- es:
     title: Resourc
     description: "Resourc es una plataforma para compartir artículos técnicos, herramientas, proyectos de código abierto y todo lo relacionado con la programación. Conéctate con desarrolladores, comparte conocimientos y creced juntos."
   en:
