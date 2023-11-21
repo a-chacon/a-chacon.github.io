@@ -18,5 +18,6 @@ languages: ["en", "es"]
 default_lang: "es"
 exclude_from_localization: [javascript", "images", "css", "public", "sitemap.xml"]
 parallel_localization: true
+lang_from_path: true
 
 words: ["Rails", "Ruby", "Python","HTML", "Css", "Js", "Docker", "AWS"]

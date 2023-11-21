@@ -8,7 +8,18 @@
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.excerpt | default: page.description }}">
   <meta name=”robots” content="index, follow">
-  {% I18n_Headers %}
+  <meta http-equiv="Content-Language" content="{{site.active_lang}}">
+  <link rel="alternate"
+      hreflang="{{site.default_lang}}"
+      href='{{site.url}}{{page.url | replace: "en", ""}}' />
+  {% for lang in site.languages %}
+  {% if lang == site.default_lang %}
+    {% continue %}
+  {% endif %}
+  <link rel="alternate"
+      hreflang="{{lang}}"
+      href='{{site.url}}/{{lang}}{{page.url | replace: "en", ""}}' />
+  {% endfor %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
