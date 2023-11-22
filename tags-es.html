@@ -20,7 +20,7 @@ lang: es
     <h3 id="{{ tag[0] }}" class="text-xl md:text-2xl py-3 md:pb-4 md:pt-6"># {{ tag[0] }}</h3>
     <ul class="list-disc list-inside ">
       {% for post in tag[1] %}
-      <li class="text-slate-500 dark:text-slate-200 text-md md:text-lg py-2"><a href="{{ post.url }}" class="text-lg md:text-xl text-slate-700 dark:text-slate-100 underline md:no-underline hover:underline">{{ post.title }}</a> {{ post.date | date: "%d-%m-%Y" }}</li>
+      <li class="text-slate-500 text-md md:text-lg py-2"><a href="{{ post.url }}" class="text-lg md:text-xl text-slate-800 underline md:no-underline hover:underline">{{ post.title }}</a> {{ post.date | date: "%d-%m-%Y" }}</li>
       {% endfor %}
     </ul>
     {% endfor %}
