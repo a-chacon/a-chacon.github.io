@@ -16,10 +16,19 @@ layout: default
       {% endfor %}
     </div>
     <img src="{{page.image}}" alt="{{page.title}}">
+
     <strong>{{ page.excerpt }}</strong>
+
+    <div class="mx-auto pt-6" >
+      {% include sharing.html %}
+    </div>
 
     <div class="my-6">
       {{content}}
+    </div>
+
+    <div class="mx-auto py-8" >
+      {% include sharing.html %}
     </div>
 
     <div class="flex justify-center mb-10">
