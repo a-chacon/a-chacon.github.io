@@ -32,7 +32,7 @@ With this we will have our HTML document ready to query through the `html_doc` o
 
 ## Consulting with Nokogiri
 
-Para consultar el documento utilizaremos el selector css que siempre retorna un [NodeSet](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet), algo muy parecido a un Array. Este NodeSet contiene una lista de objetos [Node](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet). Los métodos de cada una de estas clases los iremos viendo más adelante.
+To query the document we will use the css selector that always returns a [NodeSet](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet), something very similar to an Array. This NodeSet contains a list of objects [Node](https://nokogiri.org/rdoc/Nokogiri/XML/NodeSet). The methods of each one of these classes we will see them later.
 
 ### Define what we want to extract
 
