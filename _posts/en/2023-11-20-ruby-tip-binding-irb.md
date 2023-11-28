@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "💎Ruby Tip💎 Interactive debugging without the need for gems."
+title: "💎Ruby Tip💎 Interactive debugging without the need to install gems."
 categories: [Ruby,  IRB, Tip]
 excerpt: "Discover a simple and fast way to debug in Ruby without installing additional gems. With the Binding class and the integrated IRB console, you can explore and modify the execution context to resolve errors efficiently." 
 image: /assets/images/ruby-debugging.avif
@@ -29,7 +29,7 @@ end
 Door.new
 ```
 
-Running our small script will open an IRB session with which you can review the context and modify it:
+Running our small script will open an IRB session ([Default gem](https://stdgems.org/irb/)) with which you can review the context and modify it:
 
 ```ruby
 Documentos/scripts/ruby via 💎 v3.2.2
@@ -58,7 +58,11 @@ Is the door open: true
 
 And that's it, you can use it to debug your scripts, web scrappers or whatever you are building.
 
-To learn more about using IRB you can visit [this documentation](https://docs.ruby-lang.org/en/master/IRB.html#module-IRB-label-Usage)
+It is also very likely that you already have the [debug] gem (https://github.com/ruby/debug) installed, since it is automatically installed with your version of Ruby. IRB integrates excellently with this gem, so if you need more advanced features, just type `debug` in your IRB session and it will activate it.
+
+For more information on the use of IRB, you can visit [this documentation](https://docs.ruby-lang.org/en/master/IRB.html#module-IRB-label-Usage) and on debug integration specifically [here](https://github.com/ruby/irb#debugging-with-irb).
+
+---
 
 If you liked it feel free to say hi in the comments, I'll be watching.
 

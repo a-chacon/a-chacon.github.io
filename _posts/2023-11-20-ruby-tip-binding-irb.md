@@ -1,6 +1,6 @@
 ---
 layout: post
-title: " 💎Ruby Tip💎 Depuración interactiva sin necesidad de gemas. "
+title: " 💎Ruby Tip💎 Depuración interactiva sin necesidad de instalar gemas."
 categories: [Ruby,  IRB, Tip]
 excerpt: "Descubre una forma sencilla y rápida de depurar en Ruby sin instalar gemas adicionales. Con la clase Binding y la consola IRB integrada, podrás explorar y modificar el contexto de ejecución para resolver errores de manera eficiente." 
 image: /assets/images/ruby-debugging.avif
@@ -29,7 +29,7 @@ end
 Door.new
 ```
 
-Al correr nuestro pequeño script se nos abrirá una sesión IRB con la cual podrás revisar el contexto y modificarlo:
+Al correr nuestro pequeño script se nos abrirá una sesión IRB ([Gema por defecto](https://stdgems.org/irb/)) con la cual podrás revisar el contexto y modificarlo:
 
 ```ruby
 Documentos/scripts/ruby via 💎 v3.2.2
@@ -58,7 +58,11 @@ Is the door open: true
 
 Y eso es todo, puedes usarlo para depurar tus scripts, web scrappers o lo que sea que estés construyendo.
 
-Para saber más sobre el uso de IRB puedes visitar [esta documentación](https://docs.ruby-lang.org/en/master/IRB.html#module-IRB-label-Usage)
+También es muy probable que ya tengas instalada la gema [debug](https://github.com/ruby/debug), dado que se instala automáticamente con tu versión de Ruby. IRB se integra de manera excelente con esta gema, así que si necesitas funciones más avanzadas, simplemente escribe `debug` en tu sesión de IRB y la activarás.
+
+Para saber más sobre el uso de IRB, puedes visitar [esta documentación](https://docs.ruby-lang.org/en/master/IRB.html#module-IRB-label-Usage) y sobre la integración con debug específicamente [aquí](https://github.com/ruby/irb#debugging-with-irb).
+
+---
 
 Si te ha gustado puedes pasar a saludar en los comentarios, estare atento.
 
