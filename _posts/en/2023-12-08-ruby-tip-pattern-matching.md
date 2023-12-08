@@ -77,7 +77,7 @@ process_data({ type: "hash", value: { key: "value" } })   # Output: Received a h
 process_data({ type: "unknown", value: "unknown data" })  # Output: Received something else.
 ```
 
-In this example, we show how to perform a search based on a Hash pattern. We highlight one of the powerful features of Pattern Matching: **variable assignment**. We manage to assign a value from the unstructured hash to a variable, which allows us to work with that value later in our code.
+In this example, we show how to perform a search based on a Hash pattern. We highlight one of the powerful features of Pattern Matching: **variable binding**. We manage to assign a value from the unstructured hash to a variable, which allows us to work with that value later in our code.
 
 ### Deconstruct and Deconstruct_keys
 
