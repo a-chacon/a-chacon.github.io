@@ -168,3 +168,48 @@ Algunas cosas a tener en consideración:
 - Puedes ver toda la documentación de hcaptcha [aquí](https://docs.hcaptcha.com/)
 
 En conclusión, la integración de hCaptcha en tu aplicación Ruby on Rails ofrece una solución efectiva y ética para proteger tus páginas web de bots y preservar la privacidad en línea de tus usuarios. A diferencia de otras opciones, como reCaptcha de Google, hCaptcha se centra en la seguridad sin comprometer la identidad de los usuarios ni recopilar datos intrusivos. Al elegir hCaptcha, no solo estás protegiendo tu sitio web de amenazas automatizadas, sino que también estás contribuyendo a un entorno en línea más seguro y respetuoso con la privacidad de tus visitantes. Esta integración puede mejorar significativamente la experiencia de usuario y garantizar un acceso más seguro a tus servicios en línea.
+
+## Actualización 26-02-2024
+
+Al momento en que escribí este post me di cuenta de que algo no andaba bien. **Luego de un intento fallido en el login, el captcha no se vuelve a cargar de forma automática**. Ahora traigo la solución, un controlador de stimulus que renderiza el captcha al momento de cargarse en la página web, evento que sucede cada vez que se visita la página. Ya sea porque la persona entra por primera vez o porque fallo y fue redirigido de vuelta a la página. El controlador debería verse de la siguiente forma:
+
+```javascript
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="login-form"
+export default class extends Controller {
+  static values = {
+    hcaptchaSiteKey: String
+  }
+
+  connect() {
+    var widgetID = hcaptcha.render('captcha-1', { sitekey: this.hcaptchaSiteKeyValue });
+  }
+}
+```
+
+Y nuestro formulario ahora debe implementar este controlador en alguna parte y pasar el valor del site key como un valor estático:
+
+```erb
+
+  <div class="mt-10" data-controller="login-form" data-login-form-hcaptcha-site-key-value="<%= Rails.application.credentials.hcaptcha_site_key %>">
+    <%= form_with url: authentication_index_path do |f| %>
+      <%= f.text_field :email, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600" %><br>
+      <%= f.password_field :password ,class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600" %><br>
+
+      <!-- hCaptcha -->
+      <div id="captcha-1" class="h-captcha" data-sitekey="<%= Rails.application.credentials.hcaptcha_site_key %>"></div>
+      <script
+        src="https://js.hcaptcha.com/1/api.js?render=explicit"
+        async
+        defer
+      ></script>
+      <!-- end hcaptchap -->
+
+      <%= f.submit "Entrar", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <% end %>
+  </div>
+
+```
+
+Con eso hemos solucionado el problema. Happy coding.

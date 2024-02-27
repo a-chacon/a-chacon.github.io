@@ -162,3 +162,49 @@ Some things to take into consideration:
 - You can see all the hcaptcha documentation [here](https://docs.hcaptcha.com/)
 
 In conclusion, integrating hCaptcha into your Ruby on Rails application offers an effective and ethical solution to protect your web pages from bots and preserve the online privacy of your users. Unlike other options, such as Google's reCaptcha, hCaptcha focuses on security without compromising users' identities or collecting intrusive data. By choosing hCaptcha, you are not only protecting your website from automated threats, but you are also contributing to a safer and more privacy-friendly online environment for your visitors. This integration can significantly improve the user experience and ensure safer access to your online services.
+
+## Update 26-02-2024
+
+At the time I wrote this post I realized that something was wrong. **After a failed login attempt, the captcha does not reload automatically**. Now I bring the solution, a stimulus controller that renders the captcha when it loads on the web page, an event that happens every time the page is visited. Either because the person enters for the first time or because it failed and was redirected back to the page. The controller should look like this:
+
+```javascript
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="login-form"
+export default class extends Controller {
+  static values = {
+    hcaptchaSiteKey: String
+  }
+
+  connect() {
+    var widgetID = hcaptcha.render('captcha-1', { sitekey: this.hcaptchaSiteKeyValue });
+  }
+}
+```
+
+And our form must now implement this controller somewhere and pass the site key value as a static value:
+
+```erb
+
+  <div class="mt-10" data-controller="login-form" data-login-form-hcaptcha-site-key-value="<%= Rails.application.credentials.hcaptcha_site_key %>">
+    <%= form_with url: authentication_index_path do |f| %>
+      <%= f.text_field :email, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600" %><br>
+      <%= f.password_field :password ,class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600" %><br>
+
+      <!-- hCaptcha -->
+      <div id="captcha-1" class="h-captcha" data-sitekey="<%= Rails.application.credentials.hcaptcha_site_key %>"></div>
+      <script
+        src="https://js.hcaptcha.com/1/api.js?render=explicit"
+        async
+        defer
+      ></script>
+      <!-- end hcaptchap -->
+
+      <%= f.submit "Entrar", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    <% end %>
+  </div>
+
+```
+
+With that we have solved the problem. Happy coding.
+
