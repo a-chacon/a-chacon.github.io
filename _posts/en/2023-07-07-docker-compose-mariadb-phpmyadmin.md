@@ -16,7 +16,7 @@ And [docker](https://www.docker.com") will be the tool that will help us to run 
 
 ## Docker compose up: MariaDB and PhpMyAdmin
 
-**Requires docker installed**
+**Installation of Docker is required. If you haven't done so already, please follow the official guides provided [here.](https://docs.docker.com/engine/install)**
 
 Create a folder in your project directory and inside it a `docker-compose.yml` file with the following content:
 
