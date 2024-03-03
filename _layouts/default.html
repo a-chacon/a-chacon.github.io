@@ -9,23 +9,19 @@
   <meta name="description" content="{{ page.excerpt | default: page.description }}">
   <meta name=”robots” content="index, follow">
   <meta http-equiv="Content-Language" content="{{site.active_lang}}">
-  <link rel="alternate"
-      hreflang="{{site.default_lang}}"
-      href='{{site.url}}{{page.url | replace: "en", ""}}' />
+  <link rel="alternate" hreflang="{{site.default_lang}}" href='{{site.url}}{{page.url | replace: "en", ""}}' />
   {% for lang in site.languages %}
   {% if lang == site.default_lang %}
-    {% continue %}
+  {% continue %}
   {% endif %}
-  <link rel="alternate"
-      hreflang="{{lang}}"
-      href='{{site.url}}/{{lang}}{{page.url | replace: "en", ""}}' />
+  <link rel="alternate" hreflang="{{lang}}" href='{{site.url}}/{{lang}}{{page.url | replace: "en", ""}}' />
   {% endfor %}
   <link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
   <!-- Favicon tags -->
   <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
   <!-- Opengraph tags -->
-  <meta property="og:title" content="{{ page.title }} - {{ site.title }}" />
-  <meta property="twitter:title" content="{{ page.title }} - {{ site.title }}" />
+  <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
+  <meta property="twitter:title" content="{{ page.title }} | {{ site.title }}" />
   <meta property="og:url" content="https://a-chacon.com/{{ page.title }}" />
   <meta property="og:image" content="{{ page.image  | absolute_url | default: '/assets/images/mysite.png'| absolute_url }}" />
   <meta property="twitter:image" content="{{ page.image  | absolute_url | default: '/assets/images/mysite.png'| absolute_url }}" />
@@ -34,7 +30,7 @@
   <meta property="twitter:description" content="{{ page.excerpt | default: page.description }}" />
   <!-- Style tags -->
   <link rel="stylesheet" href="{{ '/assets/css/application.css' | relative_url }}">
-  <script src="https://unpkg.com/typewriter-effect@2.19.0/dist/core.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/core-typewriter.js"></script>
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" />
 
@@ -43,19 +39,19 @@
 
 <body class="bg-neutral-50">
   {% if page.lang == "es" %}
-    {% include navbar_es.html %}
+  {% include navbar_es.html %}
   {% else %}
-    {% include navbar_en.html%}
+  {% include navbar_en.html%}
   {% endif %}
   {{ content }}
 
   <!-- Carbon Neutral Website Banner (light) -->
-  <div class="flex justify-center my-14" >
-    <a href="https://carbonneutralwebsite.org/" target="_blank" rel="noreferrer"><img src="https://carbonneutralwebsite.org/api/banner/a-chacon.com/14.76mg/light.svg" width="300px"  alt="Carbon impact of this web page" /></a>
+  <div class="flex justify-center my-14">
+    <a href="https://carbonneutralwebsite.org/" target="_blank" rel="noreferrer"><img src="https://carbonneutralwebsite.org/api/banner/a-chacon.com/14.76mg/light.svg" width="300px" alt="Carbon impact of this web page" /></a>
   </div>
 
   <div class="fixed bottom-2 left-0 right-0 flex justify-center ">
-    <div class="bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-500 p-2 text-white rounded-full" >
+    <div class="bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-500 p-2 text-white rounded-full">
       <a href="https://twitter.com/4ndr35_ch" target="_blank">🌟 Let's connect on X/Twitter! 🌟</a>
     </div>
   </div>
