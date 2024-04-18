@@ -3,7 +3,7 @@ layout: post
 title: "Rails Service Objects: A small guide to speed up your code"
 categories: [Ruby, Rails, Service Objects]
 excerpt: "A Service Object is a Ruby class that groups business logic in an organized way in your Ruby on Rails application. Its use simplifies code, facilitates testing, encourages reuse and raises the quality of your application." 
-image: /assets/images/rails.jpeg
+image: /assets/images/service-objects.webp
 lang: en
 time: 5 min
 author: Andrés
