@@ -3,7 +3,7 @@ layout: post
 title: "💎Ruby Tip💎 Did you know that Ruby supports Pattern Matching?"
 categories: [Ruby, Tip]
 excerpt: "Pattern Matching in Ruby allows for concise data destructuring, making it easy to assign variables with clear syntax. From filtering values in arrays to customizing destructuring in classes, this feature simplifies data manipulation in an elegant way." 
-image: /assets/images/pattern_matching.png
+image: /assets/images/pattern_matching.avif
 lang: en
 time: 5 min
 author: Andrés

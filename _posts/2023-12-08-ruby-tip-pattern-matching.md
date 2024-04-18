@@ -3,7 +3,7 @@ layout: post
 title: " 💎Ruby Tip💎 ¿Sabías que Ruby Soporta Coincidencia de Patrones?"
 categories: [Ruby, Tip]
 excerpt: "La Coincidencia de Patrones en Ruby permite desestructurar datos de manera concisa, facilitando la asignación de variables con sintaxis clara y de forma elegante." 
-image: /assets/images/pattern_matching.png
+image: /assets/images/pattern_matching.avif
 lang: es
 time: 5 min
 author: Andrés
