@@ -49,7 +49,7 @@ lang: en
       {% for post in site.posts %}
       <li class="flex flex-col py-8 border-b">
         <p class="text-right">{{ post.date | date: "%-d %B %Y" }}</p>
-        <img src="{{ post.image }}" alt="Imagen descriptiva del post" class="object-cover h-32 md:h-48">
+        <img src="{{ post.image }}" alt="Imagen descriptiva del post" class="object-cover h-48 md:h-64">
         <a href="{{ post.url }}" class="text-xl xl:text-2xl text-black pt-2">
           <h2>{{ post.title }}</h2>
         </a>
