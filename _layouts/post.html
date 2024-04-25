@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<link rel="stylesheet" href="{{ "/assets/css/monokai.css" | relative_url }}">
+<link rel="stylesheet" href="{{ " /assets/css/monokai.css" | relative_url }}">
 <div class="flex justify-center pt-16 md:pt-24 pb-16 text-neutral-500">
   <div id="post" class="prose prose-neutral flex flex-col w-11/12 md:max-w-2xl">
     <h1 class="text-center text-3xl md:text-5xl text-black">{{page.title}}</h1>
@@ -19,7 +19,7 @@ layout: default
 
     <strong>{{ page.excerpt }}</strong>
 
-    <div class="mx-auto pt-6" >
+    <div class="mx-auto pt-6">
       {% include sharing.html %}
     </div>
 
@@ -27,9 +27,13 @@ layout: default
       {{content}}
     </div>
 
-    <div class="mx-auto py-8" >
+    <div class="mx-auto py-8">
       {% include sharing.html %}
     </div>
+
+    <div id="embedContainer" style="height: fit-content;" data-identifier="{{ page.url }}"
+      data-site-key="3cf41533e1107480d366"></div>
+    <script src="https://opina.fly.dev/embed.js"></script>
 
     <div class="flex justify-center mb-10">
       {% if page.previous.url %}
