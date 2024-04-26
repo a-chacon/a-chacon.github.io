@@ -3,7 +3,7 @@ layout: post
 title: "Utilizando MariaDB y phpMyAdmin con Docker y Docker Compose"
 categories: [Docker, MariaDB, PhpMyAdmin]
 excerpt: Configura rápida y eficazmente MariaDB y phpMyAdmin en Docker Compose para simplificar la gestión de tus bases de datos en tu entorno de desarrollo.
-image: /assets/images/mariadb.jpg
+image: /assets/images/mariadb-phpmyadmin-docker.webp
 lang: es
 time: 5 min
 author: Andrés
