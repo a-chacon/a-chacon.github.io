@@ -24,7 +24,6 @@ The [PostgreSQL](https://www.postgresql.org/) database is an open source **objec
 Create a folder in your project directory and inside it a `docker-compose.yml` file with the following content:
 
 ```yml
-version: '3.8'
 services:
   db:
     container_name: pg_container
@@ -56,6 +55,9 @@ volumes:
   pgadmin-data:
 
 ```
+
+**Update: I removed the version property from the file because it is now deprecated. [ref](https://github.com/compose-spec/compose-spec/blob/master/spec.md#version-top-level-element-obsolete)**
+
 - [Link](https://hub.docker.com/_/postgres/) to the **full documentation** of the image used for PostgreSQL.
 - [Link](https://hub.docker.com/r/dpage/pgadmin4/) to the **full documentation** of the image used for pgAdmin.
 

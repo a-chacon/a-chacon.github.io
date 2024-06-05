@@ -21,8 +21,6 @@ Y [docker](https://www.docker.com") será la herramienta que nos ayudará a corr
 Crea una carpeta en tu directorio de proyectos y dentro de esta un archivo `docker-compose.yml` con el siguiente contenido:
 
 ```yml
-version: "3.8"
-
 services:
   mysql:
     image: mariadb:latest
@@ -50,6 +48,9 @@ volumes:
   mysql:
 
 ```
+
+**Actualización: Eliminé la propiedad `version` del archivo debido a que ya esta obsoleta. [ref](https://github.com/compose-spec/compose-spec/blob/master/spec.md#version-top-level-element-obsolete)**
+
 - [Link](https://hub.docker.com/_/mariadb) a la documentación completa de la imagen usada para MariaDB. 
 - [Link](https://hub.docker.com/_/phpmyadmin/) a la documentación completa de la imagen usada para PhpMyadmin.
 

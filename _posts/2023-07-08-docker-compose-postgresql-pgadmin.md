@@ -21,7 +21,6 @@ La base de datos [PostgreSQL](https://www.postgresql.org/) es un sistema de **ba
 Crea una carpeta en tu directorio de proyectos y dentro de esta un archivo `docker-compose.yml` con el siguiente contenido:
 
 ```yml
-version: '3.8'
 services:
   db:
     container_name: pg_container
@@ -53,6 +52,9 @@ volumes:
   pgadmin-data:
 
 ```
+
+**Actualización: Eliminé la propiedad `version` del archivo debido a que ya esta obsoleta. [ref](https://github.com/compose-spec/compose-spec/blob/master/spec.md#version-top-level-element-obsolete)**
+
 - [Link](https://hub.docker.com/_/postgres/) a la **documentación completa** de la imagen usada para PostgreSQL. 
 - [Link](https://hub.docker.com/r/dpage/pgadmin4/) a la **documentación completa** de la imagen usada para pgAdmin.
 

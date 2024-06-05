@@ -21,8 +21,6 @@ And [docker](https://www.docker.com") will be the tool that will help us to run 
 Create a folder in your project directory and inside it a `docker-compose.yml` file with the following content:
 
 ```yml
-version: "3.8"
-
 services:
   mysql:
     image: mariadb:latest
@@ -50,6 +48,8 @@ volumes:
   mysql:
 
 ```
+**Update: I removed the version property from the file because it is now deprecated. [ref](https://github.com/compose-spec/compose-spec/blob/master/spec.md#version-top-level-element-obsolete)**
+
 - [Link](https://hub.docker.com/_/mariadb) to the complete documentation of the image used for MariaDB.
 - [Link](https://hub.docker.com/_/phpmyadmin/)to the full documentation of the image used for PhpMyadmin.
 
