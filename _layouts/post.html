@@ -31,6 +31,7 @@ layout: default
       {% include sharing.html %}
     </div>
 
+    {% if jekyll.environment == "production" %}
 
     <div class="my-6">
       ¡Hola a todos! 👋 ¿Disfrutaron leyendo el artículo? ¡Me encantaría conocer sus opiniones! 💬 No duden en dejar un
@@ -45,6 +46,8 @@ layout: default
     <div id="embedContainer" style="height: fit-content;" data-identifier="{{ page.url }}"
       data-site-key="80dce74b8e1af5839a6f"></div>
     <script src="https://opina.fly.dev/embed.js"></script>
+
+    {% endif %}
 
     <div class="flex justify-center mb-10">
       {% if page.previous.url %}
