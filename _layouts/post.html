@@ -23,6 +23,15 @@ layout: default
       {% include sharing.html %}
     </div>
 
+    {% if jekyll.environment == "production" %}
+    <div class="mx-auto py-8">
+      <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+        data-name="bmc-button" data-slug="achacon" data-color="#FFDD00" data-emoji="" data-font="Lato"
+        data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000"
+        data-coffee-color="#ffffff"></script>
+    </div>
+    {% endif %}
+
     <div class="my-6">
       {{content}}
     </div>
@@ -33,9 +42,12 @@ layout: default
 
     {% if jekyll.environment == "production" %}
 
-    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button"
-      data-slug="achacon" data-color="#FFDD00" data-emoji="" data-font="Lato" data-text="Buy me a coffee"
-      data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
+    <div class="mx-auto py-8">
+      <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+        data-name="bmc-button" data-slug="achacon" data-color="#FFDD00" data-emoji="" data-font="Lato"
+        data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000"
+        data-coffee-color="#ffffff"></script>
+    </div>
 
     <div class="my-6">
       ¡Hola a todos! 👋 ¿Disfrutaron leyendo el artículo? ¡Me encantaría conocer sus opiniones! 💬 No duden en dejar un

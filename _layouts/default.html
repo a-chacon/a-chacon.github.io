@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: "en-US" }}">
+<html lang="{{ page.lang | default: " en-US" }}">
 
 <head>
   <!-- General tags -->
@@ -23,8 +23,10 @@
   <meta property="og:title" content="{{ page.title }} | {{ site.title }}" />
   <meta property="twitter:title" content="{{ page.title }} | {{ site.title }}" />
   <meta property="og:url" content="https://a-chacon.com/{{ page.title }}" />
-  <meta property="og:image" content="{{ page.image  | absolute_url | default: '/assets/images/mysite.png'| absolute_url }}" />
-  <meta property="twitter:image" content="{{ page.image  | absolute_url | default: '/assets/images/mysite.png'| absolute_url }}" />
+  <meta property="og:image"
+    content="{{ page.image  | absolute_url | default: '/assets/images/mysite.png'| absolute_url }}" />
+  <meta property="twitter:image"
+    content="{{ page.image  | absolute_url | default: '/assets/images/mysite.png'| absolute_url }}" />
   <meta property="og:type" content="website" />
   <meta property="og:description" content="{{ page.excerpt | default: page.description }}" />
   <meta property="twitter:description" content="{{ page.excerpt | default: page.description }}" />
@@ -34,7 +36,8 @@
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" />
 
-  <script data-host="https://app.microanalytics.io" data-dnt="false" src="https://app.microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script>
+  <script data-host="https://app.microanalytics.io" data-dnt="false" src="https://app.microanalytics.io/js/script.js"
+    id="ZwSg9rf6GA" async defer></script>
 </head>
 
 <body class="bg-neutral-50">
@@ -47,18 +50,14 @@
 
   <!-- Carbon Neutral Website Banner (light) -->
   <div class="flex justify-center my-14">
-    <a href="https://carbonneutralwebsite.org/" target="_blank" rel="noreferrer"><img src="https://carbonneutralwebsite.org/api/banner/a-chacon.com/14.76mg/light.svg" width="300px" alt="Carbon impact of this web page" /></a>
+    <a href="https://carbonneutralwebsite.org/" target="_blank" rel="noreferrer"><img
+        src="https://carbonneutralwebsite.org/api/banner/a-chacon.com/14.76mg/light.svg" width="300px"
+        alt="Carbon impact of this web page" /></a>
   </div>
 
-  <div class="fixed bottom-2 left-0 right-0 flex justify-center ">
-    <div class="bg-gradient-to-r from-blue-500 via-sky-500 to-cyan-500 p-2 text-white rounded-full">
-      <a href="mailto:andres.ch@protonmail.com?subject=Work">
-        👷 Contratame / Hire me 👷
-      </a>
-    </div>
-  </div>
-
-  <div id="up-button" class="fixed bottom-5 right-5 p-2 text-white rounded-full shadow-md cursor-pointer transition duration-300 ease-in-out" style="display: none;">
+  <div id="up-button"
+    class="fixed bottom-5 right-5 p-2 text-white rounded-full shadow-md cursor-pointer transition duration-300 ease-in-out"
+    style="display: none;">
     <a href="#top">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="black" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
@@ -66,7 +65,7 @@
     </a>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var upButton = document.getElementById('up-button');
 
       // Function to handle scroll event
@@ -85,7 +84,7 @@
       handleScroll();
 
       // Add click event listener to scroll to the top when the button is clicked
-      upButton.addEventListener('click', function(e) {
+      upButton.addEventListener('click', function (e) {
         e.preventDefault();
         window.scrollTo({
           top: 0,
