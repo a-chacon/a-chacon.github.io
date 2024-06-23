@@ -20,8 +20,8 @@ As these questions arose 🤔, I came up with the idea of writing a series of po
 
 Therefore, my idea is to divide the topic into 4 chapters, each of which will be a post that I will publish on my blog, as long as I don't lose motivation along the way hehe 😅.
 
-- **Chapter 1**: Initial Setup and Models (The one you're reading)
-- **Chapter 2**: CRUD and Data Serialization
+- **Chapter 1**: Initial Setup and Models <-------- You Are Here!
+- [**Chapter 2**: CRUD and Data Serialization]({{page.next.url}})
 - **Chapter 3**: User Authentication and Authorization
 - **Chapter 4**: Error Handling and Best Practices
 

@@ -22,8 +22,8 @@ A medida que surgían estas preguntas 🤔, se me ocurrió la idea de escribir u
 
 Por ello, mi idea es dividir el tema en 4 capítulos, cada uno será un post que iré publicando en mi blog siempre que no pierda la motivación en el camino jeje 😅.
 
-- **Capítulo 1**: Configuración Inicial y Modelos (El que estás leyendo)
-- **Capítulo 2**: CRUD y Serialización de Datos
+- **Capítulo 1**: Configuración Inicial y Modelos <---------- Estas Aquí!
+- [**Capítulo 2**: CRUD y Serialización]({{page.next.url}})
 - **Capítulo 3**: Autenticación y Autorización de Usuarios
 - **Capítulo 4**: Manejo de Errores y Buenas Prácticas
 
