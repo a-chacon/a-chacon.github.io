@@ -12,6 +12,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/irb/tip/2023/11/20/ruby-tip-binding-irb.html
 ---
 There are different popular gems in the Ruby universe with various functionalities and different syntaxes to perform interactive debugging. Some of these gems can be [byebug](https://github.com/deivid-rodriguez/byebug) or [debug](https://github.com/ruby/debug). The problem with these gems is that sometimes they need to be installed, configured and have their own commands to learn. This takes some time and many times there is no need for something so complex for such a small bug.
 

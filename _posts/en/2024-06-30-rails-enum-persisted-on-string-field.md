@@ -11,6 +11,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/rails/benchmark/2024/06/30/rails-enum-persisted-on-string-field.html
 ---
 There was a moment in my applications when I stopped persisting the fields that I was going to define as enums in `int` fields and started doing it in `strings`. I made this decision because, on several occasions, I was asked for a database dump for analysis, and whenever they encountered a `status` field (or any other using `enum`) with values like 0, 1, or 2, they would end up asking me about its meaning. So, instead of using numerical values that lack meaning and context, I directly changed them to a `string` that in itself has meaning and provides context.
 

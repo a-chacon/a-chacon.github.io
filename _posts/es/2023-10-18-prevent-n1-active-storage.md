@@ -14,6 +14,8 @@ lang: es
 time: 3 min
 author: Andrés
 comments: true
+redirect_from:
+  - /rails/activestorage/2023/10/18/prevent-n1-active-storage.html
 ---
 Supongamos que tenemos un modelo llamado Solution, donde cada solución debe tener un ícono adjunto en forma de imagen. Algo como esto:
 

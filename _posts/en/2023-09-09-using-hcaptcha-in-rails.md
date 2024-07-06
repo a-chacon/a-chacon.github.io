@@ -13,6 +13,8 @@ lang: en
 time: 8 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html
 ---
 The main function of a captcha is to prevent the passage of bots to our web pages, but this task has become increasingly difficult over time. Both good and bad bots have become more sophisticated. And that is why so far the best way to distinguish a real user from a machine, without compromising the real identity of the users, is through the use of challenges.
 

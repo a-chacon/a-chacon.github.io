@@ -12,6 +12,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html
 ---
 La base de datos [PostgreSQL](https://www.postgresql.org/) es un sistema de **base de datos relacional** de objetos y de código abierto. PostgreSQL tiene un control de administración de interfaz gráfica de usuario (GUI) para la administración de la base de datos llamada [pgAdmin](https://www.pgadmin.org/). **pgAdmin** es una interfaz de diseño y gestión para la base de datos PostgreSQL. Se pueden realizar operaciones, hojas de datos y bases de datos simples con pgAdmin interactuando con el sistema de archivos local de la base de datos permitido por el usuario.
 

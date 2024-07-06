@@ -13,6 +13,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/tip/2023/12/08/ruby-tip-pattern-matching.html
 ---
 Pattern matching is a feature that was introduced in Ruby 2.7. From Ruby 3.0 onwards, it is no longer an experimental feature, and we can start using it without an annoying warning:
 

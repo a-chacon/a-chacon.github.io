@@ -12,6 +12,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /rails/active record/2023/11/26/rails-activerecord-loadasync.html
 ---
 El rendimiento de tu aplicación web es crucial, ya que afecta aspectos que van desde el SEO hasta los costos que tendrás en tu servicio de alojamiento al final del mes y la huella de carbono que tu sitio web está dejando en el planeta🌍. Por lo tanto, es fundamental conocer cualquier herramienta que pueda ayudarte a mejorarlo, estar al tanto de su existencia y aplicarla cuando sea necesario.
 

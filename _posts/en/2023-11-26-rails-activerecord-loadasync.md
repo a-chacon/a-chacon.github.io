@@ -12,6 +12,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /rails/active record/2023/11/26/rails-activerecord-loadasync.html
 ---
 The performance of your web application is crucial, as it affects aspects ranging from SEO to the costs you will have in your hosting service at the end of the month and the carbon footprint your website is leaving on the planet🌍. Therefore, it is essential to know any tool that can help you improve it, be aware of its existence and apply it when necessary.
 

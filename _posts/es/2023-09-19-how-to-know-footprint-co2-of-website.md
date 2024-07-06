@@ -13,6 +13,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html
 ---
 Un sitio web siempre se almacena en un servidor, muy probablemente en lo que llamamos la "nube", que no es más que un conjunto de computadoras que consumen una gran cantidad de energía, ya sea para su funcionamiento o para su refrigeración (sí, la electricidad que fluye a través de cada microchip genera calor). Entonces, dado que todas estas computadoras que mantienen en funcionamiento la "nube" consumen una cantidad significativa de energía eléctrica, es importante preguntarse: ¿de dónde proviene la mayor parte de esa energía? En su mayoría, proviene de fuentes de energía que utilizan combustibles fósiles, lo que tiene un impacto negativo en el medio ambiente.
 

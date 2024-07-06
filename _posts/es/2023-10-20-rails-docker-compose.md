@@ -2,7 +2,7 @@
 layout: post
 title: "\U0001F680Guía general para correr Ruby on Rails con Docker\U0001F680"
 category:
-  - On Rails
+  - Docker
 excerpt: >-
   Montar Ruby on Rails en Docker ofrece aislamiento para evitar conflictos,
   portabilidad para llevar tu aplicación a cualquier lugar, escalabilidad sin
@@ -12,6 +12,8 @@ lang: es
 time: 3 min
 author: Andrés
 comments: true
+redirect_from:
+  - /rails/docker/2023/10/20/rails-docker-compose.html
 ---
 Probablemente, ya conoces las ventajas de usar Docker, ya lo hemos escuchado o evidenciado en proyectos. Aquí te mostraré como llevar eso a tu aplicación Ruby on Rails. Para realizar lo que se propone necesitas una aplicación Rails, Docker instalado en tu computador y/o tu servidor y motivación para un par de pruebas y error.
 

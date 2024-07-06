@@ -12,6 +12,8 @@ lang: es
 time: 10 min
 author: Andrés
 comments: true
+redirect_from:
+  - /vim/ruby/ide/2023/06/15/spacevim-my-new-code-editor.html
 ---
 [SpaceVim](https://spacevim.org/) se define como una distribución de Vim/NeoVim. Hace un tiempo me dieron ganas por aprender a usar Vim y cuando
 encontré este proyecto fue que me convencí de usarlo como mi editor de código principal y dejar atrás Atom. Hasta el momento me ha parecido excelente,

@@ -13,6 +13,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /rails/chatgpt/2023/08/14/chat-rails-chatgpt.html
 ---
 ![Demo](/assets/images/minichat1.gif)
 

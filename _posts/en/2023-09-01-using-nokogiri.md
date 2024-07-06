@@ -12,6 +12,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/scraping/nokogiri/2023/09/01/using-nokogiri.html
 ---
 Nokogiri is one of the most famous gems within the Ruby ecosystem. It even has more downloads registered on [rubygems.org](https://rubygems.org) than Rails (693,378,140 as of this writing. Rails has only 460,230,689). It works with both XML and HTML documents, provides a simple API for reading, writing and querying documents.
 

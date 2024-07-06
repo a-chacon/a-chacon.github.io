@@ -15,6 +15,8 @@ lang: en
 time: 8 min
 author: Andrés
 comments: true
+redirect_from:
+  - /web/privacy/2023/09/14/why-privacy-matters.html
 ---
 Sometimes it's complicated to understand the importance of privacy in the digital world, but it can be a little easier to explain it in the physical world. Imagine someone comes into your home, goes through your stuff, reads your private notes, and leaves. That at the very least will make you uncomfortable. Something similar happens in the digital world, your feelings are expressed in the content you consume, your political preferences are reflected in the "likes" you give, your needs and economic situation is revealed in the purchases you make online, your sexual orientation is revealed in the searches you do on Google and more.
 

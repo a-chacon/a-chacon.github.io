@@ -11,6 +11,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /web/jekyll/2023/10/02/make-your-wersite-with-jekyll-githubpages.html
 ---
 [Jekyll](https://jekyllrb.com/) is a static website generation engine and [GitHub Pages](https://pages.github.com/) is a free hosting service provided by GitHub. By combining these two tools, you can easily create a static website to showcase your projects, blogs or any other content you wish to share.
 

@@ -11,6 +11,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /web/jekyll/2023/10/02/make-your-wersite-with-jekyll-githubpages.html
 ---
 [Jekyll](https://jekyllrb.com/) es un motor de generación de sitios web estáticos y [GitHub Pages](https://pages.github.com/) es un servicio de alojamiento gratuito proporcionado por GitHub. Combinando estas dos herramientas, puedes crear fácilmente un sitio web estático para mostrar tus proyectos, blogs o cualquier otro contenido que desees compartir.
 

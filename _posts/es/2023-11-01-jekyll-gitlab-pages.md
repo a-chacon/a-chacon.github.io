@@ -11,6 +11,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /web/jekyll/2023/11/01/jekyll-gitlab-pages.html
 ---
 Este post tiene como objetivo mostrar cómo realizar el despliegue de tu sitio Jekyll en GitLab Pages. Es la continuación de la versión anterior, [Crea Tu Sitio Web Gratis: Jekyll y GitHub Pages te Lo Hacen Posible](/web/jekyll/2023/10/02/make-your-wersite-with-jekyll-githubpages.html). Si aún no has tenido la oportunidad de revisar los pasos anteriores, te recomendamos hacerlo antes de continuar. Luego, podrás regresar y seguir estos pasos para desplegar tu sitio en GitLab Pages. Esta plataforma ofrece la ventaja de permitirte mantener tus repositorios privados mientras tu página web sigue siendo pública, una opción que en GitHub solo está disponible en cuentas Enterprise.
 

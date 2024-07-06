@@ -13,6 +13,8 @@ lang: es
 time: 8 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/rails/hcaptcha/2023/09/09/using-hcaptcha-in-rails.html
 ---
 La principal función de un captcha es impedir el paso de bots a nuestras paginas webs, pero esta tarea cada vez se ha ido haciendo mas dificil con el paso del tiempo. Los bots tanto buenos como malos se han vuelto mas sofisticados. Y es por esto que hasta el momento la mejor forma de distinguir un usuario real de una maquina, sin comprometer la identidad real de los usuarios, es mediante el uso de desafios.
 

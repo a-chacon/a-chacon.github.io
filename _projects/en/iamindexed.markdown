@@ -1,7 +1,7 @@
 ---
 title: Iamindexed
 layout: project
-image: assets/images/iamindexed.jpg
+image: /assets/images/iamindexed.jpg
 lang: en
 tags:
   - Rails

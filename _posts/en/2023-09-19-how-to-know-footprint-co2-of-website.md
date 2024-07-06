@@ -13,6 +13,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /web/environment/co2/2023/09/19/how-to-know-footprint-co2-of-website.html
 ---
 A website is always stored on a server, most likely in what we call the "cloud", which is nothing more than a collection of computers that consume a large amount of energy, either for their operation or for their cooling (yes, the electricity flowing through each microchip generates heat). So, given that all these computers that keep the "cloud" running consume a significant amount of electrical power, it is important to ask: where does most of that power come from? For the most part, it comes from energy sources that use fossil fuels, which has a negative impact on the environment.
 

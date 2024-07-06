@@ -11,6 +11,8 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html
 ---
 [MariaDB]("https://mariadb.org/es/") is one of the most popular open source relational database management systems in the world, and on the other hand, [PhpMyadmin](https://www.phpmyadmin.net/) is another great stable and also free software tool written in PHP that serves to manage both databases on a MySQL server and MariaDB.
 

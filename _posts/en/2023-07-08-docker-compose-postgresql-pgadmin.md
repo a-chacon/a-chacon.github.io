@@ -7,11 +7,13 @@ excerpt: >-
   Disicover how to get PostgreSQL and pgAdmin up and running in an agile way
   with Docker Compose. A quick guide to get your tools ready in minutes in your
   local development environment.
-cover: /assets/images/postgresql.jpg
+image: /assets/images/postgresql.jpg
 lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html
 ---
 Translated with <www.DeepL.com/Translator>
 

@@ -13,6 +13,8 @@ lang: en
 time: 3 min
 author: Andrés
 comments: true
+redirect_from:
+  - /rails/activestorage/2023/10/18/prevent-n1-active-storage.html
 ---
 Suppose we have a model called Solution, where each solution must have an attached icon in the form of an image. Something like this:
 

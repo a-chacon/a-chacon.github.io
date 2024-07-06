@@ -13,6 +13,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/rails/service objects/2023/11/08/rails-service-objects.html
 ---
 **Ruby on Rails** es un framework full stack que incluye todas las herramientas que necesitas para desarrollar una web app rápidamente. Su estructura se basa
 en el patrón de arquitectura MVC y eso es más que suficiente para gran parte de las aplicaciones que vas a desarrollar en un comienzo con RoR.

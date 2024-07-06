@@ -12,6 +12,8 @@ lang: en
 time: 2 min
 author: Andrés
 comments: true
+redirect_from:
+  - /rails/ruby/2024/06/16/creating-rails-api-cap-1.html
 ---
 A couple of months had passed without starting a new project or programming anything significant, but a few days ago that changed. I had to start a new REST API with Ruby on Rails. Whenever that happens, I begin to ask myself questions like: Should I use a gem for authentication or program it all myself? How will I manage permissions? Should I use the same serializer I always use or look for something more updated and new? Should I create the models first and then the controllers, or create everything at once with `rails scaffold`?
 

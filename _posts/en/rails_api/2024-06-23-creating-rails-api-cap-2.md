@@ -12,6 +12,8 @@ lang: en
 time: 2 min
 author: Andrés
 comments: true
+redirect_from:
+  - /en/rails/ruby/2024/06/23/creating-rails-api-cap-2.html
 ---
 Before continuing to build our **REST API with Ruby on Rails**, I would like to take a step back to clarify a few points. When I started working as a developer, there were many things that were unclear to me and that took time, effort, testing, and errors to learn. One of those was: What is an API really, and what is the best way to build one? Which routes to define and what responses to give?
 

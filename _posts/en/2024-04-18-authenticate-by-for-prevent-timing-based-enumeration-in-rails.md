@@ -11,6 +11,9 @@ lang: en
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - >-
+    /ruby/rails/security/2024/04/18/authenticate-by-for-prevent-timing-based-enumeration-in-rails.html
 ---
 Let's say we have a simple endpoint in our Rails application for our users to enter the platform:
 

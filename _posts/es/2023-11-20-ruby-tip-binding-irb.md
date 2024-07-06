@@ -13,6 +13,8 @@ lang: es
 time: 5 min
 author: Andrés
 comments: true
+redirect_from:
+  - /ruby/irb/tip/2023/11/20/ruby-tip-binding-irb.html
 ---
 Existen diferentes gemas populares en el universo de Ruby con diversas funcionalidades y diferentes sintaxis para realizar una depuración interactiva. Algunas de estas gemas pueden ser [byebug](https://github.com/deivid-rodriguez/byebug) o [debug](https://github.com/ruby/debug). El problema con estas gemas es que, a veces, necesitan ser instaladas, configuradas y con comandos propios que debemos aprender. Esto toma algo de tiempo y muchas veces no hay necesidad de algo tan complejo para un error tan pequeño.
 

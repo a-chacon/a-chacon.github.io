@@ -11,6 +11,8 @@ lang: en
 time: 3 min
 author: Andrés
 comments: true
+redirect_from:
+  - /en/ruby/wasm/2024/03/03/ruby-in-the-browser.html
 ---
 ## What is WebAssembly?
 
