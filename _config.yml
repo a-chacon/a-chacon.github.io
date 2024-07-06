@@ -1,0 +1,53 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: a-chacon
+logo: /assets/images/keyboard-key-a.png
+email: andres.ch@protonmail.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://a-chacon.com" # the base hostname & protocol for your site, e.g. http://example.com
+rrss:
+  email: "andres.ch@protonmail.com"
+  github: "https://github.com/a-chacon"
+  telegram: "https://t.me/a_chacon"
+  stackoverflow: "https://stackoverflow.com/users/16847024/andr%c3%a9s"
+  discord: "https://discord.com/users/673943171369140252"
+  mastodon: "https://lile.cl/@achacon"
+
+# Build settings
+theme: awesome-jekyll-theme
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
+
+# Polyglot Configuration
+languages: ["en", "es"]
+default_lang: "es"
+exclude_from_localization: ["javascript", "images", "css", "public"]
+parallel_localization: true
+
+# Collections Configuration
+collections:
+  projects:
+    output: true
