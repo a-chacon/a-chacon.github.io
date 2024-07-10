@@ -6,6 +6,7 @@ lang: es
 tags:
   - Ruby
   - Minitest
+category: Library
 ---
 Potente plug-in para el Framework de tests unitarios Minitest. Brinda información detallada sobre la cobertura de los tests en el código del paquete o aplicación. Una alternativa sencilla pero eficiente a SimpleCov.
 

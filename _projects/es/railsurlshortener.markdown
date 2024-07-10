@@ -6,6 +6,7 @@ lang: es
 tags:
   - Ruby
   - Rails
+category: Library
 ---
 Agrega funcionalidad de acortamiento de URLs a tu aplicación Rails con este motor especializado. La gema facilita el proceso de acortar URLs y proporciona información esencial sobre su uso, como la dirección IP, geolocalización y el dispositivo utilizado.
 

@@ -7,6 +7,11 @@ tags:
   - Rails
   - Bootstrap
   - AWS
+category: Monolite
 ---
-An administration panel to manage data on foster families for Fundación AcogerEs. The project included data cleansing and uploading of more than two thousand families and a mailing campaign.
+A complete administration panel designed to manage information about foster families in Fundación AcogerEs. This project involved data cleansing and uploading of more than two thousand families, as well as a mailing campaign.
+
+## Stage 2
+
+Database restructuring to support multiple cycles per family. Migration from AWS to fly.io. Modification of exportables (xlsx). And some visual issues.
 

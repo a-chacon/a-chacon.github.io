@@ -6,6 +6,7 @@ lang: en
 tags:
   - Ruby
   - Minitest
+category: Library
 ---
 Plug-in for the Minitest unit test framework. Displays information about the imageage of the tests on the package or application code. A much simpler option to SimpleCov.
 

@@ -6,6 +6,7 @@ lang: en
 tags:
   - Ruby
   - Rails
+category: Library
 ---
 Engine for Rails that adds full URL-slicing functionality. By simply installing this gem in any Rails application you can start URL slicing and get useful information about its usage (ip, geolocation, device, etc.).
 

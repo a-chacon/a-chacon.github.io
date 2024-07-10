@@ -6,6 +6,7 @@ lang: en
 tags:
   - Rails
   - Tailwindcss
+category: Monolite
 ---
 Resourc is a platform for sharing technical articles, tools, open-source projects, and everything related to programming. Connect with developers, share knowledge, and grow together.
 
