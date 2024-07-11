@@ -17,13 +17,11 @@ redirect_from:
 ---
 **Ruby on Rails** is a full stack framework that includes all the tools you need to develop a web app quickly. Its structure is based  
 on the MVC architecture pattern and that is more than enough for most of the applications you are going to develop in the beginning with RoR.  
-But when your application starts to grow according to business requirements, that's when you start to create code that does not belong to neither the  
-model**layer, nor to the **controller** layer and even less to the **view** layer. Then you ask yourself: Where do I write this? The answer may not necessarily be**service objects\*\*.
+But when your application starts to grow according to business requirements, that's when you start to create code that does not belong to neither the **model** layer, nor to the **controller** layer and even less to the **view** layer. Then you ask yourself: Where do I write this? The answer may not necessarily be **service objects**.
 
 > Learn just what you need to get started, then keep leveling up as you go. Ruby on Rails scales from HELLO WORLD to IPO.
 
-In this post, you'll discover how this pattern can simplify your code and keep you in control as your project grows. We'll explore what service objects are and take a deeper dive into their implementation so you can choose  
-their implementation so you can choose the one that best suits your needs.
+In this post, you'll discover how this pattern can simplify your code and keep you in control as your project grows. We'll explore what service objects are and take a deeper dive into their implementation so you can choose their implementation so you can choose the one that best suits your needs.
 
 # What is Service Objects in Rails?
 
@@ -39,7 +37,9 @@ They are "simple" because they must fulfill a single task and the most common im
 
 ## MVC + S
 
-**So, now we could talk about an additional layer in our MVC application, which will be the Services layer in charge of encapsulating the business logic and it will be carried out through the use of Service Objects. the use of Service Objects.**
+<iframe src="https://giphy.com/embed/PidhSZjIQOWNyOxwCb" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/muppetwiki-sesame-street-muppets-grover-PidhSZjIQOWNyOxwCb">via GIPHY</a></p>
+
+**So, now we could talk about an additional layer in our MVC application, which will be the Services layer in charge of encapsulating the business logic and it will be carried out through the use of Service Objects.**
 
 Something positive that we can highlight from this is that the business logic is one of the parts that will evolve over time in our application. Therefore, one of the benefits of encapsulating it in these **Service Objects** is that it will be easier to modify it over time without having to modify more than a single part of your application.
 
@@ -359,8 +359,7 @@ end
 
 ```
 
-**We will not go into much depth about this library, as it is very complete.** However, I strongly recommend **highly** that you explore [its documentation](<https://dry-rb.org/gems/dry-transact>  
-ion/0.15/) and discover all the possibilities it offers. Some of the **key benefits** of using this library are:
+**We will not go into much depth about this library, as it is very complete.** However, I strongly recommend **highly** that you explore [its documentation](<<https://dry-rb.org/gems/dry-transaction/0.15/>) and discover all the possibilities it offers. Some of the **key benefits** of using this library are:
 
 - The **initial declaration** of each action your service object should perform gives you a clear idea of what it does and where you have to intervene if you want to make a change:
 
@@ -523,8 +522,7 @@ s features to highlight:
 
 ---
 
-So much for implementation demonstrations. You can explore other gems that can help you with the implementation [here](<https://www.ruby-toolbox.com/categories/Service>  
-\_Objects).
+So much for implementation demonstrations. You can explore other gems that can help you with the implementation [here](https://www.ruby-toolbox.com/categories/ServiceObjects).
 
 ---
 

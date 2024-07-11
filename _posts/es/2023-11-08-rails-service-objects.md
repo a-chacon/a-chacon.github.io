@@ -39,6 +39,8 @@ Son "simples" porque deben cumplir con una única tarea y la implementación má
 
 ## MVC + S
 
+<iframe src="https://giphy.com/embed/PidhSZjIQOWNyOxwCb" width="480" height="360" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/muppetwiki-sesame-street-muppets-grover-PidhSZjIQOWNyOxwCb">via GIPHY</a></p>
+
 **Entonces, ahora podríamos hablar de una capa adicional en nuestra aplicación MVC, que será la capa de Servicios encargada de encapsular la lógica del negocio y se llevará a cabo mediante el uso de Service Objects.**
 
 Algo positivo que podemos destacar de esto es que la lógica de negocio es una de las partes que más evolucionará a lo largo del tiempo en nuestra aplicación. Por lo tanto, uno de los beneficios de encapsularla en estos **Service Objects** es que será más fácil modificarla con el transcurso del tiempo sin tener que modificar más que una sola parte de tu aplicación.
