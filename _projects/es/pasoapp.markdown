@@ -7,7 +7,7 @@ tags:
   - Rails
   - Tailwindcss
   - Docker
-category: Monolite
+category: Monolith
 ---
 Descubre un cortador de URL único con funciones de recolección de datos de visitantes. Basado en mi proyecto open-source RailsUrlShortener, esta implementación destaca su potencial.
 

@@ -7,7 +7,7 @@ tags:
   - Rails
   - Tailwindcss
   - Docker
-category: Monolite
+category: Monolith
 ---
 Una práctica app que agiliza el Scraping en diversos motores de búsqueda para verificar la indexación de tu sitio. Surgida de mi necesidad personal por comprobar rápidamente la indexación de mis sitios.
 

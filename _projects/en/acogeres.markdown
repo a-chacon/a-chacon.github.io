@@ -7,7 +7,7 @@ tags:
   - Rails
   - Bootstrap
   - AWS
-category: Monolite
+category: Monolith
 ---
 A complete administration panel designed to manage information about foster families in Fundación AcogerEs. This project involved data cleansing and uploading of more than two thousand families, as well as a mailing campaign.
 

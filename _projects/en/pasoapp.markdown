@@ -7,7 +7,7 @@ tags:
   - Rails
   - Tailwindcss
   - Docker
-category: Monolite
+category: Monolith
 ---
 A URL shortener that can also collect information about visitors. This project is made using my other open-source project RailsUrlShortener and is only intended to show its implementation.
 

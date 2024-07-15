@@ -8,7 +8,7 @@ tags:
   - AWS
   - Tailwindcss
   - Docker
-category: Monolite
+category: Monolith
 ---
 Platform created with data obtained by web scraping and ChatGPT API.
 
