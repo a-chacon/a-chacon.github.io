@@ -2,7 +2,6 @@
 title: ComoCambio
 layout: project
 image: /assets/images/comocambio.jpg
-lang: es
 tags:
   - Rails
   - AWS

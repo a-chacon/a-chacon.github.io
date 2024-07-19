@@ -2,7 +2,6 @@
 title: Resourc
 layout: project
 image: 'https://resourc.tech/logo.webp'
-lang: en
 tags:
   - Rails
   - Tailwindcss

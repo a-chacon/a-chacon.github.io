@@ -3,7 +3,6 @@ title: ContactAI
 layout: project
 image: /assets/images/contactai.avif
 category: API
-lang: en
 tags:
   - Rails
   - AWS

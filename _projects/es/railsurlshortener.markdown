@@ -2,7 +2,6 @@
 title: RailsUrlShortener
 layout: project
 image: /assets/images/ruby.webp
-lang: es
 tags:
   - Ruby
   - Rails

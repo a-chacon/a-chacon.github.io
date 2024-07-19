@@ -4,7 +4,6 @@ layout:
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 {% for lang in site.languages %}
-
     {% for node in site.pages %}
         {% unless site.exclude_from_localization contains node.path %}
             {% if node.layout %}
@@ -14,7 +13,6 @@ layout:
             {% endif %}
         {% endunless %}
     {% endfor %}
-
     {% for collection in site.collections %}
         {% for node in site[collection.label] %}
             <url>
@@ -22,6 +20,5 @@ layout:
             </url>
         {% endfor %}
     {% endfor %}
-
 {% endfor %}
 </urlset>

@@ -2,7 +2,6 @@
 title: CalendarioChileno
 layout: project
 image: /assets/images/calendariochileno.png
-lang: en
 tags:
   - Rails
   - AWS

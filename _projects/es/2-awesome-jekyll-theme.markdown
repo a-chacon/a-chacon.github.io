@@ -3,7 +3,6 @@ title: Awesome Jekyll Theme
 layout: project
 image: >-
   https://raw.githubusercontent.com/a-chacon/awesome-jekyll-theme/main/screenshots/main.png
-lang: es
 category: Web Theme
 ---
 Un tema Jekyll limpio y versátil con un diseño minimalista y características robustas.

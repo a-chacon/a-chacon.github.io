@@ -5,6 +5,9 @@ footer: true
 lang: en
 permalink: /
 image: /assets/images/profile.webp
+description: >-
+  Specialized in the development of RESTs APIs with Ruby on Rails. I have
+  participated in various stages of the application development cycle.
 main_content: >
   # Hello World, My name is Andres.
 

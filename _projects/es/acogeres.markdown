@@ -2,7 +2,6 @@
 title: AcogerEs
 layout: project
 image: /assets/images/acogeres.png
-lang: es
 tags:
   - Rails
   - Bootstrap

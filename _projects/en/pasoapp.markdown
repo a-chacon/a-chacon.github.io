@@ -2,7 +2,6 @@
 title: Paso App
 layout: project
 image: /assets/images/pasoapp.jpg
-lang: en
 tags:
   - Rails
   - Tailwindcss

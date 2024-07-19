@@ -2,7 +2,6 @@
 title: Minitest-cc
 layout: project
 image: /assets/images/minitestscc.png
-lang: es
 tags:
   - Ruby
   - Minitest

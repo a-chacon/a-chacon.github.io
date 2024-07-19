@@ -2,7 +2,6 @@
 title: Iamindexed
 layout: project
 image: /assets/images/iamindexed.jpg
-lang: es
 tags:
   - Rails
   - Tailwindcss
