@@ -36,7 +36,7 @@ Algunas de las otras soluciones:
 
 Así que ahora que tengo tiempo (sin trabajo a tiempo completo) y luego de años de búsqueda —digo años porque hace algo más de dos ya había escrito una [pregunta en Stack Overflow](https://stackoverflow.com/questions/71947018/is-there-a-way-to-generate-an-interactive-documentation-for-rails-apis)—, me decidí a crear mi propia herramienta:
 
-### **OasRails**
+### [**OasRails**](https://github.com/a-chacon/oas_rails)
 
 **OasRails es un engine para Rails que genera un OAS v3.1** a partir de las rutas de la aplicación, examina el código fuente y los comentarios de cada método para tratar de generar una documentación, y finalmente lo despliega usando **RapiDoc.** Todo esto de forma dinámica, con poco esfuerzo y en un solo proyecto.
 
@@ -54,6 +54,8 @@ Cuando hablaba de una solución `automática`, me refería a extraer informació
 Cuando decía `fácil de usar`, me refería a que solo debes comentar tu código para documentar. No necesitas **RSpec**, ni un **DSL**, ni **Grape** (nada personal contra el proyecto, lo he usado y me gusta).
 
 En cuanto a la característica `interactiva`, eso se lo dejamos a [RapiDoc](https://rapidocweb.com/), que está montado en una vista del engine mediante **CDN.**
+
+[Repositorio Del Proyecto](https://github.com/a-chacon/oas_rails)
 
 ---
 
@@ -97,7 +99,7 @@ Cada endpoint queda documentado al menos con título, ruta, request body y posib
 
 **Tener en cuenta que toda esta información no es posible extraerla en casos más reales donde las APIs varían en estructura y ahí es necesario proveer comentarios en cada endpoint.**
 
-[Link del repositorio](https://github.com/a-chacon/api-example)
+[Repositorio Del Proyecto de Ejemplo](https://github.com/a-chacon/api-example)
 
 ---
 
