@@ -4,6 +4,7 @@ layout: project
 image: >-
   https://raw.githubusercontent.com/a-chacon/awesome-jekyll-theme/main/screenshots/main.png
 category: Web Theme
+order: 4
 ---
 A clean, versatile Jekyll theme with minimalist design and robust features.
 Ideal for portfolios, blogs, and project showcases with responsive layouts and easy customization.

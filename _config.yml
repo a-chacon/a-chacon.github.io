@@ -51,3 +51,4 @@ collections:
   projects:
     output: true
     permalink: /:collection/:title:output_ext
+    sort_by: order

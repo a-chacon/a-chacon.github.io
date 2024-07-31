@@ -6,6 +6,7 @@ tags:
   - Rails
   - AWS
 category: API
+order: 3
 ---
 ComoCambio: Impulsando una cultura saludable como parte del programa de Cencosud. Proyecto en desarrollo desde hace dos años, donde contribuyo como desarrollador back-end y DevOps freelance para Zeeers.
 
