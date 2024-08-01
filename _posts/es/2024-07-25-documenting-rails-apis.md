@@ -55,6 +55,8 @@ Cuando decía `fácil de usar`, me refería a que solo debes comentar tu código
 
 En cuanto a la característica `interactiva`, eso se lo dejamos a [RapiDoc](https://rapidocweb.com/), que está montado en una vista del engine mediante **CDN.**
 
+<iframe src="https://ghbtns.com/github-btn.html?user=a-chacon&repo=oas_rails&type=star&count=false&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+
 [Repositorio Del Proyecto](https://github.com/a-chacon/oas_rails)
 
 ---

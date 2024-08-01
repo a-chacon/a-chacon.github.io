@@ -55,6 +55,8 @@ When I said `easy to use`, I meant you just need to comment on your code to docu
 
 Regarding the `interactive` feature, we leave that to [RapiDoc](https://rapidocweb.com/), which is mounted on an engine view using **CDN.**
 
+<iframe src="https://ghbtns.com/github-btn.html?user=a-chacon&repo=oas_rails&type=star&count=false&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+
 [Repository Link Of Project](https://github.com/a-chacon/oas_rails)
 
 ---

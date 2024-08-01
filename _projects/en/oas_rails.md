@@ -8,6 +8,8 @@ order: 1
 ---
 OasRails is a Rails engine that simplifies API documentation. Inspired by FastAPI's interactive documentation in Python, OasRails automatically generates an OpenAPI Specification (OAS) v3.1 from the application's routes and source code.
 
+<iframe src="https://ghbtns.com/github-btn.html?user=a-chacon&repo=oas_rails&type=star&count=false&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+
 ## Key Features
 
 - **Dynamic Generation**: Creates real-time documentation, without the need for pre-building.
