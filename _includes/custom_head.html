@@ -2,3 +2,48 @@
 
 <script data-host="https://app.microanalytics.io" data-dnt="false" src="https://app.microanalytics.io/js/script.js"
   id="ZwSg9rf6GA" async defer></script>
+
+<style>
+  .mini-banner {
+    background-color: #6eea8e;
+    /* Light red background color */
+    color: #1c2a18;
+    /* Dark red text color */
+    padding: 10px 20px;
+    /* Padding around the text */
+    text-align: center;
+    /* Center the text */
+    position: fixed;
+    /* Fix the banner to the top of the page */
+    bottom: 0;
+    /* Position at the very top */
+    left: 0;
+    /* Full width */
+    right: 0;
+    /* Full width */
+    z-index: 1000;
+    /* Ensure it's above other elements */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Slight shadow for depth */
+  }
+
+  .mini-banner p {
+    margin: 0;
+    /* Remove default paragraph margin */
+    font-size: 16px;
+    /* Font size */
+    font-weight: bold;
+    /* Bold text */
+  }
+
+  body {
+    margin-top: 60px;
+    /* Adjust based on the banner height */
+  }
+</style>
+<div class="mini-banner">
+  <p>Building an API with Rails? Discover
+    <a href="https://github.com/a-chacon/oas_rails" style="color: #826cf6; text-decoration: underline;">
+      OasRails</a>, a Rails engine for generate automatic interactive documentation.
+  </p>
+</div>
