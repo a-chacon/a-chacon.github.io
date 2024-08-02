@@ -7,7 +7,7 @@ excerpt: >-
   Después de buscar una herramienta definitiva para documentar las API que
   desarrollo con Rails, que fuera simple, interactiva y fácil de usar, y no
   encontrar la adecuada, decidí crear la mía propia: OasRails.
-image: /assets/images/oas_rails.avif
+image: /assets/images/oas_rails_ui.png
 author: Andrés
 comments: true
 ---

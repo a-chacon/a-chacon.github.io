@@ -1,8 +1,7 @@
 ---
 title: 'OasRails: Documentación Automática para APIs en Rails'
 layout: project
-image: >-
-  https://raw.githubusercontent.com/a-chacon/oas_rails/0cfc9abb5be85e6bb3fc4669e29372be8f80a276/oas_rails_ui.png
+image: /assets/images/oas_rails_ui.png
 category: Library
 order: 1
 ---
