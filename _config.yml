@@ -25,7 +25,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Programmer specialized in the development of RESTs APIs. Always learning and building new things.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://a-chacon.com" # the base hostname & protocol for your site, e.g. http://example.com
-rrss:
+contact_channels:
   email: "andres.ch@protonmail.com"
   github: "https://github.com/a-chacon"
   telegram: "https://t.me/a_chacon"
