@@ -265,3 +265,5 @@ As we can see, **applying authorization and authentication to our API is easy** 
 We have seen a brief introduction to authentication using a _Bearer token_ and authorization based on policies and roles when developing APIs. Ruby on Rails is a spectacular framework, and I hope you’ve gained something valuable from this post.
 
 Happy coding!
+
+The repo with all the code: <https://github.com/a-chacon/api-project-management-example>
