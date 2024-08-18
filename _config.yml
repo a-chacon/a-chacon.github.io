@@ -52,3 +52,9 @@ collections:
     output: true
     permalink: /:collection/:title:output_ext
     sort_by: order
+
+defaults:
+  - scope:
+      path: "_posts" # an empty string here means all files in the project
+    values:
+      author: "Andrés"

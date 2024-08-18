@@ -17,16 +17,21 @@ comments: true
 redirect_from:
   - /rails/ruby/2024/06/16/creating-rails-api-cap-1.html
 ---
+
 Hace un par de meses que no comenzaba un nuevo proyecto ni programaba nada importante, pero hace unos días eso cambió. Tuve que comenzar una nueva API REST con Ruby on Rails. Cada vez que eso pasa, me empiezo a preguntar cosas como: ¿Ocuparé una gema para realizar la autenticación o lo programaré todo yo? ¿Cómo manejaré los permisos? ¿Usaré el mismo serializador que uso siempre o buscaré algo más actualizado y nuevo? ¿Crearé los modelos y luego los controladores o crearé todo a la misma vez con `rails scaffold`?
 
 A medida que surgían estas preguntas 🤔, se me ocurrió la idea de escribir una serie de posts donde dejar clara **mi forma de crear APIs con Ruby on Rails**, que me sirva a mí como un recordatorio y a otros para aprender y/o complementar sus conocimientos. A propósito de que no encontré ninguna buena guía en internet, todas son muy básicas y con ejemplos poco reales que no van más allá de un simple CRUD.
 
+---
+
 Por ello, mi idea es dividir el tema en 4 capítulos, cada uno será un post que iré publicando en mi blog siempre que no pierda la motivación en el camino jeje 😅.
 
 - **Capítulo 1**: Configuración Inicial y Modelos <---------- Estas Aquí!
-- [**Capítulo 2**: CRUD y Serialización]({{page.next.url}})
-- **Capítulo 3**: Autenticación y Autorización de Usuarios
+- [**Capítulo 2**: CRUD y Serialización]({% post_url 2024-06-23-creating-rails-api-cap-2 %})
+- [**Capítulo 3**: Autenticación y Autorización]({% post_url 2024-08-19-creating-rails-api-cap-3 %})
 - **Capítulo 4**: Manejo de Errores y Buenas Prácticas
+
+---
 
 **Para esta guía supongo que sabes lo que es una API REST, tienes Ruby instalado, la gema de Rails instalada y estás usando un sistema operativo basado en GNU/Linux**
 
@@ -268,4 +273,3 @@ Con estos pasos ya tendremos creados los **cimientos de nuestra API REST** y est
 Hemos diseñado nuestra base de datos, creamos nuestros modelos, definimos las asociaciones de forma correcta, te comenté cómo me gusta definir los enums y dejamos nuestras factorías listas para producir registros de pruebas 🏭. Dejaré la URL del repositorio con el código más abajo por si lo quieres ir mirando y **cualquier comentario u opinion para motivarme a seguir escribiendo es bienvenido**.
 
 Repo: <https://github.com/a-chacon/api-project-management-example>
-

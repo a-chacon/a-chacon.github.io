@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Creando un API REST con Ruby on Rails. Capítulo 2: Endpoints y Serialización'
+title: "Creando un API REST con Ruby on Rails. Capítulo 2: Endpoints y Serialización"
 categories:
   - On Rails
 excerpt: >-
@@ -15,6 +15,7 @@ comments: true
 redirect_from:
   - /rails/ruby/2024/06/23/creating-rails-api-cap-2.html
 ---
+
 Antes de continuar construyendo nuestra **API REST con Ruby On Rails** me gustaría dar un salto hacia atrás para aclarar algunos puntos. Cuando comencé a trabajar como desarrollador había muchas cosas que no tenía claras y que me costó tiempo, esfuerzo, pruebas y errores aprender. Una de esas era ¿Qué era realmente un API y cuál es la mejor forma de construir una? ¿Cuáles rutas definir y qué respuestas dar?
 
 Ahora esto me parece obvio y básico, pero creo que vale la pena repasar. [Según IBM](https://www.ibm.com/es-es/topics/rest-apis) un API REST es:
@@ -34,12 +35,16 @@ Lo único que se debe respetar cuando diseñas una API REST deben ser los **6 pr
 
 ¿Y cómo funciona esto? Probablemente si estás leyendo esto es porque ya sabes. Solicitudes HTTP para realizar funciones de base de datos estándar como crear, leer, actualizar y eliminar (CRUD) sobre un recurso. Y aquí mi recomendación y consejo: **siempre intenta realizar tus APIs orientadas a recursos y no a acciones**. Con Ruby On Rails esto no es difícil, pero siempre está la tentación de realizar endpoints como `POST /publishArticle` en vez de realizar `PUT /article/:article_id` con el contenido correcto.
 
+---
+
 Con esto aclarado continuamos con nuestra serie de posts, segundo capítulo:
 
-- [**Capítulo 1**: Configuración Inicial y Modelos]({{page.previous.url}})
+- [**Capítulo 1**: Configuración Inicial y Modelos]({% post_url 2024-06-16-creating-rails-api-cap-1 %})
 - **Capítulo 2**: Endpoints y Serialización <----------- Estas Aquí!
-- **Capítulo 3**: Autenticación y Autorización
+- [**Capítulo 3**: Autenticación y Autorización]({% post_url 2024-08-19-creating-rails-api-cap-3 %})
 - **Capítulo 4**: Manejo de Errores y Buenas Prácticas
+
+---
 
 ## Rutas
 
@@ -194,4 +199,3 @@ Con esto ya tendremos nuestros endpoints funcionando, las rutas tienen sentido a
 Si hay algún punto que no expresé correctamente o me salté algo hasta ahora, por favor escríbeme. Además, te agrego la URL del repositorio donde iré subiendo el código actualizado para que lo vayas revisando:
 
 Repo: [https://github.com/a-chacon/api-project-management-example](https://github.com/a-chacon/api-project-management-example)
-
