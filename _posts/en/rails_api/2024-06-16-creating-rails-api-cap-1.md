@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Creating a REST API with Ruby on Rails. Chapter 1: Initial Setup and Models'
+title: "Creating a REST API with Ruby on Rails. Chapter 1: Initial Setup and Models"
 categories:
   - On Rails
 excerpt: >-
@@ -15,6 +15,7 @@ comments: true
 redirect_from:
   - /rails/ruby/2024/06/16/creating-rails-api-cap-1.html
 ---
+
 A couple of months had passed without starting a new project or programming anything significant, but a few days ago that changed. I had to start a new REST API with Ruby on Rails. Whenever that happens, I begin to ask myself questions like: Should I use a gem for authentication or program it all myself? How will I manage permissions? Should I use the same serializer I always use or look for something more updated and new? Should I create the models first and then the controllers, or create everything at once with `rails scaffold`?
 
 As these questions arose 🤔, I came up with the idea of writing a series of posts to clarify **my way of creating APIs with Ruby on Rails**, which will serve as a reminder for myself and as a learning resource for others to complement their knowledge. Especially since I couldn't find any good guides on the internet, they are all very basic with unrealistic examples that don't go beyond a simple CRUD.
@@ -22,8 +23,8 @@ As these questions arose 🤔, I came up with the idea of writing a series of po
 Therefore, my idea is to divide the topic into 4 chapters, each of which will be a post that I will publish on my blog, as long as I don't lose motivation along the way hehe 😅.
 
 - **Chapter 1**: Initial Setup and Models <-------- You Are Here!
-- [**Chapter 2**: CRUD and Data Serialization]({{page.next.url}})
-- **Chapter 3**: User Authentication and Authorization
+- [**Chapter 2**: CRUD and Data Serialization](/on rails/2024/06/23/creating-rails-api-cap-2.html)
+- [**Chapter 3**: User Authentication and Authorization](/on rails/2024/08/18/creating-rails-api-cap-3.html)
 - **Chapter 4**: Error Handling and Best Practices
 
 **For this guide, I assume you know what a REST API is, have Ruby installed, Rails gem installed, and are using a GNU/Linux-based operating system.**
@@ -259,4 +260,3 @@ With these steps, we have laid the **foundations of our REST API** and are ready
 We've designed our database, created our models, defined associations correctly, discussed how I prefer to define enums, and set up our factories to generate test records 🏭. I'll leave the repository URL with the code below in case you want to take a look, and **any comments or feedback to keep me motivated to continue writing are welcome**.
 
 Repo: <https://github.com/a-chacon/api-project-management-example>
-

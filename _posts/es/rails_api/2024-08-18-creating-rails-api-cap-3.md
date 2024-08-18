@@ -18,9 +18,9 @@ Para empezar, creo que es importante entender la diferencia entre autenticación
 
 ¿Dónde estamos?
 
-- [**Capítulo 1**: Configuración Inicial y Modelos]({% post_url 2024-06-16-creating-rails-api-cap-1 %})
-- [**Capítulo 2**: Endpoints y Serialización]({% post_url 2024-06-23-creating-rails-api-cap-2 %})
-- [**Capítulo 3**: Autenticación y Autorización]({% post_url 2024-08-19-creating-rails-api-cap-3 %}) <--- ¡Estamos aquí!
+- [**Capítulo 1**: Configuración Inicial y Modelos](/on rails/2024/06/16/creating-rails-api-cap-1.html)
+- [**Capítulo 2**: Endpoints y Serialización](/on rails/2024/06/23/creating-rails-api-cap-2.html)
+- **Capítulo 3**: Autenticación y Autorización <--- ¡Estamos aquí!
 - **Capítulo 4**: Manejo de Errores y Buenas Prácticas
 
 ---

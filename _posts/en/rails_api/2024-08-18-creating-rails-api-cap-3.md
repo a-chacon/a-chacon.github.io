@@ -18,9 +18,9 @@ To begin, I think it's important to understand the difference between authentica
 
 Where are we?
 
-- [**Chapter 1**: Initial Setup and Models]({% post_url 2024-06-16-creating-rails-api-cap-1 %})
-- [**Chapter 2**: Endpoints and Serialization]({% post_url 2024-06-23-creating-rails-api-cap-2 %})
-- [**Chapter 3**: Authentication and Authorization]({% post_url 2024-08-19-creating-rails-api-cap-3 %}) <--- We are here!
+- [**Chapter 1**: Initial Setup and Models](/on rails/2024/06/16/creating-rails-api-cap-1.html)
+- [**Chapter 2**: CRUD and Data Serialization](/on rails/2024/06/23/creating-rails-api-cap-2.html)
+- **Chapter 3**: User Authentication and Authorization <-------- You Are Here!
 - **Chapter 4**: Error Handling and Best Practices
 
 ---

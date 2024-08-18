@@ -27,8 +27,8 @@ A medida que surgían estas preguntas 🤔, se me ocurrió la idea de escribir u
 Por ello, mi idea es dividir el tema en 4 capítulos, cada uno será un post que iré publicando en mi blog siempre que no pierda la motivación en el camino jeje 😅.
 
 - **Capítulo 1**: Configuración Inicial y Modelos <---------- Estas Aquí!
-- [**Capítulo 2**: CRUD y Serialización]({% post_url 2024-06-23-creating-rails-api-cap-2 %})
-- [**Capítulo 3**: Autenticación y Autorización]({% post_url 2024-08-19-creating-rails-api-cap-3 %})
+- [**Capítulo 2**: CRUD y Serialización](/on rails/2024/06/23/creating-rails-api-cap-2.html)
+- [**Capítulo 3**: Autenticación y Autorización](/on rails/2024/08/18/creating-rails-api-cap-3.html)
 - **Capítulo 4**: Manejo de Errores y Buenas Prácticas
 
 ---

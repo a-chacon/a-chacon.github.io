@@ -39,9 +39,9 @@ Lo único que se debe respetar cuando diseñas una API REST deben ser los **6 pr
 
 Con esto aclarado continuamos con nuestra serie de posts, segundo capítulo:
 
-- [**Capítulo 1**: Configuración Inicial y Modelos]({% post_url 2024-06-16-creating-rails-api-cap-1 %})
+- [**Capítulo 1**: Configuración Inicial y Modelos](/on rails/2024/06/16/creating-rails-api-cap-1)
 - **Capítulo 2**: Endpoints y Serialización <----------- Estas Aquí!
-- [**Capítulo 3**: Autenticación y Autorización]({% post_url 2024-08-19-creating-rails-api-cap-3 %})
+- [**Capítulo 3**: Autenticación y Autorización](/on rails/2024/08/18/creating-rails-api-cap-3)
 - **Capítulo 4**: Manejo de Errores y Buenas Prácticas
 
 ---

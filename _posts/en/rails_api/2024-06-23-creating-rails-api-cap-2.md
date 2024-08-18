@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Creating a REST API with Ruby on Rails. Chapter 2: Endpoints and Serialization'
+title: "Creating a REST API with Ruby on Rails. Chapter 2: Endpoints and Serialization"
 categories:
   - On Rails
 excerpt: >-
@@ -15,6 +15,7 @@ comments: true
 redirect_from:
   - /en/rails/ruby/2024/06/23/creating-rails-api-cap-2.html
 ---
+
 Before continuing to build our **REST API with Ruby on Rails**, I would like to take a step back to clarify a few points. When I started working as a developer, there were many things that were unclear to me and that took time, effort, testing, and errors to learn. One of those was: What is an API really, and what is the best way to build one? Which routes to define and what responses to give?
 
 Now this seems obvious and basic to me, but I believe it's worth reviewing. According to [IBM](https://www.ibm.com/es-es/topics/rest-apis), a REST API is:
@@ -36,9 +37,9 @@ And how does this work? If you're reading this, you probably already know. HTTP 
 
 With this clarified, we continue with our series of posts, second chapter:
 
-- [**Chapter 1**: Initial Setup and Models]({{page.previous.url}})
-- **Chapter 2**: Endpoints and Serialization <----------- You Are Here!
-- **Chapter 3**: Authentication and Authorization
+- [**Chapter 1**: Initial Setup and Models](/on rails/2024/06/16/creating-rails-api-cap-1.html)
+- **Chapter 2**: CRUD and Data Serialization <-------- You Are Here!
+- [**Chapter 3**: User Authentication and Authorization](/on rails/2024/08/18/creating-rails-api-cap-3.html)
 - **Chapter 4**: Error Handling and Best Practices
 
 ## Routes
@@ -194,4 +195,3 @@ With this, our endpoints will be operational, routes will make sense using nesti
 If there's any point I didn't express correctly or if I missed something so far, please let me know. Additionally, I'll add the URL of the repository where I'll be uploading the updated code for you to review:
 
 Repo: [https://github.com/a-chacon/api-project-management-example](https://github.com/a-chacon/api-project-management-example)
-
