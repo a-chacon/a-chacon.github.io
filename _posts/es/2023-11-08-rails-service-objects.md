@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rails Service Objects: Una pequeña guía para agilizar tu código"
+title: 'Rails Service Objects: Una pequeña guía para agilizar tu código'
 category:
   - On Rails
 excerpt: >-
@@ -16,13 +16,14 @@ comments: true
 redirect_from:
   - /ruby/rails/service objects/2023/11/08/rails-service-objects.html
 ---
-
-**Ruby on Rails** es un framework full stack que incluye todas las herramientas que necesitas para desarrollar una web app rápidamente. Su estructura se basa en el patrón de arquitectura MVC y eso es más que suficiente para gran parte de las aplicaciones que vas a desarrollar en un comienzo con RoR. Pero cuando tu aplicación comienza a crecer conforme a los requerimientos del negocio, es entonces cuando empiezas a crear código que no pertenece ni a
+**Ruby on Rails** es un framework full stack que incluye todas las herramientas que necesitas para desarrollar una web app rápidamente. Su estructura se basa
+en el patrón de arquitectura MVC y eso es más que suficiente para gran parte de las aplicaciones que vas a desarrollar en un comienzo con RoR.
+Pero cuando tu aplicación comienza a crecer conforme a los requerimientos del negocio, es entonces cuando empiezas a crear código que no pertenece ni a
 la capa **modelo**, ni a la capa **controlador** y menos a la capa **vista**. Entonces te preguntas: ¿Dónde escribo esto? La respuesta puede ser, no necesariamente, **service objects**.
 
-En este post tratare de mostrarte como puedes simplicar tu codigo utilizando este patron y mantenerte en control a medida que tu proyecto crece. Exploraremos qué son los service objects y profundizaremos en su implementación para que puedas elegir la que más se adecue a tus necesidades.
+> Learn just what you need to get started, then keep leveling up as you go. Ruby on Rails scales from HELLO WORLD to IPO.
 
-**Update:** Actualice este post luego de ver [The Curse of Service Object](https://www.youtube.com/watch?v=eOosB7Z1Q5U)
+En este post, descubrirás cómo este patrón puede simplificar tu código y mantenerte en control a medida que tu proyecto crece. Exploraremos qué son los service objects y profundizaremos en su implementación para que puedas elegir la que más se adecue a tus necesidades.
 
 # ¿Qué es Service Objects en Rails?
 
@@ -30,10 +31,11 @@ Se podría definir como un patrón de diseño de software adoptado por la comuni
 
 Los Service Objects vienen como una forma fácil de mantener parte de nuestra lógica de negocio fuera de nuestros modelos y controladores, creando objetos de una sola responsabilidad que son fáciles de testear, reutilizables y simples. Esto hace que nuestros controladores sean más limpios y que nuestros modelos se encarguen de su principal tarea: representar los datos del negocio.
 
-Ahora bien, como se ve un service object? para definir esto creo que es interesante el analisis de Ivan Nemytchenko en su charla [The Curse of Service Object](https://www.youtube.com/watch?v=eOosB7Z1Q5U) donde llega a la conclusion, luego de analisar las ideas de Martin Fowler, Eric Evans y Robert Martin a que un service object debe cumplir con lo siguiente:
+Son "simples" porque deben cumplir con una única tarea y la implementación más común será mediante un PORO ("Plain Old Ruby Object") que básicamente tendrá:
 
-- blab
-- bla
+1. Un método de iniciación.
+2. Un único método público. Por lo general `call` o `run`.
+3. Retornar una respuesta predecible luego de la ejecución.
 
 ## MVC + S
 
@@ -529,3 +531,4 @@ En pocas palabras, los Service Objects en Ruby on Rails son una herramienta esen
 Sin embargo, este viaje de mejora no termina aquí. Muchos de los conceptos que te he compartido pueden adaptarse a las necesidades específicas de tu aplicación. Espero que este artículo te haya proporcionado una valiosa perspectiva y herramientas para optimizar tu desarrollo.
 
 Estoy a tu disposición para cualquier sugerencia, comentario o pregunta adicional. No dudes en escribir.
+
