@@ -58,3 +58,6 @@ defaults:
       path: "_posts" # an empty string here means all files in the project
     values:
       author: "Andrés"
+
+feed:
+  posts_limit: 25
