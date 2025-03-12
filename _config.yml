@@ -20,13 +20,13 @@
 
 title: a-chacon
 logo: /assets/images/keyboard-key-a.png
-email: andres.ch@protonmail.com
+email: webpage.onyx305@passmail.net
 description: >- # this means to ignore newlines until "baseurl:"
   Programmer specialized in the development of RESTs APIs. Always learning and building new things.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://a-chacon.com" # the base hostname & protocol for your site, e.g. http://example.com
 contact_channels:
-  email: "andres.ch@protonmail.com"
+  email: "webpage.onyx305@passmail.net"
   github: "https://github.com/a-chacon"
   telegram: "https://t.me/a_chacon"
   stackoverflow: "https://stackoverflow.com/users/16847024/andr%c3%a9s"
