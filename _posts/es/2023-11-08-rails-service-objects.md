@@ -16,6 +16,7 @@ comments: true
 redirect_from:
   - /ruby/rails/service objects/2023/11/08/rails-service-objects.html
 ---
+
 **Ruby on Rails** es un framework full stack que incluye todas las herramientas que necesitas para desarrollar una web app rápidamente. Su estructura se basa
 en el patrón de arquitectura MVC y eso es más que suficiente para gran parte de las aplicaciones que vas a desarrollar en un comienzo con RoR.
 Pero cuando tu aplicación comienza a crecer conforme a los requerimientos del negocio, es entonces cuando empiezas a crear código que no pertenece ni a
@@ -23,19 +24,15 @@ la capa **modelo**, ni a la capa **controlador** y menos a la capa **vista**. En
 
 > Learn just what you need to get started, then keep leveling up as you go. Ruby on Rails scales from HELLO WORLD to IPO.
 
-En este post, descubrirás cómo este patrón puede simplificar tu código y mantenerte en control a medida que tu proyecto crece. Exploraremos qué son los service objects y profundizaremos en su implementación para que puedas elegir la que más se adecue a tus necesidades.
+En este post, intentare profundizar en lo que es Service Object en Rails para que puedas mantener el codigo de tus aplicaciones limpio y escalable a medida que agregas nuevas funcionalidades.
+
+**He actualizado este post luego de que un desarrollador me contactara para mostrarme su exposicion referente a Service Object**, dejare el link a su presentacion al final del post. Y quiero dejar en claro que cualquier idea expuesta aqui no es una verdad, solo intento ayudar un poco con el conocimiento que tengo hasta el momento. Si consideras que algo debe ser corregido estaria encando de leer tu email, discutir y aprender.
 
 # ¿Qué es Service Objects en Rails?
 
-Se podría definir como un patrón de diseño de software adoptado por la comunidad de Rails que se utiliza para extraer cierta lógica procedimental de los modelos y los controladores en objetos de un solo propósito. Muy similar a una implementación de [Command pattern](https://en.wikipedia.org/wiki/Command_pattern) en Ruby y Rails.
+Se podría definir como un patrón de diseño de software adoptado por la comunidad de Rails que se utiliza para encapsular logica de negocio y prevenir que ese codigo no quede repartido entre los modelos, los controladores e incluso hasta en las vistas (He visto de todo :) ) con callbacks, concerns y helpers que rompen con los propositos principales para los que fueron diseñados, mas estrictamente rompen con el principio de responsabilidad unica de estas clases, sobretodo en los modelos.
 
-Los Service Objects vienen como una forma fácil de mantener parte de nuestra lógica de negocio fuera de nuestros modelos y controladores, creando objetos de una sola responsabilidad que son fáciles de testear, reutilizables y simples. Esto hace que nuestros controladores sean más limpios y que nuestros modelos se encarguen de su principal tarea: representar los datos del negocio.
-
-Son "simples" porque deben cumplir con una única tarea y la implementación más común será mediante un PORO ("Plain Old Ruby Object") que básicamente tendrá:
-
-1. Un método de iniciación.
-2. Un único método público. Por lo general `call` o `run`.
-3. Retornar una respuesta predecible luego de la ejecución.
+En la practica entonces, son clases con una unica responsabilidad y sin estado, lo que quiere decir que no hay necesidad de instanciar un objeto para su uso y pueden ser llamados directamente con un metodo de clase.
 
 ## MVC + S
 
@@ -55,7 +52,32 @@ Ahora pasaremos a la parte práctica. Como mencioné en la sección anterior, la
 2. Dry.rb
 3. Interactor
 
-### Contexto
+### Ejemplo
+
+Tomare prestado un ejemplo de codigo (Ofuscado) desde mi trabajo actual. El problema es que gran parte de la logica la han tratado de resolver a punta de callbacks en los modelos, lo que conlleva a una violacion de SRP (Principio de responsabilidad unica). Miremos el codigo:
+
+```ruby
+class Signer < ApplicationRecord
+  ...
+  after_commit :create_user!
+  ...
+
+  def create_user!
+    return if user.present?
+
+    self.user = User.find_or_create_by(email: email) do |user|
+      user.name = name if name.present?
+    end
+  end
+  ...
+end
+```
+
+¿Ves algo raro? Lo raro es que la clase `Signer` tiene como responsabilidad representar los datos que seran almacenados muy probablemente en una tabla de base de datos llamada `signers`, pero al agregarle este callback agregamos otra responsabilidad, que es crear y relacionar un usuario al signer si es que no existe. Entonces terminamos con una clase que tiene dos responsabilidades violando SRP.
+
+Pero bueno, el post no es sobre el uso de los callbacks, si no mas bien sobre el uso de service objects. Y aqui ya estamos viendo que es codigo que podemos mejorar. Para que tengamos mas contexto: Este modelo signer es creado junto a un modelo `Document` en un formulario con signers anidados.
+
+---
 
 Tenemos un inicio de sesión en una API REST con Rails. Debemos autenticar al usuario mediante el uso de un correo y una contraseña. Si detectamos que el usuario está ingresando desde una nueva IP, entonces debemos enviar un correo de seguridad a su cuenta para confirmar que es él. Además, si el usuario realiza más de 3 intentos fallidos consecutivos, bloquearemos su cuenta durante 5 minutos.
 
@@ -531,4 +553,3 @@ En pocas palabras, los Service Objects en Ruby on Rails son una herramienta esen
 Sin embargo, este viaje de mejora no termina aquí. Muchos de los conceptos que te he compartido pueden adaptarse a las necesidades específicas de tu aplicación. Espero que este artículo te haya proporcionado una valiosa perspectiva y herramientas para optimizar tu desarrollo.
 
 Estoy a tu disposición para cualquier sugerencia, comentario o pregunta adicional. No dudes en escribir.
-
