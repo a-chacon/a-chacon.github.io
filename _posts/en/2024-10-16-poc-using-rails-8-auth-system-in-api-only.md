@@ -15,7 +15,7 @@ That said, let's see what happens when using the generator in an API-Only applic
 
 ```bash
  rails -v
-Rails 8.0.0.beta1
+Rails 8.0.2
 ```
 
 ```bash
@@ -32,23 +32,27 @@ And execute the new command:
       create  app/controllers/sessions_controller.rb
       create  app/controllers/concerns/authentication.rb
       create  app/controllers/passwords_controller.rb
+      create  app/channels/application_cable/connection.rb
       create  app/mailers/passwords_mailer.rb
       create  app/views/passwords_mailer/reset.html.erb
       create  app/views/passwords_mailer/reset.text.erb
       create  test/mailers/previews/passwords_mailer_preview.rb
-        gsub  app/controllers/application_controller.rb
+      insert  app/controllers/application_controller.rb
        route  resources :passwords, param: :token
        route  resource :session
         gsub  Gemfile
       bundle  install --quiet
     generate  migration CreateUsers email_address:string!:uniq password_digest:string! --force
-       rails  generate migration CreateUsers email_address:string!:uniq password_digest:string! --force
+       rails  generate migration CreateUsers email_address:string!:uniq password_digest:string! --force 
       invoke  active_record
-      create    db/migrate/20241016002139_create_users.rb
+      create    db/migrate/20250321105722_create_users.rb
     generate  migration CreateSessions user:references ip_address:string user_agent:string --force
-       rails  generate migration CreateSessions user:references ip_address:string user_agent:string --force
+       rails  generate migration CreateSessions user:references ip_address:string user_agent:string --force 
       invoke  active_record
-      create    db/migrate/20241016002140_create_sessions.rb
+      create    db/migrate/20250321105723_create_sessions.rb
+      invoke  test_unit
+      create    test/fixtures/users.yml
+      create    test/models/user_test.rb
 ```
 
 Okay, now, if we take a look at the `SessionsController`, we’ll see that the `Login` method looks like this
@@ -123,7 +127,7 @@ end
 
 **To make all this work, we need to do two things:**
 
-1. Include the `Authentication` module in `ApplicationController`:
+1. Include the `Authentication` module in `ApplicationController` (This was included in later versions of the beta):
 
    ```ruby
    # app/controllers/application_controller.rb
