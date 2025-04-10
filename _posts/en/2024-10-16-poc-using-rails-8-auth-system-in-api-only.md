@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "PoC: Using the Rails 8 (Beta) Authentication Generator in API-Only Mode."
+title: "PoC: Using the Rails 8 Authentication Generator in API-Only Mode."
 category:
   - On Rails
 image: /assets/images/rails8-poc-api-auth.webp
-excerpt: "Getting the Rails 8 (Beta) authentication generator to work in an API-Only mode application."
+excerpt: "Getting the Rails 8 authentication generator to work in an API-Only mode application."
 author: Andrés
 comments: true
 ---
