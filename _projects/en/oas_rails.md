@@ -1,7 +1,7 @@
 ---
 title: 'OasRails: Automatic Documentation for Rails APIs'
 layout: project
-image: /assets/images/oas_rails_ui.png
+image: https://a-chacon.com/oas_rails/assets/rails_theme.png
 category: Library
 order: 1
 ---
@@ -35,4 +35,3 @@ It arose from the need for a Rails documentation tool that was:
 OasRails aims to make the code "self-documenting", simplifying the documentation process for Rails API developers.
 
 [Project Repository](https://github.com/a-chacon/oas_rails)
-

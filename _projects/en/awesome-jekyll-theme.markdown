@@ -1,8 +1,7 @@
 ---
 title: Awesome Jekyll Theme
 layout: project
-image: >-
-  https://raw.githubusercontent.com/a-chacon/awesome-jekyll-theme/main/screenshots/main.png
+image: /assets/images/ajt.png
 category: Web Theme
 order: 4
 ---
@@ -18,4 +17,3 @@ Ideal for portfolios, blogs, and project showcases with responsive layouts and e
 - Preview: <{{site.url}}/awesome-jekyll-theme/>
 - RubyGems: <https://rubygems.org/gems/awesome-jekyll-theme>
 - Github: <https://github.com/a-chacon/awesome-jekyll-theme>
-
