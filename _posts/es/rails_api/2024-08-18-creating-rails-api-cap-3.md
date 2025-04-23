@@ -61,6 +61,8 @@ gem 'pundit'
 
 ## Implementando la autenticación
 
+[**💥Ahora puedes usar el generador de autenticación de Rails 8💥**](/on rails/2024/10/16/poc-using-rails-8-auth-system-in-api-only.html)
+
 Como la autenticación depende de **Devise**, lo primero es que sigamos los pasos de instalación de esta gema:
 
 ```bash

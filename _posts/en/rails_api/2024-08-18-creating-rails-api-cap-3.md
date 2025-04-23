@@ -61,6 +61,8 @@ gem 'pundit'
 
 ## Implementing Authentication
 
+[**💥Now you can use the Rails 8 Authentication generator💥**](/on rails/2024/10/16/poc-using-rails-8-auth-system-in-api-only.html)
+
 Since authentication relies on **Devise**, the first step is to follow the installation steps for this gem:
 
 ```bash
