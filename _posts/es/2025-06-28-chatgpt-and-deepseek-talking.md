@@ -4,7 +4,7 @@ title: "Cuando las maquinas conversan: ChatGPT y DeepSeek."
 category:
   - AI
 excerpt: "¿Que pasaria si chatGPT y DeepSeek lograran hablar entre si?. Hice la prueba y me sorprendio el resultado."
-image: https://a-chacon.com/oas_rails/assets/rails_theme.png
+image: /assets/images/llmchat.png
 author: Andrés
 comments: true
 ---
