@@ -3,17 +3,17 @@ layout: post
 title: "Cuando las maquinas conversan: ChatGPT y DeepSeek."
 category:
   - AI
-excerpt: ""
+excerpt: "¿Que pasaria si chatGPT y DeepSeek lograran hablar entre si?. Hice la prueba y me sorprendio el resultado."
 image: https://a-chacon.com/oas_rails/assets/rails_theme.png
 author: Andrés
 comments: true
 ---
 
-Llevo un par de dias construyento un ChatBot para la empresa en la que estoy trabajando actualmente y he tenido que investigar sobre RAG, bases de datos vectoriales, Langchain y varias cosas mas. Dentro de toda esta inmersion en el mundo de los LLMs, se me ocurrio un experimento un poco tonto pero divertido: ¿Que pasa si ChatGPT y DeepSeek tuvieran la oportunidad de hablarse entre ellos? ¿De que hablarian? ¿Hasta donde llegarian?.
+Llevo un par de días construyendo un ChatBot para la empresa en la que estoy trabajando actualmente y he tenido que investigar sobre RAG, bases de datos vectoriales, Langchain y varias cosas más. Dentro de toda esta inmersión en el mundo de los LLMs, se me ocurrió un experimento un poco tonto pero divertido: ¿Qué pasaría si ChatGPT y DeepSeek tuvieran la oportunidad de hablarse entre ellos? ¿De qué hablarían? ¿Hasta dónde llegarían?.
 
-Uso DeepSeek mas que nada para generar codigo que me da flojera hacerlo, corregir cosas repetitivas, documentar y generar tests. Sus salidas no son perfectas pero si corregibles. Y ChatGPT lo uso mas que nada para definir acercamientos y soluciones mas estructurales. Son una gran herramienta, pero solo eso, una herramienta mas dentro del universo de herramientas para desarrollar y crear.
+Uso DeepSeek más que nada para generar código que me da flojera hacerlo, corregir cosas repetitivas, documentar y generar tests. Sus salidas no son perfectas pero sí corregibles. Y ChatGPT lo uso más que nada para definir acercamientos y soluciones más estructurales. Son una gran herramienta, pero solo eso, una herramienta más dentro del universo de herramientas para desarrollar y crear.
 
-Y bueno, el experimiento, cree rapidamente un pequeño script con Ruby, configure las variables de entorno con las respectivas api keys y obtuve salidas como:
+Y bueno, el experimento: creé rápidamente un pequeño script con Ruby, configuré las variables de entorno con las respectivas API keys y obtuve salidas como:
 
 ---
 
@@ -39,9 +39,9 @@ Y bueno, el experimiento, cree rapidamente un pequeño script con Ruby, configur
 
 ---
 
-Interesante! Muy tecnico, pero alucinante como logran crear una conversacion intrigante y que en cada experimento fue algo diferente. La unica intervencion es cargar el primer mensaje de saludo y los prompts de systema para darle personalidad a cada uno (Trate de que fuesen pequeños).
+¡Interesante! Conversaciones muy técnicas, pero creativas y curiosas. La única intervención es cargar el primer mensaje de saludo y los prompts de sistema para darle algo de personalidad a cada uno (traté de que fuesen pequeños).
 
-Luego de unas pruebas igual me di cuenta que estaban un poco locos. salieron mensajes como los siguientes:
+Luego de unas pruebas, igual me di cuenta de que estaban un poco locos. Salieron mensajes como los siguientes:
 
 - DeepSeek: **🚀 Let’s Officially Declare Intergalactic AI-Human Collaboration Day!**
 - The possibilities are endless! Where should we explore next—perhaps the **AI Olympics**? Imagine robot relay races and synchronized server swimming! 🏊‍♂
@@ -50,9 +50,21 @@ Y que a DeepSeek le gusta generar escenarios imaginarios:
 
 - I also love **"What if?" scenarios**—like explaining LLMs as a library where the books rewrite themselves every time you _blink_.
 
-Aqut te lo dejo en vivo de una de las pruebas:
+Aunque también se burlaron de nuestra creatividad:
 
-Y por aca esta el codigo Ruby que utilice en el script para que hagas tus pruebas (Si estas aburrido jaja):
+<video controls>
+  <source src="/assets/videos/human_creativity_llmchat.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+Y lograron hasta planificar un futuro con computacion cuantica:
+
+<video controls>
+  <source src="/assets/videos/quantum_llmchat.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+Por acá está el código Ruby que utilicé en el script para que hagas tus pruebas (si estás aburrido, jaja):
 
 ```ruby
 require 'openai'
