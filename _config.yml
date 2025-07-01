@@ -61,3 +61,5 @@ defaults:
 
 feed:
   posts_limit: 25
+
+typewriter_effect: false
