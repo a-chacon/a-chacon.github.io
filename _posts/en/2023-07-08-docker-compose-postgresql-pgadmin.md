@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'PostgreSQL and pgAdmin in Docker Compose: Quickstart'
+title: "PostgreSQL and pgAdmin in Docker Compose: Quickstart"
 categories:
   - Docker
 excerpt: >-
@@ -15,6 +15,7 @@ comments: true
 redirect_from:
   - /docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html
 ---
+
 Translated with <www.DeepL.com/Translator>
 
 The [PostgreSQL](https://www.postgresql.org/) database is an open source **object-relational database** system. PostgreSQL has a graphical user interface (GUI) administration control for database administration called [pgAdmin](https://www.pgadmin.org/). pgAdmin is a design and management interface for the PostgreSQL database. Simple operations, datasheets and databases can be performed with pgAdmin by interacting with the local file system of the database allowed by the user.
@@ -76,3 +77,8 @@ If you want to leave the containers running in the background don't forget the `
 
 And that's it. **Important**: You can use whatever credentials you want as long as it is a local development environment and do not pretend to use this definition of docker compose in a productive environment.
 
+## Docker Compose Files For development
+
+I just published a repo with all this docker compose files (What I use every day for my apps), so you can easy clone it and raise all the containers you need for develop your apps. Also it is open to contributions:
+
+<https://codeberg.org/a-chacon/docker-compose-for-development>

@@ -14,6 +14,7 @@ comments: true
 redirect_from:
   - /docker/mariadb/phpmyadmin/2023/07/07/docker-compose-mariadb-phpmyadmin.html
 ---
+
 [MariaDB]("https://mariadb.org/es/") es uno de los sistemas de gestión de bases de datos relacionales de código abierto más populares en el mundo y, por otro lado, [PhpMyadmin](https://www.phpmyadmin.net/) es otra gran herramienta estable y también software libre escrita en PHP que sirve para administrar tanto bases de datos en un servidor MySQL como MariaDB.
 
 Y [docker](https://www.docker.com") será la herramienta que nos ayudará a correr estos dos servicios de forma fácil y rápida, con persistencia de datos. Así tendremos un ambiente listo en unos pocos minutos para seguir trabajando.
@@ -67,3 +68,8 @@ Si quieres dejar corriendo los contenedores en background no olvides la flag `-d
 
 Y eso es todo. **Importante**: Puedes usar las credenciales que quieras siempre que sea un ambiente de desarrollo local y no pretender usar esta definición de docker compose en un ambiente productivo.
 
+## Docker Compose Files For development
+
+Acabo de publicar un repositorio incluyendo este archivo de docker compose (archivos que uso a diario para trabajar). Puedes clonarlo y levantar todos los contenedores que necesites para desarrollar tus aplicaciones. También está abierto a contribuciones:
+
+<https://codeberg.org/a-chacon/docker-compose-for-development>

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'PostgreSQL y pgAdmin en Docker Compose: Inicio Rápido'
+title: "PostgreSQL y pgAdmin en Docker Compose: Inicio Rápido"
 categories:
   - Docker
 excerpt: >-
@@ -15,7 +15,8 @@ comments: true
 redirect_from:
   - /docker/pgadmin/postgresql/2023/07/08/docker-compose-postgresql-pgadmin.html
 ---
-La base de datos [PostgreSQL](https://www.postgresql.org/) es un sistema de **base de datos relacional** de objetos y de código abierto. PostgreSQL tiene un control de administración de interfaz gráfica de usuario (GUI) para la administración de la base de datos llamada [pgAdmin](https://www.pgadmin.org/). **pgAdmin** es una interfaz de diseño y gestión para la base de datos PostgreSQL. Se pueden realizar operaciones, hojas de datos y bases de datos simples con pgAdmin interactuando con el sistema de archivos local de la base de datos permitido por el usuario.
+
+La base de datos [PostgreSQL](https://www.postgresql.org/) es un sistema de **base de datos relacional** de objetos y de código abierto. PostgreSQL tiene una interfaz gráfica de usuario (GUI) para la administración de la base de datos llamada [pgAdmin](https://www.pgadmin.org/). **pgAdmin** es una interfaz de diseño y gestión para la base de datos PostgreSQL. Se pueden realizar operaciones, hojas de datos y bases de datos simples con pgAdmin interactuando con el sistema de archivos local de la base de datos permitido por el usuario.
 
 [Docker](https://www.docker.com) será la herramienta que nos ayudará a levantar estos dos servicios de forma fácil y rápida, con persistencia de datos. Así tendremos un ambiente listo en unos pocos minutos para seguir trabajando.
 
@@ -74,3 +75,8 @@ Si quieres dejar corriendo los contenedores en background no olvides la flag `-d
 
 Y eso es todo. **Importante**: Puedes usar las credenciales que quieras siempre que sea un ambiente de desarrollo local y no pretender usar esta definición de docker compose en un ambiente productivo.
 
+## Docker Compose Files For development
+
+Acabo de publicar un repositorio incluyendo este archivo de docker compose (archivos que uso a diario para trabajar). Puedes clonarlo y levantar todos los contenedores que necesites para desarrollar tus aplicaciones. También está abierto a contribuciones:
+
+<https://codeberg.org/a-chacon/docker-compose-for-development>
