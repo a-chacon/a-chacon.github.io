@@ -85,3 +85,9 @@ Ten en cuenta que el nombre del contenedor dependerá de tus configuraciones; ad
 🤓Además, puedes interactuar con el modelo a nivel de línea de comandos. Si entras al contenedor de Ollama, puedes ejecutar `ollama run deepseek-r1` e interactuar sin la necesidad de una UI.🤓
 
 ¡Hasta aquí por ahora! Disfruta de tu LLM local.
+
+## Docker Compose Files For development
+
+  Acabo de publicar un repositorio incluyendo este archivo de docker compose (archivos que uso a diario para trabajar). Puedes clonarlo y levantar todos los contenedores que necesites para desarrollar tus aplicaciones. También está abierto a contribuciones:
+
+<https://codeberg.org/a-chacon/docker-compose-for-development>

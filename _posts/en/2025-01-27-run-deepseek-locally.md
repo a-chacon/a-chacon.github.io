@@ -85,3 +85,9 @@ Keep in mind that the container name will depend on your configurations; additio
 🤓Additionally, you can interact with the model via the command line. If you enter the Ollama container, you can run `ollama run deepseek-r1` and interact without needing a UI.🤓
 
 That’s it for now! Enjoy your local LLM.
+
+## Docker Compose Files For development
+
+I just published a repo with all this docker compose files (What I use every day for my apps), so you can easy clone it and raise all the containers you need for develop your apps. Also it is open to contributions:
+
+<https://codeberg.org/a-chacon/docker-compose-for-development>
